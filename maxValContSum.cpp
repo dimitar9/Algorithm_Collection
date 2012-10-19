@@ -1,3 +1,4 @@
+/**CAREER CUP 17.8 */
 #include <string>
 #include <vector>
 #include <iostream>

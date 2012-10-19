@@ -1,5 +1,5 @@
 /*
-    ASSUMPTIONS:
+ test   ASSUMPTIONS:
         All characters are case insensitive
     ENHANCEMENTS:
         Auto correction of word

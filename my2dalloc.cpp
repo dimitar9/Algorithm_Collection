@@ -3,7 +3,6 @@
 #include <stdarg.h>
 
 
-
 int** My2DAlloc1(int rows, int cols){
     int header = rows * sizeof(int*);
     int data = rows * cols * sizeof(int);

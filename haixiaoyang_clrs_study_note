@@ -177,3 +177,229 @@ Linear probing 很容易造成clustering的情况使search的时间变长.
 Quadratic probing会产生跳跃的probing, clustering的情况有很大缓解，但是对于很多key不同但hash key一样的情况会有second level clustering
 Double hashing通过两个不同的hash函数来缓解second level clustering, 就是让hashing 更加random.
 接下来是open address hashing的各种操作平均复杂度，还是indicator random variable的老路子
+
+
+
+五 搜索树 ( Chapter 12, 14, 13, 18 )
+
+JUNE 25, 2013 LEAVE A COMMENT
+Chapter 12.1 What is a binary search tree
+就是讲一些search tree的基本概念，没什么别的。课后题 12.1-3, 12.1-5 可以看看，也没什么意思。
+Chapter 12.2 Querying a binary search tree
+很简单，没什么意思，讲的基础的search和iterative的操作。
+课后题 12.2-4, 12.2-5, 12.2-6可以看看
+12.2-7 可以做做 code: http://haixiaoyang.wordpress.com/2012/06/30/write-an-iterator-for-binary-tree/
+Chapter 12.3 Insertion and deletion
+基本难点就在BST的deletion, 这里有两种deletion,
+一种不是真的删除节点而是值得替换，这种简单一些, code : http://haixiaoyang.wordpress.com/2012/09/28/bst-removal/
+交换node的值其实可以用一个swapNode函数代替来实现真实交换节点，但这个函数的edge cases太多，并不比下面的实现方便。
+一种是真实的删除节点，反正谁能很快写出这个我给他跪了,书上写的就是这种, code:
+http://haixiaoyang.wordpress.com/2013/04/28/clrs-delete-node-from-bst-replace/
+课后题没什么有额外价值的
+Problem 12-1, 12-2, 12-3 (类似快排复杂度的分析), 12-4 (卡特兰数)
+Chapter 14.1 Dynamic order statistics
+Order statistic tree 的一些基本操作code:
+http://haixiaoyang.wordpress.com/2013/06/15/chapter-14-order-statistic-tree-operation/
+OS-SELECT ==> OrderStatistics.getKthNode
+OS-RANK ==> OrderStatistics.getOrder
+课后题 14.1-5 ==> OrderStatistics.getKthSuccessor
+14.1-7 也不错
+Chapter 14.3 Interval tree
+Interval tree的主要性质(不是segment tree), 主要讲解了interval tree 中找overlap的线段的方法。
+课后题 14.3-3:
+http://haixiaoyang.wordpress.com/2013/06/15/chapter-14-3-interval-tree-14-3-3/
+14.3-4 ==> 每次找到后就删除那个节点直到没有相交的interval
+14.3-5 ==> 重新定义排序规则，开始节点相同的end小的优先
+14.3-6 ==> search tree中统计子树最小和最大的数
+Problem 14-1 ==> 不分start point 和 end point建AVL树，节点统计小于它的start point和end point的个数。
+Chapter 13, Chapter 18大致了解一下内容
+
+
+六 动态规划 & 贪婪算法 ( Chapter 15, 16 )
+
+JUNE 25, 2013 LEAVE A COMMENT
+觉得这章是整本书最好最实用的一章，如何建立dynamic programming矩阵，如何初始化矩阵和如何还原最优解都讲解的很好。这章和后面的贪婪算法一起，因为很多dynamic programming的问题可以用greedy直接解决。这章的题反正我是做过两遍了，一遍用c++，一遍用的是java。
+Chapter 15.1 Rod cutting
+就讲了这个problem, 先用recursive的算法，然后cache住recursive参数来避免重复计算(挺重要的概念，往往dynamic programming很难实现的问题可以用这种办法work around)，最后用bottom up的dynamic programming. 最优解的还原我是用递归还原的，其实感觉这是一种比较普遍的方法。
+code: http://haixiaoyang.wordpress.com/2013/06/16/chapter-15-1-rod-cutting/
+problem 15.1-2 — 为什么greedy算法不能处理这个问题, 挺好的课后题，我觉得和背包问题不能用greedy来解决的道理一样。
+problem 15.1-3, 15.1-4
+15.1-3说实话我不知道有什么特别需要注意的地方，所以没有实现。
+15.1-4 上面的code里有包含。
+Chapter 15.2 Matrix-chain multiplication
+和rod cutting非常类似的一道题，
+code: http://haixiaoyang.wordpress.com/2013/06/16/chapter-15-2-matrix-chain/
+课后题 15.2-2 15.2-3
+Chapter 15.3 Elements of dynamic programming
+这章讲dynamic programming的性质和可以用这种methodology所解决的问题的特征。
+首先这样的问题一定有optimal substructure， 通常是bottom up的形式。然后提了一下dynamic programming可以解决的问题也可能通过更简单的greedy算法解决。通常greedy算法能解决的问题也有optimal substructure，需要认清什么时候用dp什么时候用greedy.
+下面这个问题可以用dynamic programming也可以用greedy解决，给出了两种解法的code:
+http://haixiaoyang.wordpress.com/2012/11/11/best-time-to-buy-and-sell-stock-ii/
+接下来给出了如何鉴定optimal substructure的办法，给的例子是Longest un-weighted graph. 之所以不成为optimal substructure的原因时substructure不是independent的，而是互相影响。
+接下来指出dynamic programming的substructure是overlapping的， 也就是同样的问题如果以递归的形式解决的话会重复(overlapping)的解决同样的sub-problem很多次，造成大量的重复计算。DP就是通过记录这些之前计算好的值来避免重复计算的 (cache parameter + recursion的效果类似)。如果substructure没有overlap 就应该用divided & conquer的解决方案了。
+课后题：
+15.3-3 还是有optimal sub-structure,
+15.3-5 由于限制了总数所以substructure之间实际是互相影响的，没有optimal substructure的性质
+15.3-6 实际上就是Longest path DAG， 带环的currency 转换毫无意义。
+Chapter 15.4 Longest common subsequence
+很常见的问题，code: http://haixiaoyang.wordpress.com/2013/06/16/chapter-15-4-longest-common-subsequence/
+要注意的是当a[i] == b[j]时一定选dp[i-1][j-1] + 1而不需要考虑dp[i-1][j]和dp[i][j-1]
+课后题15.4-5，15.4-6 就是longest increasing subsequence
+给一个longest increasing subsequence 的变体：
+http://haixiaoyang.wordpress.com/2013/06/18/chapter-15-variance-of-longest-increasing-sub-sequence/
+Chapter 15.5 Optimal binary search tree
+还是和之前的问题类似，就是实现起来很tricky, code:
+http://haixiaoyang.wordpress.com/2013/06/16/chapter-15-5-optimal-binary-search-tree/
+problem 15-1 : http://haixiaoyang.wordpress.com/2013/06/16/chapter-15-problems-15-1-longest-simple-path-in-dag/
+problem 15-2 : http://haixiaoyang.wordpress.com/2013/06/16/chapter-15-problem-15-2-longest-palindrome-sub-sequence/
+problem 15-4 : http://haixiaoyang.wordpress.com/2013/06/16/chapter-15-15-4-printing-neatly/
+problem 15-5 : http://haixiaoyang.wordpress.com/2013/06/16/chapter-15-problem-15-5-edit-distance/
+problem 15-9 : http://haixiaoyang.wordpress.com/2013/06/16/chapter-15-problem-15-9-breaking-a-string/
+Chapter 16.1
+闻名的activity selection problem. 比较了dynamic programming 和 greedy 的实现，以及greedy为什么work.
+课后题 16.1-1, 16.1-2
+16.1-4 出的很好，和graph coloring结合在一起了，不看提示很难想到啊。
+graph coloring的code: http://haixiaoyang.wordpress.com/2013/06/18/graph-coloring-dfs/
+答案的code: http://haixiaoyang.wordpress.com/2013/06/18/chapter-16-1-16-1-4/
+16.1-5 必须用dynamic programming 的activity selection
+code: http://haixiaoyang.wordpress.com/2013/06/18/chapter-16-16-1-5/
+Chapter 16.2
+很好的总结了只能用dynamic programming和可以用greedy解决的问题的区别。
+Dynamic programming是bottom up的，解决了所有over lapped optimal子问题才能一步步往上推得到global optimal solution.
+Greedy往往是线性推进的，在当前point得到的optimal sub solution直接就是global optimal solution的一部分。每一步剩下的optimal solution + 当前的optimal solution = global optimal solution
+课后题:
+16.2-1, 16.2-5, 16.2-6
+16.2-2 code: http://haixiaoyang.wordpress.com/2013/06/18/chapter-16-16-2-2/
+Chapter 16.3 Huffman codes
+Huffman tree的算法，后面的证明谁爱看谁看去
+Chapter 16.4 太难了，过
+
+
+
+
+
+七 图论
+
+JUNE 25, 2013 LEAVE A COMMENT
+Chapter 22.1 Representation of graphs
+主要就讲adjacent matrix和adjacent list的表示方式，adjacent list比较容易忽略，其实很多情况下adjacent list的表示不仅节约空间还可以减小复杂度。很多图的算法如果用matrix的表达方式是O(n^2)的复杂度，如果用adjacent list会为O(v+e), 比较适合sparse graph.
+课后题:22.1-3, 22.1-4, 22.1-5, 22.1-8
+章节内容和部分课后题的code:
+http://haixiaoyang.wordpress.com/2013/06/19/chapter-22-basic-graph-operations/
+Chapter 22.2 Breath first search
+基本算法本身没什么好说的，太基础了。
+BFS可以得出从s节点到它联通的各个节点的最短距离。和后面几章的最短距离算法不同的是BFS这个理论定义在各个边的权值相同的情况下。其实后面几章讨论最短路径算法其实都是建立在一个relaxation的概念下，这个概念也可以被利用来证明BFS的这个特性，结合数学归纳法。
+课后题:
+22.2-8 code: http://haixiaoyang.wordpress.com/2013/06/20/chapter-22-2-8-diameter-of-a-arbi-nary-tree/
+很好的题，general tree实际上就是一个无向无环图。这里给出了解法：http://stackoverflow.com/questions/12989578/prove-traversing-a-k-ary-tree-twice-yields-the-diameter
+不过要注意的是它说的BFS包括了parent那个方向，也就是说完全把这个树当成了图来处理。
+算法的证明可以自己想。假设这里有条最长路径 , s1, sx为它的两个端点，最长路径长为n, 这个random start point 为a，由a做的BFS搜索到的最远leaf node是b. 那么b一定是s1或sx (某条最长路径的一个端点)。如果这个假设成立，那么从b (某条最远路径的端点)继续做BFS搜索得到的最深端点所组成的路径一定是一个最远路径。
+现在证明这个假设，用反证法。针对于a到所有最长路径端点（设e）的情况，分两种情况讨论，一种是path 和 path无重复点，很容易反证出这种情况path长于最长路径n。另外一种有重复点的情况实际上类似。
+22.2-9 DFS的变体
+Chapter 22.3 Depth-first search
+引入了着色和开始/结束时间的概念来解释 DFS，还对图的边进行了分类，其实主要提供这些概念的目的是为了方便后面的证明，特别是DFS的结束时间的概念可以好好了解一下，比如topological sort里有用到它来方便阐述算法。
+课后题 :
+22.3-7还比较好，用adjacent linked list的话不是很容易做。
+code包含在: http://haixiaoyang.wordpress.com/2013/06/19/chapter-22-basic-graph-operations/
+主函数 ==> “stackDFS”
+22.3-13 code 包含在: http://haixiaoyang.wordpress.com/2013/06/19/chapter-22-basic-graph-operations/
+主函数 ==> “isSinglyConnected”
+Chapter 22.4 Topological sort
+主要讲的是拓扑排序的实现，给了一段很简洁的伪代码。没想到topological sort可以用DFS来实现，的确是一个很好的点子，证明也容易想的通。
+下面的code实现了DFS和iterative的方式实现topological sort的code:
+http://haixiaoyang.wordpress.com/2013/06/20/chapter-22-4-topological-sort-dfs-iterative/
+算法的证明不难。
+课后题:
+22.4-3 n个节点的无向图边 E >= n的话一定存在环。
+22.4-5 这个就是iterative的实现，但是和DFS的实现不同的是它对有环的情况是会无限循环的。
+Chapter 22.5 Strongly connected components
+这章的code在: http://haixiaoyang.wordpress.com/2013/06/21/chapter-22-5-strong-connected-component-tarjan-topological-semi-connected-component/
+这一章最棒的是用DFS来解决这个问题，伪代码把整个图当成一个topological的结构。另外一个观察是Strong connected component一定是一环套一环的互相可达的节点集合，这样如果把每个Strong connected component当成一个节点，那么整个topological的结构就是一个DAG (有向无环图)。DAG如果从拓扑顺序的末尾的Strong connected component往反方向推来开始做DFS就一定可以分离这些Strong connected component。 书上的算法用的是另外一种对等的逻辑，就是保留topological的顺序但是用reverse graph， 实际上有点容易费解，我实现的时候是reverse了topological sort的结果并用原图(非reversed graph) 来做DFS分离Strong connected component.
+修改的基于Topological的代码主函数 ==> ” dfsStrongComp”
+求解Strong connected component还有一个Tarjan算法，比这个DFS更难懂，Any way, 我实现完了以后我自己都不想看了。
+Tarjan algorithm 代码主函数 ==> “tarjanComp”
+tarjan算法的思路和 problem 22-2 非常相似，应该放在一起。
+课后题: 22.5-1, 22.5-2, 22.5-4
+22.5-7 挺好 代码主函数 ==> “isSemiConnected”
+Semi connect 性质是任意两点之间要么a可达b, 要么b可达a。思想是假如这个图是DAG, 那么按iterative topological的逻辑一个个remove in degree为0的节点，如果任意时刻出现两个或以上indegree为0的点，说明这两点不可达，证明不难，DAG中topological结构所有in degree不为0的点依赖于所有in degree为0的点，也就是说in degree为0的点可达任意一个in degree非0的点。对于非DAG, Strong component topological based算法可以产生Component graph 这个DAG, 每个Strong connected component内的点互相可达就不管了。
+Problem 22-2
+code: http://haixiaoyang.wordpress.com/2013/06/21/problem-22-2-articulate-points-and-edges/
+这个问题和tarjan算法的思想非常相似。都使用了sink这个概念，都是用index来mark每个node来表示在一个connected scope内父子或深度关系。这个connected scope在Tarjan里是一个Strong connected component而在articulate point里代表root分出的一个branch.
+Tarjan的思想实际上还是基于strong component graph的topological结构做的修改，它会一直深入到一个在topological结构中没有out degree的strong connected component, 然后把这个取出来，同样它得到的SCC也一定是按照topological sort逆序的，。同样这个lowest sink index对每一个图节点来说范围一定是在这个connected scope里的(Strong connected component)，不能说是有向边指到另外一个SCC发现比当前lowest index小就更新为另一个SCC的index, 这是不对的，算法里有做排除。实际上Tarjan就是对之前topological DFS的另外一种实现，本质是一样的。
+用同样的lowest sink的概念理解problem 22-2也不会很难。
+Problem 22-4 code: http://haixiaoyang.wordpress.com/2013/06/21/problem-22-4-reachability/
+这个问题最开始想到的是产生类似于Component graph的DAG然后topological sort解决，没想到更简单的办法是按label对应的点从小到大做逆向的DFS.
+Chapter 23 Minimum Spanning Trees
+这章实在不想做课后题和problem了…..
+Chapter 23.1 Growing a minimum spanning tree
+讲的就是所有minimum spanning tree的算法理论的出发点，扯了那么多乱七八糟的就是讲了MST的基本性质和由此衍生出的求解算法。MST中任何一条边都是可以把点集分成两部分，这两部分只有这条边相连并且在所有可以连接这两部分点集的边中，这条边权值最小。这个性质很容易证明，并且这个性质就是后面不同求解MST贪婪算法的共同的出发点。
+Chapter 23.2 Kruskal and Prim
+code: http://haixiaoyang.wordpress.com/2013/06/22/chapter-23-minimum-spanning-tree/
+证明基于上面MST的性质很容易吧，CLRS写的很啰嗦，自己证省的看那么多废话。
+Chapter 24 Single-Source Shortest Paths
+在介绍具体算法前先从Single-Source Shortest path问题本身进行了分析。这个问题本身是具有optimal substructures 的性质，这样的problem 一般可以用dynamic programming ( Bellman-Ford ) 求解，如果走运的可以greedy算法 ( Dijikastra ) 求复杂度会更低。
+这里的Optimal substructures是，假设有v1…vn个点，任意两点间最短距离就是S(i, j) = min{ S(i, 1) + S(1, j); S(i, 2) + S(2, j); ….. S(i, n) + S(n, j) } 或者 S(i, j) = min{ S(i, 1) + d(1, j); S(i, 2) + d(2, j); ….. S(i, n) + d(n, j) }. 后者往往优于前者，因为后者往往是一步步推进的考虑，考虑的个数是E而不是n^2
+Single-Source Shortest path不是说不可以运用在带环的图中，也不是说不可以运用在可为负权值的图上，但是如果图中有负环那么问题本身无解。应为如果无限次数的走负环那么path的值会降低到负无穷。
+一个非常重要的relaxation一步步优化的概念，这个优化是基于边的而不是节点的。
+Chapter 24.1 The Bellman-Ford algorithm
+code: http://haixiaoyang.wordpress.com/2013/06/22/chapter-24-1-24-2-24-3-single-source-shortest-path/
+主函数 “bellmanFord”
+很难把这个算法往上面的那个Optimal substructure的DP上靠，可以这么想。外层for循环是按path的最大允许步数来计算的，一开始只考虑最简单的单条边 (一步) 情况，然后逐渐增加。对于内层循环，类似于利用 S(n)(i, j) = min{ S(n-1)(i, 1) + d(1, j); S(n-1)(i, 2) + d(2, j); ….. S(n-1)(i, n) + d(n, j) } 这样的子结构，而对于内层循环S(n-1)(i, 1…n)已经计算出来了，为了计算S(n)(i, 1..n)实际上只用考虑变化因素，而这个可能产生变化的可能因素还是edges产生的relaxation优化。
+Chapter 24.2 Single-source shortest paths in directed acyclic graph
+又用到了DAG的性质，topological结构下一层层的做relaxation优化。当topological的顺序轮到一个点时没有其他的点可达当前点，即当前结果已经没有办法改变，已经是最优化的了。其实说是DAG的topological顺序，如果用DFS来计算topological序列，也是可以正确处理带环情况的，没有必要那么严格。
+code: http://haixiaoyang.wordpress.com/2013/06/22/chapter-24-1-24-2-24-3-single-source-shortest-path/
+主函数 “dagShortestPath”
+课后题 24.2-4
+code: http://haixiaoyang.wordpress.com/2013/06/22/chapter-24-1-24-2-24-3-single-source-shortest-path/
+主函数 “getAllPaths”
+Chapter 24.3 Dijkstra Algorithm
+真正正确的Dijkstra版本是在这里才见过的，以前理解的版本原来都不对。Dijkstra一个重要的限制条件就是所有的edge必须为positive，因为Dijkstra基于一个重要的假设: 当前阶段已计算出的路径最短的那个点一定是最优点，因为后续的relaxation都是要比某一点大的 ( 在所有edge权重为正的情况下 )。
+code: http://haixiaoyang.wordpress.com/2013/06/22/chapter-24-1-24-2-24-3-single-source-shortest-path/
+主函数 “dijkstra”
+很容易证明复杂度是(V+E)lgV
+课后题：
+24.3-2, 24.3-4, 24.3-624.3-8, 24.3-9
+Problems 24-2:
+code: http://haixiaoyang.wordpress.com/2013/06/22/problem-24-2-nesting-boxes/
+Chapter 25 All pair shortest Paths
+用两个二维矩阵解决这个问题，一个矩阵记录两点之间最短距离，另一个是predecessor matrix，如果shortest path = 那么M[i, j] = k，这个predecessor matrix可以还原完整的任意两点最短路径，理论依据是shortest path = 也代表了这个path中任意两点的shortest path。
+基于原始dynamic programming的基础上发现了这个problem可以看作一个矩阵相乘的形式，根据chapter 4.2 Stranssen’s algorithm 可以优化这个复杂度从O(n^4)到O(n^3logn)。
+原始dynamic programming的code: http://haixiaoyang.wordpress.com/2013/06/23/chapter-25-all-pair-shortest-paths/
+主函数 ==> “buildMatrix” & “printPath”
+Floy-Warshall algorithm
+也是dynamic programming, 相对于原始dp的解决方案减少了整整O(n)个数量级，代码很类似但是思维很巧妙，巧妙的利用这个原理。Shortest path = 那么 k分离出两段Shortest Path和Shortest Path。外层循环按k由1到n递增，内层循环就是所有 pairs。如果k在计算SP的path中，那么当前SP = SP + SP并且当前的计算就是最优值，因为SP 和SP一定为最优解。
+code: http://haixiaoyang.wordpress.com/2013/06/23/chapter-25-all-pair-shortest-paths/
+主函数 ==> “FloydWarshall” & “printPath”
+
+
+
+
+
+
+八 字符串匹配
+
+JUNE 25, 2013 LEAVE A COMMENT
+Chapter 32.1 The naive string-matching algorithm
+课后题32.1-4
+code: http://haixiaoyang.wordpress.com/2013/06/24/chaper-32-32-1-4-rabinkarp-kmp/
+主函数 “isMatch”, DP来解，不是很难
+Chapter 32.2 Rabin-Karp algorithm
+就是传说中的rolling hashing。首先一种mathematic perspective的字符串hashing是把字符串看成一组数字，每个字符代表一个digit, radix任意，这样一个字符串可以映射为一个很大的数字。在计算机里表示就可能over flow。因为做hash的时候反正会把这个字符串映射到n个hash bucket，所以over flow不是关键，关键是能映射到正确的bucket里。所以在做计算的时候并不是计算完整个巨大的number然后再模除n，而是在计算的过程中就用模除以防止over flow并且一些模除性质可以保证最后余数不变。比如(a*b*c)%k == ((a%k * b)%k) * c ,直接计算a*b*c可能over flow, 但是中间插入模除计算既能避免over flow也能得到相同的余数。
+设被匹配的长字符串长为L, 匹配的短字符串长度为S, rolling hashing的思想一般就是在长字符串上有一个长为S的window, 这个window内的字符串有一个hash value, 每次window移动一个字符，rolling hash保证了新window的hash value能在O(1)的时间内得到 (第一个window的值计算为O(S))。
+射window长度为n, 比如当前需被匹配串为 s1s2…sn,s(n+1) …., 现在s1..sn的hash value为T, 字符串代表的数字系radix为d, 那么s2…s(n+1)的hash value为: d*(T – a*h) + s(n+1), 其中h为d^n。由于hash value可能over flow, 每次都可以把hash code % q, 不难证明每次这样做都可以保证下次的window能对应到正确的bucket。
+code: http://haixiaoyang.wordpress.com/2013/06/24/chaper-32-32-1-4-rabinkarp-kmp/
+主函数 “rkMatch”。
+Chapter 32.2 String matching with finite automata
+有限状态机在String matching中的应用，感觉建一个表什么的不太实用，这章讲的也很晦涩，还不如看wiki: http://en.wikipedia.org/wiki/Automata-based_programming
+Chapter 32.4 KMP algorithm
+KMP算法要理解一开始建立的那个array, 那个array本质的意义是pattern在当前index的最大重复, 即在当前index往前推所能一直匹配到pattern string第一个字符的最大长度-1。设array[i]的值为v，那么pattern.subString[0 ... v] == pattern.subString[i-v, v], 其中这个v是最大值。
+字符串在用这个array进行匹配的时候，如果在i处失配，那么要检查array[i-1]，这样就知道要把当前pattern往右移多少再接着匹配，如果失配接着右移。这里右移在代码中就代表 k = array[k]，(array[i]的值永远小于i)，这个逻辑也同样运用于build这个pattern array的算法上。
+code: http://haixiaoyang.wordpress.com/2013/06/24/chaper-32-32-1-4-rabinkarp-kmp/
+主函数 “kmpMatch”。
+
+
+
+
+
+
+

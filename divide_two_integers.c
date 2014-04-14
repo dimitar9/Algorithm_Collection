@@ -27,7 +27,11 @@ int divide(int divident, int divisor)
         var2 = var2 >> 1;
         c = c >> 1;
     }
-    return sign * ret;
+   // return sign * ret;
+   if (sign == -1)
+       return 0-ret;
+   else
+       return ret;
 }
 
 int main() {

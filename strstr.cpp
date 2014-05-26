@@ -21,7 +21,7 @@ char* StrStr(const char *str, const char *target) {
 
 
 
-
+Reviewed
 char* StrStr(const char *str, const char *target) {
   if (!*target) return str;
   char *p1 = (char*)str;

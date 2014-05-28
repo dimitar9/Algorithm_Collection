@@ -31,7 +31,7 @@
  * */
 class Solution {
 public:
-    void dfs(vector<int> &candidates, int target, vector<vector<int> > &res, vector<int> &r, int i){
+    void dfs(vector<int>const &candidates, int target, vector<vector<int> > &res, vector<int> &r, int i){
         if (target<0){
             return;
         }else{

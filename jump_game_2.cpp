@@ -35,3 +35,32 @@ public:
 };
 
 reviewed
+
+
+
+class Solution {
+public:
+    int jump(int A[], int n) {
+        // Start typing your C/C++ solution below
+        // DO NOT write int main() function
+        if (n==0) {return 0;}
+        if (n==1) {return 0;}
+        int m=0;
+        int i=0;
+        int njump=0;
+        while (i<n){
+            m=max(m,A[i]+i);
+            if (m>0) {njump++;}
+            if (m>=n-1){return njump;}
+            int tmp=0;
+            for (int j = i+1; j<=m;j++){
+                if (j+A[j]>tmp){
+                    tmp=A[j]+j;
+                    i=j;
+                }
+            }
+             
+        }
+        return njump;
+    }
+};

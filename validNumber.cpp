@@ -52,10 +52,10 @@ public:
                             return false;
                         }
                         break;
-                   case '+': // + can only occur before e
+                   case '+': // + can only occur after e
                         if (s[i-1]=='e' || s[i-1]=='E'){}else{return false;}
                         break;
-                   case '-': // - can only occur before e
+                   case '-': // - can only occur after e
                         if (s[i-1]=='e' || s[i-1]=='E'){}else{return false;}
                         break;
                    case '.': // . can only occur once and cannot occure after e

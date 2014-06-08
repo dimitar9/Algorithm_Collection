@@ -51,3 +51,42 @@ In this case, you should ignore redundant slashes and return "/home/foo".
 27:            simpPath += "/" + stack[i];   
 28:            return simpPath;   
 29:       }   
+
+
+
+
+
+class Solution {
+private:
+    string outputPath(vector<string>& dirs){
+        if (dirs.empty()){
+            return "/";
+        }
+        string out;
+        for (int i = 0; i < dirs.size(); i++){
+            out += "/" + dirs[i];
+        }
+        return out;
+    }
+public:
+    string simplifyPath(string path) {
+        vector<string> dirs;
+        string cur;
+        path += '/';
+        for (char& c : path){
+            if (c != '/'){
+                cur += c;
+            } else { //c == "/"
+                if (cur == ".."){
+                    if (!dirs.empty()){
+                        dirs.pop_back();
+                    }
+                } else if (cur != "." && cur != ""){
+                    dirs.push_back(cur);
+                }
+                cur = "";
+            }
+        }
+        return outputPath(dirs);
+    }
+};

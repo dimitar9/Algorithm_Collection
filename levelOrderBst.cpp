@@ -10,32 +10,27 @@
 class Solution {
 public:
     vector<vector<int> > levelOrder(TreeNode *root) {
-        vector<vector<int> > res; //result vector
-        queue<pair<TreeNode*,int> > q; //travseral queue
-        vector<int> res_tmp; // level vector
-         
-        if (!root){return res;}
-        q.push(make_pair(root,1)); //push the root into the queue
-        int level=1; //previous level
-        while (!q.empty()){
-            pair<TreeNode*,int> tmp = q.front();
-            q.pop();
-            if (tmp.second!=level){ //if current element has a new level
-                level = tmp.second;
-                res.push_back(res_tmp); //push the level vector to result
-                res_tmp.clear();  //clear the level vector to store the new level
+        
+        vector<vector<int>> result;
+        if(!root) return result;
+        queue<pair<TreeNode*, int>> level_queue;
+        vector<int> tmp_vec;
+        level_queue.push(make_pair(root,1));
+        int level = 1;
+        while(!level_queue.empty()){
+            pair<TreeNode*,int> p = level_queue.front();
+            level_queue.pop();
+            if(p.second != level){
+                result.push_back(tmp_vec);
+                level = p.second;
+                tmp_vec.clear();
             }
-             
-            res_tmp.push_back(tmp.first->val); //push the current value to the level vector
-             
-            if (tmp.first->left!=NULL){
-                q.push(make_pair(tmp.first->left,tmp.second+1));
-            }
-            if (tmp.first->right!=NULL){
-                q.push(make_pair(tmp.first->right,tmp.second+1));
-            }
+            
+            tmp_vec.push_back(p.first->val);
+            if(p.first->left != NULL) level_queue.push(make_pair(p.first->left, p.second+1));
+            if(p.first->right != NULL) level_queue.push(make_pair(p.first->right, p.second+1));
         }
-        res.push_back(res_tmp); // the last level also needs to push into the result
-        return res;
+        result.push_back(tmp_vec);
+        return result;
     }
 };

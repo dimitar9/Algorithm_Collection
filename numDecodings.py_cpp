@@ -1,0 +1,51 @@
+class Solution:
+    # @param s, a string
+    # @return an integer
+    def numDecodings(self, s):
+        if s == '' or s[0] == '0': return 0
+        dp = [1, 1]
+        length = len(s)
+        for i in xrange(2, length + 1):
+            if 10 <= int(s[i-2:i]) <= 26 and '1' <= s[i-1] <= '9':
+                dp.append(dp[i-1] + dp[i-2])
+            elif 10 <= int(s[i-2:i]) <= 26:
+                dp.append(dp[i-2])
+            elif '1' <= s[i-1] <= '9':
+                dp.append(dp[i-1])
+            else:  # s[i] == '0'
+                return 0
+        return dp[length]
+
+
+
+c++
+
+class Solution {
+public:
+    int numDecodings(string s) {
+        // Start typing your C/C++ solution below
+        // DO NOT write int main() function
+        if ((s.empty())||(s[0]=='0')){return 0;}
+         
+        int t1=1; //num from 0 to current-1
+        int t2=1; //num from 0 to current-2
+        for (int i=1; i<s.size();i++){
+            int tc=0; //num from 0 to current
+            if ((s[i]=='0')){
+                int d1 = (s[i-1]-'0');
+                if( (d1<3)&&(d1>0) ){tc=t2;}
+            }
+            if (s[i]!='0'){
+                if (s[i-1]=='0'){tc = t1;}
+                else{
+                    int d2 = (s[i-1]-'0')*10+(s[i]-'0');
+                    if (d2<=26) {tc = t1+t2;}
+                    else{tc =t1;}
+                }
+            }
+            t2=t1;
+            t1=tc;  
+        }
+        return t1;   
+    }
+};

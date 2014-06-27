@@ -22,6 +22,8 @@ The idea is:   first get the last element and the length of the list (1 while lo
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
+ reviewed.
+ 
 class Solution {
 public:
     ListNode *partition(ListNode *head, int x) {

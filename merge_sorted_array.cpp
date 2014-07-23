@@ -1,17 +1,12 @@
 // Copyright (c) 2013 Elements of Programming Interviews. All rights reserved.
 //EPI 11.1
-#ifndef SOLUTIONS_MERGE_SORTED_ARRAYS_H_
-#define SOLUTIONS_MERGE_SORTED_ARRAYS_H_
-
-#include <algorithm>
 #include <queue>
-#include <utility>
 #include <vector>
-
+#include <iostream>
 using std::pair;
 using std::priority_queue;
 using std::vector;
-
+using namespace std;
 struct Compare {
   bool operator()(const pair<int, int>& lhs, const pair<int, int>& rhs) {
     return lhs.first > rhs.first;
@@ -42,5 +37,15 @@ vector<int> merge_arrays(const vector<vector<int>>& S) {
   }
   return ret;
 }
-// @exclude
-#endif  // SOLUTIONS_MERGE_SORTED_ARRAYS_H_
+
+int main(){
+    vector<int> a (1,10);
+    vector<int> b (1,8);
+    vector<vector<int> > c ;
+    c.push_back(a);
+    c.push_back(b);
+    vector<int> d;
+    d = merge_arrays(c);
+    cout << d[1] << " " << d[0] << endl;
+    return 0; 
+}

@@ -3,23 +3,23 @@ import java.util.ArrayList;
 import java.util.Stack;  
   
   
-class TreeNode {  
-    int val;  
-    TreeNode left;  
-    TreeNode right;  
-  
-    TreeNode(int x) {  
-        val = x;  
-    }  
-}  
+/**
+ * Definition for binary tree
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
 public class Solution {  
       
     public ArrayList<Integer> postorderTraversal(TreeNode root) {  
-        if (root == null)  
-            return null;  
         ArrayList<Integer> list = new ArrayList<Integer>();  
+        if (root == null)  
+            return list;  
         Stack<TreeNode> stack = new Stack<TreeNode>();  
-        //先把最后访问的结点先放入到栈中，即根节点root  
+         
         stack.push(root);  
         while (stack.size() != 0){  
             TreeNode top = stack.peek();  
@@ -38,7 +38,7 @@ public class Solution {
                 continue;  
             }  
         }  
-        reverse(list)
+       
         return list;  
     }  
 }  

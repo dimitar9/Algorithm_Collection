@@ -38,6 +38,12 @@ public class Solution {
                 continue;  
             }  
         }  
+        reverse(list)
         return list;  
     }  
 }  
+http://leetcode.com/2010/10/binary-tree-post-order-traversal.html
+//see alternative solution
+
+
+

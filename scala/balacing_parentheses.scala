@@ -45,3 +45,28 @@ object Main {
 		else if (coins.isEmpty || money<0) 0
 		else countChange(money,coins.tail)+countChange(money-coins.head,coins)
 }
+
+
+
+
+def balance(chars: List[Char], open: Int): Boolean = {
+  if (chars.isEmpty)
+    open == 0
+  else if (chars.head == '(')
+    balance(chars.tail, open + 1)
+  else if (chars.head == ')' && open > 0)
+    // found an unmatched '(' earlier
+    balance(chars.tail, open - 1)
+  else
+    balance(chars.tail, open)
+}                                                 
+  
+val x = "(x + y + (z + 1)))"                    
+balance(x.toList, 0)
+  
+val y = "())("
+balance(y.toList, 0)
+
+
+
+

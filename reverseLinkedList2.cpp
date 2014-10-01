@@ -57,3 +57,20 @@ public:
         
     }
 };
+
+
+
+void reverse(Node*& head)
+{
+    if(!head) return;
+    Node* prev = NULL;
+    Node* curr = head;
+
+    while(curr) {
+        Node* next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+    }
+    head = prev;
+}

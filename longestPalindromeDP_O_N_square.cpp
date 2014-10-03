@@ -25,3 +25,27 @@ string longestPalindromeDP(string s) {
   }
   return s.substr(longestBegin, maxLen);
 }
+
+
+1:       string longestPalindrome(string s) {  
+2:            int len = s.size();  
+3:            int P[len][len];  //bool table[1000][1000] = {false}; 
+// or vector<vector<int> > table (n, vector<int>)(n,0);
+4:            memset(P, 0, len*len*sizeof(int));  
+5:            int maxL=0, start=0, end=0;  
+6:            for(int i =0; i< s.size(); i++)  
+7:            {  
+8:                 for(int j =0; j<i; j++)  
+9:                 {  
+10:                      P[j][i] = (s[j] == s[i] && (i-j<2 || P[j+1][i-1]));  
+11:                      if(P[j][i] && maxL < (i-j+1))  
+12:                      {  
+13:                           maxL = i-j+1;  
+14:                           start = j;  
+15:                           end = i;  
+16:                      }  
+17:                 }  
+18:                 P[i][i] =1;  
+19:            }  
+20:            return s.substr(start, end-start +1);  
+21:       } 

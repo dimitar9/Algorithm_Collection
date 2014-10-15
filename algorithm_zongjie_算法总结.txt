@@ -1,0 +1,4 @@
+
+一句话总结题目的精粹
+
+1. Best Time to Buy and Sell Stock 买股票题目： vector存一个 到目前位置最小的数字。一次循环搞定 o(n)

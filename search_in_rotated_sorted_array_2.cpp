@@ -17,7 +17,7 @@ public:
              
             if (A[mid]<A[st]){
                  
-                if (target<=A[mid] || target >= A[st]){
+                if (target<=A[mid] || target >= A[st]){  //IMPORTANT, note, it is OR here.
                     return se(st,mid-1,target,A);
                 }else{
                     return se(mid+1,ed,target,A);
@@ -39,3 +39,10 @@ public:
         return  se(0,n-1,target,A);
     }
 };
+
+
+//note:
+/*
+the gist of this code is: for 2 branches, try to find one section we knoe it is monotonically increasing for sure.
+
+*/

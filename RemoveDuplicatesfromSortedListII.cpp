@@ -12,7 +12,7 @@ public:
         // Start typing your C/C++ solution below
         // DO NOT write int main() function
         if ((head==NULL) || (head->next == NULL) ){return head;}
-        ListNode* pre = new ListNode(0);
+        ListNode* pre = new ListNode(0); //IMPORTANT!!!
         pre->next = head;
         
         ListNode* p = pre;

@@ -17,15 +17,16 @@ the trick here is not construct a length of n array, only three element array is
 class Solution {
 public:
     int climbStairs(int n) {
-        // Start typing your C/C++ solution below
-        // DO NOT write int main() function
-        vector<int> d(n+1,0);
-        d[1]=1;
-        d[2]=2;
-        for (int i=3;i<=n;i++){
-            d[i]=d[i-1]+d[i-2];
+    
+        if (n<=2) return n;
+        int f1=1;
+        int f2=2;
+        for(int i=3;i<=n;i++){
+            f2=f1+f2;
+            f1=f2-f1;
         }
-        return d[n];
+        return f2;
+        
     }
 };
 

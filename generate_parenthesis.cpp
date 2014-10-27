@@ -2,11 +2,11 @@ class Solution {
 public:
 
     void gp(int l, int r, int n, string str, vector<string>& res){
-        if (l>n) return;
-        if ( r==n ) res.push_back(str);
+        if (l>n) return; // IMPORTANT!
+        if ( r==n ) res.push_back(str); // IMPORTANT!
         else{
             gp(l+1,r,n,str+'(',res);
-            if(l>r){
+            if(l>r){ // IMPORTANT!
                 gp(l,r+1,n,str+')',res);
             }
         }

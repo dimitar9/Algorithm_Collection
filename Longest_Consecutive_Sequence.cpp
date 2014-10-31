@@ -19,7 +19,7 @@ public:
                 mx++;
                 mp.erase(fd+1);
                 fd++;
-            }
+           } 
              
             fd = num[i];
             while (mp.find(fd-1)!=mp.end()){

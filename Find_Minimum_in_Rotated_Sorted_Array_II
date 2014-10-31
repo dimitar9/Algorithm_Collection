@@ -1,0 +1,20 @@
+class Solution{ 
+public:
+   int findMin(vector<int> &num) {
+        int start=0, end=num.size()-1;
+        while(start<end) {
+            if(num[start]==num[end]) {
+                while(start<end && num[start]==num[end])
+                    start++;               
+            }
+            else {
+                int mid = start+(end-start)/2; 
+                if(num[mid]>num[end])
+                    start = mid+1;
+                else
+                    end = mid;
+            }
+        }
+        return num[start];
+    }
+};

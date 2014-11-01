@@ -1,0 +1,30 @@
+
+this is 水中的鱼  solution, it is better than yucoding's.
+
+1:    vector<vector<int> > subsetsWithDup(vector<int> &S) {  
+2:      // Start typing your C/C++ solution below    
+3:      // DO NOT write int main() function  
+4:      vector<vector<int> > result;  
+5:      vector<int> output;   
+6:      if(S.size() ==0) return result;  
+7:      result.push_back(output);  
+8:      sort(S.begin(), S.end());  
+9:      generateSub(S, 0, result, output);  
+10:    }  
+11:    void generateSub(  
+12:      vector<int> &s,   
+13:      int step,   
+14:      vector<vector<int> > &result,  
+15:      vector<int>& output)  
+16:    {         
+17:      for(int i = step;i<s.size(); i++ )  
+18:      {  
+19:        output.push_back(s[i]);  
+20:        result.push_back(output);  
+21:        if(i< s.size()-1)  
+22:          generateSub(s, i+1, result, output);  
+23:        output.pop_back();  
+24:        while(i<s.size()-1 && s[i] == s[i+1])  
+25:          i++;  
+26:      }      
+27:    }  

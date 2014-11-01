@@ -36,7 +36,7 @@ public:
             }
             res->right = ct(inorder,postorder,mid+1,ied,ped-1);
             res->left = ct(inorder,postorder,ist,mid-1, ped-1-ied+mid);
-            return res;
+            return res; //DON"T FORGET RETURN
     }
  
  

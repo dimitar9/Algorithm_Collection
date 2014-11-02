@@ -1,3 +1,6 @@
+http://fisherlei.blogspot.com/2013/11/leetcode-wordbreak-ii-solution.html
+
+
 class Solution {
 public:
 	void helper(string &s, unordered_set<string> dict, string &tmp, vector<string> &res, vector<bool> &rec, int start, int len){

@@ -7,6 +7,7 @@
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
+ //reviewed
 class Solution {
 public:
     TreeNode *first;

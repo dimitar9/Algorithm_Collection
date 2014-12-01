@@ -1,1 +1,6 @@
 1. Good one. Has design questions. http://n00tc0d3r.blogspot.in/2013/01/2sum-3sum-4sum-and-variances.html
+
+
+leetcode分类解答 in c++ cpp ,非常好：
+
+http://leetcodesummary.blogspot.com/2013/09/leetcode-dfs.html

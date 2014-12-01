@@ -1,0 +1,624 @@
+ Leetcode 中 DFS 深度优先搜索
+DFS常用在求permutation, combination, 找出所有解，Search等等，思想就是把解看做树的叶子然后遍历之。
+1. Letter combination of a Phone Number
+遇到一个数字，把所有可能的字符试一遍，以此为分叉，看下一个数字。遇到1或者0没有分叉，直接看下一个数字
+	
+void recursive_pick(string digits, int i, string &picked, vector <string> &ret)
+{
+    const static string key_maps[10]={
+        "0","1","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"
+    };
+    if (i == digits.length()) {
+        ret.push_back(picked);
+        return;
+    }
+    int n = digits[i]  -'0';
+    if(n==1||n==0){
+        recursive_pick(digits,i+1, picked, ret);
+    }
+    else{
+        string keys = key_maps[n];
+        for (int j=0;j<keys.length();j++) {
+            picked.push_back(keys[j]);
+            recursive_pick(digits,i+1, picked, ret);
+            picked.erase(picked.length()-1);
+        }   
+    }   
+}
+   
+vector<string> letterCombinations(string digits) {
+    // Start typing your C/C++ solution below
+    // DO NOT write int main() function
+    int n = digits.length();
+    vector <string> ret;
+    string picked;
+    recursive_pick(digits, 0, picked, ret);
+    return ret;
+}
+2. Generate Parentheses
+By default 加(直到(用完，当l>n的时候可以加）。 最后缺的）一并补上
+
+	
+void foo(vector<int> &res, string str, int l, int r; int n){
+        if(l==n){
+            string s(n-r,')');
+            str+=s;
+            res.push_back(str);
+            return;
+        }
+        foo(res,str+'(',l+1,r,n);
+        if(l>r)
+        foo(res,str+')',l,r+1,n);
+         
+    }
+    vector<string> generateParenthesis(int n) {
+        // Start typing your C/C++ solution below
+        // DO NOT write int main() function
+        vector <string> res;
+        if(n>0) foo(res, "", 0,0,n);
+        return res;
+    }
+3. Next Permutation
+严格意义上 Next Permutation不算是DFS，但是他巧妙的利用了DSF不同branch的关系，来更有效的得出结果。
+ step 1: find largest k so that num[k]<num[k+1]; if no, this is the last one. the "next" one is the smallest one in lex order. sort the array.
+ step 2: find lasgest l so that num[l]>num[k]; and swap.
+ step 3: reverse (K+1, end)
+
+void nextPermutation(vector<int> &num) {
+        // Start typing your C/C++ solution below
+        // DO NOT write int main() function
+        int k=-1;
+        for(int i=0;i<num.size()-1;i++){
+            if(num[i]<num[i+1])
+                k=i;
+        }
+        if(k==-1){
+            sort(num.begin(),num.end());
+            return;
+        }
+        int l=0;
+        for(int i=0;i<num.size();i++){
+            if(num[i]>num[k])
+            l=i;
+        }
+        int tmp = num[l];
+        num[l]=num[k];
+        num[k]=tmp;
+         
+        reverse(num.begin()+k+1,num.end());
+        return;
+         
+    }
+3.a 此题的另一个变种是last permutation 思路相似
+ step 1: find largest k so that num[k]>num[k+1];
+ step 2: find lasgest l so that num[l]<num[k]; and swap. if l=0, this is the first one. the "last" one is the biggest one in lex order. sort the array.
+ step 3: reverse (K+1, end)
+
+	
+int n=a.size();
+ int k=0;
+ for(int i=0;i<n-1;i++){
+  if(a[i]>a[i+1])
+    k=i;
+ }
+ 
+ int l=0;
+ for(int i=k;i<n;i++){
+  if(a[i]<a[k])
+   l=i;
+ }
+ if(l==0) {
+    reverse(a.begin(),a.end());
+    return a;
+   }
+ swap(a[k],a[l]);
+ reverse(a.begin()+k+1, a.end());
+ return a;
+
+
+ 4. Sudoku Solver
+遍历每个格子，看是否为空，不为空就依次试1-9，检查是否合法，包括行合法，列合法，block合法。不合法就返回，否则继续试下一个格子
+
+pair<int, int> findFirstEmpty(const vector< vector<char> >& board) {
+       for (int i = 0; i < 9; ++i)
+           for (int j = 0; j < 9; ++j)
+               if (board[i][j] == '.') return make_pair(i, j);
+       return make_pair(-1, -1);
+   }
+ 
+   // 检查连续的 9 个格子是否有效
+   bool isValid(const vector<char>& vec) {
+       vector<bool> occur(9, false);
+       for (int i = 0; i < 9; ++i) {
+           if (isdigit(vec[i])) {
+               if (occur[vec[i]-'1']) return false;
+               else occur[vec[i]-'1'] = true;
+           }
+       }
+       return true;
+   }
+ 
+   // 检查往某个位置填入一个数之后整个 board 是否有效（只需要考虑当前行、
+   // 当前列和所属的田字格）
+   bool isValidBoard(const vector< vector<char> >& board, pair<int, int> pos) {
+       // 检查当前行是否有效
+       if (!isValid(board[pos.first])) return false;
+ 
+       // 检查当前列是否有效
+       vector<char> column(9);
+       for (int i = 0; i < 9; ++i)
+           column[i] = board[i][pos.second];
+       if (!isValid(column)) return false;
+ 
+       // 检查所在的田字格是否有效
+       int block_row = pos.first / 3;
+       int block_col = pos.second / 3;
+       vector<char> block;
+       for (int i = block_row * 3; i < block_row * 3 + 3; ++i)
+           for (int j = block_col * 3; j < block_col * 3 + 3; ++j)
+               block.push_back(board[i][j]);
+       if (!isValid(block)) return false;
+ 
+       // 如果以上都有效，则返回 true
+       return true;
+   }
+ 
+   // 检查从当前局面开始是否能够得到最终合法有效的解
+   bool solveSudoku(vector<vector<char> >& board) {
+       // 如果没有找到空白的格子，说明已经填满了，成功返回
+       pair<int, int> pos = findFirstEmpty(board);
+       if (pos.first == -1 && pos.second == -1)
+           return true;
+       // 否则依次尝试往当前格子中填入数字 1-9，并判断能否得到可行的解
+       for (int i = 1; i <= 9; ++i) {
+           board[pos.first][pos.second] = i + '0';
+           if (isValidBoard(board, pos) && solveSudoku(board))
+               return true;
+           // 恢复原样
+           board[pos.first][pos.second] = '.';
+       }
+       return false;
+   }
+5. Combination Sum
+这题重点在思路。首先将数字集合排序，从最小的开始依次往后挑，直到sum等于target或者没得挑了退出。 用一个index数组来记录挑到的数字
+
+void foo(vector<int> &candidates, int sz, int sum, int tar, int index[], int n, vector<vector<int> > &res){
+        if(sum==tar){
+             vector<int> temp;
+            for(int i=1;i<=n;i++){     
+                temp.push_back(candidates[index[i]]);            
+            }
+             
+         res.push_back(temp);
+         
+        }
+        if(sum>tar)
+            return;
+         
+        for(int i=index[n];i<sz;i++){
+            index[n+1]=i;
+            foo(candidates, sz, sum+candidates[i], tar, index, n+1,res);
+        }
+    }
+    vector<vector<int> > combinationSum(vector<int> &candidates, int target) {
+        // Start typing your C/C++ solution below
+        // DO NOT write int main() function
+        sort(candidates.begin(),candidates.end());
+        vector<vector<int> > res;
+        int sz=candidates.size();
+        int index[1000]={0};
+        foo(candidates, sz,0,target,index,0, res);
+        return res;
+    }
+不用index数组的解法：
+
+void foo(vector<int> &candidate, int sum, int index,int target,vector<vector<int>> &res, vector<int> cur){
+        if(sum==target){
+            res.push_back(cur);
+            return ;
+        }
+        if(sum>target)
+        return;
+         
+        for(int i=index;i<candidate.size();i++){
+            cur.push_back(candidate[i]);
+            foo(candidate,sum+candidate[i],i,target,res,cur);
+            cur.pop_back();
+            
+        }
+         
+    }
+    vector<vector<int> > combinationSum2(vector<int> &candidates, int target) {
+        vector<vector<int>> res;
+        vector<int> cur;
+        if(candidates.size()==0) return res;
+        sort(candidates.begin(),candidates.end());
+        foo(candidates, 0,0,target,res,cur);
+         
+         
+        return res;
+         
+    }
+6. Combination Sum II
+这题思路和上题一样，只不过挑过的数字就不能再挑了，i=index[n]改为i=index[n]+1 不用index数组的做法也和上题一样，把foo的实参之一i改为i＋1.同时需要注意去重 比如［1，1］＝1 会有两个相同的结果。方法是在pop_back()之后加一句：
+
+	
+while(i<candidate.size()-1 && candidate[i] == candidate[i+1]) i++; 
+
+7. Permutation
+重点也是思路，依次交换： e.g. ABC, 首先看第0位，A先和A交换->ABC; A和B交换->BAC, A和C交换，CBA。 然后看第1位 ABC->ABC和ACB， BAC->BAC和BCA, CBA->CBA和CAB 注意ABC 变成 BAC之后，要变回来ABC,才能变成CBA。
+
+	
+void foo(vector<vector<int> > &res, int n, int sz, vector<int> &num){
+        if(n==sz){
+            res.push_back(num);
+            return;       
+        }
+         
+        for(int i=n;i<=sz;i++){
+            int temp=num[i];
+            num[i]=num[n];
+            num[n]=temp;
+            foo(res,n+1,sz,num);
+            temp=num[i];
+            num[i]=num[n];
+            num[n]=temp;
+        }
+         
+    }
+    vector<vector<int> > permute(vector<int> &num) {
+        // Start typing your C/C++ solution below
+        // DO NOT write int main() function
+         
+        vector<vector<int> > res;
+        foo(res, 0, num.size()-1, num);
+        return res;
+    }
+8. Permutation II
+思路和上题一样，区别在于 for循环里交换的时候如果num[i]==num[n],i!=n,则跳过这次交换。
+9. N-Queen
+此题和数独问题类似，每试一个位子，去检查合法性，合法性包括行，列，对角线。 A[i]表示第i行 第A[i]列放置Q。
+
+bool isValid(vector<int> A, int i){
+      for(int r=0;r<i;r++)
+          if(A[r]==A[i]||abs(A[r]-A[i])==abs(r-i))
+              return false;
+      return true;
+  }
+  void foo(vector<vector<string>> &res, vector<int> &A, int cur, int n){
+      if(cur==n){
+          vector<string> r;
+          for(int i=0;i<n;i++){
+              string str(n,'.');
+              str[A[i]]='Q';
+              r.push_back(str);
+          }
+          res.push_back(r);  
+          return;
+      }
+       
+      for(int i=0;i<n;i++){
+          A[cur]=i;
+          if(isValid(A,cur)){
+               
+              foo(res,A,cur+1,n);
+          }
+      }
+       
+  }
+   
+  vector<vector<string> > solveNQueens(int n) {
+      // Start typing your C/C++ solution below
+      // DO NOT write int main() function
+      vector<vector<string> > res;
+      vector<int> A(n,-1);
+      foo(res, A, 0, n);
+      return res;
+  }
+10. N-Queen II
+此题只要求返回解的个数。可以用上题做法，也有更简单的做法，参见http://www.matrix67.com/blog/archives/266
+11. Combinations
+Given two integers n and k, return all possible combinations of k numbers out of 1 ... n
+此题和permutaion相似，只是k！=n,这里用index<=0和k==0来控制分支。 两次调用foo保证了每个n都可能出现在第i位，1<=i<=k. 而且每个数字后面出现的数字都比前面的数字大，这样避免了重复
+
+	
+void foo(vector<vector<int> > &res, vector<int> &tmp, int n, int k,int index){
+        if(k==0){
+            res.push_back(tmp);
+            return;
+        }
+        if(index <= n){
+            tmp.push_back(index);
+            foo(res,tmp,n,k-1,index+1);
+            tmp.pop_back();
+            foo(res,tmp,n,k,index+1);
+             
+        }
+    }
+    vector<vector<int> > combine(int n, int k) {
+        // Start typing your C/C++ solution below
+        // DO NOT write int main() function
+         
+         
+        vector<vector <int>> res;
+        vector <int> tmp;
+        if (k==0) return res;
+        if (k>n) return res;
+        foo(res, tmp,n,k,1);
+    }
+另一种方法：
+
+	
+void helper(int n, int index, int k, vector<int> &tmp, vector<vector <int> > &res){
+        if(k==0){
+            res.push_back(tmp);
+            return;
+        }
+        for(int i=index;i<=n;i++){
+            tmp.push_back(i);
+            helper(n,i+1,k-1,tmp,res);
+            tmp.pop_back();
+             
+        }
+    }
+     
+    vector<vector<int> > combine(int n, int k) {
+        vector<int> tmp;
+        vector< vector<int> > res;
+        helper(n,1,k,tmp, res);
+        return res;
+    }
+12. Subsets
+Given a set of distinct integers, S, return all possible subsets.
+此题也是典型的DFS， 是上题k=1,..n的扩展.更直观和简单的一个解题思路是用二进制数字来表示所有的subset. 每一个二进制数字对应一个unique subset, 1表示这个位的数字有，0表示这个位子上的数字无。当然前提先把数组排序（不排序也可以做，排过序答案更整齐）
+
+	
+vector<vector<int> > subsets(vector<int> &S) {
+        // Start typing your C/C++ solution below
+        // DO NOT write int main() function
+        vector<vector<int> > res;
+        sort(S.begin(),S.end());
+        int size=S.size();
+        long x=pow(2,size);
+        for(int i=0;i<x;i++){
+             vector<int> tmp;
+            for(int j=size-1;j>=0;j--){
+               if(i>>j&1)
+                    tmp.push_back(S[size-1-j]);
+            }
+            res.push_back(tmp);
+        }
+        return res;
+    }
+12.b Subset II
+如果有重复怎么做。我们先看没重复的 S=[1,2,3]. 可能的子集是 [], [1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]. 每一次遇到新元素，其实就是加到所有的已有的set里。比如当新元素是2， 那么就要加到[], [1]中，结果是[2],[1,2]。(上题的另一种解法) 如果有重复,那么就不能加入到已有的所有set里，而是只加入上一步生成的set里。比如如果不重复，当遇到新元素3，3要加入到所有已经生成的set中，也就是 [], [1],[2],[1,2]。 但是如果是重复的set S=[1,2,2],当遇到第二个2，就不能加所有的了因为[],[1]已经加过，只需要加上一步生成的,也就是[2],[1,2]
+
+vector<vector<int> > subsetsWithDup(vector<int> &S) {
+        sort(S.begin(),S.end());
+        vector<int> tmp;
+        vector< vector<int> > res;
+        res.push_back(tmp);
+        tmp.push_back(S[0]);
+        res.push_back(tmp);
+        int pre=S[0];
+        int count=1;
+        for(int i=1;i<S.size();i++){
+         int sz=res.size();
+            if(S[i]!=S[i-1]){
+                count=0;
+                for(int j=0;j<sz;j++){
+ 
+                    tmp=res[j];
+                    tmp.push_back(S[i]);
+                    res.push_back(tmp);
+                    count++;
+                }
+            }
+            else{
+ 
+                for(int j=sz-count;j<sz;j++){
+ 
+                    tmp=res[j];
+                    tmp.push_back(S[i]);
+                    res.push_back(tmp);
+                    
+                }
+ 
+            }
+        }
+       return res;
+   }     
+13. Word Search
+典型的DFS。 先遍历找第一个字符，找到之后进入DFS搜索模式。注意每匹配一个要做记号，防止loop。返回要把记号去掉。
+
+	
+bool foo(vector<vector<char> > &board, int i, int j, string word){
+        if (word.size()==0) return true;
+         
+        if(i>0&&board[i-1][j]==word[0]){
+            char ch= board[i][j];
+            board[i][j]='#';
+            if(foo(board,i-1,j,word.substr(1,word.size())))
+                return true;
+            board[i][j]=ch;
+        }
+        if(i<board.size()-1&&board[i+1][j]==word[0]){
+            char ch= board[i][j];
+            board[i][j]='#';
+            if(foo(board,i+1,j,word.substr(1,word.size())))
+                return true;
+            board[i][j]=ch;
+        }
+        if(j>0&&board[i][j-1]==word[0]){
+            char ch= board[i][j];
+            board[i][j]='#';
+            if(foo(board,i,j-1,word.substr(1,word.size())))
+                return true;
+            board[i][j]=ch;
+        }
+        if(j<board[0].size()-1&&board[i][j+1]==word[0]){
+            char ch= board[i][j];
+            board[i][j]='#';
+            if(foo(board,i,j+1,word.substr(1,word.size())))
+                return true;
+            board[i][j]=ch;
+        }
+         
+        return false;
+             
+    }
+    bool exist(vector<vector<char> > &board, string word) {
+        // Start typing your C/C++ solution below
+        // DO NOT write int main() function
+        for(int i=0;i<board.size();i++)
+           for(int j=0;j<board[0].size();j++){
+                if(board[i][j]==word[0])
+                    if(foo(board, i,j,word.substr(1,word.size())))
+                        return true;
+           }
+        return false;
+    }
+14. Surrounded Regions
+此题先搜索不能被包围的区域，也就是和边界联通的O，先都找出来，标记位D。然后把剩下的O（被包围的）置换成#。 最后把标记位D的位（不能被包围的）还原成O。
+
+	
+void foo(vector<vector<char>> &board, int i, int j){
+        if(i<0||j<0||i>=board.size()||j>=board[0].size()||board[i][j]!='O') return;
+        board[i][j]='D';
+        foo(board,i-1,j);
+        foo(board,i+1,j);
+        foo(board,i,j-1);
+        foo(board,i,j+1);      
+    }
+     
+    void solve(vector<vector<char>> &board) {
+        // Start typing your C/C++ solution below
+        // DO NOT write int main() function
+        int m=board.size();
+        if(m==0) return;
+        int n=board[0].size();
+        for(int i=0;i<m;i++){
+            foo(board,i,0);
+            foo(board,i,n-1);
+        }
+        for(int j=0;j<n;j++){
+            foo(board,0,j);
+            foo(board,m-1,j);
+        }
+         
+        for(int i=0;i<m;i++)
+            for(int j=0;j<n;j++){
+                if(board[i][j]=='O') board[i][j]='X';
+                if(board[i][j]=='D') board[i][j]='O';
+            }
+    }
+15. Word Ladder 这道题是典型的BFS广度优先搜索，这里一并介绍。思路其实比较简单，就是把一个word从头到位依次用a-z替换，然后插入队列末尾。记住用空格来区分不同的层。
+
+	
+int ladderLength(string start, string end, unordered_set<string> &dict) {
+        // Start typing your C/C++ solution below
+        // DO NOT write int main() function
+        unordered_set<string> visited;
+        queue<string> que;
+        int count = 1;
+        visited.insert(start);
+        que.push(start);
+        que.push("");
+         
+        while(!que.empty()){
+            string word=que.front();
+            que.pop();
+            if(word==end)
+                return count;
+            if(word.empty()&&!que.empty()){
+                que.push(word);
+                count++;
+            }
+            else if(!que.empty()){
+                for(int i=0;i<word.size();i++){
+                    string tran=word;
+                    for(int c='a';c<='z';c++){
+                        tran[i]=(char)c;
+                        
+                        if(dict.find(tran) != dict.end() &&
+                            visited.find(tran) == visited.end())
+                        {
+                            que.push(tran);
+                            visited.insert(tran);
+                        }
+                    }
+                }
+            }
+        }
+         
+      return 0;
+    }
+16. Palindrome Partitioning 返回所有的partitioning 情况。典型的DFS。
+
+	
+bool isvalid(string s, int st, int ed){
+        if(st==ed) return true;
+        while(st<=ed){
+            if(s[st]==s[ed]){
+                st++;
+                ed--;
+                continue;
+            }
+            else return false;
+        }
+        return true;
+    }
+    void foo(string s, int st, vector<string> &r, vector<vector<string>> &res){
+        if(st>=s.size()){
+            res.push_back(r);
+            return;
+        }
+        for(int i=st;i<s.size();i++){
+            if(isvalid(s,st,i)){
+                r.push_back(s.substr(st,i-st+1));
+                foo(s,i+1,r,res);
+                r.pop_back();
+            }
+        }
+    }
+    vector<vector<string>> partition(string s) {
+        // Start typing your C/C++ solution below
+        // DO NOT write int main() function
+        int size=s.size();
+         
+        vector<vector<string>> res;
+        if(size==0) return res;
+        vector<string> r;
+        foo(s,0,r,res);
+    }
+17. Palindrome Partitioning II res[i] 表示s[0..i]的最小cut。res(i) = min [ res(j)+1, j=0..i-1 and s[j:i] 是回文] 0, if s[0,i] 是回文. 我们用一个矩阵mp来记录s[i,j]是不是回文
+
+int minCut(string s) {
+     int n=s.size();
+     if(n==0) return 0;
+     vector<int> res(n,0);
+     vector<vector<bool> > mp(n,vector<bool>(n,false));
+      
+     for(int i=n;i>=0;i--)
+       for(int j=i;j<n;j++){
+           if(i==j) mp[i][j]=true;
+           else if(i+1==j&&s[i]==s[j]) mp[i][j]=true;
+           else if(s[i]==s[j]&&mp[i+1][j-1]) mp[i][j]=true;
+       }
+        
+        
+       for(int i=0;i<n;i++){
+            
+           if(mp[0][i]) res[i]=0;
+           else {
+               int mx=i;
+               for(int j=0;j<i;j++){
+                    
+                   if(mp[j+1][i]&&res[j]+1<mx)
+                       mx=res[j]+1;               
+               }
+               res[i]=mx;
+           }
+       }
+       return res[n-1];
+   }

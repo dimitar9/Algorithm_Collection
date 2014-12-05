@@ -4,3 +4,6 @@
 leetcode分类解答 in c++ cpp ,非常好：
 
 http://leetcodesummary.blogspot.com/2013/09/leetcode-dfs.html
+
+
+http://www.keithschwarz.com/interesting/code/?dir=topological-sort

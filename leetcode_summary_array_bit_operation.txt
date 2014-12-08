@@ -1,0 +1,423 @@
+
+Leetcode 总结
+
+2013年9月13日星期五
+Leetcode Array bit Operation
+这一类型的题目主要是考察按位操作，比如Remove Duplicates from Sorted Array, Remove Element, First Missing Positive. Merge sorted Array. 1. Remove Duplicates from sorted Array. 思想很简单，两个指针，分别是0，1初始化。如果A[i]A[j]不相同，i增加1 赋值，此时两者指向同一个元素，不变。如果 A[i]A[j]不相同 i 停止，j继续。直到第一个不同的j出现 A[++i]=A[j], 重复的元素第一个保留，第二个被替换。
+
+	
+int removeDuplicates(int A[], int n) {
+// Start typing your C/C++ solution below
+// DO NOT write int main() function
+if(n<2) return n;
+int i=0;
+int j=1;
+for(;j<n;j++){
+if(A[i]!=A[j])
+A[++i]=A[j];
+}
+return i+1;
+}
+2. Remove Element, 思想和1相似，但是区别在于这里是len++ 而不是++len,
+
+	
+int removeElement(int A[], int n, int elem) {
+// Start typing your C/C++ solution below
+// DO NOT write int main() function
+int len=0;
+for(int i=0;i<n;i++){
+if(A[i]!=elem){
+A[len++]=A[i];
+ 
+}
+}
+return len;
+}
+};
+3. remove duplicated elements from sorted array II (What if duplicates are allowed at most twice?) same as 1 but i=1, j=2 for init. and A[i-1]!=A[i]||A[i]!=A[j]
+
+	
+int removeDuplicates(int A[], int n) {
+// Start typing your C/C++ solution below
+// DO NOT write int main() function
+int i=1;
+int j=2;
+if(n<3) return n;
+for(;j<n;j++){
+if(A[i]!=A[i-1]||A[j]!=A[i])
+A[++i]=A[j];
+}
+ 
+return i+1;
+}
+4. merge sort array 尾指针指向大的数组末尾，然后从后面比较，大的就放到最后，尾指针减一
+
+	
+void merge(int A[], int m, int B[], int n) {
+// Start typing your C/C++ solution below
+// DO NOT write int main() function
+ 
+ int i=m-1;
+        int j=n-1;
+        while(i>=0&&j>=0){
+            if(A[i]>B[j]){
+                A[i+j+1]=A[i];
+                i--;
+            }
+            else{
+                A[i+j+1]=B[j];
+                j--;
+            }
+        }
+         
+        while(j>=0){
+            A[j]=B[j];
+            j--;
+        }
+5. Sort Colors
+设red=0，blue=n-1, if(A[red]==0) red++; if(A[blue]==2) blue--, 先把两边符合要求的去掉；然后从第一个不符合要求的red开始，如果是1就继续，如果是0就和red换，如果是2就和blue换
+
+	
+void swap(int A[], int i, int j){
+            int tmp = A[i];
+            A[i]=A[j];
+            A[j]=tmp;
+        }
+    void sortColors(int A[], int n) {
+        // Start typing your C/C++ solution below
+        // DO NOT write int main() function
+        int red=0;
+        int blue=n-1;
+        while(A[red]==0) red++;
+        while(A[blue]==2) blue--;
+        int i=red;
+        while(i<=blue){
+            if(A[i]==0&&i>red){swap(A,i,red);red++;continue;}
+            if(A[i]==2){swap(A,i,blue);blue--;continue;}
+            i++;
+        }
+    }
+6. Longest Consecutive Sequence 如果没有O(n)限制，先sort，然后直接找。很简单。如果要求O(n)，那么就需要一个hash表。 对于每一个元素先遍历一遍把存在的元素填入表中。然后再次遍历，对于每一个元素两个方向+1，-1看是否存在并且把访问过的元素从表中删去。
+
+	
+int longestConsecutive(vector<int> &num) {
+        // Start typing your C/C++ solution below
+        // DO NOT write int main() function
+        map<int,bool>mp;
+        for (int i=0;i<num.size();i++){
+            mp[num[i]]=true;
+        }
+          
+        int res=0;
+        for (int i=0;i<num.size();i++){
+            int mx=1;    
+            int fd = num[i];
+              
+            mp.erase(num[i]);
+            while (mp.find(fd+1)!=mp.end()){
+                mx++;
+                mp.erase(fd+1);
+                fd++;
+            }
+              
+            fd = num[i];
+            while (mp.find(fd-1)!=mp.end()){
+                mx++;
+                mp.erase(fd-1);
+                fd--;
+            }
+              
+            if (mx>res){res=mx;}
+        }
+          
+        return res;
+    }
+7. Jump Game 假设当前站在index=cur上，那么下一跳能够达到的最大距离是cur+A[cur]. Range 是当前我们能够达到的最大的位置
+
+	
+bool canJump(int A[], int n) {
+       // Start typing your C/C++ solution below
+       // DO NOT write int main() function
+       int mx=0;
+  
+     for(int i=0;i<n;i++){
+        if(i<=mx){
+           if(A[i]+i>=mx){
+             mx=A[i]+i;
+           }
+         }
+      }
+  
+      return mx>=n-1?true:false;
+   }
+8. Jump Game II Last 是当前已经可以reach的最大的距离，用了ret个步骤。 curr是用ret+1个步骤能够达到的最大距离。因此 curr<=max(i+A[i]) where 0<=i<=last
+
+	
+int jump(int A[], int n) {
+     int mx=0;
+        int ret=0;
+        int last=0;
+  for(int i=0;i<n;i++){
+       
+      if(i > last){
+         ret++;
+         last = mx;
+        }
+       
+       if(A[i]+i>=mx){
+           mx=A[i]+i;
+       }
+  }
+   
+  return ret;
+    }
+9.Best Time to Buy and Sell Stock I
+only permitted to complete at most one transaction
+简单找出最小股价和最高股价即可
+
+	
+int maxProfit(vector<int> &prices) {
+       // Start typing your C/C++ solution below
+       // DO NOT write int main() function
+       if(prices.size()==0) return 0;
+       int profit=0;
+       int low=prices[0];
+       for(int i=1;i<prices.size();i++){
+           low=min(prices[i],low);
+           profit=max(prices[i]-low,profit);
+       }
+       return profit;
+   }
+10. Best Time to Buy and Sell Stock II
+You may complete as many transactions as you like
+也很简单，把所有相邻价格差相加即可
+
+	
+int maxProfit(vector<int> &prices) {
+        // Start typing your C/C++ solution below
+        // DO NOT write int main() function
+        int profit=0;
+        for(int i=1;i<prices.size();i++){
+            profit+=prices[i]-prices[i-1]>0?prices[i]-prices[i-1]:0;
+        }
+        return profit;
+    }
+11. Best Time to Buy and Sell Stock III
+You may complete at most two transactions.
+比较难。需要用dp。思路是用dp1[i]来保存最赚钱的交易，这个交易的买入时间大于等于第i天。 Max(dp1[i] + dp2[i]) 返回两个交易的最大值，这两个交易一个在第i天或者第i天之前结束，另一哥在第i天之后结束 
+
+	
+int maxProfit(vector<int> &prices) {
+       // Start typing your C/C++ solution below
+       // DO NOT write int main() function
+       if(prices.size()==0) return 0;
+       int len =prices.size();
+       vector<int> dp1(len,0);
+       vector<int> dp2(len,0);
+       int max=prices[len-1];
+       int min=prices[0];
+        
+       for(int i=1;i<len;i++){
+           min=std::min(min,prices[i]);
+           dp1[i]=std::max(dp1[i-1],prices[i]-min);
+       }
+        
+       for(int j=len-2;j>=0;j--){
+           max=std::max(max,prices[j]);
+           dp2[j]=std::max(dp2[j+1],max-prices[j]);
+       }
+       int ans=0;
+       for(int i=0;i<len;i++)
+           ans=std::max(ans,dp1[i]+dp2[i]);
+        
+       return ans;
+   }
+11.a 比较难的是如果transaction的次数要求必须为k，最大利润是多少。
+
+	
+DP:f(i,k) 表示 第i天 完成k次交易的最大利润。如果第i天没做生意,
+那么f(i,k)=f(i-1,k), 如果做了生意, 那么假设这次买来自第j天 j<i,
+f(i,k)=max(f(j,k-1)+prices[i]-prices[j])
+因此 f(i,k)=max(f(i-1,k),max(f(j,k-1)+prices[i]-prices[j]|0<=j<i))
+ 
+vector<vector<int> > dp(n,vector<int>(k+1,0)); 
+        for(int i=1;i<n;i++) 
+        { 
+            for(int t=1;t<=k;t++) 
+            { 
+                int mx=dp[i-1][t]; 
+                for(int j=i-1;j>=0;j--) 
+                    mx=max(mx,dp[j][t-1]+prices[i]-prices[j]); 
+                dp[i][t]=mx; 
+            } 
+        } 
+        printf("%d\n",dp[n-1][k]); 
+12. Gas Station
+此题和Find the continuous sequence with the largest sum相似。 遍历每一个加油站，如果这个加油站的全部油不能让车子到达下一站，那么这一站不能作为第一站。同理，一个加油站累计的油（起点为j）不能让车子到达下一站，那么j不能当作第一站，而是要从j之前的站k开始，这样k-j之间的加油站可能会有油量结余，使得车子能从k开到j再开到当前的下一站。
+
+	
+int canCompleteCircuit(vector<int> &gas, vector<int> &cost) {
+      // Note: The Solution object is instantiated only once and is reused by each test case.
+      int sum=0;
+      int total=0;
+      int j=-1;
+      for(int i=0;i<gas.size();i++){
+          sum+=gas[i]-cost[i];
+          total+=gas[i]-cost[i];
+          if(sum<0){
+              j=i;
+              sum=0;
+          }
+      }
+      return total>=0?j+1:-1;
+  }
+13， Candy
+N 个孩子站成一排， 每个孩子有个evaluation value. 要求给每个孩子分糖， 每个孩子至少有一颗糖，而且如果一个孩子比左右邻居的value 高，他的糖的数目也应该比他们高。 求最小的糖数。 先从左向右遍历，默认都给一颗糖，如果一个孩子比他左边孩子value高，那么他的糖数比左边孩子糖数多1个。然后从右向左遍历，如果一个孩子的value比他右边孩子高，先把他右边孩子的糖数加一，然后和现在已有的糖数做比较，取最大值。
+
+	
+int candy(vector<int> &ratings) {
+int candy(vector<int> &ratings) {
+        int n=ratings.size();
+        vector<int> r (n,1);
+         
+        if(n==0) return 0;
+        for(int i=1; i<n;i++){
+            if(ratings[i]>ratings[i-1])
+                r[i]=r[i-1]+1;
+        }
+        for(int i=n-2; i>=0;i--){
+            if(ratings[i]>ratings[i+1])
+                r[i]=max(r[i],r[i+1]+1);
+        }
+        int res=0;
+        for(int i=0;i<n;i++){
+            res+=r[i];
+        }
+        return res;
+         
+    }
+14. Given an array of numbers, nums, return an array of numbers products, where products[i] is the product of all nums[j], j != i.
+Input : [1, 2, 3, 4, 5]
+Output: [(2*3*4*5), (1*3*4*5), (1*2*4*5), (1*2*3*5), (1*2*3*4)] = [120, 60, 40, 30, 24]
+You must do this in O(N) without using division.
+这道题不是Leetcode上的，但是思路和上一题非常像，也是两个指针从左和右开始遍历。
+
+	
+public static void multiplyExceptSelf(int [] input)
+    {
+         if(input==null)
+            return;
+        if(input.length==0)
+            return;
+        long [] left=new long[input.length];
+        long [] right=new long[input.length];
+        left[0]=1;
+        for(int i=1;i<left.length;i++)
+        {
+            left[i]=left[i-1]*input[i-1];
+        }
+        right[input.length-1]=1;
+        for(int i=input.length-2;i>=0;i--)
+        {
+            right[i]=right[i+1]*input[i+1];
+        }
+        for(int i=0;i<input.length;i++)
+        {
+            long product=left[i]*right[i];
+            System.out.println(product);
+        }    
+        
+    }
+15. Single Number I
+找出只出现了一次的数，其他的数都出现了两次。 异或的重要性质： x^x=0; 0^y=y. 因此可以用异或对所有数字进行操作，最后剩下的就是那个只出现了一次的数
+
+	
+int singleNumber(int A[], int n) {
+        // Note: The Solution object is instantiated only once and is reused by each test case.
+        int x=A[0];
+        for(int i=1;i<n;i++)
+            x^=A[i];
+        return x;
+    }
+16. Single Number II
+找出只出现了一次的数，其他的数都出现了三次。 把所有的数都看成二进制，然后每一个bit依次相加，如果结果是3的整倍数，那么只出现了一次的数的这个位是0，否则的话就是1
+
+nt singleNumber(int A[], int n) {
+        // Note: The Solution object is instantiated only once and is reused by each test case.
+        int res=0;
+        int sum,x;
+        for(int i=0;i<32;i++){
+            sum=0;
+            x=(1<<i);
+            for(int j=0;j<n;j++){
+                if(A[j]&x)
+                    sum++;
+            }
+            if(sum%3)
+                res|=x;
+        }
+        return res;
+    }
+16. First Missing Positive
+e.g. Given [1,2,0] return 3, and [3,4,-1,1] return 2
+
+	
+int firstMissingPositive(int A[], int n) {
+        // Start typing your C/C++ solution below
+        // DO NOT write int main() function
+        for(int i=0;i<n;i++){
+            if(A[i]>0&&A[i]<=n&&A[i]!=i+1&&A[A[i]-1]!=A[i]){
+              swap(A[i], A[A[i]-1]);
+              i--;
+            }
+        }
+         
+        for(int i=0;i<n;i++){
+            if(A[i]!=i+1)
+                return i+1;
+        }
+        return n+1;
+    }
+17. Max sub array
+
+int maxSubArray(int A[], int n) {
+        // Start typing your C/C++ solution below
+        // DO NOT write int main() function
+        int sum=0;
+        int m=INT_MIN;
+        for(int i=0;i<n;i++){
+            sum=sum>=0?sum+A[i]:A[i];
+            m=max(sum, m);
+        }
+        return m;
+    }
+18. Maximum Product Subarray
+此题与上题类似，但是要区分正数，负数，0的情况。
+
+int maxProduct(int A[], int n) {
+        int mx=1;
+        int mi=1;
+        int ret=INT_MIN;
+        for(int i=0;i<n;i++){
+            if(A[i]>0){
+                mx=mx*A[i];
+                mi=mi*A[i];
+                ret=max(mx,ret);
+            }
+            else if(A[i]==0){
+                 
+                ret=max(ret,0);
+                mx=1;
+                mi=1;
+            }
+            else if(A[i]<0){
+                int tmp=mx;
+                ret=max(mi*A[i],ret);
+                mx=max(1,mi*A[i]);
+                mi=tmp*A[i];
+                 
+            }
+ 
+        }
+        return ret;
+    }

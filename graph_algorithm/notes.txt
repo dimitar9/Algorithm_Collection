@@ -1,0 +1,2 @@
+1 disjoint set http://web.rememberingemil.org/Projects/DisjointSets.aspx.html
+2. Kruskal http://www.geeksforgeeks.org/greedy-algorithms-set-2-kruskals-minimum-spanning-tree-mst/

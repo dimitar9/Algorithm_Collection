@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/Kruskal.dir/Kruskal.cpp.o  -o Kruskal -rdynamic 

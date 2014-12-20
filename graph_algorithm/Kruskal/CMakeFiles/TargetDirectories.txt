@@ -1,0 +1,2 @@
+/home/paul/Documents/linuxwork/Algorithm_Collection/graph_algorithm/Kruskal/CMakeFiles/Kruskal.dir
+/home/paul/Documents/linuxwork/Algorithm_Collection/graph_algorithm/Kruskal/CMakeFiles/Sample.dir

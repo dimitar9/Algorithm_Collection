@@ -9,6 +9,9 @@
  *     }
  * }
  */
+ //
+ // This is a heard and tricky question. Spend more time on this later.
+ //
 public class Solution {
 public ListNode insertionSortList(ListNode head) {
     ListNode helper=new ListNode(0);

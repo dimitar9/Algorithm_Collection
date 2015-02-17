@@ -10,7 +10,7 @@ public class Solution {
     }
 
     public boolean check(TreeNode node, int max, int min) {
-        if (node == null) {
+        if (node == null) { //important, don't forget.
             return true;
         }
         if (node.val > max || node.val < min) {

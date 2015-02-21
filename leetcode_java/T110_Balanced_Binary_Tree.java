@@ -1,4 +1,5 @@
-private static final int UNBALANCED = -99;
+public class Solution {
+private static final int UNBALANCED = -1;
 
 public boolean isBalanced(TreeNode root) {
     if (root == null) {
@@ -9,7 +10,7 @@ public boolean isBalanced(TreeNode root) {
 
 private int getHeight(TreeNode root) {
     if (root == null) {
-        return -1;
+        return 0;
     }
     int l = getHeight(root.left);
     int r = getHeight(root.right);
@@ -17,6 +18,8 @@ private int getHeight(TreeNode root) {
         return UNBALANCED;
     }
     return 1 + Math.max(l,r);
+}
+
 }
 /*
 O(n）solution

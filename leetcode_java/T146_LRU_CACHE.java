@@ -93,3 +93,37 @@ class DoubleLinkedListNode {
 		this.key = key;
 	}
 }
+
+
+/* http://codereview.stackexchange.com/questions/3138/linkedhashmap-as-lru-cache
+public class LRUCache<K, V> {
+
+    private final Map<K, V> cacheMap;
+
+    public LRUCache(final int cacheSize) {
+
+        // true = use access order instead of insertion order.
+        this.cacheMap = new LinkedHashMap<K, V>(cacheSize, 0.75f, true) {                                
+            @Override
+            protected boolean removeEldestEntry(Map.Entry<K, V> eldest) {
+                // When to remove the eldest entry.
+                return size() > cacheSize; // Size exceeded the max allowed.
+            }
+        };
+    }
+
+    public synchronized void put(K key, V elem) {
+        cacheMap.put(key, elem);
+    }
+
+    public synchronized V get(K key) {
+        return cacheMap.get(key);
+    }
+
+    public synchronized V atomicGetAndSet(K key, V elem) {
+        V result = get(key);
+        put(key, elem);
+        return result;
+    }
+}
+*/

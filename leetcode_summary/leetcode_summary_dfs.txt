@@ -88,6 +88,7 @@ void nextPermutation(vector<int> &num) {
         reverse(num.begin()+k+1,num.end());
         return;
          
+         
     }
 3.a 此题的另一个变种是last permutation 思路相似
  step 1: find largest k so that num[k]>num[k+1];

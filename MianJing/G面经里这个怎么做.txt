@@ -1,0 +1,46 @@
+G面经里这个怎么做
+
+[版面:待字闺中] [首篇作者:raul07]
+
+上一页    下一页
+ raul07 (utopian)   [1 楼]  
+ Tue Feb 24 22:36:38 2015, 美东
+ [来源]   [修改]   [删除]   [站短]   [回复] 
+
+版上看到的面经，我怎么觉得好难啊
+
+    Given a 2D space of maximum size NxN which supports two operations :
+     [1] void UPDATE(x,y,v) - sets the value of cell [x,y] to v
+     [2] int QUERY(x1,y1,x2,y2) - returns sub-rectangle sum (x1,y1) to (x2,
+y2)
+      inclusive, and there is an infinite stream of such 2 types of 
+operations which have to supported. How would you store the values for 
+efficient updates and retrievals ? （二维线段树  说算法+分析复杂度）
+--
+
+ yztree (云兆树)   [2 楼]  
+ Wed Feb 25 08:57:49 2015, 美东回复|编辑|...  
+
+Kd-Tree.
+
+【 在 raul07 (utopian) 的大作中提到: 】
+: 版上看到的面经，我怎么觉得好难啊
+:     Given a 2D space of maximum size NxN which supports two operations :
+
+--
+ Trojan07 (usc)   [3 楼]  
+ Wed Feb 25 09:07:38 2015, 美东回复|编辑|...  
+
+Mark 
+
+【 在 yztree (云兆树) 的大作中提到: 】
+: Kd-Tree.
+
+
+★ 发自iPhone App: ChineseWeb 8.7
+--
+ icetortoise (icetortoise)   [4 楼]  
+ Wed Feb 25 11:53:20 2015, 美东回复|编辑|...  
+
+2D Binary Index Tree, which is a simpler version of segment tree.
+--

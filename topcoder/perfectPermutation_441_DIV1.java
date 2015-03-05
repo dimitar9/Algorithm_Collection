@@ -104,3 +104,31 @@ public class PerfectPermutation {
 		
 	}
 }
+
+/*
+ * 
+ * 
+ * import java.math.*;
+import java.util.*;
+
+public class PerfectPermutation {
+    public int reorder(int[] permutation) {
+        int result = 0;
+        int n = permutation.length;
+        boolean visit[] = new boolean[n];
+        for (int i = 0; i < n; ++ i) {
+            if (!visit[i]) {
+                int j = i;
+                do {
+                    j = permutation[j];
+                    visit[j] = true;
+                } while (j != i);
+                result ++;
+            }
+        }
+        return result == 1? 0: result;
+    }
+
+
+}
+ */

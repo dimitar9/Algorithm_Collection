@@ -7,3 +7,7 @@ http://leetcodesummary.blogspot.com/2013/09/leetcode-dfs.html
 
 
 http://www.keithschwarz.com/interesting/code/?dir=topological-sort
+
+
+2. good algorithm DS course , U washington
+http://courses.cs.washington.edu/courses/cse373/06sp/calendar373.html

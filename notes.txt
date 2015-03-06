@@ -11,3 +11,5 @@ http://www.keithschwarz.com/interesting/code/?dir=topological-sort
 
 2. good algorithm DS course , U washington
 http://courses.cs.washington.edu/courses/cse373/06sp/calendar373.html
+
+3. http://www.cs.cmu.edu/~adamchik/15-121/lectures/

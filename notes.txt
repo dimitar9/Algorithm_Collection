@@ -13,3 +13,6 @@ http://www.keithschwarz.com/interesting/code/?dir=topological-sort
 http://courses.cs.washington.edu/courses/cse373/06sp/calendar373.html
 
 3. http://www.cs.cmu.edu/~adamchik/15-121/lectures/
+
+4. mit algorithm video.
+  https://www.youtube.com/watch?v=OQ5jsbhAv_M

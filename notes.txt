@@ -16,3 +16,6 @@ http://courses.cs.washington.edu/courses/cse373/06sp/calendar373.html
 
 4. mit algorithm video.
   https://www.youtube.com/watch?v=OQ5jsbhAv_M
+
+5. good algorithm blog: 
+http://www.stoimen.com/blog/2012/11/19/computer-algorithms-prims-minimum-spanning-tree/

@@ -324,3 +324,92 @@ Any time if S_n is {} for some n, return false.  Otherwise, return true
 while both A and B deplete.
 
 //////////////
+//cpp
+
+    #include <iostream>
+    #include <vector>
+    #include <functional>
+    using namespace std;
+     
+    void TEST(bool val, bool answer) {
+    string s_val = val ? "true" : "false";
+    string a_val = answer ? "true" : "false";
+    if(val == answer) {
+    cout << "PASS!" << endl;
+    } else {
+    cout << "FAIL: should be [ " << a_val << " ] but given [ " << s_val << " ]" << endl;
+    }
+    }
+     
+    class Iterator {
+    public:
+    Iterator(const vector<int>& data) : _data(data) {}
+    int get_next() { return _data[_pointer++]; }
+    bool has_next() { return _pointer < _data.size(); }
+    private:
+    vector<int> _data;
+    size_t _pointer{ 0 };
+    };
+     
+    /////////////////////////////////////////////////////////////////////////////////
+     
+    bool one_dist(Iterator&& a, Iterator&& b) {
+    bool ins_a = false, ins_b = false, replace = false, diff = false;
+    char pre_a, pre_b;
+    while (a.has_next() && b.has_next()) {
+    int cur_a = a.get_next(), cur_b = b.get_next();
+    if (!ins_a && !ins_b && !replace) {
+    if (cur_a != cur_b) {
+    ins_a = ins_b = replace = diff = true;
+    }
+    } else {
+    if (ins_a && pre_b != cur_a) ins_a = false;
+    if (ins_b && pre_a != cur_b) ins_b = false;
+    if (replace && cur_a != cur_b) replace = false;
+    if (!ins_a && !ins_b && !replace) return false;
+    }
+    pre_a = cur_a;
+    pre_b = cur_b;
+    }
+     
+    if (!a.has_next() && !b.has_next()) {
+    return !diff || replace;
+    } else if (a.has_next()) {
+    int cur_a = a.get_next();
+    return (!diff || (ins_a && pre_b == cur_a)) && !a.has_next();
+    } else if (b.has_next()) {
+    int cur_b = b.get_next();
+    return (!diff || (ins_b && pre_a == cur_b)) && !b.has_next();
+    }
+    }
+     
+    /////////////////////////////////////////////////////////////////////////////////
+     
+    int main() {
+    TEST(one_dist(Iterator({1,2}), Iterator({3,1})), false); // 0
+    TEST(one_dist(Iterator({1,2}), Iterator({2,3})), false); // 0
+    TEST(one_dist(Iterator({1,2,1}), Iterator({2,1})), true);
+    TEST(one_dist(Iterator({1,2}), Iterator({2,1,2})), true);
+    TEST(one_dist(Iterator({1,2,1,2,4}), Iterator({2,1,2,4})), true);
+    TEST(one_dist(Iterator({1,2,3}), Iterator({1,2,4})), true); // 1
+    TEST(one_dist(Iterator({1}), Iterator({2,3})), false); // 0
+    TEST(one_dist(Iterator({1}), Iterator({2,1})), true); // 1
+    TEST(one_dist(Iterator({2,3}), Iterator({1})), false); // 0
+    TEST(one_dist(Iterator({1}), Iterator({1,2,3,4,5})), false); // 0
+    TEST(one_dist(Iterator({1}), Iterator({})), true); // 1
+    TEST(one_dist(Iterator({}), Iterator({1})), true); // 1
+    TEST(one_dist(Iterator({1,2,3}), Iterator({2,3})), true); // 1
+    TEST(one_dist(Iterator({1,3,4}), Iterator({2,3,4})), true); // 1
+    TEST(one_dist(Iterator({1,2,3}), Iterator({2,4})), false); // 0
+    TEST(one_dist(Iterator({1,2,3}), Iterator({2})), false); // 0
+    TEST(one_dist(Iterator({3,4}), Iterator({5})), false); // 0
+    TEST(one_dist(Iterator({3,4}), Iterator({5,6})), false); // 0
+    TEST(one_dist(Iterator({1,2,3}), Iterator({1,2,3})), true); // 1
+    TEST(one_dist(Iterator({}), Iterator({})), true); // 1
+    TEST(one_dist(Iterator({1}), Iterator({2})), true); // 1
+    TEST(one_dist(Iterator({1,3,4,5,6,7}), Iterator({1,2})), false); // 0
+    TEST(one_dist(Iterator({1,3,4,5,6,7}), Iterator({1,4,5,6,7})), true); // 1
+    TEST(one_dist(Iterator({2,3,4,5,6,7}), Iterator({3,4,5,6,7})), true); // 1
+     
+    return 0;
+    }

@@ -1,0 +1,25 @@
+发信人: yuxrose (鱼香肉丝), 信区: JobHunting
+标  题: L家的高频题merge k sorted arrays giving iterators求讨论！
+发信站: BBS 未名空间站 (Sun Mar 15 16:52:41 2015, 美东)
+
+interface是这个 Iterable<Integer> mergeKSortedIterators(Iterators[] iters)
+也就是给每个array的iterator,然后merge.
+我开始想的是用merge k sorted list的办法，用一个heap保存所有的iterator,看哪个
+iterator的头个element最小,push to result，然后Move to next element。
+需要一个iterator的comparator来sort iterators,　是我的comparator写的不对？还
+是heap的operation错了？
+不知有人做过这题吗，希望给点建议。。。。
+
+public static class iteratorComp implements Comparator<Iterator<Integer>>{
+        public int compare(Iterator<Integer> a, Iterator<Integer> b){
+            int a1 = 0;
+            int b1 = 0;
+            if(a.hasNext()){
+                a1 = a.next();
+            }
+            if(b.hasNext()){
+                b1 = b.next();
+            }
+            return a1 - b1;
+        }
+    }

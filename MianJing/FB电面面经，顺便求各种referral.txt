@@ -1,0 +1,27 @@
+ FB电面面经，顺便求各种referral
+发信站: BBS 未名空间站 (Mon Mar 16 23:06:52 2015, 美东)
+
+楼主fresh MS，之前有大公司实习经历
+谢谢版上的朋友refer了FB，之后拿到电面
+
+一个中国小哥，人很nice，首先介绍了一下自己的组
+问了一下我之前的经历
+
+1.给你一个array of character，包括有digits， lower case char and upper case
+char， 如何才能把他们sort成所有digits在前， 所有lower case在中间， upper
+case 在最后，类似于sort color from leetcode
+问了complexity，并且讨论了sort之后原有的digit的顺序是否改变， 各种讨论细节
+这题依照leetcode，很顺利的写了出来
+
+2.follow-up： 如果现在输入的array 包含有多种类型的char（lower case， upper
+case， float。。。）， 如何改变input， 使得我们能写出类似的代码
+
+我给出的意见是除了原有的array of chars 之外，再给出一个array of array， 每个
+subarray cover 一个category的范围，例如[['1', '9'], ['A', 'Z'], ['a'，‘z’]
+]， 或者array of function pointers
+然后又讨论了一阵details
+
+最后叫我问了两个问题，就结束了
+
+最后求各种referral，本人leetcode两便，lintcode一遍，OOD和system design 都在看
+谢谢

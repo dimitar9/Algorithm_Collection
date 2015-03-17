@@ -1,4 +1,8 @@
-Using heap as implementation of priority queue to store the fist k points. So the complexity is O(n log k) with O(k) memory.
+import java.util.ArrayList;
+
+
+
+//Using heap as implementation of priority queue to store the fist k points. So the complexity is O(n log k) with O(k) memory.
 
 
 public class ClosestPoints {
@@ -27,7 +31,7 @@ public class ClosestPoints {
             if (queue.size() < k) {
                 queue.offer(point);
             } else {
-                if (queue.peek().compareTo(point) < 0) {
+                if (point.compareTo(queue.peek()) > 0) {
                     queue.poll();
                     queue.offer(point);
                 }

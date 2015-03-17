@@ -23,3 +23,61 @@ public static class iteratorComp implements Comparator<Iterator<Integer>>{
             return a1 - b1;
         }
     }
+////////////////////////
+/*iterator直接比的话，比较一次之后next的值就丢失了。 可以创建一个新的数据结构
+， 包含iterator和当前的值。
+
+public class IterWrapper{
+    int currentVal;
+    Iterator<Integer> iter;
+}
+
+Comparator比较currentVal的大小。初始化的时候对每个iterator取next，然后放进
+priorityQueue或者heap。
+每次IterWrapper被poll之后，更新currentVal的值再放回去就好了。*/
+
+
+
+public static Iterable<Integer> mergeKSortedIterators(List<Iterator<Integer>
+> Iters){
+       
+        Queue<newIter> minHeap = new PriorityQueue<newIter>();
+        List<Integer> result = new ArrayList<Integer>();
+        for(Iterator<Integer> iter : Iters){
+            if(iter.hasNext()){
+                minHeap.add(new newIter(iter.next(), iter));
+            }
+        }
+       
+        while(!minHeap.isEmpty()){
+            newIter newiter = minHeap.poll();
+            result.add(newiter.getValue());
+            if(newiter.hasNext()){
+                minHeap.add(newiter);
+            }
+        }
+        return result;
+    }
+   
+    private static class newIter implements Comparable<newIter>{
+        private Integer value;
+        private Iterator<Integer> iter;
+        public newIter(Integer val, Iterator<Integer> it){
+            this.value = val;
+            this.iter = it;
+        }
+        public Integer getValue(){
+            return this.value;
+        }
+        public boolean hasNext(){
+            if(iter.hasNext()){
+                value = iter.next();
+                return true;
+            }
+            return false;
+        }
+       
+        public int compareTo(newIter a){
+            return this.value - a.value;
+        }
+    }

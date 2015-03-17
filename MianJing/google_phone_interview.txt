@@ -1,0 +1,5 @@
+1.Consider the following style of abbreviation: "internationalization" -> "i18n", "localization" -> "l10n", etc. Such abbreviations are not always unique -- for example, “a11y” could stand for “accessibility”, “automatically”, etc. Given a word and a dictionary (given as a list of words), determine if the abbreviation of the word is unique.
+
+2.List unit tests for this calculator function:
+  string calc(string a, string op, string b)
+  Ex: calc(“2”, “+”, “3”) returns “5”

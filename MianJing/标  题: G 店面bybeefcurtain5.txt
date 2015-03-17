@@ -1,0 +1,63 @@
+Generate a random starting board for Bejeweled:
+Constraints:
+1) No 3-in-a-rows of a particular color (horizontally or vertically)
+2) At least one valid starting move (i.e., can swap two cells to get a 3-in-
+a-row).
+
+int[][] generateRandomBoard(int NColors, int N, int M) 
+
+
+
+发信人: liushen (iwa), 信区: JobHunting
+标  题: Re: G 店面
+发信站: BBS 未名空间站 (Tue Mar 17 03:23:00 2015, 美东)
+
+没什么思路，想这样做，不知道会不会被人鄙视：
+
+public int[][] generateRandomBoard(int NColors, int N, int M) {
+    int[][] board = new int[N][M];
+    boolean isEnd = false;
+    while(!isEnd){
+        generateRandomBoard(board, NColors);
+        isEnd = checkBoard(board);
+    }
+    return board;
+}
+private void generateRandomBoard(int[][] board, int NColors) {
+    Random rm = new Random();
+    int N = board.length;
+    int M = board[0].length;
+    for(int i=0; i<N; i++){
+        for(int j=0; j<M; j++){
+            int temp = Math.abs(rm.nextInt()%NColors);
+            while((i>=2 && temp==board[i-1][j] && temp==board[i-2][j])||(j>=
+2 && temp==board[i][j-1] && temp==board[i][j-2])){
+                temp=Math.abs(rm.nextInt()%NColors);
+            }
+            board[i][j] = temp;
+        }
+    }
+}
+private boolean checkBoard(int[][] board){
+    int N = board.length;
+    int M = board[0].length;
+    for(int i=0; i<N; i++){
+        for(int j=0; j<M; j++){
+            //check 合适的pattern，如果满足返回true；
+        }
+    }
+    return false;
+}
+
+合适的pattern比如说：
+011
+123
+或者
+01
+01
+13
+
+就是check board[i][j]附近有没有在特定的两个位子跟他相等的。
+
+只要NColor不是个特别小的数字，比如说2什么的，就能够基本上得到合适的board.如
+果是2的话，第二个函数的while循环可能就停不下来了。。。。orz。。。

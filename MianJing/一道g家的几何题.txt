@@ -1,0 +1,10 @@
+平面上一个polygon，用point的数组表示，顺序链接而成。
+一条平面线段，用两个point表示。
+
+求这条线段包含在polygon interior内部的所有segment部分。 注意可能有多段
+segment的情况。
+
+看下图的例子，输入线段为A B 坐标，应该返回 [[C,D], [E,F]] 的坐标
+
+http://tinyurl.com/lbcmxrp
+

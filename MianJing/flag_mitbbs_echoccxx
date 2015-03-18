@@ -1,0 +1,184 @@
+因为之前发过贴，背景就不赘述了，具体说说怎么准备还有面经吧。
+
+骑驴找马，一月底开始刷leetcode，到三月中第一个面试，刷了一遍半吧，明显觉得写
+第二遍的时候思路清晰多了，code也比第一遍的简洁。其他的就是每家面试前争对性的
+看面经，能看多少是多少，四家只有L面经重复率很高，g家最不能预料题型。后面准备
+design的时候都是乱看，一些fb tech talk的视频还有之前有人贴过的fb design的总
+结，
+但我基础不好，临时抱佛脚感觉也没什么用。面经我就只贴面完有及时记下来的，反正
+也给过很多朋友了，就贴上来吧。
+
+已经签了fb，准备八月初start，有同一期的pm我，哈。
+
+脸书:
+
+1.  Print all paths of a binary tree
+I gave a recursive solution.
+
+Then he wanted to give an iterative way.
+
+2a. Fibonacci (iterative)
+
+2b. Buckets of anagrams
+[“cart”,”tarc”, “cat”, “act”, “ract”] -> [[“cart”, “tarc”, “
+ract”], [“cat”, “act”]]
+
+onsite design是tiny url, 估计interviewer也知道我没什么经验，问了个最简单的也
+没答好。T-T
+coding都比较easy。
+
+领英:
+
+1.  Return if two strings are isomorphic. (character 1-1 match)
+“zoo” -> “fee”  ( z->f, o->e)               true
+“zoo” -> “dui”  ( z->d, o->u, o-> )        false
+“dui” -> “zoo” (d->z, u->o, i-> )         false
+
+Use two hashmaps
+
+*****************************************************************
+2.  K nearest points (solution see below)  Time: O(nlgk)
+
+*****************************************************************
+1.  Search in rotated sorted array
+
+*****************************************************************
+2. public interface Intervals {
+
+    /**
+     * Adds an interval [from, to] into internal structure.
+     */
+    void addInterval(int from, int to);
+
+
+    /**
+     * Returns a total length covered by intervals.
+     * If several intervals intersect, intersection should be counted only
+once.
+     * Example:
+     *
+     * addInterval(3, 6)
+     * addInterval(8, 9)
+     * addInterval(1, 5)
+     *
+     * getTotalCoveredLength() -> 6
+     * i.e. [1,5] and [3,6] intersect and give a total covered interval [1,6]
+     * [1,6] and [8,9] don't intersect so total covered length is a sum for
+both intervals, that is 6.
+     *
+     * 0  1    2    3    4    5   6   7    8    9    10
+     */
+    int getTotalCoveredLength();
+}
+
+亚麻:
+
+1a. Given 2 sorted, singly-linked lists, write a function that will merge
+them into a new sorted, singly-linked list
+
+Ex.
+1->2->4->8->16->32
+2->4->6
+
+1->2->2->4->4->6->8->16->32
+
+*****************************************************************
+1b. merge n sorted lists
+//   1 -> 3,
+//   2 -> 5
+//   4
+
+newhead: 1 -> 2 -> 3  -> 4 -> 5
+
+*****************************************************************
+1c. Given a Binary tree, print path from root to all nodes that are
+divisible by 5
+
+Input:
+    6
+   /
+  5   7
+     /  
+    4    15
+   /      |
+  3  10  2  8
+
+Output:
+6 5
+6 7 4 10
+6 7 15
+
+*****************************************************************
+2. Given an array A (the array can be treated as a big number) and a number
+n, find the biggest number that you can reach to via n swaps. A swap can
+only happen in adjacent items. For example, given [1 3 4 2 5 7 9] and n = 1,
+the biggest number is [3 1 4 2 5 7 9]
+
+n=1, 3 1 4 2 5 7 9
+
+n=2, 1 3 4 -> 1 4 3 -> 4  1 3
+
+狗家:
+
+1.  Reorder List (leetcode)
+
+1->2->3->4->5   =>  1->5->2->4->3
+
+*****************************************************************
+2.  Abbreviation: apple can be abbreviated to 5, a4, 4e, a3e, …
+    Given a target string (internationalization), and a set of strings,
+return the minimal length of abbreviation of this target string so that it
+won’t conflict with abbrs of the strings in the set.
+
+“apple”, [“blade”] -> a4 (5 is conflicted with “blade”)
+“apple”, [“plain”, “amber”, “blade”]  ->  ???
+
+Problem changed to:
+If given a string and an abbreviation, return if the string matches abbr.
+
+“internationalization”, “i5a11o1” -> true
+
+*****************************************************************
+Onsite:
+
+1a. Write a function to get a positive integer n as input and return 0 or 1.
+The probability of returning 1 should be 1/(2^n)
+
+1b. Given an array, return the median. (talk about expected time complexity)
+
+
+2a. Code review - a class which takes a string, split by separators and
+return the array of tokens (point out coding problems and indicate how you
+will implement it)
+
+2b. Longest consecutive sequence (leetcode) (how do you handle duplicates)
+
+2c. design: how to store files given the file paths and contents. (tree?)
+
+3a. Given an array and a number x, find out how many pairs satisfy (a[i], a[
+j]) st. a[i]+a[j] < x
+
+3b. follow up: if we want to find 3 items that adds up to a number < x
+
+3c follow up: if we want to find k items. Time complexity: O(n^(k-1)*lgn)
+
+
+4. Give a map which has some obstacles in it. Given a starting point S and
+ending point E, find the shortest path from S to E. Note that you can go to
+any(4) direction from S, but during the process, you can only go straight
+from the previous direction, unless you hit an obstacle.
+i.e. if you are at (1, 1) and the next (1, 2) is blocked, you can only go to
+(2, 1) or (0, 1) 
+
+
+5a. Java “final” keyword
+
+5b. 3-way partition: given an array and number x, reorder the array so that
+first part will be < x, middle part is = x, and final part is > x.
+
+5c. Design: given an array of integers and a range (i, j), we want to return
+the min item in the range (balanced binary search tree)
+
+5d. System design: given a machine, how to generate id so that they will not
+duplicate; if we have multiple machines, what to do
+

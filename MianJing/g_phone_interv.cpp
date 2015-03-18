@@ -1,3 +1,20 @@
+google-interview-questions
+// 0
+// of 0 votes
+// 10
+// Answers
+
+// Given an array Of integers build a new array of integers such that every 2nd
+// element of the array is greater than its left and right element.
+
+// eg:
+// [1,4,5,2,3]
+
+// o/p:
+// [1,4,2,5,3]
+
+// so, 3 > 2 > 1,  and 5 > 4
+// 有没有o(n) 解法
 
 #include <iostream>
 #include <vector>

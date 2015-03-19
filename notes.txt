@@ -19,3 +19,7 @@ http://courses.cs.washington.edu/courses/cse373/06sp/calendar373.html
 
 5. good algorithm blog: 
 http://www.stoimen.com/blog/2012/11/19/computer-algorithms-prims-minimum-spanning-tree/
+
+
+6. complexities
+http://bigocheatsheet.com/

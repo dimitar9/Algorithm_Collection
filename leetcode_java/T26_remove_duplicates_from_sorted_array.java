@@ -1,12 +1,11 @@
-class Solution {
-public:
-    int removeDuplicates(int A[], int n) {
-        if(n<=1) return n;
+public class Solution {
+    public int removeDuplicates(int[] A) {
+        if(A.length<=1) return A.length;
         int prev = A[0];
-        A[0] = A[0];
+       // A[0] = A[0];
         int len = 1;
         
-        for(int i=1, j=1; i < n; i++){
+        for(int i=1, j=1; i < A.length; i++){
             if(A[i] == prev){
                 continue;
             } else {
@@ -18,4 +17,4 @@ public:
         }
         return len;
     }
-};
+}

@@ -14,7 +14,7 @@ public class Solution {
 
     private void backTrack(int[] candidates, int target, int lastIdx) {
         if (target == 0) {
-            solution.add(new ArrayList<>(curSolution));
+            solution.add(new ArrayList<Integer>(curSolution));
         }
         else if (target < 0) {
             return;

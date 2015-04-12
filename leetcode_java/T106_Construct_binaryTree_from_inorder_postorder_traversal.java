@@ -30,3 +30,43 @@ private TreeNode buildTreePostIn(int[] inorder, int is, int ie, int[] postorder,
     return root;
 }
 }
+
+
+
+///solution2
+
+/**
+ * Definition for binary tree
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+public class Solution {
+public TreeNode buildTree(int[] inorder, int[] postorder) {
+    return helper(0, postorder.length-1,0, inorder.length - 1, inorder, postorder);
+}
+
+public TreeNode helper(int poStart, int poEnd, int inStart, int inEnd, int[] inorder, int[] postorder) {
+    if (poStart > poEnd  || inStart > inEnd) {
+        return null;
+    }
+    TreeNode root = new TreeNode(postorder[poEnd]);
+    int inIndex = 0;
+    for (int i = inStart; i <= inEnd; i++) {
+        if (inorder[i] == root.val) {
+            inIndex = i;
+        }
+    }
+    root.left = helper(poStart, poStart+inIndex-inStart-1, inStart, inIndex - 1, inorder, postorder);
+    root.right = helper(poStart+inIndex-inStart, poEnd-1, inIndex+1, inEnd, inorder, postorder);
+    return root;
+}
+
+
+
+//iterative solution.
+
+}

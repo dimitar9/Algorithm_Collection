@@ -1,0 +1,7 @@
+朋友面的G]Find k largest element in sliding window
+发信站: BBS 未名空间站 (Wed Mar 25 23:56:06 2015, 美东)
+http://articles.leetcode.com/2011/01/sliding-window-maximum.htm
+这个题目变种，如果不是找最大值，而是找这个window的top K elements， （打出所
+有的top k），window size is N, assume k < N, array is a integer stream. 可以
+有O(N)解法吗? 朋友式常规的NlgK, 用min heap.
+多谢。

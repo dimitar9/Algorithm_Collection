@@ -1,0 +1,171 @@
+发信人: wangya (fgdsb), 信区: JobHunting
+标  题: FLAG Yelp Uber Palantir等公司面经(更新Lyft)
+关键字: FLAG,面经
+发信站: BBS 未名空间站 (Mon Apr 13 23:50:31 2015, 美东)
+
+我LD最近面了一堆公司，下面发她的面经攒人品。基本都是电面和onsite混着发的。
+
+Google:
+1. Wildcard match
+2. http://www.fgdsb.com/2015/01/25/peek-iterator/类似。写一个de duplicator,wrap 几个stream，输出的stream全是不重复数字。
+3. 求一个stream，出现次数最多的数字。然后扩展到N个machine的情况。
+4. 假设某个company在不同国家都有office，每个国家的office，如果是当地的假期，
+就可以放假了。假设可以查询任意航班的信息，每个星期只能呆在一个地方，只有周末
+的时候才能飞去别的国家。找一个放假天数最多的schedule。
+5. LRU + 一些 C++问题。
+6. 这题记不大清楚了。好像是Longest increasing consecutive sequence， 然后一
+个Tree的该进版。求longest increasing consecutive path。
+7. file system design。就是设计一个大数据的存取问题。存在disk上。我就是
+partition + hash + cache那一套糊弄过去了。
+
+Facebook：
+因为签offer了，就不说太详细了。基本都是常见题甚至LC原题。但是follow up问的很
+多，基本上常见题能用多种方法做的都会全问你一遍。比如问了一题count and say，
+老掉牙的题了，写出代码还让证明any count不会超过三。比如1 11 21所有的digit都
+不大于3。
+
+Machine Zone：
+1. sort color。
+2. 有两个设计api的题目，具体的忘记了，都不难就对了。
+3. 有两轮纯写query。问了些perfomance的问题，主要就是index的原理。写个几个很
+长的query，一个一黑板那种变态的。
+4. 一个leetcode medium的dp问题。
+5. linkedin word distance 那题
+/* This class will be given a list of words (such as might be tokenized
+* from a paragraph of text), and will provide a method that takes two
+* words and returns the shortest distance (in words) between those two
+* words in the provided text.
+* Example:
+*   WordDistanceFinder finder = new WordDistanceFinder(Arrays.asList("the",
+"quick", "brown", "fox", "quick"));
+*   assert(finder.distance("fox","the") == 3);
+*   assert(finder.distance("quick", "fox") == 1);
+*/
+
+Pure Storage：
+一模一样的题目！！
+http://www.mitbbs.com/article_t/JobHunting/32702941.html
+多了一道，设计c++ virtual mechanism的design。虽然看过一点，知道的不多。但是
+会逐渐给提示，follow hint就可以。pure storage喜欢一个题用好几种方法解，每个
+题目都让不断的优化优化。
+
+Uber：
+1. regex match
+2. 实现trie
+3. youtube architecture设计。
+4. 聊天。
+5. min stack
+
+Palantir：
+1. 判断长度为K的substr有木有重复的字符。
+2. LRU
+3. 有个grid，每个cell记录的是click的次数，0或者大于0。求点击次数最多的region
+。每个region的定义，是非零连续的一片。
+4. 设计asteroid 游戏。
+5. 实现一个纸牌游戏的logic。每人拿出最上面那张，比较大小，最大的胜出，winner
+可以搜刮走loser打出的牌。如果有俩人的牌一样大，就比较上面数第四章的牌。  直
+到某个人赢得了所有的牌
+6. system design。distributed hash table
+7. stock price。
+                5/6      5/7   5/8
+Stock1 :  100               200
+Stock2:               50     100
+Stock3:   150      200
+Output:    250     350    500
+空格代表价格没变化，跟前一天一样。如果第一天的为空，价格为0
+
+ServiceNow：
+1.各种概念啊！！ Javascript， Angular.js, SQL
+2. 发过来code，让改bug优化。
+3.又是各种概念啊。Javascript， Angular.js, SQL。还有自己project的介绍
+
+BigCommerce：
+1. 聊天3轮。聊project。我的project，他们的project
+2. leetcode上absolute path那题。
+3. 有一轮，算是system design吧。让设计他们的payment系统。
+
+Amazon：
+1. 竟然安排我面试QA。理所当然的挂了。问了一道很简单的hashtable的题目，然后问
+我怎么测试amazon web page。。
+2. 概念：hashtable 实现方式。
+代码： 拓扑排序。
+还写了个电话号码的regex expression。
+电面就挂了，没onsite。
+
+Linkedin：
+1. Word distance
+2. 2 sum
+3. 
+/**
+* Given a nested list of integers, returns the sum of all integers in the
+list weighted by their depth
+* For example, given the list {{1,1},2,{1,1}} the function should return 10
+(four 1's at depth 2, one 2 at depth 1)
+* Given the list {1,{4,{6}}} the function should return 27 (one 1 at depth 1
+, one 4 at depth 2, and one 6 at depth 3)
+*/
+4. permutation
+5. reverse word in string (in place)
+6. system design 类似这个
+http://www.shuatiblog.com/blog/2015/01/09/big-data-real-time-to
+7. 问project。把我问跪了。他们问的非常非常详细。我只准备了architecture，明显
+不够用。一些具体logic也得准备。
+8. minimum window substring
+9. sqrt int + double版
+
+Yelp：
+1. Word ladder 2
+2. 密码的combination。 phone number combination变体
+3. 拓扑排序：一堆package，有dependency。求个安装顺序
+4. permutation + combination合体，具体的太久忘记了，反正不难。
+5. valid json。判断string是不是valid json object
+跟版上很多人一样，题都不难，自我感觉良好。最后悲剧。
+
+Lyft:
+电面
+* function to determine whether the driver is allowed to enter driver mode
+* drivers are not allowed to drive a total of 12 hours without an 8 hour
+break
+* the function inputs are:
+- a list of driver shifts as start/end integers, the integer is relative to
+lyft launch
+- the current time since lyft launch as integer
+
+def can_drive(history, current_time):
+    """
+    Returns true if the driver has driven less than 12 hours since their
+last 8 hour break
+   
+    history|array - Shifts, e.g. [(0, 12), (13, 19)]
+    current_time|int - Current timestamp as hour since Lyft launch, e.g. 50
+
+    can_drive = True example
+        # 9 hour break, 1 hour shift, 2 hour break, 10 hour shift
+        history = [(9, 10), (12, 22)]
+        current_time = 24
+
+    can_drive = False example:
+        history = [(0, 4), (5, 9), (10, 14), (15, 19), (20, 24)]
+        current_time = 24
+
+没拿到onsite。
+
+----------------
+
+准备的话，虽然还是以leetcode为主，我协助她找工作也帮她做了一些事情，大家如果
+觉得有用也可以看看：
+
+1. 博客：http://www.fgdsb.com
+这里面收集了不少leetcode没有的但是近期比较高频的面经题，我也提供了一些参考解
+法。
+当然有个别题的个别解法已经有热心观众指出错误了，但是由于我最近课比较多还没有
+改，有空了一定改正，本人也不是搞竞赛出身，大牛求绕道。
+
+2. 本地刷题平台：https://github.com/wangyanxing/Judge-at-fgdsb
+现在支持mac和windows（windows启动速度比较慢）系统。类似于leetcode的本地版，
+收集我博客里面大约40道比较常见的且LC没有的题并提供了测试案例和Judge功能。现
+在支持C++/Java/Python/Lua/Ruby语言，当然你本地要有能运行的compiler。
+现在还不是特别完善，但是已经完全可以用了，我还加了print功能，这个调试起来比
+lc方便。有空我会把二叉树的visualization做了，相信大家对LC的 12##3#4 这种二叉
+树表示方法不爽很久了哈哈。
+release链接在这里：https://github.com/wangyanxing/Judge-at-fgdsb/releases

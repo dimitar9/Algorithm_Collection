@@ -1,0 +1,20 @@
+请教F最近超爱的面试题任务安排的follow up怎么做
+发信站: BBS 未名空间站 (Sun Apr 19 16:34:45 2015, 美东)
+
+这题我第一次看到是在板上，在这里
+http://www.mitbbs.com/article_t/JobHunting/32876295.html
+
+Tasks: AABABCD
+Cooldown Time: 2
+  A__AB_ABCD
+Output: 10
+
+后来发现这题很快变成fb的新欢，各种follow up啊。。。今天看到一个实在心塞的，
+越想越复杂，想发上来问问大家有啥好主意
+
+follow up是给你一个task队列， 要求你自己排列要求最后的总时间最小，比如
+aaaabbbccd，可以排成abcabcabda。
+看到有人建议说每次排gap + 1个任务，取distinct tasks，也就是尽量分开同种任务
+，放的时候从frequency高的开始，我觉得这就需要一个treemap了吧，先abc放完，然
+后再放一轮abc，放一个减少count,count == 0的时候从treemap里去掉。如果是aaab怎
+样的呢？放完ab只能再空等一次才能再放a，这样的话是不是应该有个deque来实现？

@@ -34,3 +34,60 @@ Output: / int[]
 3   // abbc abcd acbb [babc]
 
 Note: String has duplicated characters. 
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.PriorityQueue;
+import java.util.Scanner;
+
+public class Zenefit1SellingTickets {
+	public static void main(String[] args) throws FileNotFoundException{
+		Scanner scanner = new Scanner(new File("src/txt/zenefitTest1.txt"));
+		int nWindows = 0;
+		int nTickets = 0;
+		if(scanner.hasNextLine()){
+			String firstLine = scanner.nextLine();
+			nWindows = Integer.parseInt(firstLine.split(" ")[0]);
+			nTickets = Integer.parseInt(firstLine.split(" ")[1]);
+		}
+		List<Integer> prices1 = new ArrayList<Integer>(nWindows);
+		String secondLine = scanner.nextLine();
+		for(int i = 0; i < nWindows; i++){
+			prices1.add( Integer.parseInt(secondLine.split(" ")[i]));
+		}
+		
+		PriorityQueue<Integer> pq = new PriorityQueue<>(nWindows, Collections.reverseOrder());
+		for(int i = 0; i < nWindows; i++){
+			pq.add(prices1.get(i));
+		}
+		int sum = 0;
+		while(nTickets > 0){
+			int curPrice= pq.poll();
+			System.out.println("currentPrice is "+curPrice);
+			sum += curPrice;
+			pq.add(--curPrice);
+			nTickets--;
+		}
+		System.out.println("Total is: "+ sum);
+		
+		
+	}
+}
+
+
+///
+一点想法不知道对不对。第二题和permutation sequence是不是类似，对于每一个字母
+，找
+到在排序后的字符串中的位置
+比如cab，源字符串排序abc
+c -> 2 (remove c, source string becomes "ab")
+a -> 0 (remove a, source string becomes "b")
+b -> 0 (remove b)
+所以在目标字符串的位置就是2*2 + 1*0 + 0*0 = 4
+
+第二个有重复的例子，就选取最左边的位置（比如babc排序是abbc，第一次b出现的位
+置为1）
+1*3 + 0*2 + 0*1 + 0*0

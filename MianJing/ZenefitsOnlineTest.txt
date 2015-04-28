@@ -1,0 +1,36 @@
+1. There are n ticket windows in a railway station. The i-th window has Ai tickets available. THe price of a ticket is equal to the number of tickets remaining in that window at that time. What is the maximum amount of money the railway station can earn from selling the first m tickets.
+
+Input:
+n m 
+a1 a2 ...an
+
+Output
+S
+
+constraints: 
+1<= n <= 100,000
+1<=ai <= 100,000
+a<= m <= a1+a2+...+an
+
+Smaple input
+2 4
+2 5
+Sample output
+14
+Explanation:
+Maximum revenu would have been obtained if all 4 tickets were sold from the 2nd window at prices 5 4 3 2 total is 14
+
+note: need to parse the input. (java: Scanner)
+
+
+
+2. Givein String[] capacity < 10000. Calculate each string's permutation index.
+Input: String[]
+cab
+babc
+
+Output: / int[] 
+4   // abc acb bac bca [cab] cba
+3   // abbc abcd acbb [babc]
+
+Note: String has duplicated characters. 

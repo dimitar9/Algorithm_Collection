@@ -23,3 +23,6 @@ http://www.stoimen.com/blog/2012/11/19/computer-algorithms-prims-minimum-spannin
 
 6. complexities
 http://bigocheatsheet.com/
+
+7. good algorithm in java.
+https://sites.google.com/site/indy256/algo

@@ -22,7 +22,7 @@ public ListNode rotateRight(ListNode head, int n) {
 
     fast.next=dummy.next; //Do the rotation
     dummy.next=slow.next;
-    slow.next=null;
+    slow.next=null; //break the old chain.
 
     return dummy.next;
 }

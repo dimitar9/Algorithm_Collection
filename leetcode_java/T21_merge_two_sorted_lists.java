@@ -27,13 +27,13 @@ public class Solution {
             head.next = l1;
             head = head.next;
             l1 = l1.next;
-            return k.next;
+            
         } 
         while(l2!=null){
             head.next = l2;
             head = head.next;
             l2 = l2.next;
-            return k.next;
+            
         }
         return k.next;
         

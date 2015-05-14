@@ -26,3 +26,6 @@ http://bigocheatsheet.com/
 
 7. good algorithm in java.
 https://sites.google.com/site/indy256/algo
+
+8. beef 姐 blog
+http://matuanstepmom.blogspot.com/2015/05/java-8.html

@@ -30,7 +30,7 @@ vector<string> fullJustify(vector<string> &words, int L) {
             cout << "L: " << L << " l: " << l << " k: " << k << endl;
             cout << "how many: " << (L - l) / (k - 1) + (j < (L - l) % (k - 1)) << endl;
             if(i + k >= words.size()) tmp += " ";
-            else tmp += string((L - l) / (k - 1) + (j < (L - l) % (k - 1)), ' ');
+            else tmp += string((L - l) / (k - 1) + (j < (L - l) % (k - 1)), ' '); // !!!!!!so important this calculation
             tmp += words[i+j+1];
         }
         tmp += string(L - tmp.size(), ' ');

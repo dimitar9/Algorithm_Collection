@@ -1,0 +1,223 @@
+回报本版，前段时间骑驴找马FGU等公司offer面经总结
+关键字: 面经
+发信站: BBS 未名空间站 (Sat Jun 13 17:27:31 2015, 美东)
+
+前段时间骑驴找马终于告一段落，感觉本版的技术贴和面经贴帮助非常之大，也非常感
+谢共享资源的各路大牛。希望提供一些信息和个人感受给还在找工的童鞋，有帮助最好
+，但是毕竟本人资历尚浅，如果有不对的地方也请轻喷。
+
+背景：
+ms毕业不到两年
+
+主要申请公司：
+offer：facebook，google，uber，palantir，sumo logic，walmartlab，yahoo，
+amazon，apple
+reject：dropbox
+
+主要几个包裹：
+U：                    145k base + 25k股 RSU
+F：                    150k base + 40k signon + 10%bonus + 260k美元 RSU
+W：                    165k base + 50k signon + 20%bonus + 35k美元 RSU每年（
+这个略复杂，相当于每年35k美元RSU的refresh，但是每次refresh分四年给）
+
+再上各个公司的面经和感受：
+
+Yahoo：
+最早面的公司，面的是Flurry Team，Yahoo去年收购的一家在城里的小公司，所以不一
+定有代表性。因为re-org我两个月之后才拿到offer，中间还给我match到其他team几次
+，Yahoo比较动荡，个人也不看好。
+
+电面：
+和director聊了有两个小时，无coding，问了很多之前project内容和hadoop相关的内
+容。
+最后讨论了一道design，如何设计distributed key-value store，因为他们主要用
+HBase。
+
+Programming Test:
+Validate Soduko Solution，从文件读solution，尽量用production标准写程序。
+
+Onsite：
+五轮Onsite没有coding，全是问实际问题怎么解决和design。
+1. 如何设计一个priorityqueue service，client可以submit job request然后server
+按照priority执行
+2. 需要一个key-value store with 1M qps，most read，1ms 99% latency，如果用
+HBase的话会有什么问题，怎么解决
+3. 给很多整数，如何用mapreduce找median，如果是很多float数，可以有一定的误差
+，如何找
+4. Programming Test的扩展，如果soduku matrix非常之大怎么做
+然后还有一大堆针对hadoop的各种情况下怎么optimize的问题
+
+onsite完了之后他们director说very positive，然后就开始re-org两个月。Flurry做
+的东西其实挺有意思，mobile analytics platform #1，我感觉他们engineer人很nice
+，水准也非常不错，可惜没缘分。
+
+############################################################################
+###########
+
+Apple：
+练手公司1，Apple可以同时面很多组，每个组有各自的recruiter。我把简历递了之后
+陆续有10个组联系我，然后每个组基本上都是onsite之前两轮phone，一开始没经验联
+系了4个组后来发现实在体力吃不消，光电面就8轮。最后3个组要onsite，这里我犯了
+一个错误，告诉他们我在面其他的组，一旦他们知道你在面其他的组就不跟进了，打死
+不回email。所以最终我只onsite了一个组。
+
+电面：
+1.给平面一堆点，把所有在同一条直线上的点group在一起，求出所有的group
+2.一种encoding的方法，如果一个byte第一个bit是0，比如 00000000，那它自己表示
+一个字符，如果一个byte第一个bit是1，比如 10000000，那它和它后面紧跟的byte表
+示一个字符，现在给一个byte array，判断最后一个字符是一个byte还是两个byte组成。
+3.parse message from byte stream，message format是前4个bytes组成的int值表示
+message的长度L，然后后面连续的L个byte是message真正的内容，每个message都是这
+样表示，需要一边读byte stream一边parse每个message
+4. 两个table做join有哪几种方法，分别有哪些drawback
+5. merge two sorted list
+6. sqrt(double number, double epsilon)
+7. auto completion implementation using trie
+8. edit distance
+9. Implement blockingqueue
+10. how is a hive query transferred to mapreduce jobs
+
+Onsite:
+1. given a list of pairs, pair.first 表示parent, pair.second表示child,
+reconstruct the tree, return the root node.
+2. auto completion - design the service
+3. design a service, accept stream of events, each event has a type and
+timestamp, need to support the query of top k most frequent types in a query
+specified [start, end] time range.
+4. closest number to target in BST
+5. validate soduku / solve soduku, and optimizations
+6. 给一个json object，给一个wildcard path with ‘?’ as arbitrary name，比如
+a.?.b 找到所有符合path的objects
+
+Apple一般onsite的时候4轮tech interview，中午的时候将来的manager带着吃午饭。
+如果tech这4轮面的好会有第5轮见到hiring manager，如果有这一轮基本说明offer没
+啥问题了，这轮会是一堆behavior。如果第5轮也没啥问题会有第6轮见大boss，继续
+behavior，会问之前做过的project有多牛叉，会吹就行。
+
+同等级下Apple的offer远不如FG给力，而且match不上去，bonus也不会写在offer
+letter里面，虽然据说每年的refresh有些组相当多，但是感觉整体上跟FG还是差距比
+较大。而且组跟组工作强度差别也很大，有些组忙死有些组闲死，不过software的组一
+般都还好，感觉大部分人精神状态还是不错的。
+
+就engineer水平来看，我有遇到水平相当不错的面试官，但是整体水准远不如FG。
+他们各个组做项目是完全分开的，基本没交流。做东西完全是product driven，不过
+engineer一般需要fullstack，需要自己end to end维护一个product，这点对有些人可
+能还比较有吸引力。
+
+############################################################################
+###########
+
+Amazon：
+练手公司2，我面的是marketing solution和ads相关的team。大公司周期很长，感觉
+recruiter不是很上心。
+
+电面：
+三哥，但是感觉还行没黑。
+1.用trie来解决求dictionary里面所有符合given prefix的word。然后又扩展到prefix
+里面有wildcard的情况，然后继续讨论如果要design a system做这个事情怎么搞，需
+要注意哪些问题。
+
+Onsite：
+居然没有遇到三哥，除了一轮老中外其他都是老白，每一轮开始都是至少15分钟的
+behavior，而且每个人还能换着花样问不一样的问题，感觉大部分脑细胞都花在这些没
+用的东西上面了，所以感觉很不爽。
+1. OOD Restaurant Reservation System
+2. Merge K Sorted List
+3. K Sized Sliding Window Sum/Minimum Value
+4. 给一个css file里面很多class，然后class name里面其实很多重复的，怎么
+compress用尽量最小size的string来表示，这样传输的byte比较少。
+5. shorten url system design
+6. longest palindromic substring
+7. robot moving from topleft to bottomright corner of a matrix，matrix里面有
+些cell是障碍物不能通过，只能往下或者往右走，有多少种方法。
+8. 之前做的项目，和我之前坑爹公司的architecture
+
+相比起他们的behavior问题，我觉得亚麻的engineer水平相当一般，很多design
+principle都不知道，可能因为他们内部都直接用aws很多细节都不需要考虑，也有可能
+跟我面的组有关系，如果面的是aws会好些吧。
+
+亚麻最后给我senior title，但是package跟其他几家比起来差距略大，所以也就没再
+继续谈。
+
+############################################################################
+###########
+
+WalmartLab：
+我面的是walmartlab里面仅存的几个不是三哥的组，通过靠谱的朋友内推。
+面试题整体难度也还好，算法基本上都是常见题目，国人面试官都非常非常非常nice。
+只说其中几轮比较有意思的吧
+1.topological sort
+2.design web crawler system，how to scale，what would be the bottle neck and
+how to solve the problem
+3. 如何用semaphore或者condition variable实现3个process p1, p2, p3，p2必须要
+p1结束才能运行，p3必须要p2结束才能运行
+4. bloom filter 如何implement，estimate false rate
+5. what is the best design pattern do you think and why
+
+他们onsite有一轮会是跟product manager聊天，就是瞎扯。一个小时我都在绞尽脑汁
+找话题，应该是类似culture fit吧，看看你是不是比较容易融入team。
+
+walmartlab是第一个给我比较decent offer的公司，cash给的很多，所以其实我很感激
+，而且我面的组的work life balance极好，我见过的最好的没有之一，onsite居然有
+两轮是video因为面试官WFH。平时干活也非常自由，没有OKR，没有deadline（是的你
+没看错，啥都没有，performance完全老板说了算）。
+不去walmartlab的原因是我觉得他们实在缺有经验的engineer，而且很多做的很多东西
+都是实验性质的，没有明显的business impact，现阶段我还是比较想去一个大腿比较
+多的地方抱一下。
+
+############################################################################
+###########
+
+Sumo Logic：
+一开始看到这家公司里面好多MIT毕业的人，而且听说他们bar很高，所以一开始也只是
+想拿来做一下benchmark。他们基本上都用scala，如果懂一点scala效果会比较好但是
+不懂对面试也完全没有影响。
+
+他们的面试是先一轮phone，然后两次onsite，第一次onsite2轮，第二次onsite3轮，
+第一次onsite过了才会有第二次onsite。第二次onsite每一轮会有两个面试官，每个面
+试官都会出一道题目。
+
+电面：
+1. 两个binary tree，每个node存的值有两种可能，1或者0，把两个tree对应node做or
+操作。
+极为简单，扯了一下immutable data structure然后聊了一会之前做的东西就过了。
+
+onsite 1：
+1. 纯聊project和讨论他们现有的data ingestion架构，刚好他们最近想用Kafka所以
+就这个话题聊了一个小时，最后没时间做题就结束了
+2. 小三哥，但是也不黑。
+given a list of intervals，query if another interval is totally covered by
+the list of intervals。
+totally covered是指整个区间都被某些已有的区间 cover了。
+比如如果有 list of intervals = 【（1， 4），（2，8）】
+given interval【3，6】就被完全cover了。
+然后扩展到design a system来做这个事情，可以query，也可以insert interval，假
+设query操作的频率远远大于insert操作，并且interval的数量非常非常多。
+
+onsite 2：
+1. 有意思的题目1，设计Bi-directional LRU cache data structure，既可以lookup
+key to get value，也可以lookup value to get key，还支持set(key, value)操作，
+后面又加了条件，concurrent的情况下，会有什么问题，如何改进，假如set这个操作
+的频率远远小于get这个操作的频率，需要写代码实现。
+2. robot from topleft to bottomright LC原题，无障碍和有障碍
+3. given a list of sets，find all pair of sets having any intersection
+4. 有意思的题目2，设计caltrain system，要实现caltrain上车下车刷卡扣钱整个功
+能，assume每个station都跟一个central server相连，要处理如果有network
+partition怎么办，eventually车费还是要charge到账户上，但是不能影响partition的
+station正常运作。要处理某些人下车没刷卡怎么办，followup可以非常多
+5. 有意思的题目3，仍然是设计一个cocurrent环境下的time leased cache，但是有些
+区别，假如delete操作是一个daemon thread来做不用太多考虑，但是get(key)操作的
+逻辑是如果key不在cache里面，需要一个非常expensive的操作把对应value load进来
+，如何让这个load的操作对同一个key尽量少发生，需要写代码实现。
+
+这家的题目我觉得非常有意思，engineer都超级nice，感觉我见过的人的能力都非常不
+错，年轻一点的反应非常快，年长一点的经验非常丰富。整体上看三哥并不多，虽然
+engineering vp是三哥。
+这家很有诚意，最后给我的base跟walmartlab差不多，再加上很难估值的option。他们
+觉得他们的bar很高，能过他们面试的人不多，所以一旦你过了他们面试，要做好被他
+们的recruiter不停骚扰的准备。
+有关这个公司，在其他帖子里面我提到过，虽然engineering vp是个三哥，但是感觉还
+比较靠谱，不像某些三哥吹牛没有边际，对于整个公司发展的前景比较有数，business
+model也很promising，最近刚刚拿到一笔80M的投资。
+
+先休息一下，稍后再表FGUD和Palantir。

@@ -221,3 +221,171 @@ engineering vp是三哥。
 model也很promising，最近刚刚拿到一笔80M的投资。
 
 先休息一下，稍后再表FGUD和Palantir。
+
+
+
+Palantir：
+
+号称湾区面试最难的公司。但是again我运气比较好没有碰到很难的题目。我觉得这家
+公司有点吹的过大了，本身做的东西根本没有什么技术含量，里面都是一群没经验的
+stanford小年轻，都是自我感觉超好。另外去这家公司要做好准备每周工作60hours。
+估值150亿了还给option我也是醉了，能上市不？我的看法就是这家公司基本就是坑，
+从哪个角度来讲都不值得去。
+
+他们的onsite上午会有3轮，然后中午吃完饭后会有一个小时的demo（因为实在没什么
+意思所以我差点睡着了），如果上午过了下午还会有1 - 2轮，一般下午会有一轮
+system design，另一轮是见hiring manager，如果上午没过demo结束就可以回家了。
+
+电面：
+万年不变的电面题，给一个array，问有没有duplicate
+follow up1，只要index的距离 < k并且value相同就算duplicate
+follow up2，只要index的距离 < k并且value的绝对值差 < d 就算duplicate
+follow up3，follow up2能不能有time complexity O(n)的解？
+
+Onsite：
+1. OOD astroid game，就是飞机打石块的游戏，石块可以任意形状可以移动，飞机撞
+上就挂了，飞机可以发射子弹，子弹打上石块会把石块分成多个小石块按照不同方向和
+速度移动。要写伪代码。
+2. 每个person有一个list of intervals，表示busy的时间段，问最busy的一段时间分
+别都是谁busy。
+3. 一个描述起来不算简单的题目，但是算法不难，在版上看到过但是细节记不清了，
+好像是给一堆stock profile然后算profit
+4. 一个2d matrix，被分成好几个区域，区域之间都是value为0的cell，每一堆
+connected的非0cell算是一个区域，问和最大的区域是哪个，要设计API，怎么用json
+return结果。
+5. system design又是 distributed key-value store，万年不变的题目，后来没啥好
+聊的只好跟面试官扯他们的那个atlas，distributed transaction layer，没办法想拿
+offer跪舔还是需要的。
+
+基本上每个面试官都是一副老子很牛逼的样子，一问他们到底做了什么牛逼的东西马上
+支支吾吾说不出个所以然。他们的offer也没诚意，150k的base + 25k signon +
+55000option，没谈就直接拒掉了。
+
+############################################################################
+###########
+
+Dropbox：
+
+Dropbox的面试题都是从题库出的，但问题是他们的题库并不大。所以，我可以负责任
+的说，你在这个版上找到的面经题目，你在面试过程中绝对能碰到。另外他们复杂的算
+法题目并不多，但是大部分是跟concurrency有关的问题。
+
+一般标配是 2轮电面 + 6轮onsite，6轮onsite中居然有两轮是behavior和culture fit
+
+另外，他们面试的要求都是要写能run的code，要写完整的solution，不能写个主要
+function就完事。
+
+电面：
+1. 给一堆file，如何比较有效率的把内容完全相同的file group到一起，file可能非
+常大
+2. 被人面过无数次的电话号码转成string，然后再word break那个题目
+
+Onsite：
+1. log_hit(), get_last_5mins_hits()那个题目，concurrent怎么搞
+2. token bucket，假设每x秒提供一个token，然后外面可以申请任意数量的token，如
+果token不够就block，要求concurrent情况下，不能有专门的thread产生token，怎样
+用最简单的方法实现
+3. web crawler，要分析可能的bottleneck，然后转化成concurrent运行的版本，写
+runnable代码。
+4. system desgin那一轮是两个三哥，轮流轰炸了一个小时，把我之前做的所有东西完
+全推翻了，所以这一轮没结束我就知道肯定挂了。
+
+############################################################################
+###########
+
+后面这三个公司是整个面试过程中给我感觉最好的三个公司。
+
+Uber：
+
+Uber的效率不是一般的牛叉。我从刚开始被Uber联系到最后拿到offer基本在一个周之
+内搞定。面完了Uber之后真的有点心动，因为面我的人我觉得都很牛逼，人也都很超
+nice，非常乐于提供很多关于Uber的信息，整个氛围非常积极向上。老板虽然是个三哥
+但是也没有任何能吐槽的地方，他手下现在也基本都是老中。
+
+电面：
+一般电面会是hiring manager，除了问了一下之前做过什么之外只有一道题目：
+OOD card deck，要现场deug，需要能运行
+电面后一个小时通知我可以onsite
+
+Onsite：
+onsite一般是5轮，中间老板带着吃午饭
+5轮中必然有一轮是只讨论之前做过的project，要做好准备，一定要对自己之前做的东
+西特别熟
+另外我面试过程中问了不少怎么设计一个系统解决Uber实际问题这种题目，很新颖很有
+意思
+1. 问了我不少关于storm的问题，比如storm怎么保证exact once/at least once
+semantic，如何做timed window join，因为我简历上有相关的东西，然后让我用storm
+来做一个比较简单的sliding window count。
+2. big integer multiplication，要求现场运行代码。
+3. longest increasing subarray，longest increasing subpath in a tree，path只
+能从root到某个leaf
+4. boggle game，given a boggle board and a dictionary，find all words on the
+board，
+follow up，如果dictionay 不变但是board不停的变怎么优化
+follow up，如果board不变但是dictionary不停的变怎么优化
+5. given a matrix only containing 1 or 0，find how many rectangles are 4个角
+都是1
+6. how to design a system to automatically detect hotspot on geo graph, a
+hotspot is an area such that 打车的request远多于available driver的数量
+7. how to design a system to detect if dispatch algorithm has some bug，
+dispatch主要是收集所有打车request和available driver的信息然后决定哪个driver
+哪个客人
+
+Onsite过后两个小时通知我有offer了，如果onsite过后一两天之内没通知的话，基本
+上说明你的waiting list上，要等排在你前面的人据掉offer才可以继续下一步。
+
+############################################################################
+###########
+
+Facebook：
+
+initial round我是直接去onsite的，但是根据其他朋友的经验似乎电面或者onsite影
+响也根本不大，因为第一轮基本只要没有太大的纰漏都会过。
+
+Onsite：
+一共5轮，如果是4级的话会是3轮coding，1轮behavior和1轮system design。因为偏
+infra, 所以我有3轮是三哥，当时已经做好挂的准备了。
+1. move all 0s to right end of the array
+2. decode way
+3. binary tree inorder iterator
+4. determine if there is a subarray sum to target number
+5. convert integer to string，1000 to “one thousand”
+6. system design - design facebook music system，只需要design service tier，
+两个API
+get_top_10_list_music_ids(int64 userid) - return top 10 most frequent
+listened music ids for a given user last week. 这个call在load页面的时候要进
+行，所以对latency要求比较高。
+record(int64 userid, int64 musicid, int64 timestamp) - 每当user听一首歌，就
+需要记录下来，这个可以asynch进行，需要eventually consistent，但不需要每听一
+首歌马上就能反映到上一个call中。要做各种spec和resource的estimation。
+7. 抄dropbox那个问题，get_hits_last_5mins(), record_hit()，但是后面又扯到
+system design，如何thread safe，如果是districuted syste怎么搞，能想到几种方法
+8. behavior那一轮基本上围绕着的主题是，你之前碰到什么难解决的问题，怎么解决
+的，你学到了什么，production有过什么比较傻叉的bug，怎么避免的。你之前做项目
+有没有cross team的，你怎么说服其他team听你的，等等。聊得过多导致最后没有时间
+所有这一轮没有coding
+
+我觉得我的运气很好，再次没有碰到很难的题目，尤其是算法。
+
+############################################################################
+###########
+
+Google：
+
+狗家如果真的想快的话还是可以的，我从开始被recruiter联系到offer也是一个周之内
+搞定。
+狗家和F家整个感觉都很好，面试官都很乐意帮忙，而且明显感觉到水平跟其他公司不
+一样，技术功底非常扎实。
+
+再次运气很好所以没有碰到很偏很难的题目，基本上就是水过了。其中几道比较有意思
+的题目：
+1. 一个正整数可以表示成其他几个正整数的平方和，给任何一个正整数，求最少的那
+几个正整数，平方和是给定的数，比如14 = 1^2 + 2^2 + 3^2，如果给的数是14，应该
+返回（1，2，3）
+2. 给一个dictionary，然后可以support的query是，给一个string，返回在
+dictionary里面包含给定string的所有character的最短的string
+3. 如何设计google login system
+4. web crawl的时候如何判断两个document是相同/相似的。
+
+抱歉很多细节实在记不清了，表达能力也有限没办法在这个帖子里面说的很明白。如果
+大家有问题我会尽我所能回答，谢谢。。

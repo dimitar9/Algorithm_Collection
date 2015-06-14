@@ -1,14 +1,21 @@
-public int countPrimes(int n) {
-    BitSet bs = new BitSet(n);
-    bs.set(0); bs.set(1);
-    int ind = 0, count = 0;
-    while(ind < n){
-        ind = bs.nextClearBit(ind + 1);
-        if(ind >= n)
-            return count;
-        count++;
-        for(int i = 2 * ind; i < n; i += ind)
-            bs.set(i);
+public class Solution {
+    public int countPrimes(int n) {
+        int res = 0;
+        boolean[] used = new boolean[n];
+        for (int i = 2; i <= Math.sqrt(n); i++) {
+         if (!used[i - 1]) {
+            int temp = i * i;
+            while (temp < n) {
+                used[temp - 1] = true;
+                temp += i;
+            }
+        }
+        }
+        for (int i = 2; i < n; i++) {
+        if (!used[i - 1]) {
+            res++;
+        }
+        }
+        return res;
     }
-    return count;
 }

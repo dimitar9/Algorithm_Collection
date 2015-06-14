@@ -1,0 +1,668 @@
+page1
+	http://www.mitbbs.com/article_t1/JobHunting/32988733_0_2.html
+	
+同主题阅读：beanbun 大牛给讲讲设计题你怎么回答的吧？
+[版面:待字闺中][首篇作者：HanSolo7] , 2015年06月13日23:35:33
+[首页] [上页][下页][末页] [分页:1 2 ]
+	HanSolo7
+进入未名形象秀
+	我的博客
+	
+	
+[回复] [回信给作者] [本篇全文] [本讨论区] [修改] [删除] [转寄] [转贴] [收藏] [举报] 		[ 1 ]
+
+发信人: HanSolo7 (隼), 信区: JobHunting
+标  题: beanbun 大牛给讲讲设计题你怎么回答的吧？
+发信站: BBS 未名空间站 (Sat Jun 13 23:35:33 2015, 美东)
+
+beanbun 大牛给讲讲设计题你怎么回答的吧？比如k-v design.比如web crawler
+design.都拿到offer了回答肯定有过人之处。
+--
+※ 来源:·WWW 未名空间站 网址：mitbbs.com 移动：在应用商店搜索未名空间·[FROM: 71.]
+	
+  	
+	AlphaCode
+进入未名形象秀
+	我的博客
+	
+	
+[回复] [回信给作者] [本篇全文] [本讨论区] [修改] [删除] [转寄] [转贴] [收藏] [举报] 		[ 2 ]
+
+发信人: AlphaCode (Alpha), 信区: JobHunting
+标  题: Re: beanbun 大牛给讲讲设计题你怎么回答的吧？
+发信站: BBS 未名空间站 (Sat Jun 13 23:37:33 2015, 美东)
+
+沙发。
+
+【 在 HanSolo7 (隼) 的大作中提到: 】
+: beanbun 大牛给讲讲设计题你怎么回答的吧？比如k-v design.比如web crawler
+: design.都拿到offer了回答肯定有过人之处。
+
+
+
+--
+※ 来源:·WWW 未名空间站 网址：mitbbs.com 移动：在应用商店搜索未名空间·[FROM: 73.]
+ 
+	yuxrose
+进入未名形象秀
+	我的博客
+	
+	
+[回复] [回信给作者] [本篇全文] [本讨论区] [修改] [删除] [转寄] [转贴] [收藏] [举报] 		[ 3 ]
+
+发信人: yuxrose (鱼香肉丝), 信区: JobHunting
+标  题: Re: beanbun 大牛给讲讲设计题你怎么回答的吧？
+发信站: BBS 未名空间站 (Sun Jun 14 00:31:46 2015, 美东)
+
+板凳！
+--
+努力改造，早日释放
+※ 来源:·WWW 未名空间站 网址：mitbbs.com 移动：在应用商店搜索未名空间·[FROM: 76.]
+ 
+	beanbun
+进入未名形象秀
+	我的博客
+	
+	
+[回复] [回信给作者] [本篇全文] [本讨论区] [修改] [删除] [转寄] [转贴] [收藏] [举报] 		[ 4 ]
+
+发信人: beanbun (豆包), 信区: JobHunting
+标  题: Re: beanbun 大牛给讲讲设计题你怎么回答的吧？
+发信站: BBS 未名空间站 (Sun Jun 14 02:45:04 2015, 美东)
+
+没有过人之处，另外我不是大牛，这个版上藏龙卧虎。
+
+distributed kv store和web crawler是system design里面最基本的题目吧，
+看看现在比较流行的几个framework就可以了，比如HBase，Cassandra。
+web crawler其实看考什么细节，每个人问的东西会不一样，design的题目其实是你既
+要知道可能的问题是什么，还要知道怎么解决。。
+比如web crawler IO会是问题，因为从网络上上下载网页会很慢，怎么能尽量不让IO
+block
+--
+※ 来源:·WWW 未名空间站 网址：mitbbs.com 移动：在应用商店搜索未名空间·[FROM: 50.]
+ 
+	beefcurtain5
+进入未名形象秀
+	我的博客
+	
+	
+[回复] [回信给作者] [本篇全文] [本讨论区] [修改] [删除] [转寄] [转贴] [收藏] [举报] 		[ 5 ]
+
+发信人: beefcurtain5 (beefcurtain5), 信区: JobHunting
+标  题: Re: beanbun 大牛给讲讲设计题你怎么回答的吧？
+发信站: BBS 未名空间站 (Sun Jun 14 03:11:07 2015, 美东)
+
+那你说怎么让IO不block？ 问async http client？ thread pool？ 多个machine去下
+载不同的URL？
+【 在 beanbun (豆包) 的大作中提到: 】
+: 没有过人之处，另外我不是大牛，这个版上藏龙卧虎。
+: distributed kv store和web crawler是system design里面最基本的题目吧，
+: 看看现在比较流行的几个framework就可以了，比如HBase，Cassandra。
+: web crawler其实看考什么细节，每个人问的东西会不一样，design的题目其实是你既
+: 要知道可能的问题是什么，还要知道怎么解决。。
+: 比如web crawler IO会是问题，因为从网络上上下载网页会很慢，怎么能尽量不让IO
+: block
+
+
+
+--
+※ 来源:·WWW 未名空间站 网址：mitbbs.com 移动：在应用商店搜索未名空间·[FROM: 24.]
+ 
+	beanbun
+进入未名形象秀
+	我的博客
+	
+	
+[回复] [回信给作者] [本篇全文] [本讨论区] [修改] [删除] [转寄] [转贴] [收藏] [举报] 		[ 6 ]
+
+发信人: beanbun (豆包), 信区: JobHunting
+标  题: Re: beanbun 大牛给讲讲设计题你怎么回答的吧？
+发信站: BBS 未名空间站 (Sun Jun 14 03:16:30 2015, 美东)
+
+差不多，其实跟dropbox那个题目一样。
+可以把整个crawl过程分解成多步，分别用专门的thread pool去做。
+
+【 在 beefcurtain5 (beefcurtain5) 的大作中提到: 】
+: 那你说怎么让IO不block？ 问async http client？ thread pool？ 多个machine去下
+: 载不同的URL？
+
+
+
+--
+※ 来源:·WWW 未名空间站 网址：mitbbs.com 移动：在应用商店搜索未名空间·[FROM: 50.]
+ 
+	beefcurtain5
+进入未名形象秀
+	我的博客
+	
+	
+[回复] [回信给作者] [本篇全文] [本讨论区] [修改] [删除] [转寄] [转贴] [收藏] [举报] 		[ 7 ]
+
+发信人: beefcurtain5 (beefcurtain5), 信区: JobHunting
+标  题: Re: beanbun 大牛给讲讲设计题你怎么回答的吧？
+发信站: BBS 未名空间站 (Sun Jun 14 03:21:31 2015, 美东)
+
+Dropbox要写runnable code， 你怎么写的？ 能写个pseudo code 么？
+
+其他问题你怎么回答？ 比如怎么判断两个documents相似？
+【 在 beanbun (豆包) 的大作中提到: 】
+: 差不多，其实跟dropbox那个题目一样。
+: 可以把整个crawl过程分解成多步，分别用专门的thread pool去做。
+
+
+
+--
+※ 来源:·WWW 未名空间站 网址：mitbbs.com 移动：在应用商店搜索未名空间·[FROM: 24.]
+ 
+	AlphaCode
+进入未名形象秀
+	我的博客
+	
+	
+[回复] [回信给作者] [本篇全文] [本讨论区] [修改] [删除] [转寄] [转贴] [收藏] [举报] 		[ 8 ]
+
+发信人: AlphaCode (Alpha), 信区: JobHunting
+标  题: Re: beanbun 大牛给讲讲设计题你怎么回答的吧？
+发信站: BBS 未名空间站 (Sun Jun 14 03:35:57 2015, 美东)
+
+dropbox哪个题目啊？
+
+【 在 beanbun (豆包) 的大作中提到: 】
+: 差不多，其实跟dropbox那个题目一样。
+: 可以把整个crawl过程分解成多步，分别用专门的thread pool去做。
+
+
+
+--
+※ 来源:·WWW 未名空间站 网址：mitbbs.com 移动：在应用商店搜索未名空间·[FROM: 73.]
+ 
+	beanbun
+进入未名形象秀
+	我的博客
+	
+	
+[回复] [回信给作者] [本篇全文] [本讨论区] [修改] [删除] [转寄] [转贴] [收藏] [举报] 		[ 9 ]
+
+发信人: beanbun (豆包), 信区: JobHunting
+标  题: Re: beanbun 大牛给讲讲设计题你怎么回答的吧？
+发信站: BBS 未名空间站 (Sun Jun 14 03:38:03 2015, 美东)
+
+Dropbox那个我写的比较简单，就是分成parse document，download document两步，每
+步用单独的threadpool，download完了就submit一个request另一个pool里面，你如果
+想自己control request queue也可以。
+
+两个documents相似这个我直接答的minhashing但是他们应该是用不同的方法。
+
+【 在 beefcurtain5 (beefcurtain5) 的大作中提到: 】
+: Dropbox要写runnable code， 你怎么写的？ 能写个pseudo code 么？
+: 其他问题你怎么回答？ 比如怎么判断两个documents相似？
+
+
+
+--
+※ 来源:·WWW 未名空间站 网址：mitbbs.com 移动：在应用商店搜索未名空间·[FROM: 50.]
+ 
+	beefcurtain5
+进入未名形象秀
+	我的博客
+	
+	
+[回复] [回信给作者] [本篇全文] [本讨论区] [修改] [删除] [转寄] [转贴] [收藏] [举报] 		[ 10 ]
+
+发信人: beefcurtain5 (beefcurtain5), 信区: JobHunting
+标  题: Re: beanbun 大牛给讲讲设计题你怎么回答的吧？
+发信站: BBS 未名空间站 (Sun Jun 14 03:38:33 2015, 美东)
+
+好几家公司问他web crawler design的题目， 还有G家问他怎么判断两个document相似
+。。 如果不是我知道他以前在rocketfuel工作， 我还以为是和我以前一个team的人。
+。。 他还做storm， 和我做的东西都很相似。。。
+【 在 AlphaCode (Alpha) 的大作中提到: 】
+: dropbox哪个题目啊？
+
+
+
+--
+※ 来源:·WWW 未名空间站 网址：mitbbs.com 移动：在应用商店搜索未名空间·[FROM: 24.]
+ 
+	beefcurtain5
+进入未名形象秀
+	我的博客
+	
+	
+[回复] [回信给作者] [本篇全文] [本讨论区] [修改] [删除] [转寄] [转贴] [收藏] [举报] 		[ 11 ]
+
+发信人: beefcurtain5 (beefcurtain5), 信区: JobHunting
+标  题: Re: beanbun 大牛给讲讲设计题你怎么回答的吧？
+发信站: BBS 未名空间站 (Sun Jun 14 03:41:33 2015, 美东)
+
+parse document？ 就是把你download完的html document里不同tag里的东西那出来？
+
+你直接答了minhash， 要不要解释minhash怎么弄？ 还是就一句话完了？ 面试官没问
+你还有没有其他方法?
+【 在 beanbun (豆包) 的大作中提到: 】
+: Dropbox那个我写的比较简单，就是分成parse document，download document两步，每
+: 步用单独的threadpool，download完了就submit一个request另一个pool里面，你如果
+: 想自己control request queue也可以。
+: 两个documents相似这个我直接答的minhashing但是他们应该是用不同的方法。
+
+
+
+--
+※ 来源:·WWW 未名空间站 网址：mitbbs.com 移动：在应用商店搜索未名空间·[FROM: 24.]
+ 
+	beanbun
+进入未名形象秀
+	我的博客
+	
+	
+[回复] [回信给作者] [本篇全文] [本讨论区] [修改] [删除] [转寄] [转贴] [收藏] [举报] 		[ 12 ]
+
+发信人: beanbun (豆包), 信区: JobHunting
+标  题: Re: beanbun 大牛给讲讲设计题你怎么回答的吧？
+发信站: BBS 未名空间站 (Sun Jun 14 03:43:03 2015, 美东)
+
+大牛，你哪里高就？
+你怎么会没有offer？不可思议啊
+
+【 在 beefcurtain5 (beefcurtain5) 的大作中提到: 】
+: 好几家公司问他web crawler design的题目， 还有G家问他怎么判断两个document相似
+: 。。 如果不是我知道他以前在rocketfuel工作， 我还以为是和我以前一个team的人。
+: 。。 他还做storm， 和我做的东西都很相似。。。
+
+
+
+--
+※ 来源:·WWW 未名空间站 网址：mitbbs.com 移动：在应用商店搜索未名空间·[FROM: 50.]
+ 
+	beefcurtain5
+进入未名形象秀
+	我的博客
+	
+	
+[回复] [回信给作者] [本篇全文] [本讨论区] [修改] [删除] [转寄] [转贴] [收藏] [举报] 		[ 13 ]
+
+发信人: beefcurtain5 (beefcurtain5), 信区: JobHunting
+标  题: Re: beanbun 大牛给讲讲设计题你怎么回答的吧？
+发信站: BBS 未名空间站 (Sun Jun 14 03:43:19 2015, 美东)
+
+我觉得你回答， 还要download， download完， 还要parse， 别搞不同threadpool。
+。 用storm做算了。。。 storm全都帮你handle。。。
+
+
+【 在 beanbun (豆包) 的大作中提到: 】
+: Dropbox那个我写的比较简单，就是分成parse document，download document两步，每
+: 步用单独的threadpool，download完了就submit一个request另一个pool里面，你如果
+: 想自己control request queue也可以。
+: 两个documents相似这个我直接答的minhashing但是他们应该是用不同的方法。
+
+
+
+--
+※ 来源:·WWW 未名空间站 网址：mitbbs.com 移动：在应用商店搜索未名空间·[FROM: 24.]
+ 
+	beanbun
+进入未名形象秀
+	我的博客
+	
+	
+[回复] [回信给作者] [本篇全文] [本讨论区] [修改] [删除] [转寄] [转贴] [收藏] [举报] 		[ 14 ]
+
+发信人: beanbun (豆包), 信区: JobHunting
+标  题: Re: beanbun 大牛给讲讲设计题你怎么回答的吧？
+发信站: BBS 未名空间站 (Sun Jun 14 03:47:09 2015, 美东)
+
+是的，把download完的document的link都拿出来，因为是简单的版本我都没写检验link
+是不是已经crawl过了，直接就扔过去就完了。
+
+minhash稍微解释一下就可以了，另外面试官直接说了他们怎么搞的，就没再往下问这
+个问题，不要再问我他们怎么搞的了。。其实我并没有完全听懂
+
+【 在 beefcurtain5 (beefcurtain5) 的大作中提到: 】
+: parse document？ 就是把你download完的html document里不同tag里的东西那出来？
+: 你直接答了minhash， 要不要解释minhash怎么弄？ 还是就一句话完了？ 面试官没问
+: 你还有没有其他方法?
+
+
+
+--
+※ 来源:·WWW 未名空间站 网址：mitbbs.com 移动：在应用商店搜索未名空间·[FROM: 50.]
+ 
+	beefcurtain5
+进入未名形象秀
+	我的博客
+	
+	
+[回复] [回信给作者] [本篇全文] [本讨论区] [修改] [删除] [转寄] [转贴] [收藏] [举报] 		[ 15 ]
+
+发信人: beefcurtain5 (beefcurtain5), 信区: JobHunting
+标  题: Re: beanbun 大牛给讲讲设计题你怎么回答的吧？
+发信站: BBS 未名空间站 (Sun Jun 14 03:48:15 2015, 美东)
+
+你以前做什么的？ 和我以前做的东西， 简直一膜一样啊。。。
+【 在 beanbun (豆包) 的大作中提到: 】
+: 是的，把download完的document的link都拿出来，因为是简单的版本我都没写检验
+link
+: 是不是已经crawl过了，直接就扔过去就完了。
+: minhash稍微解释一下就可以了，另外面试官直接说了他们怎么搞的，就没再往下问这
+: 个问题，不要再问我他们怎么搞的了。。其实我并没有完全听懂
+
+
+
+--
+※ 来源:·WWW 未名空间站 网址：mitbbs.com 移动：在应用商店搜索未名空间·[FROM: 24.]
+ 
+	beanbun
+进入未名形象秀
+	我的博客
+	
+	
+[回复] [回信给作者] [本篇全文] [本讨论区] [修改] [删除] [转寄] [转贴] [收藏] [举报] 		[ 16 ]
+
+发信人: beanbun (豆包), 信区: JobHunting
+标  题: Re: beanbun 大牛给讲讲设计题你怎么回答的吧？
+发信站: BBS 未名空间站 (Sun Jun 14 03:48:46 2015, 美东)
+
+其实我当时确实这么想的，但问题是storm你没法马上写出能运行的code
+
+【 在 beefcurtain5 (beefcurtain5) 的大作中提到: 】
+: 我觉得你回答， 还要download， download完， 还要parse， 别搞不同threadpool。
+: 。 用storm做算了。。。 storm全都帮你handle。。。
+
+
+
+--
+※ 来源:·WWW 未名空间站 网址：mitbbs.com 移动：在应用商店搜索未名空间·[FROM: 50.]
+ 
+	beanbun
+进入未名形象秀
+	我的博客
+	
+	
+[回复] [回信给作者] [本篇全文] [本讨论区] [修改] [删除] [转寄] [转贴] [收藏] [举报] 		[ 17 ]
+
+发信人: beanbun (豆包), 信区: JobHunting
+标  题: Re: beanbun 大牛给讲讲设计题你怎么回答的吧？
+发信站: BBS 未名空间站 (Sun Jun 14 03:50:46 2015, 美东)
+
+我做的跟这个没什么关系，只是面试题而已
+
+【 在 beefcurtain5 (beefcurtain5) 的大作中提到: 】
+: 你以前做什么的？ 和我以前做的东西， 简直一膜一样啊。。。
+: link
+
+
+
+--
+※ 来源:·WWW 未名空间站 网址：mitbbs.com 移动：在应用商店搜索未名空间·[FROM: 50.]
+ 
+	beefcurtain5
+进入未名形象秀
+	我的博客
+	
+	
+[回复] [回信给作者] [本篇全文] [本讨论区] [修改] [删除] [转寄] [转贴] [收藏] [举报] 		[ 18 ]
+
+发信人: beefcurtain5 (beefcurtain5), 信区: JobHunting
+标  题: Re: beanbun 大牛给讲讲设计题你怎么回答的吧？
+发信站: BBS 未名空间站 (Sun Jun 14 03:50:53 2015, 美东)
+
+恩， 我觉得用storm也就说说而已， 面试时候写code， 那点时间， 能写出runnable
+的function， 很牛了
+【 在 beanbun (豆包) 的大作中提到: 】
+: 其实我当时确实这么想的，但问题是storm你没法马上写出能运行的code
+
+
+
+--
+※ 来源:·WWW 未名空间站 网址：mitbbs.com 移动：在应用商店搜索未名空间·[FROM: 24.]
+ 
+	beefcurtain5
+进入未名形象秀
+	我的博客
+	
+	
+[回复] [回信给作者] [本篇全文] [本讨论区] [修改] [删除] [转寄] [转贴] [收藏] [举报] 		[ 19 ]
+
+发信人: beefcurtain5 (beefcurtain5), 信区: JobHunting
+标  题: Re: beanbun 大牛给讲讲设计题你怎么回答的吧？
+发信站: BBS 未名空间站 (Sun Jun 14 03:54:18 2015, 美东)
+
+仍然是设计一个cocurrent环境下的time leased cache，但是有些
+区别，假如delete操作是一个daemon thread来做不用太多考虑，但是get(key)操作的
+逻辑是如果key不在cache里面，需要一个非常expensive的操作把对应value load进来
+，如何让这个load的操作对同一个key尽量少发生，需要写代码实现。
+
+这个题目， 你怎么答的? 不怎么看懂题目。。。
+--
+※ 来源:·WWW 未名空间站 网址：mitbbs.com 移动：在应用商店搜索未名空间·[FROM: 24.]
+ 
+	beefcurtain5
+进入未名形象秀
+	我的博客
+	
+	
+[回复] [回信给作者] [本篇全文] [本讨论区] [修改] [删除] [转寄] [转贴] [收藏] [举报] 		[ 20 ]
+
+发信人: beefcurtain5 (beefcurtain5), 信区: JobHunting
+标  题: Re: beanbun 大牛给讲讲设计题你怎么回答的吧？
+发信站: BBS 未名空间站 (Sun Jun 14 03:55:37 2015, 美东)
+
+是不是就是说， 一个key在load的时候， 检查一下是否有相同的key，已经在load的了
+？
+
+【 在 beefcurtain5 (beefcurtain5) 的大作中提到: 】
+: 仍然是设计一个cocurrent环境下的time leased cache，但是有些
+: 区别，假如delete操作是一个daemon thread来做不用太多考虑，但是get(key)操作的
+: 逻辑是如果key不在cache里面，需要一个非常expensive的操作把对应value load进来
+: ，如何让这个load的操作对同一个key尽量少发生，需要写代码实现。
+: 这个题目， 你怎么答的? 不怎么看懂题目。。。
+
+
+
+--
+※ 来源:·WWW 未名空间站 网址：mitbbs.com 移动：在应用商店搜索未名空间·[FROM: 24.]
+[首页] [上页][下页][末页] [分页:1 2 ]
+[快速返回] [ 进入待字闺中讨论区] [返回顶部]
+回复文章
+标题： 	
+内 容：
+	
+	
+将您的链接放在这儿
+
+友情链接
+
+ 
+
+Site Map - Contact Us - Terms and Conditions - Privacy Policy
+
+版权所有，未名空间（mitbbs.com），since 1996
+回复] [回信给作者] [本篇全文] [本讨论区] [修改] [删除] [转寄] [转贴] [收藏] [举报] 		[ 21 ]
+
+发信人: beanbun (豆包), 信区: JobHunting
+标  题: Re: beanbun 大牛给讲讲设计题你怎么回答的吧？
+发信站: BBS 未名空间站 (Sun Jun 14 04:00:51 2015, 美东)
+
+是这个意思。如果有相同的key已经在load了，其他的读操作要等load完了之后再进行。
+
+【 在 beefcurtain5 (beefcurtain5) 的大作中提到: 】
+: 是不是就是说， 一个key在load的时候， 检查一下是否有相同的key，已经在load的了
+: ？
+
+
+
+--
+※ 来源:·WWW 未名空间站 网址：mitbbs.com 移动：在应用商店搜索未名空间·[FROM: 50.]
+	
+  	
+	beefcurtain5
+进入未名形象秀
+	我的博客
+	
+	
+[回复] [回信给作者] [本篇全文] [本讨论区] [修改] [删除] [转寄] [转贴] [收藏] [举报] 		[ 22 ]
+
+发信人: beefcurtain5 (beefcurtain5), 信区: JobHunting
+标  题: Re: beanbun 大牛给讲讲设计题你怎么回答的吧？
+发信站: BBS 未名空间站 (Sun Jun 14 04:01:47 2015, 美东)
+
+那还要你写code？ 你能写个你当时写的code看看么？ pseudocode也行啊
+【 在 beanbun (豆包) 的大作中提到: 】
+: 是这个意思。如果有相同的key已经在load了，其他的读操作要等load完了之后再进
+行。
+
+
+
+--
+※ 来源:·WWW 未名空间站 网址：mitbbs.com 移动：在应用商店搜索未名空间·[FROM: 24.]
+ 
+	beefcurtain5
+进入未名形象秀
+	我的博客
+	
+	
+[回复] [回信给作者] [本篇全文] [本讨论区] [修改] [删除] [转寄] [转贴] [收藏] [举报] 		[ 23 ]
+
+发信人: beefcurtain5 (beefcurtain5), 信区: JobHunting
+标  题: Re: beanbun 大牛给讲讲设计题你怎么回答的吧？
+发信站: BBS 未名空间站 (Sun Jun 14 04:07:20 2015, 美东)
+
+6. how to design a system to automatically detect hotspot on geo graph, a
+hotspot is an area such that 打车的request远多于available driver的数量
+
+这个你怎么回答的？ request此时， availabl driver都需要remember他们的location
+， 你用geohash 作为key？ 但肯定又不能只是compare相同的key， 而是要compare一
+个区域是不是hotspot
+--
+※ 来源:·WWW 未名空间站 网址：mitbbs.com 移动：在应用商店搜索未名空间·[FROM: 24.]
+ 
+	beanbun
+进入未名形象秀
+	我的博客
+	
+	
+[回复] [回信给作者] [本篇全文] [本讨论区] [修改] [删除] [转寄] [转贴] [收藏] [举报] 		[ 24 ]
+
+发信人: beanbun (豆包), 信区: JobHunting
+标  题: Re: beanbun 大牛给讲讲设计题你怎么回答的吧？
+发信站: BBS 未名空间站 (Sun Jun 14 04:19:57 2015, 美东)
+
+这个题目的关键是，key不能直接来做lock，因为equals的key可能是不同的object，所
+以答案有点作弊嫌疑，需要用一个concurrenthashmap来maintain key跟对应的lock的
+关系，然后假设create new object是相对来说比较cheap的操作（这个我当时持保留意
+见。。），所以可以用concurrenthashmap的putIfAbsent这个method create一个新
+object作为lock这样搞，真正的code根本没几行。
+
+【 在 beefcurtain5 (beefcurtain5) 的大作中提到: 】
+: 那还要你写code？ 你能写个你当时写的code看看么？ pseudocode也行啊
+: 行。
+
+
+
+--
+※ 来源:·WWW 未名空间站 网址：mitbbs.com 移动：在应用商店搜索未名空间·[FROM: 50.]
+ 
+	beanbun
+进入未名形象秀
+	我的博客
+	
+	
+[回复] [回信给作者] [本篇全文] [本讨论区] [修改] [删除] [转寄] [转贴] [收藏] [举报] 		[ 25 ]
+
+发信人: beanbun (豆包), 信区: JobHunting
+标  题: Re: beanbun 大牛给讲讲设计题你怎么回答的吧？
+发信站: BBS 未名空间站 (Sun Jun 14 04:25:27 2015, 美东)
+
+思路基本是一样的，允许存在误差，不用很完美。
+关键是找一种hash，能够比较好的做range query就行了。
+这个题目当时比较偏向于问设计整个workflow，直接上storm。。。
+
+【 在 beefcurtain5 (beefcurtain5) 的大作中提到: 】
+: 6. how to design a system to automatically detect hotspot on geo graph, a
+: hotspot is an area such that 打车的request远多于available driver的数量
+: 这个你怎么回答的？ request此时， availabl driver都需要remember他们的
+location
+: ， 你用geohash 作为key？ 但肯定又不能只是compare相同的key， 而是要compare一
+: 个区域是不是hotspot
+
+
+
+--
+※ 来源:·WWW 未名空间站 网址：mitbbs.com 移动：在应用商店搜索未名空间·[FROM: 50.]
+ 
+	beefcurtain5
+进入未名形象秀
+	我的博客
+	
+	
+[回复] [回信给作者] [本篇全文] [本讨论区] [修改] [删除] [转寄] [转贴] [收藏] [举报] 		[ 26 ]
+
+发信人: beefcurtain5 (beefcurtain5), 信区: JobHunting
+标  题: Re: beanbun 大牛给讲讲设计题你怎么回答的吧？
+发信站: BBS 未名空间站 (Sun Jun 14 04:31:04 2015, 美东)
+
+那你是用什么hash？ 怎么做range query呢？ 我觉得workflow不是很难啊？ 难点就是
+怎么hash， 怎么range query。。。
+
+你的这题的storm 的topology是怎么设计的呢？
+【 在 beanbun (豆包) 的大作中提到: 】
+: 思路基本是一样的，允许存在误差，不用很完美。
+: 关键是找一种hash，能够比较好的做range query就行了。
+: 这个题目当时比较偏向于问设计整个workflow，直接上storm。。。
+: location
+
+
+
+--
+※ 来源:·WWW 未名空间站 网址：mitbbs.com 移动：在应用商店搜索未名空间·[FROM: 24.]
+ 
+	beefcurtain5
+进入未名形象秀
+	我的博客
+	
+	
+[回复] [回信给作者] [本篇全文] [本讨论区] [修改] [删除] [转寄] [转贴] [收藏] [举报] 		[ 27 ]
+
+发信人: beefcurtain5 (beefcurtain5), 信区: JobHunting
+标  题: Re: beanbun 大牛给讲讲设计题你怎么回答的吧？
+发信站: BBS 未名空间站 (Sun Jun 14 04:36:53 2015, 美东)
+
+没懂你什么意思？
+
+我们现在要remember whether a key is already being loaded using the slow http
+request。  那就用concurrent hashmap， 如果putIfAbsent成功的话， 就call 那个
+slow http request。  如果不成功的话， 就说明已经有其他人在call 那个slow http
+request了， 所以就等。 
+
+为什么还要create new object？ 你用了concurrent hash map， 就是存那个key不就
+行了？
+
+我不大懂的就是， 如果已经有别人在call 那个slow request， 那我应该怎么等结果
+？
+【 在 beanbun (豆包) 的大作中提到: 】
+: 这个题目的关键是，key不能直接来做lock，因为equals的key可能是不同的object，所
+: 以答案有点作弊嫌疑，需要用一个concurrenthashmap来maintain key跟对应的lock的
+: 关系，然后假设create new object是相对来说比较cheap的操作（这个我当时持保留意
+: 见。。），所以可以用concurrenthashmap的putIfAbsent这个method create一个新
+: object作为lock这样搞，真正的code根本没几行。
+
+
+
+--
+※ 来源:·WWW 未名空间站 网址：mitbbs.com 移动：在应用商店搜索未名空间·[FROM: 24.]
+ 
+	beefcurtain5
+进入未名形象秀
+	我的博客
+	
+	
+[回复] [回信给作者] [本篇全文] [本讨论区] [修改] [删除] [转寄] [转贴] [收藏] [举报] 		[ 28 ]
+
+发信人: beefcurtain5 (beefcurtain5), 信区: JobHunting
+标  题: Re: beanbun 大牛给讲讲设计题你怎么回答的吧？
+发信站: BBS 未名空间站 (Sun Jun 14 04:39:20 2015, 美东)
+
+那其他的操作， 怎么知道load完了？
+【 在 beanbun (豆包) 的大作中提到: 】
+: 是这个意思。如果有相同的key已经在load了，其他的读操作要等load完了之后再进
+行。

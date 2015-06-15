@@ -1,68 +1,111 @@
 public class Solution {
-private static class TrieNode {
-    char c;
-    boolean endOfWord = false, found = false;
-    TrieNode[] children = new TrieNode[26];
-    TrieNode(char c){this.c = c;}
-}
+    Set<String> res = new HashSet<String>();
 
-private TrieNode root;
-private char[][] board;
-private int M;
-private int N;
-private List<String> result;
-
-public List<String> findWords(char[][] board, String[] words) {
-    if(board == null || board.length == 0 || board[0].length == 0 || 
-            words == null || words.length == 0)
-        return Collections.emptyList();
-
-    this.board = board;
-    N = board.length;
-    M = board[0].length;
-
-    /** create the Trie **/
-    root = new TrieNode('#');
-    for(String word: words){
-        TrieNode node = root;
-        for(char c: word.toCharArray()){
-            int ind = c - 'a';
-            if(node.children[ind] == null)
-                node.children[ind] = new TrieNode(c);
-            node = node.children[ind];
+    public List<String> findWords(char[][] board, String[] words) {
+        Trie trie = new Trie();
+        for (String word : words) {
+            trie.insert(word);
         }
-        node.endOfWord = true;
+
+        int m = board.length;
+        int n = board[0].length;
+        boolean[][] visited = new boolean[m][n];
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                dfs(board, visited, "", i, j, trie);
+            }
+        }
+
+        return new ArrayList<String>(res);
     }
 
-    /** do search **/
-    result = new ArrayList<>();
-    for(int i = 0; i < N; i++)
-        for(int j = 0; j < M; j++)
-            for(TrieNode n: root.children)
-                search(new HashSet<Long>(), i, j, new StringBuffer(), n);
-    return result;
+    public void dfs(char[][] board, boolean[][] visited, String str, int x, int y, Trie trie) {
+        if (x < 0 || x >= board.length || y < 0 || y >= board[0].length) return;
+        if (visited[x][y]) return;
+
+        str += board[x][y];
+        if (!trie.startsWith(str)) return;
+
+        if (trie.search(str)) {
+            res.add(str);
+        }
+
+        visited[x][y] = true;
+        dfs(board, visited, str, x - 1, y, trie);
+        dfs(board, visited, str, x + 1, y, trie);
+        dfs(board, visited, str, x, y - 1, trie);
+        dfs(board, visited, str, x, y + 1, trie);
+        visited[x][y] = false;
+    }
 }
 
-private void search(Set<Long> set, int i, int j, 
-        StringBuffer sb, TrieNode node){
-    long key = i * M + j;
-    if(node == null || i < 0 || i >= N || j < 0 || j >= M || 
-            set.contains(key) || board[i][j] != node.c)
-        return;
+class TrieNode {
+    private final int R = 26;
+    private final TrieNode[] children;
+    private String item;
 
-    set.add(key);
-    sb.append(node.c);
-    if(node.endOfWord && !node.found){
-        result.add(sb.toString());
-        node.found = true;
+    public TrieNode() {
+        children = new TrieNode[R];
+        item = "";
     }
-    for(TrieNode n: node.children){
-        search(set, i - 1, j, sb, n);
-        search(set, i + 1, j, sb, n);
-        search(set, i, j - 1, sb, n);
-        search(set, i, j + 1, sb, n);
+
+    public String getItem() {
+        return item;
     }
-    sb.deleteCharAt(sb.length() - 1);
-    set.remove(key);
+
+    public void setItem(String item) {
+        this.item = item;
+    }
+
+    public TrieNode[] getChildren() {
+        return children;
+    }
+
+    public TrieNode getChild(int i) {
+        if (i >= 26 || i < 0) throw new IllegalArgumentException();
+        return children[i];
+    }
+
+    public void setChild(int i, TrieNode node) {
+        children[i] = node;
+    }
 }
+
+ class Trie {
+    private TrieNode root;
+
+    public Trie() {
+        root = new TrieNode();
+    }
+
+    // Inserts a word into the trie.
+    public void insert(String word) {
+        TrieNode curr = root;
+        for (char c : word.toCharArray()) {
+            if (curr.getChild(c - 'a') == null) curr.setChild(c - 'a', new TrieNode());
+            curr = curr.getChild(c - 'a');
+        }
+        curr.setItem(word);
+    }
+
+    // Returns if the word is in the trie.
+    public boolean search(String word) {
+        TrieNode curr = root;
+        for (char c : word.toCharArray()) {
+            if (curr.getChild(c - 'a') == null) return false;
+            curr = curr.getChild(c - 'a');
+        }
+        return curr.getItem().equals(word);
+    }
+
+    // Returns if there is any word in the trie
+    // that starts with the given prefix.
+    public boolean startsWith(String prefix) {
+        TrieNode curr = root;
+        for (char c : prefix.toCharArray()) {
+            if (curr.getChild(c - 'a') == null) return false;
+            curr = curr.getChild(c - 'a');
+        }
+        return true;
+    }
 }

@@ -32,7 +32,7 @@
 
                 }
 
-                tail=head;
+                tail=head; ///head is the prev of net section , for example 3->2->1->4->5   1 is the head
                 prev=head;
 
             }

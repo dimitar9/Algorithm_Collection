@@ -8,13 +8,15 @@ public List<List<Integer>> combine(int n, int k){
 
 public void combine(int n, int k , int start, List<List<Integer>> result, ArrayList<Integer> l){
     if(k == 0){
-        result.add(l);
+        result.add(new ArrayList<Integer>(l));
         return;
     }
     for(int i = start; i <= n; ++i){
-        ArrayList<Integer> a = (ArrayList<Integer>) l.clone();
-        a.add(i);
-        combine(n, k - 1, i + 1, result, a);
+        
+        
+        l.add(i);
+        combine(n, k - 1, i + 1, result, l);
+        l.remove(l.size()-1);
     }
 }
 

@@ -21,3 +21,31 @@ int removeDuplicates(int A[], int n, int k) {
             }
             return i;
 }
+
+
+///
+public class Solution {
+    public int removeDuplicates(int[] A) {
+        if(A.length<=2) return A.length;
+        int count = 1;
+        int i=1;int j = 1;
+        int len = A.length;
+        while( j<len){
+            if(A[j] != A[j-1]){
+                A[i++] = A[j++];
+                count = 1;
+            } else {
+                
+                if(count<2){
+                    A[i++]=A[j++];
+                    count++;
+                } else{
+                    j++;
+                    
+                }
+            }
+        }
+        return i;//do not plus one here
+        
+    }
+}

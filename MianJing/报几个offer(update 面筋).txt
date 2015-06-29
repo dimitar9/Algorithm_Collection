@@ -1,0 +1,145 @@
+报几个offer(update 面筋)
+发信站: BBS 未名空间站 (Thu Jun 25 23:37:22 2015, 美东)
+
+Master + 3year 湾区超级屌丝三线非互联网公司，最近面了6家，按面的顺序一个一个
+来报
+
+Cloudera(offer):
+
+phone: max points on a line
+       binary tree inorder/preorder recursive/iterative
+
+onsite:
+       1.三哥implement ReadWriteLock
+         implement stack using array
+         java generic/template
+       2.三哥get average on sliding window
+         how to do it thread safe without lock
+       3.lunch...
+         given a matrix has 0 in it, find an area that has largest sum
+         有点像leetcode那道小岛题
+       4.三哥hiring manager talk
+         project presentation
+       5.白人lead explain TCP/UDP protocol, how it works
+         design RPC API
+         how to do callback in java
+       6.白人lead suppose a communication protocol breaks on "X" letter, how
+do you encode a string.
+
+这家是第一家面的，也是面的最烂的，考的基础知识太多，真心不记得，没想到给过了
+，而且hire manager跟我说feedback是strong hire。。。lunch那轮阿三送我回
+meeting room的时候突然说要考一个coding，尼玛只剩下10分钟，还好写出来了，不知
+道他是不是想恶心我。hiring manager 人超级nice，可能是他力挺的吧，真没想到能
+拿offer。有了第一个offer后面面起来会轻松不少。
+
+offer: 155k + 10% + 200k value of stock over 4 years = 220k
+每年有refresh，stock是70%RSU+30%option，四月融了一大笔钱，估值4B，他们说年底
+上市。阿三偏多，也看到国人了，每天中午包午餐，福利也不错。但是不像pre-ipo的
+节奏，太lay back。
+
+
+HortonWorks(offer):
+
+phone1： Print all paths which sum to a given value in binary tree(including
+negtive value)
+         Implement hashtable
+phone2:  LCA
+         some basic question on Hadoop
+
+onsite:
+        1.co-founder: implement concurrent hashmap, try your best to improve
+performance
+        2.三妈hiring manager: project presentation
+        3.Japanese: basic knowledge on REST api, DB transaction, ACID, CAP
+                    design distributed K-V store
+                    reserve integer
+        4.笑嘻嘻亲切三哥：binary tree serialize/de-serialize
+
+co-founder 进来就打瞌睡，按JDK版本写了个简单版的给他，解释了下代码就开会去了。
+三妈尼玛进来就臭脸，各种挑刺，各种刨根问底（她还真懂），到最后我把gossip
+protocol讲清楚了才有点笑容。最后一个三哥就是来搞笑的，不评价。
+
+offer: 145k + 20k + 135k value of stock over 3 years = 210k
+从第二年开始有30%的refresh，还是挺给力的其实。有一点一定要吐槽，三妈打电话给
+我们公司以前的lead问他：“这货不错，我们想要他，你们以前是怎么管这货的，这货
+加班勤奋么”。我已经当面说过over time没问题，我理解小公司的fast 节奏，但是她
+这么背后一问就让人感觉很不爽。最后一点，全是阿三。。。
+                   
+Zenefits(offer):
+
+phone:  restore binary tree from in-order/pre-order
+        string multiply
+onsite: 1.ABC given “Zenefits is growing fast”, return "Zftienes is
+gwornig fsat"
+          除了首位字母，中间顺序要完全随机，这道题上机写，要跑test。
+          design a API how to render a progress bar
+          design a login system(back end architecture)
+        2.亚裔 minimum window substring preserve order
+          不是leetcode那道，完全不一样的解法。上机写，要能跑test。
+        3.三哥 tiny URL
+
+感谢电面的国人大哥出leetcode原题放水！最后一个三哥态度嚣张，一边design一边反
+驳说这里有问题那里有问题，问我zookeeper是什么，我以为他想考我内部的东西，结
+果他说他没听说过这玩意。。。
+
+Zenefits: 150k + 20k option(value 200k-220k) over 4 years = 200-210k
+不是很给力的样子，虽然CTO亲自打电话发offer,也感觉到了诚意，聊了很久，非常热
+情。我不敢在这评论Z，版上太容易拉仇恨了，不敢说。
+
+Uber(offer, 已接受, 略)
+
+Google(pending)
+
+phone: 1.given an order string "abc" check if "aabdccd" maintain the order
+       "aabdccd" -> true;
+       "abbca"   -> false;
+       2.abbre word, given a list of words, return a map contains abbre word
+map to a list of original word
+       abbre word means:   word -> w2d,  international -> i11l
+       跟anagram差不多
+
+onsite: 1.毛子 given "AABBCC" return "ABCABC", no same char next to each
+other
+          "ABBB" -> exception
+          "ABBA" -> "ABAB"
+        2.国人 excel encoding, leetcode那个
+          given [1,2,0,6,9] and target 81, return true if add “+” between
+numbers can add up to target. 12+0+69=81 -> true.
+        3.白人小哥 java 一个数据结构改错，没什么tricky的地方
+        4.三哥 abbre word again... follow up是 word->w2d, 另一个wold->wo1d,
+也就是说不能group起来，每个都是unique的
+        5.毛子 maximum path from upper left to right bottom, follow up是除了
+往下往右，还可以往左走，怎么避免死循环。
+
+再次感谢国人大哥出简单题放水！Google奇怪的是没面我design题，全是coding，似乎
+也没人看我简历。没什么好说的，general hire.
+
+LinkedIn(pending)
+
+phone: 考烂的两道 max product array 和 product exclude itself
+
+onsite: 1.三哥校友+华人漂亮妹子 tiny url
+        2.白人 project presentation
+        3.三姐校友+不明种族detect intersection of two linked list
+                         max points on a line
+        4.国人+白男 房子上色问题，这题10分钟搞定，shadow白人看不下去了，上来
+恶心了个几何题，不具参考性，因为太变态了，谁没见过能做出来绝逼数学系毕业。还
+好他不是主面。
+        5.host manager some behaviour + when a new version of API 上线，怎么
+和client side 协调好切换版本，出问题了rollback 怎么做。
+
+依然感谢国人电面放水。 如果recruiter没忽悠我的话应该是过了。第二轮那白人各种
+赞，各种good，结果打分最低。
+
+大概总结下，这次刷这么一轮没碰到什么难题，也没碰到不擅长的题型，基本就提笔写
+的，刷到一个程度写题就是本能。。。唯一一个想了一会的就是Z的第二题。
+在公司做的project可以适当放大，把没做完的也加进去，被interviewer提出问题，如
+果这个部分你没有做，也要跟他说你可以怎么优化。要有over view on整个project，
+尽量把握细节，讲的时候往你擅长的部分引到，这一点让人感觉你有ownership。我的
+步奏是先介绍整个框架结构，project的motivation是什么，scale起来瓶颈在哪，sub-
+project拆出来是怎么分的，为什么这么分，之间有什么dependency, sub-project我怎
+么分配顺序的。
+Design题一靠平常积累，二靠多看open source stack，当然要看细节和实现，光知道
+大概没用的。
+
+可以不喷了?

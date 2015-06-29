@@ -1,0 +1,32 @@
+sumo logic的开放型设计题，设计一个cache system
+发信站: BBS 未名空间站 (Mon Jun 29 00:47:26 2015, 美东)
+
+水平不行，已挂。感慨自己工作也好几年了，主持设计开发的项目/feature还是太少。
+感谢版上面过sumo logic的大牛的热情咨询。
+
+感觉设计题考cache挺常见的，大家讨论一下？中国大叔主面，很nice，年轻三哥
+shadoow。设计一个cache system，要pseduo code，存储结构，API等，不要求LRU等替
+换策略，需要考虑concurrent的情况。要求考虑真实的使用场景，也就是这个cache
+system码工们用起来很方便。我给的答案就是传统的hashtable的api，加上处理miss、
+需要从硬盘或者数据库load的时候，做些处理确保不重复load。感觉让中国大叔失望了
+:(
+
+
+这种完全open的设计题最怕了，面试官很容易从你的解题过程中判断你的老练程度，
+problem solving的思维方式，系统设计的基本原理，pro con的tradeoff，用code快速
+描述的能力，等等。个人感觉挺难装出来的。
+
+
+
+======================
+别的几轮里的算法题：
+1. 字典里有大量words，给一个query，如果在字典里能找到one edit distance则返回
+那个word。followup是如果是k edit distance呢。不能对字典里的所有word做简单的
+预处理（产生所有可能的k edit以后的词加入字典）。
+
+2. 设计带历史记录的哈希表。对于同一个key下出现过的多个value都记录，每个value
+都加个timestamp。查找时get（key， ts），输出value，其时间戳是在ts或者ts之前
+最近的。
+
+之前两轮店面都是树的题目，基本都挺简单的，一个稍微麻烦点的是任意叉树的序列化
+和逆序列化。都要在codepad里跑过测试。

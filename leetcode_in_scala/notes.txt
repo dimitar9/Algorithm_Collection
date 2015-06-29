@@ -1,0 +1,1 @@
+Good blog about writing leetcode in scala: http://charlesfreduah.ghost.io/

@@ -19,10 +19,7 @@ public class T95 {
             return list;
         }
 
-        if(start == end){
-            list.add(new TreeNode(start));
-            return list;
-        }
+     
 
         List<TreeNode> left,right;
         for(int i=start;i<=end;i++)

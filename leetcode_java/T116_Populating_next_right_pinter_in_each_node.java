@@ -1,23 +1,25 @@
-/* Go through parent level by its next pointer to generate children level next pointer */
+/**
+ * Definition for binary tree with next pointer.
+ * public class TreeLinkNode {
+ *     int val;
+ *     TreeLinkNode left, right, next;
+ *     TreeLinkNode(int x) { val = x; }
+ * }
+ */
 public class Solution {
-    public void connect(TreeLinkNode root) {
+public void connect(TreeLinkNode root) {
+    if(root == null)
+        return;
 
-        TreeLinkNode leftWall = root;
-        while (leftWall != null) {
-
-            TreeLinkNode across = leftWall;
-            while (across != null) {
-                if (across.left != null) {
-                    across.left.next = across.right;
-                }
-
-                if (across.right != null && across.next != null) {
-                    across.right.next = across.next.left;
-                }
-
-                across = across.next;
-            }
-            leftWall = leftWall.left;
-        }
+    if(root.left != null){
+        root.left.next = root.right;
+        if(root.next != null)
+            root.right.next = root.next.left;
     }
+
+    connect(root.left);
+    connect(root.right);
+}
+
+
 }

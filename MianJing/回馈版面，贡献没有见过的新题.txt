@@ -1,0 +1,24 @@
+回馈版面，贡献没有见过的新题
+发信站: BBS 未名空间站 (Tue Jul  7 14:05:18 2015, 美东)
+
+
+
+面试时遇到的leetcode原体和在板上见过的面经题就不罗列了，贡献下面试中遇到的我
+没有见过的题：
+
+故意中英文混杂～
+
+1. 实现一个iterator，可以按照距离原点的曼哈顿距离输出所有的点。
+
+2. 查找binary tree中有多少个uni－valued subtree，uni－valued tree的定义是所
+有其中node value值一样。
+
+3. 打印JSON object，object有层层嵌套的。
+
+4. max points in a line, 和leetcode不完全一样，输入包括精度，也就是说要考虑
+两个double slope的差值和精度大小。
+
+5. 打印一个数的所有factor, 这个出现好多次了，重点是follow up 要cut branch降
+低复杂度，然后估计复杂度, 标准答案是O(n3)。
+
+可能还有一些，一时想不起来，稍后再update。

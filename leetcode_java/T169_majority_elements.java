@@ -1,15 +1,18 @@
-class Solution {//cpp
-public:
-    int majorityElement(vector<int> &num) {
-        int n = num.size();
-        int half = (n%2==0)? n/2:n/2+1;
-        map<int,int> count;
-        for(int i = 0; i < n; i++){
-            count[num[i]]++;
-            if(count[num[i]]>= half )
-                return num[i];
+public class Solution {
+    public int majorityElement(int[] num) {
+
+        int major=num[0], count = 1;
+        for(int i=1; i<num.length;i++){
+            if(count==0){
+                count++;
+                major=num[i];
+            }else if(major==num[i]){
+                count++;
+            }else count--;
+
         }
-        return 0;
-        
+        return major;
     }
-};
+}
+
+//majority voting 

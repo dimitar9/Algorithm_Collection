@@ -1,24 +1,25 @@
 class MyStack {
-
-    private Queue queue;
-
+    Queue<Integer> q = new LinkedList<Integer>();
+    // Push element x onto stack.
     public void push(int x) {
-        Queue q = new LinkedList();     // could be any queue type, see note above
         q.add(x);
-        q.add(queue);
-        queue = q;
+        for (int i = 0; i < q.size() - 1; i++) {
+            q.add(q.remove());    
+        }
     }
 
+    // Removes the element on top of the stack.
     public void pop() {
-        queue.remove();
-        queue = (Queue) queue.peek();
+        q.remove();
     }
 
+    // Get the top element.
     public int top() {
-        return (int) queue.peek();
+        return q.peek();
     }
 
+    // Return whether the stack is empty.
     public boolean empty() {
-        return queue == null;
+        return q.isEmpty();
     }
 }

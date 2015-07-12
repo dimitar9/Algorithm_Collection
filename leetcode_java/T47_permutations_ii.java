@@ -1,46 +1,37 @@
 public class Solution {
-private List<List<Integer>> res = new ArrayList<List<Integer>>();
-private ArrayList<Integer> per = new ArrayList<Integer>();
 
-public List<List<Integer>> permuteUnique(int[] num) {
-    Arrays.sort(num);
-    for(int n:num) per.add(n);
-    getPer(0);
-    return res;
-}
-
-void getPer(int index) {
-    if( index >= per.size()-1 ) {
-        res.add(new ArrayList<Integer>(per));
-        return;
+    public List<List<Integer>> permuteUnique(int[] nums) {
+        Arrays.sort(nums);
+        List<List<Integer>> permutations = new ArrayList<List<Integer>>();
+        permute(nums, 0, permutations);
+        return permutations;
     }
-    Integer previous = null;
-    for( int i=per.size()-index; i>0; i-- ) {
-        if( per.get(index) != previous ) getPer(index+1);
-        per.add(previous = per.remove(index));
-    }
-}
-}
 
-
-//c++
-class Solution {
-public:
-    void recursion(vector<int> num, int i, int j, vector<vector<int> > &res) {
-        if (i == j-1) {
-            res.push_back(num);
-            return;
-        }
-        for (int k = i; k < j; k++) {
-            if (i != k && num[i] == num[k]) continue;
-            swap(num[i], num[k]);
-            recursion(num, i+1, j, res);
+    public void permute(int[] nums, int begin, List<List<Integer>> permutations) {
+        if ( begin == nums.length-1 ) {
+            permutations.add( convertArrayToList(nums) );
+        } else if ( begin < nums.length-1 ) {
+            for ( int i = begin; i < nums.length; i++ ) {
+                if ( i == begin || nums[begin] != nums[i] ) {
+                    swap(nums, i, begin);
+                    permute(nums, begin+1, permutations);
+                }
+            }
+            for ( int i = begin; i+1 < nums.length; i++ ) {
+                swap(nums, i, i+1);
+            }
         }
     }
-    vector<vector<int> > permuteUnique(vector<int> &num) {
-        sort(num.begin(), num.end());
-        vector<vector<int> >res;
-        recursion(num, 0, num.size(), res);
-        return res;
+
+    public void swap(int[] arr, int i, int j) {
+        if ( i != j ) {
+            int tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;
+        }
     }
-};
+
+    public List<Integer> convertArrayToList(int[] nums) {
+        List<Integer> list = new ArrayList<Integer>(nums.length);
+        for ( int num : nums ) { list.add(num); }
+        return list;
+    }
+}

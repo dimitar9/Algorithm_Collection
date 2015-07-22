@@ -1,0 +1,37 @@
+脸书谷歌面经
+发信站: BBS 未名空间站 (Tue Jul 21 18:00:55 2015, 美东)
+
+脸:
+一轮local 面:
+Input: Given a matrix of 0, there are some areas populated with 1, 2, 3s.
+Output: Map<int, numOfRegions>
+
+Onsite:
+Round 1: cultural, project deep dive, things that can be done better
+Round 2: Calculator, implement a function to output the current display
+based on the inputs that is already typed.
+Round 3: Word Ladder II in Leetcode
+Round 4: Design facebook event notification system (push on mobile app, and
+pull on web), discuss storage/api, how to generate events, prefer to use
+periodical job to scan incoming events and generate messages accordingly
+Round 5: Culture fit, strength, how to deal with disputes among colleagues,
+reverse linked list in pairs
+
+谷歌:
+1. Given a robot and a maze, the robot supports these apis:
+Turn left, move forward, checkIsExit
+Write a program to make it move to the exit
+
+2. Design Youtube access control system, storage, scales
+
+3. Suppose there are k threads, write a multi-thread program to make them
+come to deadlock, I use semaphore at first, then was asked to implement it
+with countDownLatch
+
+4. RunLength encoding, discuss various ways to minimize the encoded string
+under different constraints
+
+5. Design a system to generate Ids for distributed DBs, discuss various
+Zookeeper patterns (leader elections etc).
+For a given number, how to return minimum number of squares that sums up to
+this number

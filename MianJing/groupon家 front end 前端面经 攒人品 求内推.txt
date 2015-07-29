@@ -1,0 +1,90 @@
+groupon家 front end 前端面经 攒人品 求内推
+发信站: BBS 未名空间站 (Wed Jul 29 16:01:00 2015, 美东)
+
+已经好几个onsite了到目前还未收到offer
+打滚求版上朋友各种内推
+刚收到结果已跪
+听说报面经涨人品，发一个
+刚面的groupon palo alto office的 software engineer - front end
+一共是两轮电面加上onsite 五轮，电面是一轮后端 一轮前端，onsite五轮是两个前端
+一个后端两个vp
+
+电面:
+
+第一轮 manager 后台的
+问了一些html5的属性
+然后一道算法题目并且写测试
+"Buy 3 pairs of socks for $4.50"
+"Buy 3 pairs of socks for $4 2/4"
+
+Requirements:
+- Must have a denominator of 4: eg 4.50 => 4 2/4
+- If numerator is 0, then don't show the fraction: eg 4.00 => 4
+- If the integer part is 0, then don't show it! eg 0.75 => 3/4
+- For negative input, throw an exception
+
+toFraction
+input: decimal number
+output: string
+要求
+- Correctness
+- Test cases (boundary cases, edge cases, etc)
+- Readability, style
+
+第二轮
+写一段js代码判断用户是否完成键盘输入。
+然后每次当用户完成输入 做一个ajax call得到数据 如何保证只返回最新一次的数据
+问了restful api的概念
+http method有哪些
+get和post方法有哪些区别 什么时候使用
+
+
+onsite：
+第一轮
+印度gg 前端小哥
+和前端小哥聊了一下项目和angular js 2.0 然后小哥问了一些css的题目
+比如position absolute relative 分别怎么用
+vendor-prefix怎么回事
+随便说几个css3的属性
+代码 小哥在白板上写了一段javascript的代码 ，变量hoist， 要求我描述打印出什么
+结果
+代码大概是这样
+(function(){
+console.log(a);
+var a = “foo”;
+var foo = function(){
+console.log(a);
+};
+})();
+然后详细的讨论了下hoist的各种情况
+设计typehead的实现思路 比如输入什么的时候触发ajax call 输入什么的时候自动提
+示补全的信息，什么时候提示各种选项
+
+第二轮 韩国gg 前端小哥
+吃午饭完后 小哥就随便问了些angularjs的优化 有哪些地方性能表现不好 要怎么提升的
+代码
+js prototype chain怎么回事
+要写一个private function要怎么弄
+prototype object clone是什么 啥时候用
+
+第三轮 印度小哥 应该是做偏向后台的
+上来问我restful api的问题 我说木有写过restful。。。于是换了道很简单的数据结
+构题目
+简单的写出给一个linkedlist 数据结构里面插入和删除一个data的代码
+要求写test case 时间不够了没写完
+
+第四轮 vp面
+behavior question
+讨论groupon家的产品
+然后问对server的了解 存储什么样的数据选什么样子的server和database
+关于http的了解 页面重定向具体怎么实现（http代码301）之类的
+我觉得可以参考这个问题： 从hit url到取得页面的过程中 发生了什么？知道的越具
+体越好
+
+第五轮 vp面
+也是behavior question
+技术：
+是给出一个棋盘类游戏，问代码架构的 因为题目很大 所以一般就写伪代码之类了 主
+要是看思路是不是正确。很多corner case要考虑所以最后超时了。
+
+

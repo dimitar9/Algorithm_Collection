@@ -1,0 +1,25 @@
+Amazon 面经
+发信站: BBS 未名空间站 (Tue Jul 28 02:42:45 2015, 美东)
+
+总共5小时 面了7个人(包含一开始HR 和中午吃饭1小时)..
+第一轮HR帮你热身30分钟 先下马威
+   1.AMAZON的BASE上限是160K..全公司没有人BASE超过这个上限..连CEO JEFF 也一样.
+   2.一般不发SDE III offer.  Amazon SDE II 包含MSFT SDE II 到MSFT Senior SDE
+一半的range(60,61,62)
+
+#1
+设计Drones Schedule/Deliver system
+
+#2
+Median of Integer Stream
+http://www.ardendertat.com/2011/11/03/programming-interview-que
+
+#3
+设计 Elevator schedule system to minimize everyone’s wait time
+
+#4
+Given DLL Package dependency, print the installation sequence.
+先用DFS 把Graph 的End NODES 找出..再由End node 向上找没有children 的Node…
+etc
+
+50%的时间在问behavior questions

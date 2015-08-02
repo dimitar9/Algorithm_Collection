@@ -1,0 +1,149 @@
+interview with Groupon Pavalli
+import java.io.*;
+import java.util.*;
+
+/**
+MyMath.pow(double x, double y)
+*/
+
+/*
+ * To execute Java, please define "static void main" on a class
+ * named Solution.
+ *
+ * If you need more classes, simply define them inline.
+ */
+
+class Solution {
+  
+  public double myPower(double x, double y){
+    if(y == 0) return 1;
+    if(x == 0) return 0;
+    if(y < 0)  return  1 / myPower(x, 0-y);
+    
+    List<Integer> yPair = convert(y);
+    int yFirst = yPair.get(0);
+    int ySecond = yPair.get(1);
+    
+    System.out.println(yFirst + " " + ySecond);
+    
+    double retFirst = power(x, yFirst);
+    double retSecond = power(x, ySecond);
+    return retFirst / retSecond;
+  }
+  
+  public static double power(double x, int n){
+    if ( n == 0) return 1;
+    if( n % 2 == 0 ) { 
+      return power(x * x, n/2);
+    } else {
+      return x * power( x , n-1);
+    }
+  }
+  
+  private List<Integer> convert(double number){
+    //1.3 
+    //return [13, 10];
+    //power(x,13) / power(x,10);
+    int times = 1;
+    while((number - (int)number) != 0){
+      times *= 10;
+      number *= times;
+    }
+    List<Integer> list = new ArrayList<Integer>();
+    list.add((int)number);
+    list.add(times);
+    return list; 
+  } 
+  
+  
+  
+  public static void main(String[] args) {
+    Solution s = new Solution();
+    double ret = s.myPower(2,2);
+    System.out.println(ret);
+  
+}
+}
+
+///1.3 => 13 / 10
+
+/**
+Design an automated parking lot
+- Automatically detecting lot full
+- Allocate the empty space to the new car (suv, compact and you may have diff kind of slots)
+- Autiomated payment and pricing
+"
+  
+  
+  class space(){
+  
+  } 
+  class BusSpace
+  class 
+  
+  class ParkingLot()
+  {
+    int levels = LEVEL;
+    int spaceForEachLevel = SPACE;
+    priave space[][] spaces = new [level][spaceForEachLevel];
+    
+    2 queues
+    EmptySpaces    pop elemet from emptyqueue
+    OccupiedSpaces add to Occupiedspaces
+    
+    priave boolean full;
+    
+    
+    public carEnter(Car c, Timestamp timeEnter, Timerstamp timeExit ) {
+      if (!full){
+        Park()
+      }
+    }
+    
+    private hasEmptySpot(SUV s){
+       check spaces full;
+    }
+    
+
+    
+    private Park(Compact c){
+    
+    }
+    
+    private hasEmptySpot(Bus b){
+       check spaces full;
+    }
+    
+  
+  
+  }
+  
+  interface Car()
+  {
+  
+  }
+  class SUV()
+  {
+    int size = 2;
+  }
+  class Compact() {
+    int size = 1;
+  }
+  class Bus()
+  
+  clsss MotoCycle()
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

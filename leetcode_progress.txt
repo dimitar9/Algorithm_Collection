@@ -51,4 +51,4 @@
 //8.9.2015
 247,249, 250,
 //8.10.2015
-252, facebook leetcode list: 79,
+252, facebook leetcode list: 79,139

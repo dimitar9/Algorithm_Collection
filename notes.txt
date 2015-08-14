@@ -36,3 +36,6 @@ http://www.cs.cornell.edu/projects/ladis2009/talks/dean-keynote-ladis2009.pdf
 
 10. good algorithm blog:
 http://www.growingwiththeweb.com/2012/06/a-pathfinding-algorithm.html
+
+
+11. http://www.javased.com/static/coding-interview.html

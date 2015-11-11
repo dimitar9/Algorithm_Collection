@@ -1,0 +1,54 @@
+被U家猎头联系，安排电面。
+
+第一轮，用coderpad做题，首先merge two sorted list。然后实现功能，使得某函数
+在过去给定时段（比如过去10秒）的调用次数不超过100次。
+
+第二轮，同样用coderpad。实现key value store。同时要求限制容量，新的数据挤走
+旧的数据，类似LRU。
+
+两轮都要求现场调试加测试。我感觉还不错，但几天后收到猎头反馈，说不match，但
+有可能再联系我。我追问反馈细节，猎头就不理我了。:-(
+
+感觉U的bar似乎不低。
+
+我的思路是用一个circular ring来实现，因为只要求最近10秒，这个ring只要保存11
+个元素就可以了，每个元素保存一个pair<long, long> p. p的第一个值是epoch time
+的秒，第二个值是在该秒调用的次数。每次这个函数被调用，就查询一下最近10的总的
+调用次数，如果超过了100次，就返回true。否则就返回false。C++代码如下：
+class Counter {
+private:
+  vector<pair<long, long> > counter;
+  int index;
+  const int times;
+public:
+  Counter(int seconds, int ts) : counter(seconds+1), index(-1), times(ts) {}
+  bool quotaExceeded() {
+    time_t current = time(NULL);
+    long sum = 0;
+    for (int i = 0, e = counter.size(); i < e; ++i) {
+      if (counter[i].first >= current - 10) {
+        // This happens in the last 10 seconds.
+        sum += counter[i].second;
+      } else {
+        counter[i] = make_pair(0, 0);
+      }
+    }
+    // More than 100 times, we return here directly.
+    if (sum >= times) return true;
+    if (index != -1 && counter[index].first == current)
+      counter[index].second++;
+    else {
+      index = (index+1)%counter.size();
+      counter[index] = make_pair(current, 1);
+    }
+    return false;
+  }
+};
+
+
+比如，你有个函数g，你想要保证g每10秒只被调用100次，那你就可以这么做：
+void g() {
+  static Counter counter(10, 100);
+  if (counter.quotaExceeded()) return;
+  std::cout << "g() " << count <<  std::endl;
+}

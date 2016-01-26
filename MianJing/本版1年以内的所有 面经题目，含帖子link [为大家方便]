@@ -1,0 +1,3677 @@
+本版1年以内的所有 面经题目，含帖子link [为大家方便]
+发信站: BBS 未名空间站 (Fri Jan 29 14:20:44 2010, 美东)
+
+不敢保证全部涵盖，大部分的都在。
+我自己找了一遍，大家一起用着都方便。
+不过只是含有题目的帖子 我才包含进来了，只分享经验没贴题目的 我都没有包含
+进来。
+
+大家复习着方便。
+
+
+
+
+
+
+
+
+
+1. 一个sorted interger Array[1...N], 已知范围 1...N+1. 已知一个数字missing。
+   找该数字。
+   把原题改为unsorted，找missing数字。 performance。
+
+2. 复制linked list。 已知每个节点有两个pointer，一个指向后一个节点，另一个指向
+   其他任意一节点。 O(n)时间内，无附加内存，复制该linked list。（存储不连续）
+
+3. 一个party N个人，如果一个人不认识任何其他人，又被任何其他人认识，此人为
+   celebrity。用O(n)时间找到此celebrity。
+
+4. 给中序后续，构建树。
+
+其他的每轮都问了简历。
+
+感觉答的都不错，没什么难度。不知道为啥就被拒了。总之感觉很奇怪，不过也无所谓
+了。
+希望对大家有帮助。
+
+Pasted from <http://www.mitbbs.com/article_t/JobHunting/31342084.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+>
+
+贡献一道cs面试题，虽然我的面试机会极少。 ：D
+
+设计一个函数，返回一组数字的组合，combination，
+不同的是，你每调用它一次，它就返回下一个组合，而不是一次全返回。
+注：你不能一次算完，把他们存起来，而必须临时算！
+
+Pasted from <http://www.mitbbs.com/article_t/JobHunting/31347263.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+>
+
+IT company, 全都是brain teaser, 有点老。
+
+1. 50个黑球50个百球，2个罐，要求你放这100个球在这2个罐，使得别人随机从2个
+罐中任意拿一个球是黑球的几率达到最大。
+
+2. heard on the street 上的男人出轨题，简单逻辑推理。
+
+3. 这个没答上来，后来给了提示做出来了，但是回头想想还是不对。上来请教一下
+。
+
+2个人商量好策略，然后一个从52张牌里面随机抽5张，看牌，考虑。。。然后排在
+桌上，摊开前4张，第5张面朝下，由第二个人判断第5张牌。 问这个策略。
+
+Pasted from <http://www.mitbbs.com/article_t/JobHunting/31347264.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+>
+
+这周一面的，一共5个人，碰到的题目不太难：
+
+1. 写atoi函数，
+   测nodepad
+
+2. 古老的三角形问题：输入3边，看是什么三角形。
+   一个mobile device可以从服务器上传和下载图像，怎么测试这个系统？
+
+3. lunch meeting之后回办公室打开电脑，说他们现在开发的某产品有问题，每次要
+loading很久,差不多10秒的样子。问怎么测试并找出这个bug？ 这个把我难住了，胡乱
+讲了一通，然后说太困难了；于是他换了个题目，画了一个plotter软件的界面，问怎
+么测。
+
+   coding的题目是Path Walk，给一条路径，写一个函数来走通它。其实这个题目我没
+搞明白什么意思，先沟通了很久，最后开始写（还是不太明白。汗...），写完了觉得
+不正确，正想再改改，被打住了，说给个test case一起来看看程序怎么执行。每句代
+码跑了一通，却发现code写正确了:-)
+
+4. 一开始是个IQ题，把一堆数字填到格子里，满足一些条件，比如1和2不能相邻。
+   测一个记事薄软件。有scheduler和notifier两部分，可以从scheduler输入时间和
+内容，然后notifier到预定时间会给出提醒。
+   coding题目很容易，找到单链表倒数第N个节点。
+
+5. 最后是hiring manager，问了一些behavior问题，然后打开一个网站，问怎么测试。
+
+Pasted from <http://www.mitbbs.com/article_t/JobHunting/31348374.html
+
+
+
+
+
+
+>
+
+在onsite面试中实际遇到的。
+1.template中用typename和用class有什么区别？
+2.unix下执行shell脚本和执行可执行文件有什么区别？哪个更快，为什么？脚本语言
+程序（如javascript)和可执行文件程序有什么区别？shell和这两者却别呢？
+3.如何对const data member做assignment?
+
+class A{
+const int a;
+public:
+    A():a(0){};
+    A(int m_a):a(m_a){};
+};
+
+int main(){
+   A a(1);
+   A b;
+   b = a; //how to implement assignment for this?
+}
+
+4.如果把base class对象赋给derived class对象,会怎么样？compiler报错还是执行错
+误？
+
+class A{
+public:
+   int a;
+};
+
+class B:public A{
+public:
+   int b;
+};
+
+int main(){
+    A a;
+    B b;
+    b = a; //what happend?
+    cout << b.b << endl;   
+
+    B* b2;
+    b2 = &a;  //how about this?
+    cout << b->b << endl;
+}
+
+Pasted from <http://www.mitbbs.com/article_t/JobHunting/31348607.html
+
+
+
+
+
+
+>
+
+两波两小时，第一波老白＋老印，小兵
+
+1. 介绍Recent Project
+2. 两个C的程序问题
+先是char*指针问题
+char *dosth()
+{
+char s[256];
+char * p = r;
+p = "some new string":
+}
+然后问了一堆变量的值，比如 s, *s, *(s+2), &p, etc.
+
+另外一个switch程序找错，没有加break之类，还有就是return local variable地址的
+问题
+
+3. 手写fab(n)函数，不是算，而是输出，递归或者循环都可，不过递归不高效大家应
+该知道
+
+4. 逻辑问题：八个水罐称重
+
+5. 一堆关于OO概念的问题，多态，继承，封装，接口和抽象类的区别，复写和重载（
+包括C++具体怎么实现的）
+
+6. 反馈问题
+
+第二波一个项目经理
+一来就是比较高难度的，给你一个字节数组（注意取值范围），数组长度可能非常长，
+如何找到第一个只出现了一次的数字。开始没什么思路，和他讨论了一会，边问还边问
+复杂度和数据结构的问题，后来发现应该进行数出现次数，这样复杂度就是２ｎ，结果
+出来了要求手写出代码。
+
+然后就是一个智力问题，三个囚犯黑帽白帽，之前没见过，所以用了不少时间才想出来
+，大家可以搜搜，有现成的。 最后反问问题后结束。
+
+虽然每个问题都答出来了，不过最后还是功亏一篑。不是很清楚什么原因，哪位同学能
+够指点一下？现在继续回归闺中状态中。不过感觉彭博问题的重复概率很大，希望对后
+来的同学能够有所帮助：）
+
+Pasted from <http://www.mitbbs.com/article_t/JobHunting/31350186.html
+
+
+
+
+
+
+>
+
+1, C vs C++
+2, struct in C v.s. in C++ v.s. class in C++
+3, virtual function, pure virtual function, abstract class
+   what is the advantages of using virtual function
+4, new v.s. malloc()
+5, memory for a process (code, static data, stack, heap)
+6, how to know the stack is growing in the direction of address increasing
+or decreasing
+7, virtual memory
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31354737_3.html
+
+
+
+
+
+
+>
+
+nsite 只见了2个人，估计over了，总结一下教训。
+题目不难，主要一共3道题，都算比较基础的题。
+1.reverse words in a sentence，使用如下函数。
+char* reverseWord(const char* str)
+
+2.an interger array containing millions of elements with min 0 and max 1000,
+how to sort it?
+
+3.covert interger number to date string, for example, 20090130 -> "01/30/
+2009"
+
+说说教训：
+第一道被输入const给搞死了。先是没有注意const,直接按照常规非const做，没有写完
+就被叫停了；然后是被平时强调的malloc后必须及时delete规则搞死，坚持认为在函数
+里malloc一块内存然后在函数外delete是不好的习惯；最后当面试者提出如果定义一块
+内存
+，如char tmp[2048]，然后使用会怎么样？自己提到可以在函数外strcpy函数返回结果
+，却忘了
+arr大小实际是无法指定的，所以这种方法是不可接受的。总之，很多的trick在里
+面没有注意到。
+
+第二道使用couting sort应该就可以。面试者要求描述算法，不需写代码。
+
+第三道自己的做法是先取得30,然后01，然后2009然后组合成一个string。问题是这样
+的话，月和日的01前的0可能会丢失，使得最后结果可能不对。后来想正确的做法应该
+是先把整形转成string,然后使用substr并组合。另外，面试者问有stl有什么可以替换
+itoa，自己答不出来。后来查了下，应该是可以使用stringstream来实现，如下：
+
+stringstream ss;
+ss << intVal;
+
+ss.str()就是我们要的结果。
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31356298_3.html
+
+
+
+
+
+
+>
+
+现在版上的文章好像已经以H1申请为主了，不知道多少人还对面经感兴趣。不过想想还
+是写一下好，要不自己过几天可能就忘光了，呵呵。
+
+申请工作：Software Developer，Mobile Application组
+
+问题问的很多很杂，基本上不难。不过后来想想，也没有全都答对。大概包括：
+
+* 为什么对Amazon感兴趣。
+* 自己最近的Project。
+* 说出自己会的编程语言并打分（1－5）。
+* 有没有开发Mobile application的经验。
+* 几个常见Data structure的Lookup操作的时间复杂度。
+* HTTP post和get的区别。
+* Design Pattern: Singleton, Factory, Lazy initialization。
+* Multi-threaded programming, deadlock之类。
+* 对Unix环境是否熟悉，几个常见命令，ls, ps之类。
+* Reflection的概念，Java reflection，C++里面是不是有reflection。
+* 如何实现Garbage Collection。Reference counting的缺点(cycle)，如何解决，JVM
+有没有解决。
+* C++里面virtual destructor的用途，于一般virtual function的区别。
+* 写一个函数实现两个整数相除，不用"/"和"%"，返回商和余数。写完读给他听。
+* 算法设计：一个Galaxy，每个星星用一个三围座标表示，找出离地球最近的1000个。
+（后来发现这也是老题了）
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31368921_3.html
+
+
+
+
+
+
+>
+
+have read many posts here although not really helpful this time, here is
+something about bloomberg's phone interview question
+
+1. How to implement garbage collector ( what data structure)
+2. How to implement c++ smart pointer
+3. Pro and Con of multi process and multi-thread
+4. How many stack/heap does a multi-thread program with 10 threads have?
+
+there are some other questions I don't remember.
+
+
+☆─────────────────────────────────────☆
+  yellpine (fresh CS master looking for referral) 于 (Wed Mar  4 16:42:52
+2009) 提到:
+
+4. How many stack/heap does a multi-thread program with 10 threads have?
+
+who can help me with this?
+
+10 stacks? 1 heap?
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31373641_3.html
+
+
+
+
+
+
+>
+
+估计没有多少人感兴趣,
+
+不过还是说一说.
+
+面的是ELASTIC COMPUTING CLOUD组的SE,我是做网络的,对他们的这个cloud service有
+些兴趣,以为会问算法和系统的问题,结果问了一个OOD的问题,
+
+说一个大楼,10层,4个电梯,怎么设计类来实现这样一个系统?
+
+题目career cup上有,不过没想到他会问这个,ECC又不是做应用的.刚好是我的弱项,一
+直做research,对算法和语言还算了解,对应用系统和设计那是一片空白.面的是一塌糊
+涂. 有要面amazon的参考一下.
+
+Pasted from <http://www.mitbbs.com/article_t/JobHunting/31376671.html
+
+
+
+
+
+
+>
+
+S Master
+Windows Live Experience 组：
+我一直催HR，今天给我打电话说拒了。 汗了--自我感觉还挺好的。
+
+拒了 也把经验给大家分享一下，在版上受益这么多，回报一下大家。
+一共见了5个人， 两个SDET， 两个SDET lead， 最后一个director。题目都很简单
+
+1.美国人。上来随便聊聊，然后出了个coding 题目 一个数组，找出第一个重复的数
+  我给了三种方法，最后用hash写的，然后问test case之类的
+
+2.印度人
+  上来问我会什么C#还是C++，我说C#会的多一些。然后他上来问了四五个简单的 语法
+问题。正好我还都会，心理还窃喜着呢。coding 也很简单，给一个01字符串，转化成
+整数。写完后 test case。 第二个题目是两个函数互相调用，无限循环了，然我找出
+毛病，问怎么解决。
+  然后午饭跟这个印度人吃，随便聊聊。 就过了
+
+3.欧洲人，不知道哪国。
+  女的， 人很好，跟她聊的最开心。coding 题目是个没见过的，double bytes
+string实现delete键功能。这个比较难解释，她开始也跟我解释了很长时间。 就是删
+除字符的时候如何确定是删一个字节还是删两个字节的问题。我给出算法，然后她有提
+示有哪些特殊情况要考虑，也做出来了。然后她就问我给一个一般的application 如何
+测试，又随便说了一通，结束了
+
+4.美国人 senior test lead
+coding 很简单，给一个句子，把里边所有的单词自身reverse
+然后给我看他们的产品，问我怎么测试。聊的也挺好
+
+5.欧洲人 director
+
+面到这个人的时候，我都快累趴下了，都不想面了，实在是累。心理还想着，offer拿
+不拿得着无所谓，别把老子给累死了。（看来真得努力锻炼身体，不然面试都挺不住）
+
+题目也很简单，找1--100的素数。我就给了最简单的方法，然后我说要 check一些边界
+情况，他说不用了。然后让我做到他的椅子上，打开excel，问我怎么测设置字体这个
+feature。说完了问我有什么问题没有
+
+面完后觉得还不错，因为去之前心态还不错，现在就业情况不好
+也怕，没打算毕业。
+后来回到学校我就一直催HR赶紧给我结果，今天就给催出来了 呵呵
+我说打算postpone到年底毕业，他说到时候可以直接再联系他（有个屁用啊 呵呵）
+
+在学校继续呆着吧，呵呵，把身体锻炼好，面试也是一个体力活。
+写出来 希望对大家能有点帮助。
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31383513_3.html
+
+
+
+
+
+
+>
+
+iantianz (tiantianz) 于 (Thu Mar 12 15:23:30 2009) 提到:
+
+刚刚电面了一家中型软件公司的summer intern，问了一个算法题：
+
+给你一本dictionary，任意给你七个letters，让你找出包含这七个字母的、最长的单
+词。
+
+条件：可以pre-processing，这样每次给你不同的letters时，可以very effcient
+
+我当时想了好久也没给出完整答案。。。
+naive 的解法当然就是每次scan dictionary，每次 O（n）。。。
+pre-peocessing那就是建index，但index怎么建？怎么操作？
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31387661_3.html
+
+
+
+
+
+
+>
+
+  MichaelChen (Michael) 于 (Thu Mar 12 17:05:44 2009) 提到:
+
+上学期ON CAMPUS的INTERVIEW,PENDING了几个月给了ON SITE
+两周前去的，面的FULL TIME SDE。
+见了5个人
+1.REVERSE LINKLIST.
+2.给了N个数，值域[1,N-1]，如何找出第一个重复的数
+3.算POLYNOMIAL，比如5x^4+6x^3-7x^2-8=?
+4.给一个URL,如何把空格这种字符转换成%20这种
+5.给一个LINKLIST,VALUE的指针指向其他NODE，复制他
+今天RECRUITER发邮件通知给OFFER了，漫长的两周。。。希望收回OFFER这种事不要发
+生。。
+准备基本就是看MITBBS精华区，programming interview exposed和careercup，希望大
+家都好运，ms应该还是在招人。
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31387663_3.html
+
+
+
+
+
+
+>
+
+攒rp，最近遇到的面试题。。。
+
+C++：effective c++上的东西若干；exception相关；继承和子父类指针若干. 十五分
+钟左右。
+
+算法/编程：1. 大文件随机sample，one pass.  2. sodoku solver.  3. logn解x^y,
+4. DP题  5. 1Billion query里选出时间最近5分钟内最frequent的1000个，one pass
+（我以前在amazon见到过这题）。6.两个排序数组找共同中值。递归和非递归解法。7.
+斐波那契数列。100层楼梯下楼，可以一步也可以两步，多少种下法？递归和非递归。
+8 贝叶斯后验概率。9。多少人在一起，生日可能出现重复概率大于0.5？（算法导论原
+题，我只记得个答案，直接说了。。。）10. 一个数组，找最大值比较次数？同时找最
+大值和最小值比较次数？找最大值和次最大值比较次数？（他问我是否知道这题，我说
+是作业题。后来和师兄聊说是这他常拿来用的面试题。）
+
+
+系统设计和经验：1 设计一个库，提供timer的功能。deltalist/hash，或类似linux
+kernal的 timer 设计。效率要比较高。2. 一个类似chord的DHT设计。3. 你有一个奇
+怪的程序，有时有bug，有时没有，说出尽可能多的可能原因。4. printf来debug有何
+不妥。5. process和thread。process之间的IPC有那些种？process间是否也可以share
+memory.何时选thread或process。
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31393101_3.html
+
+
+
+
+
+
+>
+
+职位是 junior financial engineer, 公司是一hedge fund,其实面完就感觉不太好，
+一共见了6个人，有两个人问得技术问题答得不太好，也怪自己事先准备面试下的功夫
+不太到家，准备得重点没有把握好。以下是一些能想起来的问题：
+
+1。C++ 中的virtual destructor是啥？ 为啥要用？
+
+2。quick sort， merge sort的复杂度。
+
+3。 Structure 和class的区别是什么？ （我晕，这个我居然给答反了）
+
+4。关于C++ 处理异常的方法 。 （基本上一头雾水）
+
+5。Monte Carlo method in american style option pricing。 （我说的用least
+square regression method,blah......)
+
+6. Int_0^T W(t) dW(t) （ 一看见这个，贼激动阿，熟悉的ito' s formula)
+
+7. Stonivich intergral 是啥？ 为什么用Ito's 不用 stonivich? (不知道拼得对不
+对）
+
+8. 一个国家所有的人如果生了一个男孩以后就停止生育，生了女孩以后就继续生，直
+到生出男孩才停止生育，问多年以后男孩多还是女孩多？ （要联系上stopping time的
+概念）。
+
+9。什么是AR model? 啥时候用AR model?
+
+10. American option 的up bound? (我说是stock price,被直接鄙视了，说更精确的
+，只好答没有研究过，当时一头雾水）。
+
+
+以上的是我能记得的一些问题，还有一些关于数据结构的问题我就彻底歇菜了，从来没
+有这方面的背景，也就不记得他的问题了。
+
+还有就是，关于自己的简历上面的Project 工作经历，一定要熟练再熟练，有些人问得
+那叫一个细啊，而且基本上我所有的Project都被人问到了。这次面试的前4个人主要问
+计算机和金融方面的技术问题，第5个HR，问些personality的问题，最后是hiring
+manager,因为之前电话面试过我，就没有问问题，简单聊聊。整个面试花了５个小时，
+雷死了，脑子到后面都已经不转了。虽然结果让人遗憾，不过就当是学习了，贴点信息
+和大家共享下，希望自己能早日找到工作，也希望还在努力找工作的XDJM们再加把劲，
+大家一起加油。
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31406731_3.html
+
+
+
+
+
+
+>
+
+CS方向，希望对大家准备面试有帮助
+
+1. 用stack class来实现queue，具体用几个stack不限。完了以后问怎么实现thread
+safety，然后是怎么测试。
+
+2. 实现strstr(str1, str2)，如果str2是str1的子串，返回true，否则返回false。实
+现完了以后问如何测试。
+
+3. 给定一个integer array with both positive and negative numbers，return a
+contiguous subarray with the largest sum. 我本来想用dynamic programming实现
+，但面试官希望按照他的一个更heuristic的思路来解，最后勉强搞定。
+
+4. 给定一个排好序的linked list，删除其中所有的重复元素。比如给定1->2->3->3->
+4->4->5，返回1->2->5。给定1->1->1->2->3，返回2->3。看起来简单，一边写一边发
+现许多细节需要小心应对，好在最后搞定。
+
+5. 给你三个烤箱，每个烤箱可以同时烤两片面包，需要的时间分别是3分钟，4分钟和3
+分钟。但第三个烤箱有一个slot出了点问题，每次只能烤面包的一面。所以这个烤箱三
+分钟后只能算烤好一片半面包，你需要把那半片翻个面，在同一个slot里再烤一次才算
+一片完整的。现在给你这三个烤箱，问烤好21片面包最少需要多少时间？如果是2100片
+呢？如果是任意给定的N片，要求O(1)时间内给出最少需要的时间。
+
+6. 给你三根棍子，每根都需要一个小时才烧完，但每根燃烧的速度都不一样，也不均
+匀。问只有这三根棍子和火柴，如何精确的得到1小时45分钟的计时？
+
+7. 在一个party上，每个人可能认识别人，也可能不认识。现在其中有一个人是名人，
+定义就是所有的人都认识他，但他不认识其余的任何人。现在要求你去找出这个名人来
+。但你只可以通过一个方法，就是问A是不是认识B，回答是表示A认识B，不是表示A不
+认识B。你可以任意去问这样的问题，问最少需要多少次能找出这个名人？思路有了之
+后要求写代码实现，可以调用knows(A, B)，代表上面的那个问题。实现完了以后问如
+何测试
+
+8. 测试copy这个命令。然后自己问了一些clarifying questions，搞清了实际上是
+copy src dest。src可以是文件，也可以是目录。dest可以存在，也可以不存在。
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31410833_3.html
+
+
+
+
+
+
+>
+
+OO设计题，怎么做一个十字路口的traffic light.
+2. 怎么不用recursion 做二叉树in order 遍历。
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31421129_3.html
+
+
+
+
+
+
+>
+
+1. Write a function that returns a node in a tree given two parameters:
+pointer to the root node and the in order traversal number of the node we
+want to return. The only information stored in the tree is the number of
+children for each node.
+
+2. Input a message and a text, find if the message can be composed by the
+text.
+If the text is in a magazine (two pages/a paper), how to design an algorithm
+?
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31422009_3.html
+
+
+
+
+
+
+>
+
+1
+
+When casting an object of a polymorphic class from a base calss type, which
+one of the following casts
+performs the task only if the cast is valid?
+
+a. static_cast
+b. (void*)
+c. dynamic_cast
+d. const_cast
+e. reinterpret_cast
+
+
+2.  class A
+{
+
+public:  void f();
+protected: A() {}
+       A(const A&) {}
+};
+
+why are the default and copy constructors declared as protected?
+
+a. to ensure that instance of A can not be created via new by a more derived
+class
+b. to ensure that instance of A can only be created by subclasses of A
+c. to ensure that isntance of A can not be copied
+d. to ensure that A cannot be used as a base class.
+e. to ensure that A cannot be instantiated on the stack
+
+
+3. template<class T1; class T2; class T3>
+int Product(T1 a, T2 b, T3 c)
+{
+    return a*b*c;
+}
+
+what is wrong with the sample code above?
+
+a. templates must be class definitions
+b. the template parameters should be separated by commas.
+c. the template definition is missing a pair of braces.
+d. template parameters must be pointer types.
+e. the * operator has not been defined for T1, T2, and T3.
+
+4. class FOO
+{
+    char * buf;
+
+public:
+
+    Foo (const char *b = "default")
+    {
+        if (b)
+         { buf = new char[std::strlen(b) + 1];
+           std::strcpy(buf, b);
+         }
+
+        else
+
+           buf=0;
+
+        }
+   
+    ~Foo() { delete[] buf; }
+};
+
+
+Foo func (Foo f)
+{
+    return f;
+}
+
+when the function fun is called, the program may crash or exhibit unexpected
+behavior, what is the reason ofr this problem?
+
+a. the destructor may attempt to delete the string literal "default"
+b. the destructor needs to check that the value of buf is not 0.
+c. the class does not allocate a long enough buffer.
+d. the function needs to return Foo& instead of Foo.
+e  the class needs to specify a copy constructor and assignment operator.
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31426509_3.html
+
+
+
+
+
+
+>
+
+1．请书写一个程序，将整型变量 x 中数字左右翻转后存到另外一个整型变量 y中，例
+如 x = 12345 时，y为 54321，x = ‐123 时，y为‐321。其中 x 的个位不为 0。
+     void reverse (int x, int* y);
+(1)  请实现该函数，以上函数原型是用 C语言写的，你可以用你熟悉的语言；
+(2)  请写出一段代码验证该函数在各种情况下的正确性。
+
+2．对集合{1, 2, 3, …, n}中的数进行全排列，可以得到 n!个不同的排列方式。现在
+我们用字母序把它们列出来，并一一标上序号，如当 n=3 时：
+     0．123
+     1．132
+     2．213
+     3．231
+     4．312
+     5．321
+现在，请书写一个函数 void print (int n, int k)， （函数原型是用 C语言写的，
+你可以用你熟悉的语言）在已知 n和序号 k 的情况下，输出对应的排列，并简要阐述
+思路。
+
+3．一维数轴上有 n 条线段，它们的端点都是已知的。请设计一个算法，计算出这些线
+段的并集在数轴上所覆盖的长度，并分析时间复杂度。例如，线段 A 的坐标为[4, 8]
+，线段 B 的坐标为[1, 5.1]， 那么它们共同覆盖的长度为 7。 请尽量找出最优化的
+算法， 解释算法即可，不必写代码。
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31428195_3.html
+
+
+
+
+
+
+>
+
+Given a sorted integer array and a number, find all the pairs that sum up to
+the number.
+这个很简单，但现在多了一个条件
+What if the array is sorted by absolute value, for example {1, -2, 4, -9},
+find the answer in O(N).
+这样有什么好的思路么？
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31430593_3.html
+
+
+
+
+
+
+>
+
+How do you find sequences of consecutive integers in a list that add to a
+particular number.
+Array里面正负数都有.
+这个能在O(n)时间内解决吗？
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31431861_3.html
+
+
+
+
+
+
+>
+
+A m*n matrix of integer, all rows and columns are sorted in ascending order.
+  Find the most efficient way to print out all numbers in ascending order.
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31434325_3.html
+
+
+
+
+
+
+>
+
+一次面世Google，问到hash table是怎么实现的。我说了一个取尾数(round)的方法
+，他说这个方法很navie，工业界一般用其他的方法，比方说STL的map。
+
+
+我想了半天没有想出来，到这里问问。hash table具体怎么实现的啊？
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31434401_3.html
+
+
+
+
+
+
+>
+
+49 辆赛车. Assume for each one, it travels the track in the same amount of t
+ime every time. Also assume no two finish the track in the same amount of ti
+me. Suppose you have 7 tracks, but no timer. Design races to find the 25-th
+fastest with minimal number of races.
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31434523_3.html
+
+
+
+
+
+
+>
+
+ime span: 38:39
+interviewers: 2 -- 1 indian, 1 american
+
+How do you know the bloomberg?
+What position do you expect?
+What language do you want to answer with? (I choose C.)
+What kind of questions do you meet for the online assessment?
+
+what is static in C? how is it implemented by the compiler?
+write the definition of a function that returns both the max and min.
+why do you use the condition variable?
+how to implement a lock?
+Under what condition must you use linked list instead of array?
+what data structure can you use to store elements dynamically and access
+them efficiently?
+The complexity of finding any element in a linked list in the worst case.
+multi-thread library programming: did you write your multi-thread library
+with p-thread? is there any problem you have with you library?
+did you do your projects on linux? If you want to find a string in a file,
+what command should you use?
+do you know vector in C++?
+a question about real-time programming (I forgot)
+what is buffer overflow?
+
+一些问题是针对我的简历里面提到的内容，所以，简历里面的内容要尽量的吃透。
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31434685_3.html
+
+
+
+
+
+
+>
+
+Given two classes:
+
+class B
+{
+public:
+B(args_1);
+B(args_2);
+// and many constructors with different arg lists
+};
+
+class D : public B
+{
+public:
+D(args_1) : B(args_1) {}
+D(args_2) : B(args_2) {}
+// and many constructors with different signatures similarly implemented
+// some additional stuff specific to D
+};
+
+Assume that the arg list for B's constructors are quite long and may be
+revised pretty often in the future, in which case D's constructors have
+to be recoded correspondingly. Duplicating the update by copy-and-paste
+will certainly work here. Can you propose a better way so that the
+update can be done in one place without copy-and-paste duplication?
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31434891_3.html
+
+
+
+
+
+
+>
+
+Given a large string (haystack), find a substring (needle) on it.
+感觉这道题不就是scan一遍吗？
+有什么time and space complexity上面的trick吗？
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31435419_3.html
+
+
+
+
+
+
+>
+
+准备了很久，看了很久算法的书。。　结果被问了一个怎么　optimize memcpy()..傻
+眼了。。碰到了女老印，倒霉～～～～
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31435587_3.html
+
+
+
+
+
+
+>
+
+规问题后，问了个code的问题：
+
+给一个substr，如何判断它在不在给定的str里面。
+
+substr有两个新的符号可能在里面：
+（1）* : 0-n个任意字符
+（2）? ： 1个任意字符
+
+
+太紧张了，所以面试者简化了题目，说去掉“？”，然后让code和测试：基本框架出来
+了，但是好多特殊情况没有处理到，比如substr以“？”起头。
+
+后来又问如果加入“*”有没有思路，刚说了两句就out of time了。
+
+唉，失败了，不知道有没有下文。
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31436721_3.html
+
+
+
+
+
+
+>
+
+给定 X[1..n] and Y[1..m] 两个 arrays，已经sort好了.
+如何找到X <Union> Y的median？我说用merge sort，要O(m+n/2)时间。面试官明显不
+满意。
+这个已经 lineal了？难道还有更快的？
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31437417_3.html
+
+
+
+
+
+
+>
+
+given a 32 bit number N and 2 numbers(A & B) that determine 2 different bit
+pos
+itions of N how do you make all the bits between A and B equal to another
+given
+integer k.
+given (A,B is in the range [0 to 31] and
+k<=2^(B-A+1) ( so that k fits between B-A+1 bits). Give an O(1) solution for
+th
+is
+e.g if N=9 ( 1001) ,A=0 ,B=2,K=5(101 then the result should be 1101 (1.e 13)
+
+这个题是什么意思啊？
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31437907_3.html
+
+
+
+
+
+
+>
+
+在做careercup上面的题目, 有两个问题没有看懂, 希望有人指点下
+1 一个BST, 给定一个值, 打印出所有的path,使path上所有节点的值等于给定值;
+2 一个tree, 如何高效的找出最长的path?
+
+
+
+☆─────────────────────────────────────☆
+
+  mitbbs59 (59) 于 (Fri Jul  3 15:35:37 2009, 美东) 提到:
+
+
+这都是amazon的题目吧
+1.sum of all nodes in a path  = givenValue
+2.http://www.careercup.com/question?id=87897
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31441709_3.html
+
+
+
+
+
+
+>
+
+是现场写code的面试。
+第一道是写一个函数，两个参数（String prefix, String s）, 返回true如果s有
+prefix
+第二道是写一个函数，两个参数（int[] a, int sum), 找出数组里加起来是sum的几个数
+我第一题算是答出来了，第二题没做完，没有好的思路。。。
+大人指教一下
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31446979_3.html
+
+
+
+
+
+
+>
+
+Went to Adobe to interview a Senior SW Engineer position,
+
+总的interview的不错， 但被下面问题问倒了，让回去想想， 
+
+Q1:
+"We need to compare thousands text files with each other, they are not big,
+less than 100K each. They are in a directories tree, with a few levels of
+subdirectories,  how to speed up the comparing process ?"
+
+My answers: We can read them all of these files into memory once so that we
+can reduce the number of diso I/O.
+
+[Feedback: That is a good appoach].
+
+Q2: How to read these files into memory (on MS Windows platform ) ? how do
+you maintain directory structure in memory ?
+
+My answer: I talked some garbage ....
+
+Q3: If someone already wrote the code in slow way, read each file from disk,
+do some thing, close the file, read another one, etc.  Can you make a "
+portable layer API" libary so that with minimal effort, old code can still
+work but much faster ? (of course, we need to recompile the code).
+
+
+Please help with Q2 and Q3, thanks a lot.
+
+--
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31448285_3.html
+
+
+
+
+
+
+>
+
+今天把M的onsite给拒了，实在没有时间面这么多company，又不想浪费别人的时间。不
+过心里还是觉得有点可惜，啧啧。
+
+贴一下M的经历吧。On campus就一轮，30分钟。Interviewer是个老中，一上来看我res
+ume，问为啥phd了还来面sde。然后开始问resume上的东西，我借机会sell了一下自己。
+
+
+Technical问题只有两个：
+
+1）Coding题非常old了。两个string找最长common substring。这个当场肯定code不了
+subffix tree。于是就用暴力的方法，三下五除二搞定。然后问complexity，如何改进
+，bla bla bla。竟然忘记了说可以用DP，低级失误啊。不过面试官还算满意。
+
+2）你认为bing有什么可以改进的（我投的是bing）？你research做的东西有没有可以a
+pply的？
+
+然后时间够了，面试官说三周内给结果。一周之后就收到了onsite通知。攒人品，祝大
+家好运！
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31451397_3.html
+
+
+
+
+
+
+>
+
+今天又做coding面试了，上来就要写个函数 返回二叉排序树的第k个最小的node。
+我写了一半，感觉不对劲。请大侠赐教。
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31451705_3.html
+
+
+
+
+
+
+>
+
+you are given a M x N matrix with 0's and 1's
+find the matrix with largest number of 1,
+
+1. find the largest square matrix with 1's
+2. Find the largest rectangular matrix with 1's
+
+没想到很有效的办法。大家见集思广益~
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31452521_3.html
+
+
+
+
+
+
+>
+
+有几个同学问面筋，不太记得起来，很多版上是有的，所以觉得那些面你的人水平挺一
+般的，下面贴两个印象深刻的：
+
+
+
+1。这道题被好几个不同的公司面到过：Fibonacci数列，一般让你给一个recursive的
+版本，然后写个iterative的版本，然后问有没有更快的可能性。我记得以前在某个版
+讨论过，参考wiki:
+
+
+
+这样的方法，可以在O(log(N))的时间和O(1)的空间复杂度内算好。要写程序的话，用
+类似下面的方法：
+
+Matrix2x2 F[][2] = {{1, 1}, {1, 0}}, Fn[2][2] = {{1, 0}, {0, 1}};
+
+while (N) {
+    if (N & 1)
+        mul(F, Fn, Fn);    // Fn = Fn x F;
+
+    mul(F, F, F);          // F = F^2;
+    N = N >> 1;
+}
+
+
+2。另外一题很简单，但是蛮tricky的。How to test if a number "a" is power of 2
+
+return (a-1) & (a) == 0;
+
+网上经常有问怎么样判断一个数里面有多少个1的位数，这个只是其中一个最简单的特
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31452533_3.html
+
+
+
+
+
+
+>
+
+于完成了F公司历时2个月的所有interview，总算可以松口气了，据称他们下周一开会
+讨论，希望最终会修成正果。来说点经历吧。
+
+多亏好朋友Z帮忙forward resume，很快就来了第一轮phone interview。编程题还有点
+老：
+
+[Coding Q1]: Given an array A, output another array B such that B[k]=product
+of all elements in A but A[k]. You are not allowed to use division.
+
+其实这题interview之前在本版JHQ看过，可是当时看的题目太多，没有去想solution。
+所以刚开始听到这题还surprise了一下。我觉得这个不能用除法的限制太无聊了（建议
+改个problem来问这个algorithm），于是忍不住问why not division，顺便拖延一下时
+间想算法。面试官说除法慢...显然不是什么很convincing的理由，我说那乘法也慢啊。
+说完我已经想到怎样做了，于是顺利过关。
+
+接着就来了比较衰的第二轮，题目是这样的：
+
+[Coding Q2]: You are given a string e.g."face" and a set of mutation rules,
+e.g. a->@, e->3, e-E. Print all the possible strings that can be generated b
+y the rules, e.g. f@c3, fac3, etc.
+
+其实就是BFS再加上hash table判断是否重复print。马上就想到algorithm，面试官说好
+，你开始写吧。然后问题就来了，太久没写c++忘了hash table的函数定义。好像依稀记
+得hash table还有几个版本，想了一会没想起来，又不好意思问，汗！最后还是忍不住
+问了，他说你随便给个函数名和接口吧。最后磕磕碰碰总算把程序写完了，却给人留下
+了很不好的印象，感觉写程序很不熟！据说最后这个人给了我一个borderline，还算好
+，没把我fail掉。真惭愧啊，可怜我还是写c++起家的...
+
+因为第二轮不太理想，本来应该两轮过后就onsite，结果hr来信说要第三轮phone，还很
+好人的说We do have three phone interviews at times. We are constantly evalua
+ting our process so I apologize for the change. 第三个面试官又临时换人，最后
+居然是同系师弟，不过之前没见过面，不然可以套近乎了。。。言归正传，换人大概还
+是因为他们组想看看我match与否。他问的都是machine learning，风格和原来完全不同
+，还多多少少有点surprising的。
+
+[Coding Q3]: Implement one step of decision tree which splits the node into
+two subtrees.
+
+之后还讨论了一些learning的问题，我问了他们用的technique，有什么存在问题等等，
+相谈甚欢。
+
+关于onsite，因为签了NDA，不方便透露题目。请大家也不用发信来问了，做人还是要讲
+信用的。只看面经的各位看官可以略过以下了。。。至于那个onsite可谓一波三折。本
+来订了机票周四晚上到sfo，周五中午onsite，挺好的schedule。结果某airline居然机
+件故障，把飞机拖去修了几个小时，又不肯调其他飞机来，白白miss掉了从vegas飞sfo
+最后一班航班，被迫在vegas住了一晚。下了飞机都晚上12点了，随便找个airport旁边
+的hotel住下，改了第二天最早一班机。结果第二天又晚点两个小时！据称SF大雾，tra
+ffic control...折腾了半天到了F都周五下午两点多了，又累又紧张。连HR也只好说：
+it's hard to visit us...不过不管那么多，灌了杯coffee就上阵了，结果还好，没有
+想象中intensive，也发挥自己的水平了. 因为onsite去的太迟，没见到manager，HR又
+说schedule TWO more follow-up，其中一个是manager。OMG，我说好，那就back-to-b
+ack吧。上周终于面完真是relieved啊，前后5轮，历时2个月。
+
+关于面试的经验教训，我的感觉是1）F的interview是比较严谨的，phone interview就
+要candidate在white board上把code写出来，不是说说算法就算了，detail也问得很仔
+细。因为他们要求员工follow整个project，从idea，到algorithm，到implementation
+，而不是自己想个东西出来让别人写code实现就完了。各位像我一样平时写research m
+atlab code多于写c++的phd要注意多练练手了，小心阴沟翻船。2）Never give up无论
+interview多么不顺利。不要被外界的不利因素distract自己，该准备什么就好好准备，
+我相信life has miracles.
+
+PS: 貌似F的同学们也会上来job hunting版。文中若有冒犯之处，请多多包涵。F的S同
+学，你那题大概说了也不要紧吧，没理解背下来也没啥用的。F的Y同学，我没有泄漏你
+的面试题，以后还可以继续用，哈哈。
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31452725_3.html
+
+
+
+
+
+
+>
+
+看了一晚上精华区，发现这道题有问题啊。
+
+5。Given a graph (any type - Directed acyclic graph or undirected graphs
+with loops), find a minimal set of vertices which affect all the edges of
+the graph.
+An edge is affected if the edge is either originating or terminating from
+that vertex.
+The time should be less Q(n^2)
+
+这个题就是最小顶点覆盖问题吧？
+
+或者是我对最小顶点覆盖问题理解有误？或者对这题理解有误？
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31452961_3.html
+
+
+
+
+
+
+>
+
+00*100部分有序矩阵数组的排序
+
+有100个有序数组(从小到大)，每个里面有100个数。
+
+设计一个算法合并这个一百个有序数组，中间步骤只允许多申请一个大小为100个数的
+空间（也就是一个数组的大小）。
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31453089_3.html
+
+
+
+
+
+
+>
+
+1. How to call C++ code in C? How to call C code in C++?
+2. In which three cases, initialization list has to or is preferred to be
+used for a constructor?
+3. Can we design singleton by setting all the data member and method of a
+class to be static?
+
+Some others:
+4. Is overloading allowed in C? If not, how to differentiate them?
+5. Default methods that are generated by a class in C++.
+6. Difference of struct and class in C++
+7. Given a class has first name, last name, SSN and etc.Need to query
+according to first name, first name + last name, what STL should be used? (
+If map/multimap, what should be the key?) How the query should be? How to
+query all the first name that initialed as "J"?
+8. Meaning of static in C and C++
+9. Meaning of inline in C++; where should it be used?
+
+几天上午一个面试的问题。有些东西没用过，虽然以前看过，但是还是没有答出来；都
+去准备其它的去了，没想到全是问c/c++的问题。还是有些不服气，move on。
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31454759_3.html
+
+
+
+
+
+
+>
+
+形象投票:    
+形象得分: 291 分    
+     
+    
+     我的博客
+
+               0         0
+    [上篇] [下篇] [同主题上篇] [同主题下篇]
+
+发信人: mandman (满老), 信区: JobHunting
+标  题: [合集] 一个Google / MS 面题
+发信站: BBS 未名空间站 (Wed Oct 28 23:41:26 2009, 美东)
+
+
+☆─────────────────────────────────────☆
+
+  wisher1 (wisher) 于 (Fri Aug  7 16:59:50 2009, 美东) 提到:
+
+在精华区里看到多次, 都没有答案.
+删除一个singly linked list节点, 但不知道head.
+不知道head, 怎么找之前的那个节点阿? 又没说有loop.
+
+谁知道trick在哪?
+
+多谢!
+
+
+
+☆─────────────────────────────────────☆
+
+  chaicar (chaicar) 于 (Fri Aug  7 17:05:15 2009, 美东) 提到:
+
+record the next node of it
+delete its next node
+do the assignment to copy saved next node to it
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31454761_3.html
+
+
+
+
+
+
+>
+
+
+Write code for finding number of zeros in n!
+OR
+Find the first non-zero digit from the right in 100! (Factorial of hundred).
+Can an int store hundred factorial. What size of array should be sufficient
+to solve the above problem. Write a code for the same.
+大家有什么idea?
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31454839_3.html
+
+
+
+
+
+
+>
+
+you have a billion google searches a day, design a data structure which
+lets you pull out the top 100 unique ones at the end of the day.
+
+我的想法是create hashtable
+
+scan billion data 一次，在hashtable纪录每个query的次数
+
+然后再scan billion data一次,通过heap和hashtable找到top 100
+
+不过这样的话,billion data会被scan 2次，disk i/o会很大
+
+不知道有没有什么scan billion data一次就可以找到top 100的办法
+
+大家讨论一下
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31455781_3.html
+
+
+
+
+
+
+>
+
+er executing this code:
+
+list<int> L;
+...
+list<int>::iterator in_range =
+     find_if(L.begin(), L.end(),
+             compose2(logical_and<bool>(),
+                      bind2nd(greater_equal<int>(), 1),
+                      bind2nd(less_equal<int>(), 10)));
+What is the best assertion that should be used as a post-condition?
+
+assert(in_range == L.begin() || (*in_range >= 1 && *in_range <= 10));
+
+assert(in_range == L.end() || (*in_range >= 1 || *in_range <= 10));
+
+assert(*in_range >= 1 && *in_range <= 10);
+
+assert(in_range == L.end() || (*in_range >= 1 && *in_range <= 10));
+
+assert(in_range == L.end() && (*in_range >= 1 && *in_range <= 10));
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31456679_3.html
+
+
+
+
+
+
+>
+
+he difference of following two expressions: Test A or Test B()
+
+
+Class Test;
+Test A;
+or
+Test B();
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31456597_3.html
+
+
+
+
+
+
+>
+
+When a derived class is destructed, at what stage will the base class's
+destructor be called?
+
+the answer varies on a case-by-case basis
+
+It will automatically be called after the destructors for the derived class
+data members
+
+It will automatically be called before the destructors for the derived class
+data members
+
+It should explicitly be called at the beginning of the derived class
+destructor
+
+It should explicitly be called at the end of the derived class destructor
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31456485_3.html
+
+
+
+
+
+
+>
+
+什么样的情况下用 virtual deconstructor？
+2. virtual function是如何工作的？virtual table 是如何实现的？
+3. virtual function具体调用哪个function是在编译的时候，还是在代码执行的时候
+决定的？
+4. 类的copy constructor 和 assignment operator "=" 有什么区别？有什么主意事
+项？
+
+
+我的概念不是太清楚，请好心人帮忙回答。有包子送。
+
+什么网站有C++的测试题库，哪有free的可以练练手？bloomberg 考的C++问题哪里能得
+到？
+谢谢！
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31457805_3.html
+
+
+
+
+
+
+>
+
+给定一个二叉树的一个node，编程返回中序遍历的下一个node。如果最后一个，返回
+null, 怎么做？
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31459733_3.html
+
+
+
+
+
+
+>
+
+网上看来的：
+
+一堆数，其中一些数出现了一次，一些数出现了两次，只有一个数出现了三次
+
+找出那个出现了3次的数
+
+hash方法很trivial就不说了。
+
+如果用bitwise operator，怎么高效的做？除了XOR，是不是还得用点别的办法？
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31460327_3.html
+
+
+
+
+
+
+>
+
+就是一直一篇文章，球可以覆盖所有单词的最小窗口，记得bbs有几个人提过这个题，
+但是没人给过解，希望牛人能够赐教！！感激！
+
+Pasted from <http://www.mitbbs.com/article_t/JobHunting/31460569.html
+
+
+
+
+
+
+>
+
+1. If the probability of rain tomorrow is twice than no rain.
+What is the probability of rain tomorrow:
+
+2. A grass, 3 cow can eat 3 days. 2 cow can eat 6 days. How long can one cow
+finish the grass?
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31461095_3.html
+
+
+
+
+
+
+>
+
+Given a document and a query of K words, how do u find the smallest window
+that covers all the words at least once in that document? (given you know
+the inverted lists of all K words, that is, for each word, you have a list
+of all its occurrrences). This one is really hard. Could someone propose an
+algorithm in O(n)?
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31461767_3.html
+
+
+
+
+
+
+>
+
+Desgin an algorithm to find whether a given sting is formed by the
+Intealeaving of two given strings. 注意，原来的两个given strings的本身的
+character的顺序不能变。
+
+这个题不简单，因为你不能简单的用3个指针分别指向三个string,遇到string A的就拷
+贝到dst string,遇到string B的就拷贝他的。最麻烦的在于遇到A,B都相同的，你不能
+advance both ptrs until they are different and then move one of them back.
+The point is who is to be moved back? You cannot simply randomly choose one.
+  For example,
+stringA: ABCEF...
+string B: ABCA...
+
+dst string : ABCABCEF....
+那么，如果取B's ABCA 就错了。
+
+哪位大侠能指教怎么做呢？
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31463527_3.html
+
+
+
+
+
+
+>
+
+Given a set of points (x,y) , find all pairs of points whose distance is
+less than a given number, say, K.
+这个题brute force： 对每个点，求和其他点距离，O(N^2),不知道哪位大侠有高见啊
+？请不吝赐教！万分感激！
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31463131_3.html
+
+
+
+
+
+
+>
+
+{1，5， -5， -8，2，  -1，15 }
+要把负的扫到左边，正的扫到后边。
+不能改变顺序
+得到{-5 -8 -1 1 5 2 15}
+
+这个题有time 低于 n^2 space=O（1）的解法吗
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31464055_3.html
+
+
+
+
+
+
+>
+
+这些东西我很都不熟悉。希望有高手指点指点，呵呵
+
+1. Mempool design with 30k limit.
+mempool是应该在一开始就allocate 30k 连续的内存,然后分配和管理？
+
+或者是每次call allocate(n)的时候再通过operator new[]来分配内存，update size
+member？如果是的话，free(ptr, n)怎么写呢？貌似operator delete[]不能带size参
+数啊？
+
+总之我就是对memory design这块很不熟悉。。。
+
+2. Implement put/get methods of a fixed size cache with LRU replacement
+algorithm.
+这个是不是用fixed size的max heap来实现？每个元素定义一个key，表示距离上次使
+用的时间，每使用一个元素，就相当于是把它的key更新为比当前最小值更小的数，然
+后做heapify()操作？
+每put一个元素，就assign新元素一个最小的key，然后用新元素替换掉堆顶点，然后做
+heapify?
+
+3. Write a function to implement a buffer for DataOutputStream.
+这个我完全没啥概念了。。。求指点一下~
+
+4a. How do you write malloc and free to detect memory reference violation?
+4b. flag a block of memory as used by putting some bit pattern at the
+beginning of the block. What bit pattern will you use?
+这两个问题也是摸不到头脑的。。。
+
+5. How to implement singleton without using static/global variable?
+完全没思路，design pattern我基本上就是临时抱佛脚都还没抱上。。。
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31464509_3.html
+
+
+
+
+
+
+>
+
+其实这些题也适合别的OS,只不过面试的这个职位是基于Linux的。
+
+1. buffer overflow的工作原理
+问的特定环境是： 在client-server的model下，client是如何通过网络造成server上
+的 buffer overflow,从而在server上制造出security hole?
+
+俺只知道，肯定是client给server发的packet中，故意把特定的field(比如长度)弄错
+，使得server上的程序在copy的时候，造成buffer overflow (因为一个特大的length),
+谁能说说到底buffer overflow 是如何产生的？有什么好的文章，或者网站link介绍这
+个问题的？觉得搞network security的同学应该很明白。
+谢谢！
+
+2. 关于TCP的实现的问题（1）
+操作系统中TCP的实现用到了几个timer,分别是什么？
+这个题怪怪的，谁能知道这样的细节？
+
+
+3.关于TCP的实现的问题（2）
+TCP packet header 中的Window size (接受方的 window size)的update是多久进行
+一次？就是问接收方在什么情况下，或者是多么频繁向发送方update新的windows size?
+
+
+4. 关于socket
+TCP connection 用socket建立后，有可能有很长时间通讯的双方没有任何数据来往，
+比如telnet client登录telnet server后，可能人会离开很长的时间，这个时候TCP
+server 怎么知道TCP client 是alive 还是crashed?
+
+如果你设计一个自己的应用程序，你该如何处理？就是问在你自己的client和server建
+立connection后，你是如何check whether the socket is still alive or not? 是在
+你自己的应用程序中定时的发一些类似于"Hello" 的packet作为查询呢？还是OS的
+socket能够自动的提供the information about the socket status?
+
+5.如何用C语言实现object oriented programming?
+
+
+6. 关于kernel synchonization
+
+在SMP系统下，用spinlock,还是用semaphore来作synchronization比较好？为什么？
+
+俺只知道如果你的代码不能sleep的时候必须用spinlock,比如在interrup handler里面
+。还有就是如果用了spinlock,你要能够处理的很快。别的就想不出有什么区别了？
+
+不过Jonathan Corbet的"Linux device drivers"一书中说在Linux kernel 的实现中，
+spinlock引入的主要目的是为了让 Linux在SMP系统里运行的更有效，不知这是为什么？
+
+
+
+俺被问的一塌糊涂，很郁闷，请大拿们给启发一下。
+谢谢！
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31466547_3.html
+
+
+
+
+
+
+>
+
+如题，职位是web engineer,希望有人可以用到。
+第一次电话是recruiter的，按清单问了些问题：
+1. say some http methods?
+2. get/put difference?
+3. what does DTD for xml mean?
+4. common protocol used in layer 4?
+5. describe different ways to use css in html
+
+
+
+
+
+
+?
+6. difference between well-formed and valid xml?
+
+前两天第二轮technical phone interview：
+1. why and how did u get into web development?
+2. what do u like about web development? not like about it?
+3. why do u want to work for google? 我扯到ajax的推广，他顺着问 ajax
+principle, security issue
+4. what language are you comfortable with? talk about it. why and how did
+people design it?
+5. explain 3 components of MVC
+6. what happens when a user types google.com in URL bar and press enter?
+(dns, http get, tcp connection establishment, etc)
+7. what may slow down the rendering of html
+
+
+
+
+
+
+page when its contents have been
+downloaded from server? (load other resources like css,js and parse them,
+etc)
+8. read n lines of random numbers(space as delimiter) from a file, lines
+with same numbers are treated as duplicated lines, regardless of the order.
+check and print non-duplicate lines. performance time analysis.
+
+顺带问一个转身份的问题：如果我H1->F1->H1，重新转回H1的申请被拒了，那是不是还
+停留在正常的F1？ 同样，其它转身份，例如 F1<->F2, F2<->H4互转之类，如果申请被
+拒，是正常停留在之前的身份吗？ 前几天看到个帖子，H1 transfer被拒，身份就黑了
+，不知道跟这些例子有什么区别，谢谢。
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31467259_3.html
+
+
+
+
+
+
+>
+
+1. there are only 6 db connections in the pool, all 6 are being used,
+another request needs to connect to DB, it does not want to wait. How to do
+it? One solution is to make a new connection and add it to the pool. But the
+interviewer wants standby solution. Anyone knows the standby solution?
+Thanks
+
+
+2. For the db connection. min = 10 and max = 40.
+Will 10 connections be created at server start up time?
+
+
+2.1 If we start with using 13 connections, when all the jobs are done, how
+many will be kept in the pool? 10 or 13?
+
+2.2 If we start with using 45 connections, when all the jobs are done, how
+many will be kept in the pool? 40 or 45?
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31467451_3.html
+
+
+
+
+
+
+>
+
+uppose there are n cities, and there may / may not be flight route
+between c1 to c2. Design data structure to store this information and write
+a function that receives two cities name, and return whether or not there is
+a flight between them (either directly or through connections)
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31469019_3.html
+
+
+
+
+
+
+>
+
+不trivial
+
+Given a 3x3 square:
+
+1 2 3
+4 5 6
+7 8 9
+
+You are allowed to do circular shift on any row, and
+circular shift on any column, as many times as you
+please. Question: can you switch position of 1 and 2 with
+the allowed circular shifts?
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31469459_3.html
+
+
+
+
+
+
+>
+
+通常看到这种题目都感觉有点头疼。比如，design a messaging system. an online
+poker room.大家说说看
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31470087_3.html
+
+
+
+
+
+
+>
+
+刚刚on-stie面试完某大公司。面试了7个人，大概问了20-30道题，有1道题不会，尽管
+其他的都打上来了，很是郁闷，本以为自己准备的足够好了，哎。但是这道题不会，很
+不甘心，希望大侠们帮助！！！
+
+In our indexes, we have millions of URLs each of which has a link to the
+page content, now, suppose a user type a query with wild cards *, which
+represent 0 or multiple occcurrences of any characters, how to build the
+index such that such a type of query can be executed efficiently and the
+contents of all correpsonding URLs can be displayed to the users? For
+example, given a query http://www.*o*ve*ou.com. You man need to find iloveyou.com, itveabcu.com, etc.
+
+以前我见过类似用wild card来做query的，就*来说，一个方法是用*split query into
+a few parts, for example, *o*ve*ou => o, ve, ou, 然后分别用o, ve, ou 查询，
+但是似乎不适合这道题。 另外，如果对Index里的每一个URL建suffix tree ，然后对
+每个query check againgt 所有的suffix tree, 这样实际上就是scan all urls, 明显
+也不合适。但是排序？我想不出来。
+
+这道题真难倒我了。。。。。。求求大侠赐教。不仅仅是为了面试，就是觉得不甘心。
+。。多谢！！！！
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31472965_3.html
+
+
+
+
+
+
+>
+
+ftware Development Engineer
+
+问候之后，首先问了一下我的research, 让我具体的阐述我提到过的算法
+
+然后OOD的一道题，其实不难，但我感觉自己答得不好
+have a furniture class, some child classes like table, chair, etc.
+they want to extend the class hierarchy, as there are wood table, steel
+table, wood chair, steel chair, and so on.
+
+我首先给出class + interface的design:
+furniture (table, chair, ...)
+table ( woodtable extends table implements wood, steeltable extends table
+implements steel)
+chair ( similar as table)
+然而interviewer立刻指出这样的话，如果要加fire, 或者和重量有关的functions时，
+会有code duplication (因为wood可燃，steel不可燃, assuming fire function is
+defined in wood and steel interfaces). 我最后说那把wood和steel也改成class (c
+++ multi-inheritance), 这样可以avoid code duplication. Interviewer又问那么如
+何实现woodsteeltable? 我说就inherit woodtable and steeltable. 自己对这个问题
+总体感觉不好。大家有什么好的design?
+
+后面的问题比较简单：
+
+given a deck of cards, how to shuffle it?
+
+having a web application, front-end, middle layer and database. How to scale
+database to accommodate increasing traffic?
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31471911_3.html
+
+
+
+
+
+
+>
+
+onsider a function which, for a given whole number n, returns the number of
+ones required when writing out all numbers between 0 and n.
+
+For example, f(13)=6. Notice that f(1)=1. What is the next largest n such
+that f(n)=n?
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31471823_3.html
+
+
+
+
+
+
+>
+
+请解释garbage collection？
+在garbage collection中，对circular reference的你怎么办？
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31470831_3.html
+
+
+
+
+
+
+>
+
+以下文字转载自 SanFrancisco 讨论区 】
+发信人: soldiercrab (老军医专治装B文学小青年), 信区: SanFrancisco
+标  题: 一朋友被Google的电面干掉了
+发信站: BBS 未名空间站 (Sat Dec  5 15:03:55 2009, 美东)
+
+栽在一道编程题上：Find a longest increasing subsequence in an integer array。
+
+问问题的人要求朋友拿出O(nlog(n))的算法，但朋友只给出了O(n^2)的dynamic
+programming的方法。其实我觉得给出dynamic programming算法足够进入下一轮了。那
+个O(nlog(n))的算法好歹也值当年一篇paper，而且貌似不是那么直观。电面就想出来
+不容易。不过多半是我段位不够，还不够Google的要求。或者朋友的dynamic
+programming其实错了（这道题要倒过来找，稍微绕一点点）。
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31473303_3.html
+
+
+
+
+
+
+>
+
+发信人: MeetYouThere (Meet You There), 信区: JobHunting
+标  题: yahoo面试题
+发信站: BBS 未名空间站 (Sun Dec  6 18:26:44 2009, 美东)
+
+Given n points in the form (x1, y1, z1)…..(xn, yn, zn), find the k closest
+points to the origin.
+
+Given the same points as above, find the K closest points to each other.
+
+有什么快速解法没
+
+--
+
+※ 来源:•BBS 未名空间站 海外: mitbbs.com 中国: mitbbs.cn•[FROM:
+71.198.]
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31473965_3.html
+
+
+
+
+
+
+>
+
+1. one array filled with numbers from 1 to N, but one number is missing. wha
+t's the most efficient way to find the missing item? what about two or more
+numbers are missed?
+
+2. find the repetative chars in a string and delete them
+
+3. find the binary tree from its preorder and inorder traversal
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31474331_3.html
+
+
+
+
+
+
+>
+
+and(5) generates a random integer number between [1, 5], how do you
+generate a random integer number between [1, 7] when you can only call
+rand(5)?
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31476251_3.html
+
+
+
+
+
+
+>
+
+鉴于安静的气氛，来一个：
+Given an integer, print the closest number to it that is a palindrome
+input: 1224
+return: 1221.
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31477969_3.html
+
+
+
+
+
+
+>
+
+Given a value and a binary search tree.
+
+Print all the paths(if there exists more than one) which sum up to that valu
+e. It can be any path in the tree. It doesn't have to be from the root.
+我理解是这个path可以是其中任意一截,不用包括头尾
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31478003_3.html
+
+
+
+
+
+
+>
+
+第一个面试官是个中国人，女的。
+开始想同她套套近乎，也不知道是不是套错了，反正当时感觉她不喜欢我（其实后来回
+头想想，可能不是她不喜欢我，她就是那样说话的态度，是我感觉不对）。
+编程题
+given a character string, print the number of occurence of each charcater in
+order. ie. if the string is "ceabcw", then you should print something like:
+a 1 b 1 c2 e 1 w 1.
+she asked the possible data strucutre to approach. I gave array, hashtable,
+and BST. she asked me to use BST, and using no recursive. Also how to handle
+unicode.
+然后问了一些测试题，让我测试她们的一个产品。细节忘了，总之她对我不满意。我也
+觉得基本没戏了。
+第二个是个印度人。编程题：
+given a matrix(assume it is a bitmap), print all cells that is on.
+做的不好。后来问了一些测试题。
+第三个是个白人。
+开始问测试的问题，回答得一般。因为觉得已经没有戏了，所以也不大有精神。
+编程题很简单，是实现阶乘。不过有个问题没有考虑到，就是overflow怎么处理。
+
+总之非常惨，第一次面试这么惨。也请给位说说自己的想法怎样解答那些问题
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31481069_3.html
+
+
+
+
+
+
+>
+
+两个玩家， 一堆石头，假设多于100块, 两人依次拿， 最后拿光者赢， 规则是
+
+1. 第一个人不能一次拿光所有的
+2. 第一次拿了之后， 每人每次最多只能拿对方前一次拿的数目的两倍
+
+求先拿者必胜策略, 如果有的话
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31482015_3.html
+
+
+
+
+
+
+>
+
+题目：
+
+从一个string 变到另一个，比如"study"->"world" （字数相等），要求
+
+1. 每次变一个字母
+2. 每次改变后的string必须是一个词典里面能查到的英语单词，比如你不能把study变
+成atudy
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31482527_3.html
+
+
+
+
+
+
+>
+
+google interview question from glassdoor
+
+Design and describe a system/application that will most efficiently produce
+a report of the top 1 million Google search requests. You are given:
+
+You are given 12 servers to work with. They are all dual-processor machines
+with 4Gb of RAM, 4x400GB hard drives and networked together.(Basically,
+nothing more than high-end PC's)
+The log data has already been cleaned for you. It consists of 100 Billion
+log lines, broken down into 12 320 GB files of 40-byte search terms per line.
+You can use only custom written applications or available free open-source
+software.
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31483445_3.html
+
+
+
+
+
+
+>
+
+u are given a binary search tree,
+each node has a parent, left and right
+do pre-order/in-order traversal without stack.
+cannot change the structure of Node.
+
+test cases: 8  6  7  5  4  9  10  11  12
+
+test your codes using the test case above.
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31483789_3.html
+
+
+
+
+
+
+>
+
+关于排列组合的程序问题, 我一只都没理解太清楚, 现在厚脸皮来请教一下. 这些问题
+一般都要涉及到递归, 我这里不是问的算法的问题, 而是程序的实现问题. 我一直不知
+道怎么实现才是对的.
+
+比如, 5 选 3 的全组合, a,b,c,d,e.
+
+1 中间结果怎么保存, 是用一个vector来保存,还是用多个vector来保存?
+2 如果用一个vector来保存, 递归的时候, 最终状态是什么? 何时pop, 何时push, ?
+
+请问有谁可以贴个code学习一下么?
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31484637_3.html
+
+
+
+
+
+
+>
+
+Given an array, find the longest subarray which the sum of the subarray less
+or equal then the given MaxSum.
+int[] FindMaxSumArray(int[] array, int maxsum)
+for example, given array: {1, -2, 4, 5, -2, 6, 7}
+maxsum=7
+the result would be: {1,-2, 4, -2, 6}
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31484653_3.html
+
+
+
+
+
+
+>
+
+iven a integer, output its previous and next neighbor number which has
+the same number of bit 1 in their binary representation.
+
+下面为什么去判断(number & 3) != 2？
+while ((number & 3) != 2) { // for right neighbor, change this line to
+// (number & 3) != 1
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31485091_3.html
+
+
+
+
+
+
+>
+
+要求当场写code。
+
+1  下面的int * takeaddress()有没有问题， 啥问题？
+
+2  写个效率高的takeaddress出来， 实现同样的功能
+
+
+
+int  * paddress, address1, *r;
+paddress = takeaddress(); /* defined below */
+address1= paddress[0];
+
+
+int * takeaddress()
+{
+   int  address[8];
+/* The address are defined here */
+  return  address;
+}
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31485465_3.html
+
+
+
+
+
+
+>
+
+一个字符串，要求返回重复次数最多且最长的子字符串（假设源字符串中最长重复次
+数最多的子字符串只有一个）。例如 “abcabcdfabcdf”要求返回“abcdf”. 因为“
+abcdf”重复次数最多且最长。
+
+俺只想到两个土办法：
+1)找到所有字符串组合（例如a, ab, abc, abca, b, bc, ....），都放入hash table
+，找重复次数最多的且最长的。
+2)用Dynamic Programming找LCS的办法，两个字符串都是源字符串，然后在那个2D
+array里面找最长match，并计算重复的次数，然后输出结果。
+
+感觉两个方法的time complexity都挺大的，不知大家有没有什么别的想法？
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31485529_3.html
+
+
+
+
+
+
+>
+
+很多都是老题，不过我专门整理了一下：
+1. string match:
+string Text, Pattern;
+find a substring of Text matches with Pattern.
+解法纲要：Rabin-Karp, KMP, suffix tree
+
+变种1b: multiple match:
+string Text, PatternSet[n];
+find a substring of Text matches with any one pattern in the set;
+解法纲要: Rabin-Karp
+
+2.LCSubstring:
+string A,B;
+find the longest common consecutive substring;
+解法纲要：DP(A.len*B.len复杂度)，suffix tree(A.len+B.len复杂度)
+
+3.Longest Palindrome
+string A;
+find the longest substring of A which is a palindrome;
+解法纲要：类似2
+
+4.Wild card match:
+4a: Pattern contains '?'(s)
+4b: Pattern contains '*'(s)
+4c: Pattern contains both;
+
+//以下是与dictionary有关的题目
+
+5. dictionary + wild card search(一般都需要做适当预处理):
+第一种search：search所有match结果
+第二种：返回某个特定的结果，比如，所有match中最长的单词
+5a: pattern = ??a????b* (指定某些位上的字母)
+5b: pattern = abcde* (指定fixed/unfixed length的前缀)
+5c: pattern = ?a*bcd*e?f* (?和*任意混合搜索)
+解法：待探讨
+
+6. dictionary + 包含字符集合:
+Letter_Set = "aabbbcd";
+第一种search: 所有至少包含2个a,3个b,1个c,1个d的单词
+第二种search：所有至少包含这个字母集合的单词中最长的/最短的
+解法：待探讨
+
+7. convert a valid word to another valid word of the same length, by
+replacing one letter in one step, every intermediate word must also be valid;
+解题思路：相同长度的单词构建一个图 + BFS
+
+8. edit distance (misspell correction):
+type a misppell word, give top10/all suggestions of correct words;
+解题思路：首先定义计算edit distance的metrics，然后从每个valid单词计算出到它
+距离<=某给定值的所有misspell的单词(类似BFS的一层一层的算)
+
+9. find a matrix with max area: each row and each column of the matrix must
+be a valid word;
+
+10. 朴素搜索，在dictionary中搜索一个单词是否存在：
+解题思路：hash; trie;
+10b. shortest unique prefix: give a string, find its shortest prefix, which
+doesn't match with any prefix of any valid word in dictionary;
+for example:
+cat against {dog, be, cut} is ca
+cat against {dog, be, cut, car} is cat
+cat against {dog, be, cut, car, cat} is null
+解题思路：trie/prefix tree;
+
+11. solve a crossword puzzle;
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31485923_3.html
+
+
+
+
+
+
+>
+
+1. N台机器，每台机器有N个数
+找median (2个数组找median的扩展版)
+
+2. 已知coin denominator set，例如,2cent, 3cent, 5cent...
+给定一个目标数，比如126cents
+最少需要多少个coin。
+
+这个题我以前问过一次，没人回。。。我觉得是很好的题，贪心，回溯，DP都可以试试
+。但是我一直没找到最满意的解。
+
+3. 一个整数数组，找3个数满足勾股定理。求比O(n^2)更好的解
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31486805_3.html
+
+
+
+
+
+
+>
+
+glassdoor上看到一道题目：
+
+Given a file of unknown size, devise an algorithm to give equal probability
+randomization to choosing a single line given a one line buffer space.
+
+请教思路？
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31487119_3.html
+
+
+
+
+
+
+>
+
+1. 很长的log file记录了用户访问amazon.com的过程，两列分别为 userID 和
+pageName.
+log从上倒下按照点击发生的时间顺序。找出最popular的3连击。
+eg:
+zhang  welcome
+Li     Hello
+Wang   welcome
+Li     books
+Wang   Hello
+zhang  books
+Li     shopping cart
+Li     checkout
+zhang  shopping cart
+Wang   camera
+zhang  checkout
+
+最popular的3 combo是books -> shopping cart -> checkout
+
+2. Permutation of a string.这题最郁闷，我把programming expose里的code默写了出
+来。但这个方法是不管字符重复的，假设都是不同的。现在考官要不显示重复的，而且
+他要求不能先
+都列出来再剔除，而要在发现重复的时候及时制止。没想出来
+
+3. Design a fight ticket booking system.
+
+4. 老板说网站很慢怎么办？
+   老板说数据库很慢怎么办？
+ 
+
+没一个很清楚的，每题都说了点。高人说说这几题标准都怎么答啊？谢了！
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31487345_3.html
+
+
+
+
+
+
+>
+
+不好意思，刚才不小心把第一个版本删除了
+
+上来好几个 behavior 问题，一般 behavior 问题我不怎么准备，答的很简略，都是常
+见的问题，我就不列了。
+
+c++ and data structure
+** single linked list, find nth from the end
+** Overwriting and Overloading
+** Stack vs. Queue
+** Array of integers, all integers appear even times except one, find the
+one appears odd times. (some following up questions for this one)
+
+OOD
+** Do you approve the following design?
+Class Furniture{
+       Some functions related to the property of furnitures;
+};
+4 classes derived from Furniture
+Class wood_chair
+Class steel_chair
+Class wood_table
+Class steel_table
+
+What if you need to design a lot of other furnitures like desks.... with
+other materials like plastics
+
+**An open question.Takes more time than any other questions. It is related
+to the project they are working on, you should not be asked.
+
+Good Luck to All of us :D
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31487819_3.html
+
+
+
+
+
+
+>
+
+1. given n strings with equal length, say x. find the substring shared by
+all of them. For example, abcx, abdx, abea, then ab is shared by all of them.
+2. the gmail page loads very slow. any suggestion for improvement?
+3. we want to check the number of querys obtained from the world in the last
+minute and the last hour, what data structure should you use for that? If
+there are billions of records, i.e, too many records for the main memory,
+what suggestions do you have?
+
+马上就要第二轮店面了，求大家的题目和建议，我们也可以私下交流。谢谢！
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31487921_3.html
+
+
+
+
+
+
+>
+
+你有一种语言的dictionary,你有一大串string,没有delimit,你如何interpret成字典中
+的字呢？
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31488093_3.html
+
+
+
+
+
+
+>
+
+Given a binary tree
+
+struct node{
+struct node* leftChild;
+struct node* rightChild;
+struct node* nextRight;
+}
+
+The nextRight points to the right node to the current node in the same
+level. Ask you populate the nextRight pointers in each node.
+
+大家怎么做这道题.
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31491521_3.html
+
+
+
+
+
+
+>
+
+今天facebook第一面，现在hr都开始问技术问题了。。。问我会什么语言，我就说C++
+best, 她就
+问我一些很基本C++的问题，还有两个bubble sort best case 的复杂度和一个排序的
+思路。
+
+最后一题听的不太明白，题目剧长，头都大了。
+
+面完之后给了puzzle的link，要求做meal和buffet里挑一个。
+
+问下大家哦，是不是Puzzle之后才是phone screen啊？大家puzzle都是自己做的吗？或
+者哪里有前
+辈留下的hint吗？
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31494081_3.html
+
+
+
+
+
+
+>
+
+1。Java里如何比较两个objects是否相等
+2。怎样找出一个list是否包含循环
+3。inheritance和composition：什么时候需要用到哪种？
+4。一个int array
+如何找出subarray，使得元素之和最大
+比如{-2,3,-1,3,-4}
+那么答案应该是{3,-1,3}
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31494489_3.html
+
+
+
+
+
+
+>
+
+发信人: skydoor (海阔天空), 信区: JobHunting
+标  题: amazon的那道题目
+发信站: BBS 未名空间站 (Sat Jan 16 21:41:59 2010, 美东)
+
+看了网上的讨论, 关于amazon那道wood steel table chair furniture的题目
+
+自己写了一个, 牛人帮我看看我是否写的有问题......
+
+在我机器上编译通过, 运行成功.
+
+
+#include <iostream>
+using namespace std;
+
+class stuff {
+    public:
+        stuff() {}
+        virtual ~stuff() {}
+        virtual void info() = 0 ;
+};
+
+class table : public stuff {
+    public:
+        table() {}
+        ~table() {}
+        void info() { cout<<"Table "<<endl;}
+};
+
+class chair : public stuff {
+    public:
+        chair(){}
+        ~chair(){}
+        void info() {cout<<"Chair"<<endl;}
+};
+
+
+class wood: public  stuff {
+    public:
+        wood(stuff * s): stf(s) { }
+        void info() {cout<<"Wood "; stf->info();}
+    private:
+        stuff* stf;
+} ;
+
+class steel : public stuff {
+    public:
+        steel(stuff *s) : stf(s) {}
+        void info() {cout<<"Steel "; stf->info();}
+    private:
+        stuff* stf;
+
+};
+
+
+
+int main() {
+   
+    stuff * wood_chair = new wood(new chair);
+    stuff * wood_table = new wood(new table);
+    stuff * steel_chair = new steel(new chair);
+    stuff * steel_table = new steel(new table);
+   
+    stuff * wood_steel_chair = new wood(new steel(new chair));
+   
+    wood_chair->info();
+    wood_table->info();
+    steel_chair->info();
+    steel_table->info();
+   
+    wood_steel_chair->info();
+   
+    delete wood_chair;
+    delete wood_table;
+    delete steel_chair;
+    delete steel_stable;
+    delete wood_steel_chair;
+
+
+}
+
+
+
+
+output:
+
+Wood Chair
+Wood Table
+Steel Chair
+Steel Table
+Wood Steel Chair
+
+如果需要plastic, 只需要再从stuff inherit一个plastic类就行了
+
+
+
+
+==========================另一种方案===================================
+#include <iostream>
+using namespace std;
+
+class material {
+public:
+material() {}
+virtual ~material() {}
+virtual void info() = 0 ;
+};
+
+class wood : public material{
+public:
+void info() {cout<<"Wood ";}
+
+};
+
+class steel: public material {
+public:
+void info() {cout<<"Steel ";}
+
+};
+
+class furniture {
+public:
+furniture() {};
+void setMaterial(material *m) { this->m = m;}
+virtual ~furniture() {};
+virtual void info() = 0 ;
+protected:
+material * m;
+};
+
+class table : public furniture {
+public:
+table() {};
+void info() { m->info(); cout<<" Table"<<endl;}
+
+};
+
+
+class chair : public furniture {
+public:
+chair() {};
+void info() { m->info(); cout<<" Chair"<<endl;}
+
+};
+
+int main() {
+
+table *wood_table = new table();
+
+wood_table->setMaterial(new wood());
+
+chair *steel_chair = new chair();
+
+steel_chair->setMaterial(new steel());
+
+wood_table->info();
+
+steel_chair->info();
+
+         delete wood_table;
+         delete steel_chair;
+}
+
+
+output is
+Wood  Table
+Steel  Chair
+
+
+
+
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31494857_3.html
+
+
+
+
+
+
+>
+
+uppose that you have a set of nodes with no null pointers (each node points
+to itself or to some other node in the set), given a pointer to a node, how
+to find the number of different nodes that it ultimately researches by
+following links from that node, without modifying any nodes. DO NOT use more
+than a constant amount of extra memory spa
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31495985_3.html
+
+
+
+
+
+
+>
+
+1. 给定一个首尾相连的排过序的单链表，首节点最大尾节点最小，给出链表中任意一个
+节点，要求返回链表中间节点；
+
+2. 一摞未排序的扑克中间有重复，用最有效的方法找出并删除重复者
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31496467_3.html
+
+
+
+
+
+
+>
+
+昨天去某公司面试 Software Engineer碰到的最后一道题：
+
+有一种新语言，只能做三种操作。
+X=0;  给变量赋值为0；
+X++;  递增
+LOOP（x）{。。}   给定一个变量值就循环X次，循环block可以嵌套定义的三种操作。
+题目是给定B，求A=B-1。
+
+想了很久还是没有想出来。。大家可以帮忙看看有什么思路吗？
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31496897_3.html
+
+
+
+
+
+
+>
+
+发信人: PseudoP (Opium), 信区: JobHunting
+标  题: Bloomberg 面经
+发信站: BBS 未名空间站 (Wed Jan 20 16:13:13 2010, 美东)
+
+刚收到拒信。financial software developer
+面试总的感觉还是不错。interviewers都还专业，nice。还是很感谢有这个面试机会。
+虽然没中，应该是我个人的问题。
+background: physics phd
+====================================================
+1. online skill assessment, Dec 2009
+Some like GRE questions.
+
+2. phone interview with 2 people in R&D, Dec 2009
+1) how to find 1 missing number from 0 to N in an array of N numbers.
+2) brainteaser, 5 jar problems.
+3) how to calculate sqrt(N) without using sqrt function. Binary search tree
+problem.
+4) some behavioral problem. Like, How do you know about BB? Why you wanna
+work in BB? Why you wanna work in industry?
+
+3. onsite interview, Jan 2010
+1st meet 2 people in R&D
+1) train, tunnel, people escaping problem
+2) 6 digits number, each changes from 0 to 9. Find the odds that sum of
+first
+three is the same as the sum of last three. A: 2 do loop.
+3) Find 1 missing number from 0 to N. But notice that it is possible the sum
+would overflow. Think about a way to avoid the overflow.
+4) Tricky problem. I do not think anyone else would know the answer except
+the one who gives the problem. Nothing to do with math, statistics.
+5) Same 5 jars problem. That is their favorite.
+
+2nd meet a lady in HR.
+Ask 15-20 Behavioral problems. Cover most commonly behavioral problems.
+
+3rd meet a senior manager in R&D
+Talk a lot about my research.
+Ask one question, how to find the first unique number in an array of byte.
+and write a code to realize it.
+====================================================
+希望对后来的有帮助，祝大家好运。
+
+
+
+--
+
+※ 修改:•PseudoP 於 Jan 20 16:17:57 2010 修改本文•[FROM: 128.174
+.]
+※ 来源:•WWW 未名空间站 海外: mitbbs.com 中国: mitbbs.cn•[FROM:
+128.174.]
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31497519_3.html
+
+
+
+
+
+
+>
+
+发信人: bigdog (大狗1号), 信区: JobHunting
+标  题: 一道C面试题
+发信站: BBS 未名空间站 (Sat Jan 23 00:54:52 2010, 美东)
+
+
+Suppose there is a C function to count and return thhe number of nodes in a
+linked list.
+
+What cases would you cover in unit tests of this function?
+
+I can only think of two testing cases
+(1): An empty list.
+(2): An extrem long list with the length of the maximum value of unsigned
+int.
+
+Any other testing cases?
+
+
+
+--
+我虽然至今未婚，但日常工作之余一直坚持研究学习关于婚姻、男女、两性的各种心理
+知识
+
+
+
+※ 来源:•BBS 未名空间站 海外: mitbbs.com 中国: mitbbs.cn•[FROM:
+202.156.]
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31499799_3.html
+
+
+
+
+
+
+>
+
+发信人: timeforce (timeforce), 信区: JobHunting
+标  题: bloomberg第一轮面试
+发信站: BBS 未名空间站 (Sat Jan 23 13:28:22 2010, 美东)
+
+早上刚面完，我是ee的，所以主要面了些算法和智力题。
+1.behavior question, Why you want to join BB?
+2.一个windows系统，一个unix系统，unix系统里有100个数据库，总共1TB，如何在1小
+时内从unix系统转移到windows系统中
+3.找出一个字符串中最早出现的非重复字母
+4.两个鸡蛋测试那层楼丢下来会碎
+5.问了些做过的project的具体内容
+
+另，我想再联系下我的面试官，我知道名字，怎么找到他的邮箱地址？谢谢。
+--
+
+※ 来源:•WWW 未名空间站 海外: mitbbs.com 中国: mitbbs.cn•[FROM:
+68.36.]
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31499929_3.html
+
+
+
+
+
+
+>
+
+                    0         0
+    [上篇] [下篇] [同主题上篇] [同主题下篇]
+
+发信人: jetchen (飞机), 信区: JobHunting
+标  题: 问一个链表方面的算法问题 (转载)
+发信站: BBS 未名空间站 (Sun Jan 24 00:09:57 2010, 美东)
+
+【 以下文字转载自 CS 讨论区 】
+发信人: jetchen (飞机), 信区: CS
+标  题: 问一个链表方面的算法问题
+发信站: BBS 未名空间站 (Sun Jan 24 00:08:52 2010, 美东)
+
+
+小弟EE的，不是cs科班出生，不知道这个问题描述的准不准确：
+
+有一个循环链表 a->d->b->c->e->....->a
+每一个节点都是一个整数，且不重复(除了首尾节点外)。
+
+现在这个链表被拆断开了，每2个相邻节点被存在一个cell里面, 但这些cell不是有序
+的。 就是说链表被拆成了 a->d, c->e,...,d->b,...,b->c,....
+我想重新把链表建立起来，应该用什么样的算法?
+
+谢谢.
+--
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31500287_3.html
+
+
+
+
+
+
+>
+
+合并两个BST要求O(n+m)时间，n和m为两棵树的大小。有什么好的解法么？
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31500627_3.html
+
+
+
+
+
+
+>
+
+面试了一个小时左右。
+
+1. 用两个stacks来实现一个queue，题不是很难，但是要求逐行念代码，精确到冒号分
+号，尖括号怎么说
+不知道。。。耗了好久。
+2. 一些关于multi-threading，critical section，等等。
+3. SQL的一些问题，我不怎么会，就skip了。
+4. OOD问题，如何设计parking garage，大家有什么好的想法吗？
+
+攒人品中……
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31501235_3.html
+
+
+
+
+
+
+>
+
+给你一个字典array of strings (you may preprocess it if necessary)
+
+任意一个单词，求最小的edit distance
+
+一个单位的distance定义为:
+a. replace a letter
+b. delete a letter
+c. insert a letter (also at any position)
+
+快速的code出来～ 你就可以拿facebook面试了
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31501445_3.html
+
+
+
+
+
+
+>
+
+November 02
+总结下最近几天看到的一些很有趣的题目
+
+题目1. LIS. 一个任意的数组，找出一个严格单调递增的最长子序列。
+例如: {3,0,1,7,2,4,5,9} –> output： {0, 1, 2, 4, 5, 9}
+很简洁巧妙的算法，能在O(N log N)时间和O(N)空间做出来！方法就是始终保持一个单
+增的序列，然后新来的数如果比当前最大还大就append在后面，否则在单增序列里面做
+binary search，替换相应位置的数。
+
+
+题目2. 玻璃杯/鸡蛋drop问题。有N层楼，假定是在 i 层楼扔鸡蛋，如果没有碎，那么
+在所有<=i 楼层扔鸡蛋都保证不会碎，反之如果碎了，那么保证在所有 >=i 楼层扔鸡
+蛋都必碎。通过若干次尝试扔鸡蛋，找到某个鸡蛋碎/不碎的”临界”层。允许你扔鸡
+蛋的总次数是D，允许你打碎的鸡蛋数是B。
+
+问题的描述是：对一组给定的数（N D B），如果存在一个策略保证能在D B的限制下，
+在N层楼中找到“临界”层，那么称此(N D B)是Solvable的。接下来相关联的三个问题
+就是:
+（a）给定D，B，求满足（N，D，B）Solvable的最大的N_max. 例：D=4，B=1， 策略是
+从第一层开始一层层往上. N_max=D=4.
+（b）给定F，B，求最小的D_min
+（c）给定F，D，求最小的B_min
+这个问题相当容易找到看似最优的解，但是绝大部分的方法都不是最优的(最快最高效)
+。而且最迷惑人的是，(a)(b)(c)三个问题中，必须先从其中某一个下手开始解决，如
+果你不幸的先从另外的两个问题下手，多半离最优解遥遥无望。
+
+如果你找到了正确的入手点，有了正确的思路，最后的答案会异常的简单！
+入手点就是首先解决(a)问题，并且可以递归的来解决：假设D,B对应的答案是F(D,B)，
+那么考虑在某一层摔一个鸡蛋后，如果碎了，D--,B--，如果没碎就只是D--，B不变。
+这样很容易写出递归方程，算出F关于D,B的table。
+
+
+题目3. 经典的概率悖论。3扇门，一扇背后有羊，你选中一扇门后，现在另外一扇门开
+了，里面是空的。问你是否应该重新选择。
+
+分析：据观察，有一部分的人坚持认为一定要重新选择，另一部分的人认为是否重新选
+择都一样。另外少部分的人能看出，这个问题很巧妙的隐含了意识(主观intention)，
+信息和概率的关系！
+
+
+
+题目4. 很简单的，N个数的数组，找出最大的和第二大的数，只用N+logN-2的比较次数
+，不需要额外空间。这个是典型的问题本身就是答案提示的题目--基于比较又有LogN，
+很显然思路涉及二分法，继续下去，剩下的问题就仅仅是找一个符合要求的
+Implementation了。
+
+
+
+题目5. 找N！最后一个非零的数字。巧妙的方法可以在 LogN 时间内找出来，一个hint
+是利用 5^k（和log_5）划分问题
+
+
+
+题目6. 任务分配，假设有N个任务，每个任务需要W_i工作量，M个人，每人每天能做工
+作量w_i，如何安排工作，使得所有工作能最快完成。这个问题其实更像一个开放性问
+题，因为一个合理的贪心策略，最后的结果跟最优结是很接近的(大致上，最多只差一
+天)。
+
+
+
+题目7. 计算Fibonacci 数 F(n)，O(n)的算法是很trival的。但是有很漂亮简洁的Log(
+N)算法，思路是利用2*2矩阵表示Fibonacci递推式，然后用二分法的思想球矩阵的N次
+方。
+
+
+
+题目8. 一颗BinaryTree，每个节点有个NULL指针，要求把每个节点和在BFS中它的下一
+个节点串起来。其他BinaryTree的常见题有比如非递归的实现遍历，用.parent or
+stack。思考这些题的经验是，对于这一类的树的题目，有很强的递归性/规律性，通常
+都是O(N)的复杂度，那么把N steps的问题，放在某个单step来研究，会把思路变得更
+清晰。另外一点就是，完全可以假设在做这一单步之前，在做这一步之前的问题已经最
+大可能的正确解决了，这样能够以一种数学归纳法的思想去利用之前的结论。比如这个
+题里面，假设节点 i 之前的节点都已经串好了，如何把 i 串到下一个节点。这个问题
+就是看一眼草图就能知道的了。最后一点经验是，在效率相当的算法的基础上，不同版
+本的实现，已经有能够互相启发的地方。
+--
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31502251_3.html
+
+
+
+
+
+
+>
+
+发信人: geniusxsy (小尾羊), 信区: JobHunting
+标  题: 转一些我blog上以前总结题目的日记(三)
+发信站: BBS 未名空间站 (Tue Jan 26 15:10:35 2010, 美东)
+
+November 06
+一日3题
+
+第一题。给一个数组a[1]到a[n] : 例如 1，2，3，4，5，6
+现在随机生成a的一个permutation: b[1]到b[n] （例如：3 1 5 2 4 6）
+问, a和b数组在每一位上都不相同的概率是多少？假设a本身没有重复的数
+
+我的解法：
+主问题：F(n) = 给定长度为n的a数组，b数组有多少种取法
+辅助问题：结果用f(n)表示。 b数组是{1….i-1,x,i+1…n}的一个排列，其中x!=i，满
+足a，b在每一位上都不相同，有多少种b？例如，a = 1,2,3,4; b是{1,2,5,4}的一个排
+列。换句话说，组成b的元素中，有且只有一个数不在a中。
+
+这样定义了F(n),f(n)后，很显然有递推关系：
+F(n) = (n-1) * f(n-1)    //解释：第一位有n-1种选择，任意一种选择后，问题变为
+一个 n-1规模的辅助问题
+
+f(n) = F(n-1) + (n-1)*f(n-1)   //情况一，在b数组的第i位置填入x，考虑剩下的n-
+1个位置，即是一个n-1规模的主问题；情况二，i位置填入非x的数，考虑剩下的n-1个
+位置，即是一个n-1规模的辅助问题。
+
+简化一下表达式就是:
+F(n) = (n-1)(F(n-1)+F(n-2))
+
+
+
+第二题，一个binary tree，逆序打印BFS序列。不能同时用两段存储空间（不同时用
+queue和stack）
+解法，用一个vector（array)模拟queue+stack。queue的push操作即vector的push_
+back，等效于 q.pop()+stack.push()的操作则是，vector的index往前走一步！最后把
+vector从尾到头打印一遍即可。
+
+
+第三题，网上看的答案，超级巧妙，生成一个0-255 二进制数有多少位是1的查询表
+static int BitSetCount256[256] =
+{
+#define B2(n) n, n+1, n+1, n+2,
+#define B4(n) B2(n), B2(n+1), B2(n+1), B2(n+2),
+#define B6(n) B4(n), B4(n+1), B4(n+1), B4(n+2),
+B6(0), B6(1), B6(1), B6(2)
+}
+
+不得不说，这个宏递归的方法用的太妙了！！！
+附带赞一个巧妙度略低一些的计算二进制数有多少位1的方法
+int bitSetCount(unsigned int i){
+int c=0;
+while(i){
+c++;
+i &= (i-1);  //这一步很赞，每次保证清除最低一位1；
+}
+return c;
+}
+
+--
+
+※ 来源:•WWW 未名空间站 海外: mitbbs.com 中国: mitbbs.cn•[FROM:
+169.234.]
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31502237_3.html
+
+
+
+
+
+
+>
+
+November 07
+学习了backtrack(回溯法)
+
+之前做了一些回溯的题，比如打印permutation，打印任意n对括号等等，都是瞎蒙的。
+
+还真凑巧，上午做了打印n括号的题，下午就看见有人说到回溯法，想想自己还没系统
+学过这个，找了本基础的中文算法书来看了看，虽然书上讲的很浅显，发现自己貌似瞎
+蒙还蒙对了思路，呵呵。正好凑巧的是，刚刚看了一点点，网上就有个人问怎么做
+Vertex Cover的问题，正好让我来做做练习。
+
+1. 打印任意合法的n对括号：
+
+void printParenthes(int N, int left, int right, stack<char> &stk){
+    if(left == N && right == N){
+        printStack(stk);
+        return;
+    }
+    if(left>right){
+        stk.push(')');
+        printParenthes(N, left,right+1, stk);
+        stk.pop();
+    }
+    if(left < N){
+        stk.push('(');
+        printParenthes(N, left+1, right, stk);
+        stk.pop();
+    }  
+}
+
+
+
+2. Vertex Cover（NPC问题），图G中找一个顶点的最小子集，覆盖图的所有边。
+
+int current_k = N; //global
+
+void VC(int k, int start_v){
+    if(all_edge_covered(G) && k<current_k){
+        current_k = k;
+        return;
+    }
+    if(k == current_k - 1) return; //剪枝
+    for(; start_v<=N; start_v++){
+        if(!edge_list[start_v].empty()){ //剪枝
+            list<int> temp_edge_list = edge_list[start_v];
+            clear_edge(start_v,G);
+            VC(k+1, start_v+1);
+            if(curent_k == k+1) return; //剪枝
+            reset_edge(start_v,temp_edge_list,G);
+        }//endif
+    }//endfor
+}//endVC
+
+
+
+想了想，其中的for循环其实是不必的，对于解空间树是子集树的问题，只需要考虑《
+当前顶点“选”“不选”》两个情况
+
+改进后的算法是：
+
+void VC2(int k, int start_v){
+    if(k<current_k && all_edge_covered(G)){
+        current_k = k;
+        return;
+    }
+
+    if(k >= current_k - 1) return; //剪枝
+    if(start_v == N) return;    //没有下一个顶点了
+
+    if(!edge_list[start_v].empty()){ //如果
+        list<int> temp_edge_list = edge_list[start_v];
+        clear_edge(start_v,G);
+        VC2(k+1, start_v+1);
+        if(curent_k == k+1) return; //剪枝
+        reset_edge(start_v,temp_edge_list,G);
+    }//endif
+    VC2(k, start_v+1);    //不选start_v这个顶点
+}//endVC
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31502231_3.html
+
+
+
+
+
+
+>
+
+Dec 05
+最近又看到了几道很好的题：
+
+1. 我们知道，从一个数组里找一段(连续的)子数组求最大和，是一道经典的面试题，
+方法很简单，只要O(n)的时间。把这个问题变一下，假设是一个循环数组呢？找一个
+size<=n的子数组with最大和。
+
+分析，很容易想到第一步，找个地方把循环数组切断，回到了原来的问题，然后在考虑
+一下额外的情况。额外的情况就是：有可能最大和的子数组是跨越了切断点的？这种情
+况的最大和怎么求呢？一个naive的方法能做到O(n)，但是需要O(n)的空间。巧妙的解
+法就是，注意到所有数的和是固定的，考虑切断后的非循环数组，找一段从首开始+一
+段从尾开始的两个子数组with最大和，等价于找一段子数组with min sum.
+
+总结，要擅长利用等价性转换问题，从而将新的问题转变为一个已知有好solution的旧
+问题。利用已知的经典问题来解决新问题，可以说是面试题目中相当重要的一个技巧
+
+2. largest rectangular problem：问题是这样的，一个N×M的棋盘，上面的数字要么
+是1，要么是0，那么要：a）最大的一个正方形全是1填充，b）最大的全是1的矩形。
+
+a）是用动态规划做，虽然方法也很好，但是这里就不提了。b）问题感觉上要比a难很
+多，为什么呢，因为rectangular比square有更大的自由度。不好用DP来做，分冶也不
+合适。
+
+这题的奥妙就在于，利用经典问题。什么经典问题呢？其实是另外一道面试题，其本身
+也是有一定难度的题，题目是：给你一个统计直方图，假设每根柱子都是单位宽度，从
+图的最左边一个紧挨一个排到图的最右边，求在这个图里找到一个最大矩形，它不跟任
+何直方柱相交(边缘接触是允许的)。为什么提起这个题呢，故事是这样的，我之前没有
+做出O(N*M)解法的largest rect题，后来有一天遇到了这个直方图的题目，找到了很漂
+亮的O(N)解法，猛然回顾起那道largest rect的题，这次就很轻松的搞定了。
+
+3（鸣谢mittbbs jobhunting版上的一位面试官贡献自己出的题）有n个房间，小偷每天
+偷一间，偷的规律简单说就是随机行走，如果今天偷了第i间屋子，明天有一半的几率
+偷i-1，一半的几率偷i+1，注意如果刚好偷到了边界上，那么第二天只有唯一的选择。
+如果你是警察，你只能每天选择一个房间蹲守，并且贼的手段相当高明，偷了一个房间
+后，没有任何人能发觉该房间是否曾经被偷过。
+
+提示：奇偶性。总结：注意观察题目中隐含的性质。
+
+4. wild card匹配+搜索：假设你有一个dictionary(原题中是URL集合)，你要搜到到所
+有与 *a*bc*d 这样的输入所匹配的words。这里，*是通配符，可以当成是任意个任意
+字符(包括空)，怎么 预处理+搜索？如果输入是 ???a???b??cde 这类呢？ ‘?’代表
+单个任意字符。如果输入是? *的混合呢？
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31502229_3.html
+
+
+
+
+
+
+>
+
+有m个nuts, n个bolts，规格大小都不相同
+只能nut和bolt之间比较
+怎么把他们排序？要求复杂度最小
+
+Pasted from <http://www.mitbbs.com/article_t/JobHunting/31502045.html
+
+
+
+
+
+
+>
+
+居然把时间看错了，原来人家说的是东部时间的2pm。。。搞得来11点打来电话的时候
+我还紧张了一阵。。。口语说的很烂，脑子也不太灵光。。。
+
+题目其实都不难，behavior问了你最喜欢的CS的东西是什么，我就说算法，然后他还居
+然提了下我简历上量子计算，估计他不会怎么感兴趣，我就只简单提了一点。然后
+coding题都是很基本的，一个串in place删除某些字符，code完了后，反过来，一个串
+在某些地方插入字符，期间我脑子短路了一阵子，还好过了一些时间后接上来了。。。
+然后是个超级老题，数组里面找唯一一个出现了奇数次的整数，我这次很诚实，直接说
+我知道这类trick的。。。不过他还是让我接着说了一下笨办法怎么做。接下来又是一
+个老题，楼层扔鸡蛋问题，这个我前面的日记里面都贴过的，所以除了表述上可能有些
+不清楚外，算法本身肯定是optimal的了。接下来问了面试官几个 cliche的问题就结束
+了，至少表面上面试官还是比较满意的。。。
+
+整个面了下来居然没有问design的题目，也不知道是幸运还是不幸(一次都还没被问过
+，缺少实战经验)。。。
+
+最大的总结：
+
+看清楚面试时间 + 多练口语表达思路 + 看清楚面试时间。。。
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31502227_3.html
+
+
+
+
+
+
+>
+
+面的一般，关键感觉那面试官比较冷，问他也不说对错，让人挺郁闷。
+1. 如何寻找二叉树(not binary search tree)的least common ancestor.
+2. 如何测试一个计算器。
+3. 如果你想打电话面试一个人，拿到那个人的简历，却发现他没有提供电话号码，你
+能想到几种方法找到他的电话号码。
+
+最后一个问题还是挺好的，不知道大家能想到几种方法。 第一个问题我知道如何做，
+就是找到从root到两个节点的path, 然后比较path就可以了。但他问的很细，可能我讲
+的不是很清楚. 我现在想像这样具体到代码的问题，咋们能不能说在电脑上写好了发到
+他邮箱，然后再解释啊？ 不然像这个问题，一行一行解释真地挺难的。
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31502699_3.html
+
+
+
+
+
+
+>
+
+very easy, but I think I have to say goodbye
+
+1. deadlock's four condition
+2. what's virtual memory
+3. how to increase the virtual memory
+4. when should we maintain v2p page table, when should we maintain p2v page
+table.
+5. what's mmap & lazyloading. when should we use mmap to allocate memory
+6. multi-level page table
+7. implement a stack with lock to ensure thread safe
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31356292_3.html
+
+
+
+
+
+
+>
+
+大部分的题都是板上贴过的，再贴贴吧：）
+1. C++和C#的最大区别？
+2. 问到了C++和Java在Runtime Environment（没太听清，可能是这个词）的区别。后
+来我问问了，好像是在virtual function上的区别。我答得是Java里所有函数都是
+virtual函数，C++要显示标明。
+3. TCP和UDP的区别
+前面3个应该是根据我简历来问的，其实我Java和C#也没用太多:(
+
+4. 给定一个int数组和一个int变量叫sum，返回是否有数组中的2个数的和等于sum。
+    这个问题我最开始没处理好正好数组里有一个数等于sum/2的情况:(
+5. n级台阶，一次可以上1级或2级，有多少种上发
+    老题目了，fibonacci number
+6. reverse the words in a sentence, but don't reverse the words.
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31344095_3.html
+
+
+
+
+
+
+>
+
+. Given a random generator which can generate integer number from 1 to 5
+with uniform probability. how to generate number from 1 to 7 with uniform
+probability.
+
+2. Find the shortest path to convert one string to another using the minimum
+edits with each transformation string being a valid dictionary word in a
+dictionary.
+
+for example: for->fork->ford->word->sword
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31429703_3.html
+
+
+
+
+
+
+>
+
+how do you dynamically allocate space for a two dimension array in consecuti
+ve bytes?
+
+should be easy
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31432089_3.html
+
+
+
+
+
+
+>
+
+iven N points in a place with their (x,y) co-ordinates. Find two points
+with least distance between them.
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31437667_3.html
+
+
+
+
+
+
+>
+
+plz implement a non-recursive post order tree traversal.
+
+I think this is difficult. It is kinda simple for pre-order and in-order, bu
+t post-order is tough.
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31455707_3.html
+
+
+
+
+
+
+>
+
+How do you measure context switch time in OS?
+any ideas?
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31465291_3.html
+
+
+
+
+
+
+>
+
+ou have a data structure of integers, which can be negative, zero, or
+positive, and you need to support an API with two public methods, insert(int
+) and getmedian(). Describe a data structure you would use to support this
+API and describe the running time of the two methods.
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31472621_3.html
+
+
+
+
+
+
+>
+
+How to sort an array with only {0, 1, 2} possible values in O(n) without
+extra space?
+
+Ex: an array {0, 1, 2, 2, 1, 0}
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31472623_3.html
+
+
+
+
+
+
+>
+
+given a string, how to do a string rotation without using extra memory?
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31473311_3.html
+
+
+
+
+
+
+>
+
+Given a list of characters and an int which is the distance between the
+same characters
+
+Eg: input- aaaaabbbbcc and distance as 2. One of the outputs can be-
+aabaababbcc
+
+Come up with an algorithm and Code it.
+
+好吧，我承认，给我的人说他也不记得了，当时就是挺confused的。
+
+来另一个吧：
+
+Q2) Find out if two inputs are Anagrams with HUGE HUGE input (like thousand
+of terabyte)
+
+Q3) Given lots and lots of points in a 2D space find all the line with most
+points on it.
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31480153_3.html
+
+
+
+
+
+
+>
+
+dictionary is given. You have a word which may be misspelled. How will you
+check if it is misspelled?
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31485125_3.html
+
+
+
+
+
+
+>
+
+发信人: sumperman (超哥), 信区: JobHunting
+标  题: Google interview question
+发信站: BBS 未名空间站 (Tue Jan  5 14:59:47 2010, 美东)
+
+Design a system to store heap on multiple machines ? What is avg number of
+machines accessed per operation and  number of elements stored in a machine ?
+
+First greater number in an array. Given a large array of positive integers,
+for an arbitrary integer A, we want to know the first integer in the array
+which is greater than or equal A . O(logn) solution required
+ex  [2, 10,5,6,80]
+input : 6     output : 10
+input :20    output : 80
+
+Given an N-by-N array of black (1) and white (0) pixels, find the largest
+contiguous sub-array that consists of entirely black pixels. In the example
+below there is a 6-by-2 sub-array.
+1 0 1 1 1 0 0 0
+0 0 0 1 0 1 0 0
+0 0 1 1 1 0 0 0
+0 0 1 1 1 0 1 0
+0 0 1 1 1 1 1 1
+0 1 0 1 1 1 1 0
+0 1 0 1 1 1 1 0
+0 0 0 1 1 1 1 0
+
+Any ideas?
+--
+
+※ 来源:•WWW 未名空间站 海外: mitbbs.com 中国: mitbbs.cn•[FROM:
+173.26.]
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31487235_3.html
+
+
+
+
+
+
+>
+
+Given a log file, which contains a series of websites, which the user has
+visited, find the most frequent path of 3 websites.
+
+e.g: If this is a log file
+
+A B C D E
+A C D B E
+C D E B A
+A C D E B
+C D E A B
+
+clearly, C D E in the most frequent website?
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31493409_3.html
+
+
+
+
+
+
+>
+
+. find a pair that add up to a given sum
+2. find all phone numbers in the html
+
+
+
+
+
+
+pages in a folder (and subfolder).
+something else, and self-introduction stuff
+
+Pasted from <http://www.mitbbs.com/article/JobHunting/31493961_3.html
+
+
+
+
+
+
+>
+
+
+2010.1.23 9：00am-11：00am. NYC headquarter
+流程：公司介绍+参观公司+面试
+
+我是CS的。问的都是C++编程。一对一。半小时。C++很久之前学过的，恶补了一晚。我
+跟他说自己
+还是beginner，所以问题不是很难，但是还是不会。。。
+
+1.为什么加入bloomberg？
+2.introduce your experience。
+3.比较c++和java的区别。内存管理，garbage class....compiler，编译的作用？（
+gcc）(不懂java。java貌似编译了以后各个平台上都可以运行吗？virtual machine？C
+++编译
+了以后的汇编语言只能在特定的系统上运行？）
+4.C++中什么function call delete a object? destructor
+5.谈到了shallow copy deep copy.
+6.int main()
+{
+  return main（）;
+}
+will this compile? will this run?
+7. 利用一个写好的函数putchar(char A)which prints out the character you
+entered. 写一个putlong (long A).只能调用putchar，不能调用其他任何函数（可以用
+STL，但是不能用STL中的函数）。后来还问到了如何test你的程序。这一道题折磨了我
+15分钟。
+答案在这里：
+http://wuhrr.wordpress.com/2007/11/09/how-to-print-a-long-integ
+only-putchar/
+
+所有问题不告诉你回答正确与否。他没有固定的几道题要问，你谈到了什么就往深里面
+问。今天有50多人面试，各个背景的都有。CS/EE的我感觉就问编程，非CS/EE的问智力
+题。再有就
+是通知巨突然，周四晚上收到邮件，让周六早上面试。。。
+
+体会：是不是编程牛人，一写程序就知道。。。。这次又去当炮灰了。
+
+Pasted from <http://www.mitbbs.com/article_t/JobHunting/31500097.html
+
+
+
+
+
+
+>
+
+
+Screen clipping taken: 1/28/2010, 5:30 PM
+
+
+
+
+Screen clipping taken: 1/28/2010, 5:31 PM
+
+
+
+
+Screen clipping taken: 1/28/2010, 5:38 PM
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--
+
+※ 修改:·mitbbs59 於 Jan 29 14:21:26 2010 修改本文·[FROM: 192.5.]
+※ 来源:·WWW 未名空间站 海外: mitbbs.com 中国: mitbbs.cn·[FROM: 10.0.]
+
+
+
+-- 

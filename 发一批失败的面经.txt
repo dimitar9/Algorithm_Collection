@@ -1,0 +1,113 @@
+
+发信人: wodexiaomaji (wodexiaomaji), 信区: JobHunting
+标  题: 发一批失败的面经
+发信站: BBS 未名空间站 (Thu Jan 28 00:03:18 2016, 美东)
+1. 打车公司
+Phone:
+Add two array-represented integers
+Add two string-represented integers
+
+Onsite:
+How to determine which cars should show up around a particular user in the
+map? 当一个用户打开app，地图上会显示他周围的车。后台是如何设计的只显示用户周
+围的几辆车。面试前我看了他们所有的tech blog，知道他们用Google S2，然后就往这
+方面扯了。说可以把地图用S2切分成几块，只显示用户所在cell周围cell里面的汽车。
+还有如何估算车辆到达用户所需要的时间。
+
+有一系列的events不断流进来，比如说“用户A刚完成了一个trip”，“用户B刚完成了
+一个trip“。现在有一些个奖励，比如完成了头10个trips会达成一个奖励。然后完成
+50个trips会达成一个奖励。如何写代码来实现这个。类似于游戏里练级杀怪达成成就
+之类的。最开始我没搞明白题意，后来花了些时间搞明白之后给了个算法，面试官不太
+满意。
+
+具体的题目记不太清了。就记得要用recursive的办法不断比较两个string的
+substrings。貌似是判断两个string的pattern是不是一样。比如AABBAA和EEFFEE相同
+，但是AABBAA和EEFFGG不同。
+
+然后貌似是bar raiser来问我简历里project的问题。Supply engineering的头儿。
+
+最后是manager来问我很多behavior的questions。
+
+2. 鸟叫公司
+面的是他们刚收购不久的一个组（2015年4月份收购的），专门帮大的购物网站来bid广
+告的。面试的流程还是他们组自己定的。这家面试很有特点，onsite的时候假设你第一
+轮就fail了，当时就扫地出门。
+
+Phone：
+给你一个grid，这里面有些地方是1有些地方是0. 写一个方程void dilate(int[][]
+grid, int k)，把是1的地方周围k个cell全给置为1. 其实就是放大一个图像。要求O(n
+)的复杂度。当时没想出来，面试完了之后才知道怎么做。
+
+Onsite：
+提前给了一段TicTacToe game的代码，让你指出哪里不好，如何改写。我就只是用了OO
+design的一些东西来改写代码，结果去了才知道人家想要做成一个online gaming的系
+统，还要涉及scalable system的东西。真的是感觉当场直接被艹翻了。面完第一轮吃
+了个午饭就跟我thank you了。我飞了10几个小时就为了这1小时的面试。飞机是晚上11
+点的。然后自己拖着行李跑去了金门大桥，吹了一下午的海风，看着远处的三番城，心
+里真的是万马奔腾。这个地方当初实习的时候来过，以后，可能再也不会回来了。
+
+这里尤其要吐槽的是三番downtown有一家貌似是泰国口味的餐馆，里面用具都还挺特别
+的，筷子什么的都放在类似于以前农村刷牙缸的那种搪瓷杯里面，每道菜都挺贵。那个
+服务员不断给我推荐一个泰式风味的beef brisket，说这个tastes really good。端上
+来，尼玛，黑乎乎的，而且非常咸！简直是黑暗料理！我记得那一盆的价格是$38左右
+。不管是google还是yelp上review竟然还不差！也不知道是我点错了还是怎么着，尼玛
+啊，是我来美国吃过最坑的一顿饭！谁知道那个餐馆叫什么？
+
+3. 靠保险挣钱的HR软件公司
+Phone:
+那天实在是白天工作太累了，晚上下了班回家累成狗了。貌似是国人打电话过来的。核
+心就是排序一个array，每个element是一个class。我想直接用Java的排序，然后
+customize comparator，结果忘记语法怎么写了，死活我程序编译通不过，豪取了大部
+分时间。最后好歹编译通过了也运行出来了，最后剩下可能5分钟还是10分钟吧，面试
+官问了我一个followup，记得好像是要save space还是怎么着的，核心的idea是得手动
+写quicksort。那天实在是太累了，没完成。不出所料，挂了。
+
+4. 在线视频服务的公司（名字是中文拼音过来的）
+OA:
+打印Company relationship hierarchy
+
+Phone:
+用到了stack来parse XML document
+LRU cache
+
+Onsite:
+1). 某个电影每一秒会有好几次view。实现AddViewEvent()，which is to be called
+by the client. 实现getLastMinCounts(); getLast10Counts(); getLast60Counts()
+返回过去一分钟/10分钟/60分钟内的view数。
+2). Insert ads given M slots and gap-distance of N。比如M=3， N=1，有如下情
+况- - -, x - -, - x -, - - x, x – x。要求返回一共有多少种情况。X表示可以投
+放广告的位置。
+3). Design一个分布式的ATM system，有data center，有很多个ATM，如何scale。
+4). Explain your past project and design box/dropbox file sharing system。核
+心的部分是你在一台机器上保存了一个文件，当你登陆另外一台机器的时候，如何让这
+个文件出现在那台机器上。
+
+5. 狗家西雅图
+Phone:
+Validate parenthesis. 好多个括号组成的一个string，判断是不是valid的。用stack
+解决。
+Remove target element in a linked list.
+
+Onsite:
+1). Check if a tree is symmetric.
+2). Find the kth smallest element in a 2D sorted grid。 每一行是sorted的，每
+一列也是sorted。
+
+3). Difference between abstract and interface in Java. 我提到一个可以有
+default的implementation，另外一个不能，必须implement所有methods。但是面试官
+貌似是想知道compiler level他们俩有什么区别，以及什么时候用哪个。
+4). Find the longest path that is composed of consecutive numbers in a tree.
+一个valid的path是比如3-4-5-6。顺序不要紧，但是path上面的数字得连续。
+
+5). Parse XML node tree and decide if two docs contain the same plain text。
+比如<html>hello</html>和<html><a>h</a><b>e</b>llo</html>就是相等的。先设计
+数据结构，然后写代码。
+6). Given a windows size N and new numbers keep coming in. Every once in a
+while, getAvg(startIndex) is called, which returns the average of the N
+numbers starting from startIndex. 设计数据结构并写代码。
+
+7). Talked about my PhD research
+8). Wildcard matching
+
+9). Design candy crush; initialize MxN board so that no 3 same colors in a
+row/col. And there should be at least one valid move the user can start with.

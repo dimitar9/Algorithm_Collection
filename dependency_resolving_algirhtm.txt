@@ -9,3 +9,47 @@ def dep_resolve(node, resolved, seen):
             raise Exception('Circular reference detected: %s -&gt; %s' % (node.name, edge.name))
          dep_resolve(edge, resolved, seen)
    resolved.append(node)
+
+
+package dependency_resolving;
+import java.util.LinkedHashSet;
+import java.util.Set;
+public class resolve {
+	public void depResolve(Node node, Set<Node> seen, Set<Node> resolved){
+		System.out.println(node.getName());
+		seen.add(node);
+		for(Node n : node.edges){
+			if (!resolved.contains(n)){
+				if(seen.contains(n)){
+					throw new IllegalArgumentException();
+				}
+				depResolve(n, seen, resolved);
+			}
+		}
+		resolved.add(node);
+	}
+	
+	public static void main(String[] args) {
+		Node a = new Node("a");
+		Node b = new Node("b");
+		Node c = new Node("c");
+		Node d = new Node("d");
+		Node e = new Node("e");
+		
+		a.addEdge(b);    
+		a.addEdge(d);   
+		b.addEdge(c); 
+		b.addEdge(e);
+		c.addEdge(d);
+		c.addEdge(e);
+		resolve r = new resolve();
+		Set<Node> resolved = new LinkedHashSet<>();
+		Set<Node> seen = new LinkedHashSet<>();
+		r.depResolve(a, seen, resolved);
+		System.out.println("-");
+
+		for(Node n : resolved){
+			System.out.println(n.getName());
+		}
+	}
+}

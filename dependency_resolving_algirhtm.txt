@@ -1,0 +1,11 @@
+http://www.electricmonk.nl/log/2008/08/07/dependency-resolving-algorithm/
+
+def dep_resolve(node, resolved, seen):
+   print node.name
+   seen.append(node)
+   for edge in node.edges:
+      if edge not in resolved:
+         if edge in seen:
+            raise Exception('Circular reference detected: %s -&gt; %s' % (node.name, edge.name))
+         dep_resolve(edge, resolved, seen)
+   resolved.append(node)

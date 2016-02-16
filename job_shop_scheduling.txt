@@ -3,7 +3,7 @@ https://en.wikipedia.org/wiki/Bin_packing_problem
 
 detect cycle
 union find
-top sort  O(m+n)
+top sort  O(m+n) http://www.geeksforgeeks.org/topological-sorting/
 remove unnecessary edges (?)
 
 minimize makespan.

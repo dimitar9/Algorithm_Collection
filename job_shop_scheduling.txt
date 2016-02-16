@@ -1,0 +1,20 @@
+https://en.wikipedia.org/wiki/Job_shop_scheduling 
+https://en.wikipedia.org/wiki/Bin_packing_problem
+
+detect cycle
+union find
+top sort  O(m+n)
+remove unnecessary edges (?)
+
+minimize makespan.
+
+
+Steps:
+
+1. construct a forest.
+2. top sort each tree.  -> list of array of task.
+3. for loop :  
+   a. sort all top level tasks based on size.
+   b. best fit insert to bin. (compute)    [append this job to result list].
+   c. when one finish, remote from compute, release cpu. return to step a.
+4. 

@@ -17,12 +17,12 @@ public class T315 {
     }
 
     public int insertNode(TreeNodeSpecial root, int val) {
-    	System.out.println("Insert Node " + val);
+    	System.out.println("Insert Node " + val + " root.count is " + root.count );
         int thisCount = 0;
         while(true) {
             if(val <= root.val) {
                 root.count++;
-                System.out.println("DEBUG: thisCount ++ " );
+                System.out.println("DEBUG: root.count++;" );
                 if(root.left == null) {
                     root.left = new TreeNodeSpecial(val); break;
                 } else {

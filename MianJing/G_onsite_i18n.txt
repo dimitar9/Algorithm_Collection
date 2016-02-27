@@ -1,0 +1,28 @@
+问一题G onsite，经常出现
+发信站: BBS 未名空间站 (Sun Dec 28 02:26:29 2014, 美东)
+
+Abbreviation: apple can be abbreviated to 5, a4, 4e, a3e, …
+    Given a target string (internationalization), and a set of strings,
+return the minimal length of abbreviation of this target string so that it
+won’t conflict with abbrs of the strings in the set.
+
+“apple”, [“blade”] -> a4 (5 is conflicted with “blade”)
+“apple”, [“plain”, “amber”, “blade”]  ->  ???
+
+Problem changed to:
+If given a string and an abbreviation, return if the string matches abbr.
+
+“internationalization”, “i5a11o1” -> true
+
+以前网友面经总结里面好几次出现，求解
+补充一道类似的题：
+给一字典,求其中某单词的最短缩写。比如internationalization可以缩写为i18n而不
+产生歧义。 举例:一字典有6个单词:
+hello
+world
+would
+lord
+hell
+language
+依次可以缩写为 hello -> 4o or h4 world -> 2r2 would -> 2u2 lord -> l3 or 3d
+hell -> 3l or h3 language -> 8

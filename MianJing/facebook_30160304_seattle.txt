@@ -1,0 +1,6 @@
+1. array. return value for all other values multiplication.
+2. verify number is symmetric.
+3. given array and k,  return smallest value in k range. treemap
+4. design: 4 server. 2 functions. 5 s know new member of cluster. 10s knows member left.
+5. big end, small edn
+6. implement circular buffer.

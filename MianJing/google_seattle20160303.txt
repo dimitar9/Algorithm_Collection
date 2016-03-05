@@ -1,0 +1,7 @@
+1. candy crush. given 2d array with filled ball. No new balls. Generate a way to finish it.
+2. bomber man. Given 2d array and walls and enemies. Find a spot that can kill most enemies.
+   use pair (i,j) to save how many enemies it can kill for that row and column.
+3. k vector iterator.
+4. 3sum smaller, fft
+5. game of life.
+6. 

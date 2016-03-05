@@ -1,0 +1,41 @@
+Tableau电话及onsite面经
+发信站: BBS 未名空间站 (Fri Mar  4 23:19:03 2016, 美东)
+
+找工作的过程中从版内大牛的总结帖和面试帖获得和很多帮助，现在献上我上周
+Tableau的面经（今天hr通知给口头offer），贡献小小力量。
+
+我面试碰到的全是白人，没有碰到国人，也没碰到烙印。除了HR之外，onsite每轮面试
+都是两个面试官，有时候其中一个是远程。
+
+电话面试：
+
+Round 0: HR, behavior
+
+Round 1: phone screen: Write a method to randomly generate a deck of cards
+Follow up: how to test this function? How you test the shuffle is randomly?
+CC150原题，在Random那章有解答。可惜之前没刷到，只好按自己的想法写了一下，居
+然也过了。
+
+
+onsite面试（Seattle）
+
+Round 0：why choose Tableau, how do you known about Tableau...
+
+Round 1: 项目介绍。算法：给一个int strength getStrength(int frequency)接口，
+输入一个频率，输出其对应的强度。给一堆频率，要求实现getTop6()函数，返回这堆
+频率中strength前6的频率。我用Top（k）的heap来解，面试官要求一个更好的算法，
+提示好像是将强度分区，类似桶排序那种，本人太笨没理解为啥后者算法更好，后来代
+码还是用Heap来实现
+
+Round 2：项目介绍。算法：Leetcode Stock Buy/Sell原题。Follow up，要求同时返
+回maxprofit，buy date和sell date，设计test case
+
+Round 3：lunch interview。一堆behavior
+
+Round 4：sr Dev manager和一个sr engineer。Dev manager：一个car game，有很多
+辆车，每辆车有不同的rules，这些rules分别属于四个category。问每新加一辆车，如
+何判断新加的这辆车对已有的车（或者赛况？）会造成什么影响。我完全不知道该怎么
+解，只好乱扯一通，剧尴尬，那个manager看确实也问不出啥来，就给到下一个面试官
+出题。第二个面试官问的是版内出现过的ship game。说一个board上可以放置几艘ship
+，可以横着放，也可以竖着放，然后在board上发射炮弹打这些ship。要求设计类及实
+现placeShip（）方法和fire（）方法。

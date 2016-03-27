@@ -15,7 +15,7 @@ public int burst(int[][] memo, int[] nums, int left, int right) {
     if (memo[left][right] > 0) return memo[left][right];
     int ans = 0;
     for (int i = left + 1; i < right; ++i)
-        ans = Math.max(ans, nums[left] * nums[i] * nums[right] 
+        ans = Math.max(ans, nums[left] * nums[i] * nums[right] // key! not i-1, i , i+1, think reversely 
         + burst(memo, nums, left, i) + burst(memo, nums, i, right));
     memo[left][right] = ans;
     return ans;

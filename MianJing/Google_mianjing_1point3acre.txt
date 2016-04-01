@@ -1,0 +1,119 @@
+1. http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=167364&pid=2358825&page=1&extra=#pid2358825
+ [面试经验] Google 11/13 onsite + 12/10加面 
+我原先是waive掉phone interview的，直接onsite。後來又被安排加面phone interview就是了...
+我的題目都是沒看過的，再次證明Google的題庫有多深，但還好大部份都不難，真是人品大爆發...
+
+11/13 Onsite
+第一面：感覺很愛數學的三哥
+第一題：證明題
+給一個2d平面(x及y值皆不為負)，如果x及y的值皆為integer，則稱為on-grid point，反之則稱為off-grid point。請證明給定任意四點on-grid points，一定至少會有兩個點的中點也是on-grid point。.鏈枃鍘熷垱鑷�1point3acres璁哄潧
+因為是第一面，太緊張，這題我花了應該15到20分鐘。
+
+第二題：
+input為一個非負整數，代表一個set {1, 2, 3, ...., n}。現在要將這個set分成兩份並滿足以下條件：. 鐣欏鐢宠璁哄潧-涓€浜╀笁鍒嗗湴
+a & b = None
+a | b = N
+也就是disjoint set，並且sum(a) == sum(b).鐣欏璁哄潧-涓€浜�-涓夊垎鍦�
+求給定一個非負整數n，找出有多少個這樣的partition並回傳數量。. from: 1point3acres.com/bbs
+這題還滿有趣的，大家可以想想怎麼解，我明天跟大家解釋我後來想的解法。
+
+必須要說，這位三哥人其實還滿好的，扣除他遲到15分鐘，還邊吃花生米邊面試我，考第二題這種難題還不給我完整時間還出一道不是很trivial的證明題之外，其實他很積極的參與我的解題過程，一直一直給我各種提示。第二題我跪得很慘，連解題的idea都還沒想出來就時間到了，但我想他應該沒給我很差的評分，所以我才有加面的機會，才能進而拿到offer。關於這點我還是得感謝他的。.1point3acres缃�
+
+因為第一面跪得太慘，感覺就像我根本不會過了，所以後面有點自暴自棄，沒想到整個人都放鬆了，突然像是天生神力一樣，解題思路突然清晰起來。
+
+第二面：東亞大叔(SETI)
+因為我的recruiter給我的安排是同時面SWE跟SETI兩個位置，所以我有一個面試官是來自SETI。他開宗明義說只會出一題，大部份時間會花在討論如何做test。
+題目是merge interval變化題：
+給一個list，找出0 - 1000的missing interval(s) as string，然後回傳。
+
+題目很簡單，但是我想test cases有點卡卡的，但我想應該還可以，大家可以自己想想，是你們的話，會想到哪些test cases。提示：請以一個API designer的角度來想這個問題。
+一樣明天我會跟大家解釋我當天想的test cases有哪些。
+
+中午吃飯跟一個感覺像是amigo的SETI吃飯，他應該覺得很悶，因為我還籠罩在第一面的陰影XD  反正最後他跟我說，如果我ace其他三關，應該還是有機會。承您吉言，還真的是這樣。
+
+第三面：native妹妹(小弟我快要奔3惹，感覺她應該比我小)
+題目是給兩個string s and t，回傳在t裡面是否有子字串是s的anagram，也就是回傳true or false。. 鐣欏鐢宠璁哄潧-涓€浜╀笁鍒嗗湴
+很簡單對吧！！我是用two pointers + hash table，可是不知道為啥，妹妹一直聽不懂我的解法，害我花了將近20分鐘溝通解法，寫一寫就沒時間寫第二題惹。還好這面的影響不大....
+
+第四面：白人小哥
+OOD題！
+設計一個class來表達多項式，並且支援乘法e.g.: (5x^2 + 4x + 3) * (7x^2 + 2x + 1)，這樣的話前面的多項式跟後面的多項式分別都是一個class，然後要寫乘法的處理。. visit 1point3acres.com for more.
+一開始先設計只有一個變數的，然後寫完並且優化之後，要設計多個變數，e.g: 6x^2 + 7y + 1，然後再優化。
+這題我覺得挺好玩的，後來拿來問同學，他們好像不同意就是了...
+. 鐣欏鐢宠璁哄潧-涓€浜╀笁鍒嗗湴
+我還滿肯定第四面的白人小哥給我strong hire，因為他離開前有跟我說，I think you did a very good job there.
+
+本來都已經不抱希望了，但過了一週，recruiter突然寄信跟我說，他幫我送hc了！他幫我送hc了！他幫我送hc了！-google 1point3acres
+因為當下很震驚，所以說三次。. 鐣欏鐢宠璁哄潧-涓€浜╀笁鍒嗗湴
+不過我的recruiter一直不肯跟我說我各個表現如何，只跟我說，you did a good enough job to make it to next stage.
+過了兩週，他又寄信過來跟我說，需要安排加面。這個時候我又問他，是我之前表現不好嗎？他還是不肯鬆口，只說，hc need to gather more data points to make decision。
+所以我又被安排電面惹.... 鍥磋鎴戜滑@1point 3 acres
+
+12/10 加面(phone interview)
+一面：聽起來是native小哥. 涓€浜�-涓夊垎-鍦帮紝鐙鍙戝竷
+第一題忘了，但是我只記得，當下覺得，真的假的出這麼簡單？你在耍我？反正十分鐘左右秒殺。
+第二題：給一個list of strings，裡面是像12:25, 13:10之類的時間，要回傳一個pair，其時間間隔最小。sort之後又簡單解決。
+感覺小哥很想問到第三題...
+第三題是概念題，不用寫code，交流一下概念就行了。
+題目是給一堆websites，把他們按照語言分類。在分類前會給一堆paragraphs以及他們的label，也就是這個paragraph屬於哪個語言。
+我感覺他想考的是bag of words + KNN，但因為他出得有點怪，所以我最後給他的解法是類似TF-IDF的東西，沒丟進去KNN做分類。
+他後來好像也發現題目怪怪的，所以也沒有繼續討論怎麼引進classifier。
+
+二面：聽起來還是native小哥
+題目是給一個二維矩陣，代表的是一個色塊圖，以及起始點位置，視覺化大概像這樣：
+
+
+抱歉自己畫的，有點醜，但意思應該有到。. 1point3acres.com/bbs
+
+求的是從這個起點，相鄰的同顏色塊的邊長。我大概花了超過五分鐘，才弄懂他說的那個英文字是邊長的意思，所以有人看到這邊的話，趕快去查邊長的英文是啥，別再跟我一樣犯傻！！
+以我的例子來說，第一個圖要回傳36，第二個圖要回傳8。
+這題有很多解法，我是用一個DFS就解決了。後來又花了十幾分鐘在討論test cases以及怎麼做input validation。
+
+只能說我太幸運了，加面的題目竟然這麼簡單。而且我隱隱約約有感覺到，兩個面試官都不知道我是加面的，第一個小哥還問我想去哪個組實習 XDDDDD
+也感謝兩個整學期都陪我每週mock interview的戰友，希望你們也都能拿到自己滿意的offer!
+
+下面是我去CU Google辦的workshop，googler解說的正確面試流程，希望對各位有所幫助：
+1. Don't jump into coding at once
+不要一出手就是程式碼，應該要follow以下步驟
+2. Define the problems. 1point 3acres 璁哄潧
+最簡單的方式就是復述問題，讓面試官確認你懂題目的意思。但更重要的是，要「界定」問題。例如，有哪些東西你可以不用寫，像是如果問的是word ladder，available words要怎麼樣判斷？給的是一個資料結構的東西，還是一個function，之類的問題。
+3. Define todos of the problems
+承上，問完問題，確認需要寫的範圍之後，開始定義你需要的東西。例如palindrome系的題目，至少要有一個helper function: isPalindrome。最直接的定義方式就是說明你需要寫哪些helper functions，在這過程你還可以邊定義邊問說，我需要寫這部分嗎諸如此類。
+4. Define test cases, especially corner cases
+這個應該是最重要的部分，今天有個工程師說，不少Google的員工希望看到test-oriented programming。這似乎也佔了評分很重要的一部分，因為透過定義test cases以及定義corner cases，可以讓面試官評斷你對問題瞭解的程度，以及你思考邏輯的謹慎程度。
+5. Illustrate your algorithm. 鐗涗汉浜戦泦,涓€浜╀笁鍒嗗湴
+如果沒想到有效率的解法，先想brute-force怎麼解。然後，用剛剛定義好的test cases來描述你的解法。
+6. Coding with verbal communications
+這就沒啥好解釋的了，邊寫邊解釋。
+7. Run your codes with previous defined test cases
+寫完後，停頓一下，然後說，I think it would work, let's run with test cases。聽說這很重要，不要一寫完就跟人家說完成了 XD
+剩下的就是大略分析一下複雜度，如果有想到更好的解法，可以再去說明然後改進codes。
+
+
+
+
+补充内容 (2016-1-27 11:53):
+UPDATE: 加面第一面的第一題我想起來了，是iterator of iterators。也就是，寫一個class，在constructor會給list of iterators，寫兩個function：next(), hasNext()
+
+补充内容 (2016-1-28 07:03):
+更正：第一面第一題，是5個on-grid points!!!.鏈枃鍘熷垱鑷�1point3acres璁哄潧
+
+补充内容 (2016-3-1 07:53):
+UPDATE: 加面第二面第一張圖的周長應該是28，我算錯了！！
+
+似乎沒什麼人討論呢，是因為題目太簡單了嗎 XDD
+-google 1point3acres
+關於第一面第二題set partitions，強烈建議先自己想想，如果實在想不出來再來看我這邊的解釋
+這題其實是set partitions的變形題，只是變形太多，所以會有點難連結到那邊. 1point 3acres 璁哄潧
+
+當input為n的時候，先計算summation of 1 to n，這個應該大家都會，套個數學公式就行了
+如果summation不是偶數，直接回傳0，不然的話，target sum就是summation / 2 鏉ユ簮涓€浜�.涓夊垎鍦拌鍧�.
+接下來就是用0/1 knapsack的概念去建立lookup table就行了. 鐗涗汉浜戦泦,涓€浜╀笁鍒嗗湴
+-google 1point3acres
+第二面的test cases，可以分為兩部分，valid & invalid input
+對於valid input，首先可以想到的，有empty list，list with only one element，duplicate elements，negative numbers elements，elements bigger than upper bound等等
+invalid input則是因為我是用Python，要考慮在非strong type language下的各種可能性
+各位可以參考各個module的source code裡面，他們怎麼做input validation的，例如scipy. 1
+
+
+2. http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=183366&pid=2358817&page=1&extra=page%3D1%26filter%3Dsortid%26sortid%3D311#pid2358817

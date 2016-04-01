@@ -117,3 +117,31 @@ invalid input則是因為我是用Python，要考慮在非strong type language�
 
 
 2. http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=183366&pid=2358817&page=1&extra=page%3D1%26filter%3Dsortid%26sortid%3D311#pid2358817
+
+
+第一轮:. 鐗涗汉浜戦泦,涓€浜╀笁鍒嗗湴
+年轻三哥。
+1. 给一堆votes(candidate, timestamp)，问当前时刻T得票最高的人是谁。Follow up问得票最高的前K个人。
+2. 问一个字符串的任意permutation是不是回文，leetcode 266。. 鐣欏鐢宠璁哄潧-涓€浜╀笁鍒嗗湴
+
+第二轮：
+年长三哥。
+1. 数学题，不写代码。给5个在网格上的点（x，y坐标都是整数），求证5个点两两连线的中点必有一个在网格上（x，y坐标都是整数）。. 鐣欏鐢宠璁哄潧-涓€浜╀笁鍒嗗湴
+2. 给一个整数N，将集合S={1,2,3,...,N}分两个子集S1和S2，问使sum(S1) == sum(S2)的划分方法有多少个。类似subset，leetcode 90。.鏈枃鍘熷垱鑷�1point3acres璁哄潧
+
+
+午饭
+
+第三轮：
+发型诡异的日本大叔。
+Trapping Rain Water， leetcode 42。这轮代码写得有点儿懵逼。
+.鐣欏璁哄潧-涓€浜�-涓夊垎鍦�
+第四轮：.鏈枃鍘熷垱鑷�1point3acres璁哄潧
+貌似是中国小哥，带白人小哥shadow。
+1. 给一个整数数组a，函数f(i)返回除a[i]外所有整数的乘积，求所有的f(i)。Follow up问不许用除法怎么做。. visit 1point3acres.com for more.
+2. 平面上一堆点，找两个点使由这两个点确定的直线平分剩余所有点。只说了下思路，并没有写代码。
+我的思路是先找到最下面的点P，然后根据其余点与P的连线和P所在水平线的夹角找中位点。又说了可能有共线的情况，小哥说不用考虑共线。不知道思路对不对。
+. from: 1point3acres.com/bbs
+
+总之是面完了。希望4月8号之前给结果，不然要被迫从了Amazon了。. 1point3acres.com/bbs
+顺便求问如何跟Amazon要deadline的extension。

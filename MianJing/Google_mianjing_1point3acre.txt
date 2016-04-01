@@ -44,7 +44,7 @@ OOD題！
 我還滿肯定第四面的白人小哥給我strong hire，因為他離開前有跟我說，I think you did a very good job there.
 
 本來都已經不抱希望了，但過了一週，recruiter突然寄信跟我說，他幫我送hc了！他幫我送hc了！他幫我送hc了
-因為當下很震驚，所以說三次。. 鐣欏鐢宠璁哄潧-涓€浜╀笁鍒嗗湴
+因為當下很震驚，所以說三次。
 不過我的recruiter一直不肯跟我說我各個表現如何，只跟我說，you did a good enough job to make it to next stage.
 過了兩週，他又寄信過來跟我說，需要安排加面。這個時候我又問他，是我之前表現不好嗎？他還是不肯鬆口，只說，hc need to gather more data points to make decision。
 所以我又被安排電面惹.... 
@@ -135,7 +135,7 @@ invalid input則是因為我是用Python，要考慮在非strong type language�
 第三轮：
 发型诡异的日本大叔。
 Trapping Rain Water， leetcode 42。这轮代码写得有点儿懵逼。
-.鐣欏璁哄潧-涓€浜�-涓夊垎鍦�
+
 第四轮
 貌似是中国小哥，带白人小哥shadow。
 1. 给一个整数数组a，函数f(i)返回除a[i]外所有整数的乘积，求所有的f(i)。Follow up问不许用除法怎么做。

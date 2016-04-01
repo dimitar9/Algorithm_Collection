@@ -190,7 +190,7 @@ width ＝ 3， height ＝ 2， byte［］ ＝ ｛1，2，3，4，5，6｝；
 5.http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=147760&extra=page%3D1%26filter%3Dsortid%26sortid%3D311%26sortid%3D311
  [面试经验] Google电面 
 刚面的google电面，面的应该是国人，不知道是信号不好还是什么原因听的都不是很清楚，但是把我名字念准了，可能是免提？看了下简历，没有问什么，问了一下情况，选的SDE还是SETI，然后做题。
-第一题 ADD ONE。 简单讲了一下写了一下程序就过了。. visit 1point3acres.com for more.
+第一题 ADD ONE。 简单讲了一下写了一下程序就过了。
 第二题，说给一个array，然后调一些加到新的array，头尾必须要，然后给你个条件，新的array里的2个元素之间差别尽可能接近10。
 LZ之前都在看其他题一看这题傻了，感觉只能brute force啊。。然后就写了个程序，时间也差不多到了，随便问了2个问题就结束了。
 求RP,求ONSITE。
@@ -210,16 +210,16 @@ LZ之前都在看其他题一看这题傻了，感觉只能brute force啊。。�
 大家有什么想法吗？一起来讨论讨论。
 我的想法是用DP做.
 
-        public static  int chunkNum(String s){-google 1point3acres
+        public static  int chunkNum(String s){
                 if(s == null || s.length() == 0){
                         return 0;
                 }
                 int length = s.length();
-                int[][] DP = new int[length][length];-google 1point3acres
+                int[][] DP = new int[length][length];
                 for(int i=length-1;i>=0;i--){
                         for(int j=i;j<length;j++){
                                 if(i == j){
-                                        DP[i][j] = 1;. 1point3acres.com/bbs
+                                        DP[i][j] = 1;
                                 }
                                 else{
                                         int sum = 0;
@@ -257,7 +257,10 @@ output是每个role出现的次数。
 面试过程：
 问清楚input&output，说input结构可以自己定义。我的回答是把所有update建一个 per-user map，update list按序存成数组。每次读play log，按player找到update list，然后binary search。时间NlogL， N是play log长度，L是per-user update list 的最大长度。
 快写完的时候，小哥说可以先不写binary search 容易错，我们先linear scan。。。小哥一直很nice应该不是BS我。。。写完给我提了一个小bug然后问了下test case。
-. 
+
+避免引起歧义解释下。。update表示某个时刻某个玩家切换了角色，play log表示某个时刻某个玩家登陆了游戏，也就是要用play log的时间找该玩家play 的role，然后统计次数，登陆一次就算一次
+再举个例：play log里有4条记录，mark 3条，jack 1条，mark玩过两次wizard一次knight (切换角色反应在update log里)，jack玩过一次wizard，所以wizard一共3次，knight一次
+
 总结：.
 自我介绍加聊project大概六七分钟的样子，clear question和说解法也是六七分钟，十五分钟边说边写完了之后，说完test cases就只有七八分钟了，小哥说差不多还是留几分钟那我们就进入提问环节吧。
 感觉写的速度一般，不快不慢，说话不够简洁浪费了点时间，都需要多练啊。。。求过！
@@ -317,3 +320,7 @@ from size X from 1 to N, we want to know the highest skill rating of all the gro
 
 面完试就觉得。。刷题不在数量，我一看google doc白板脑子立刻忘光光，还是因为我第一次面试好紧张.....算是积攒了经验吧
 要改善的地方还很多，特别害怕内推的学长被举报，这推来的什么人啊
+
+12.http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=183437&extra=page%3D1%26filter%3Dsortid%26sortid%3D311%26sortid%3D311
+
+ Considering there are N engineers in one company with id from 1 to N, Each of the Engineer has a skill rate R_i, we want to select one group of engineering whose ids have to be continuous. The size of one group is the number of engineers in it and the skill rating of the group is the lowest rating of all the members in the group. Now given N and array R, for each group from size X from 1 to N, we want to know the highest skill rating of all the groups whose size is X。 这个题感觉用heap来做的话. java普通的priorityqueue删除是O(n)的啊，如果要做到O(lgn),需要时hash heap啊，“we want to know the highest skill rating of all the groups whose size is X.”是说每个window中找最小值，然后求的是整个过程中的最大值. 如果用hash heap的话可以到O(nlgnk), 如果是普通的话是O(nk)

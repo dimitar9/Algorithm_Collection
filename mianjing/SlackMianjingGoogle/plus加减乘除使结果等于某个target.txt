@@ -1,0 +1,24 @@
+加减乘除使结果等于某个target
+Ux Cognito
+一道面经中经常出现的题
+coding一道 类似24点。 题目是给一组integer 问可否用加减乘除使结果等于某个target。比如｛1，50，3，6，7｝，target＝60 结果是true 50+6/3+1+7=60
+这个是要用recursion来枚举吗
+
+讨论：backtracking, divide and conquer
+BackendCoder Yao
+bottom up 会不会好一点？
+
+Ux Cognito
+有道理。
+
+Diet Pepsi
+有括号吗
+
+https://leetcode.com/problems/expression-add-operators/
+跟这题差不多
+如果没有括号，基本的做法是backtracking
+如果有括号可以试试divide and conquer
+
+Ux Cognito
+bfs + d&c
+面经是没括号，应该还可以 难度中等，是需要backtracking

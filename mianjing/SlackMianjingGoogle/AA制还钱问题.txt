@@ -1,0 +1,348 @@
+AA制还钱问题
+GGG 校招-4月加面
+如果你和另外两个朋友出去玩，每个人付一部分钱，比如你掏了car rent， 另一个人付了hotel等等。最后回家了，你们想AA，最后你们每个人付的钱都一样，写个方法能返回谁应该给谁多少钱
+比如三个人分别掏了5，3，1，那么a[2]应该给a[0] 2 刀
+如果现在有n个人的话，应该怎么办
+写完了之后，大哥问，最多需要多少次transaction，一个人给另一个人钱的话算一次，我心想的是 O(n - 1) 就是 O(n)， 大哥说specific answer, 就是 n - 1次
+然后Follow up，如果每次transaction特别麻烦，不管是时间还是空间都特别麻烦。如果不用考虑everything， 不考虑cpu， 不考虑硬盘，我们想让这个次数最少，怎么办。
+讨论 关于如何让次数最少 
+@dietpepsi: 这个题有接触过没？follow up中如何让次数最少的方法
+讨论一：min cost max flow
+Diet Pepsi
+感觉follow up是不是可以用min cost max flow来解决
+cost就是transaction的次数
+flow是给的钱
+人分两组，一组是多给钱的
+一组是少给钱的
+然后用dummy source和dummy sink来控制每一个点的钱数
+大概是这样
+理论上任意两点都有边
+实际上位了最少cost，同组之间没有边
+组间有边且没有流量上限或者说流量上限是总差钱数
+source到多给钱组的每一个点有一条边
+每边流量的上限就是那个点多给的钱数的
+少给钱组每个点到sink也是一条边
+流量上限也是差钱数
+这样，从source到sink的max flow一定是一个合法的分钱方案
+这时你对于每一个边再给个cost，就是只要这个边流量不为零cost就是1
+流量为零cost是0
+这样max flow min cost就是你要的最少transactions 方案
+Diet Pepsi
+再想想有没有简单点儿naive点儿的方法
+GGG 校招-4月加面
+@dietpepsi: 怎么确认这个会得到最少次数？
+Diet Pepsi
+min cost啊
+有一次就有一个cost
+不过这可能不是面试官想问的
+面试官不一定知道min cost max flow
+GGG 校招-4月加面
+哈哈 反正我不知道。。。
+Yilun Fu
+这个是min cur max flow吧
+Diet Pepsi
+是的，我就是这么说的，但是估计面试官不是想考min cost max flow
+Yilun Fu
+我不会打max,flow的代码。。。
+估计真答了也写不出来。。
+GGG 校招-4月加面
+比我强得多了，我就没听说过
+Diet Pepsi
+max flow上课老师都只讲证明不给代码
+GGG 校招-4月加面
+听前辈说一般码农不会考这些，就没看
+Diet Pepsi
+不会考的
+面试官都不会
+Daniel Wu
+哈哈
+Diet Pepsi
+真考到了也不会让你实现
+给他说说咋回事儿得了
+还要啥自行车
+讨论二：暴力BFS（广度优先）
+Diet Pepsi
+他大概是说就算这是一个np问题你怎么做
+假定你有无限计算资源
+大概是想让你说一个枚举算法
+那就是每一次就选择俩人一个多钱一个少钱
+bfs
+他大概就是想听BFS这三个字
+面试官的最爱
+GGG 校招-4月加面
+你说的枚举指的是？
+Diet Pepsi
+brute force
+GGG 校招-4月加面
+这个怎么用bfs？
+Diet Pepsi
+你一开始有一个数组对吧
+然后一步操作可以把这个数组变成另外一个数组对吧
+GGG 校招-4月加面
+对
+Diet Pepsi
+那一步操作有多少可能呢？
+C(n,2)对吧
+其实是ab，但无所谓了
+GGG 校招-4月加面
+OK
+Diet Pepsi
+那你就有了第一层所有儿子
+如果儿子里有一个是所有都相等
+那你就ok了
+GGG 校招-4月加面
+但一步操作即使选了2个 金额还有很多可能吧
+Diet Pepsi
+金额肯定是全给
+你肯定是选一个x > mean
+一个y < mean
+然后尽可能补差
+GGG 校招-4月加面
+OK bfs能理解了
+Diet Pepsi
+嗯
+接着他就会问复杂度
+问优化
+foggy Chen
+那这题怎么办？
+就是bruteforce搞
+Diet Pepsi
+他不是说了不限制CPU和内存了
+那就是怂恿你brute force
+foggy Chen
+哦，那就是bf。这算提示啊
+Diet Pepsi
+他就是想听你说brute force 应该是BFS不是DFS
+foggy Chen
+为什么是bfs
+Diet Pepsi
+最少次数嘛
+foggy Chen
+bfs怎么减少次数
+Diet Pepsi
+啥啥最少，最短都是BFS的信号
+…..不是减少次数
+foggy Chen
+这个的bfs存什么
+GGG 校招-4月加面
+嗯，确实短、少这个和BFS很有关
+Diet Pepsi
+是生成的时候硬搜出来的
+GGG 校招-4月加面
+我G电面的那题就是
+Yilun Fu
+每次做一个随机的transaction？
+GGG 校招-4月加面
+开始还说BFS和DFS都可以。很快就发现BFS更快
+Diet Pepsi
+每一个node存所有人的钱
+Yilun Fu
+然后没一层做一个transaction finish一个人么
+Diet Pepsi
+边就是所有可能的操作
+对
+也可能会finish 俩
+GGG 校招-4月加面
+@hanabeast: 你刚进来的时候，能看到我们之前的聊天记录是吧？那这个也比QQ和微信好得多了
+Diet Pepsi
+是啊
+这就是slack优点
+foggy Chen
+等下，那怎么判断有没有访问过
+Diet Pepsi
+不限制内存和cpu啊！
+你管他访问过没有，就是搜啊
+只要有解反正就是最优啊
+或者，你要是实在觉得要判重
+Yilun Fu
+是的
+foggy Chen
+比如一个节点是欠别人10元，下一步是什么
+Diet Pepsi
+比如吧
+foggy Chen
+可以付给A5,或者B3,
+Diet Pepsi
+1 3 5
+这个例子
+Diet Pepsi
+预处理先算出平均值是3
+然后做差
+-2, 0, 2
+开始BFS
+Diet Pepsi
+(-2, 0, 2) -> 下一步
+肯定是忽略0了
+那么只有一种可能
+GGG 校招-4月加面
+你换个例子吧
+1 3 5 太特殊了
+GGG 校招-4月加面
+比如 1 2 3 6
+这样不对称
+Diet Pepsi
+好
+平均值是3
+GGG 校招-4月加面
+嗯
+Diet Pepsi
+（-2，-1， 0， 3）
+然后下一步有两种可能
+3和-1
+3和-2
+GGG 校招-4月加面
+选-2或者-1中一个和3匹配
+Yilun Fu
+恩
+Diet Pepsi
+两个状态
+foggy Chen
+为什么，不是先选一个node吗额
+Diet Pepsi
+(0, -1, 0, 1)
+Diet Pepsi
+(-2, 0, 0, 2)
+这样继续
+就可以了
+不会出现重复好像
+因为每次你都会生成一个0
+而0在下一步会被忽略
+嗯就这样
+GGG 校招-4月加面
+如果到某一层的时候有m个负数，n个正数
+foggy Chen
+那就是第一步有mxn个可能性
+Diet Pepsi
+没错
+m x n
+Diet Pepsi
+每步最少减少一个
+foggy Chen
+有道理
+GGG 校招-4月加面
+为什么是m*n？
+Diet Pepsi
+总复杂度应该是O((n!)^2)
+GGG 校招-4月加面
+比如1 2 3 6 8
+foggy Chen
+那怎么算最短，要记录走了几步
+GGG 校招-4月加面
+初始是-3 -2 -1 2 4
+负数3个，正数2个
+这一层会生成哪些状态？
+Diet Pepsi
+乘法原理啊
+Yilun Fu
+这个你是假设m和n相等吧？
+foggy Chen
+这个复杂度怎么算出来的
+Yilun Fu
+才有这个复杂度
+Diet Pepsi
+我就是估计一个worst case
+foggy Chen
+怎么算worst ase
+GGG 校招-4月加面
+-3 -2 -1 2 4
+这个具体的6种是哪6种？
+-3和2，-2和4 -1不管，这是第一种？
+-3和2，-1和4，-2不管，这是第二种？
+-3和4，-2和2，-1不管，第三种？
+-3和4，-1和2，-2不管，第四种？
+类似这样？
+GGG 校招-4月加面
+@dietpepsi: 我理解的那6种情况对吗？
+Diet Pepsi
+不是的
+六种情况是(-1,-2-3)里面挑一个
+(2,3)里面挑一个
+所以 是m x n
+GGG 校招-4月加面
+OK，每一个level只处理一次交换
+每一个level只考虑正我负交换，能确保得到的是最优解吗？
+比如有没有可能负和负进行一次交换，最后能以更少的次数结束？
+Diet Pepsi
+你觉得呢
+GGG 校招-4月加面
+我不确定
+比如-3 -2 -1 2 4这个
+先-3给一个给-1，变成
+-4 -2 0 2 4
+这样操作得到的并不比上面正负交换的次数多
+所以我不确定这样操作就一定不比正负交换的次数少
+Diet Pepsi
+是，但是也不比正负少
+反正是暴力解，你当然可以考虑所有的操作
+GGG 校招-4月加面
+另外，你是每一次操作就让其中一人归零
+对对，这个确实
+Diet Pepsi
+归零基本应该是必须的
+GGG 校招-4月加面
+这个我也不确定
+Diet Pepsi
+应该可以证明出来
+GGG 校招-4月加面
+因为可能不归零，先将他们弄得相对均匀点，然后开成
+-a -b -c ... -z z, ... c, b, a
+这种，都能配对好
+嗯，我感觉应该是你那样能确保最优，但还没说服自己
+我想想能不能大概证明下
+Diet Pepsi
+你一次操作能出现2个0，1个0或者没有0
+如果你做了一次没有0
+即使你后面能做出一个2个0
+也就刚刚打平而已
+GGG 校招-4月加面
+但可能是我连着做了k次都没有0，然后后面连着做了p次，每次2个0
+如果k < p的话
+Diet Pepsi
+不能
+GGG 校招-4月加面
+这个0 1 2思考的角度不错
+Diet Pepsi
+你总是可以在一步之内至少出一个0
+你连续做k次没有0
+就需要k次2个0才能打平
+GGG 校招-4月加面
+对，这个是
+Diet Pepsi
+你做k次操作
+最多能影响2k个人
+也就是说你最多能做出k次2个0
+GGG 校招-4月加面
+有道理
+Diet Pepsi
+即不合算
+不可能比1个0更好
+GGG 校招-4月加面
+最多能影响2k个人，这个确实
+GGG 校招-4月加面
+每次greedy的话应该是valid的了
+那正负呢？
+有没有啥思路
+Diet Pepsi
+正负的话我觉得也是一样
+GGG 校招-4月加面
+负负配对为什么一定不会比正负配对好？
+感觉好像也可以用你那个思路
+Diet Pepsi
+大概同样思路
+GGG 校招-4月加面
+嗯，负负或正正肯定是消了0个
+Diet Pepsi
+总体上讲你总是要让正的去填补负的
+不管你在内部怎么操作，最后他还是得流向对面
+GGG 校招-4月加面
+正负greedy的配对看来是能确保能得到min值了
+Diet Pepsi
+就是这么个intuition
+foggy Chen
+这个屌，比maxflow好理解
+Yilun Fu
+这个是纯暴力了。。
+Diet Pepsi
+纯暴力
+好理解
+三哥就是打算看这个

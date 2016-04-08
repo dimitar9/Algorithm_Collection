@@ -1,0 +1,250 @@
+删除最少数量的char形成回文
+
+给你一个string,你返回remove最少数量的character之后形成的palindrome。remove后不能改变character之间的相对位置。
+示例：
+abbac，返回1，只需要remove c即可
+acbcba，返回1，remove c或者b均可
+
+题目出处：http://www.geeksforgeeks.org/dynamic-programming-set-12-longest-palindromic-subsequence/
+
+类似题目：插入最少字母后得到palindrome
+http://www.geeksforgeeks.org/dynamic-programming-set-28-minimum-insertions-to-form-a-palindrome/
+
+讨论: DP, LCS
+
+pengftang 2016-04-04 20:32:36
+展翅高飞：感觉不少dfs的题，都可以优化成dp，而dp则是面试官需要的最优解～
+
+
+特胖：Snapchat那个题还可以change一个character，都差不多
+http://www.geeksforgeeks.org/dynamic-programming-set-28-minimum-insertions-to-form-a-palindrome/
+insertion应该和remove一样吧
+删掉不匹配的或是加上一个一模一样的都可以构成回文
+
+
+
+@dietpepsi: 我觉得如果是我来做的话我会先把这题简化成这样
+求删除后最长palin的长度
+先不要求具体操作
+递推公式跟lcs差不太多
+突然感觉这题是不是就是s和s的反序求lcs
+只需要证明：
+s跟s的反序公共子序列必回文
+或：
+s跟s反序最长公共子序列必回文
+
+
+
+@特胖：有道理
+和LC里shortest palindrome思路差不多
+
+
+
+@dietpepsi: 跟shortest palin不一样
+那题最优是manacher
+不是dp
+这题如果没想错就是LCS
+
+
+
+@特胖：但是那题也是把string反过来接在后面然后求KMPtable
+
+
+
+@dietpepsi: 哦，那有点儿像
+
+
+
+@特胖：你的想法让我想到了那道题
+
+
+pengftang 2016-04-04 20:37:27
+@特胖：如果没有s里duplicate character的话应该是对的
+
+
+@gh：知乎上有证明，https://www.zhihu.com/question/34580085
+
+
+
+@dietpepsi: 假设s 和 反s的最长公共子序列是t
+考察t的首尾两字母
+我现在要证明他俩必然相同
+举个列子，abca vs acba
+这个最长是aba
+
+
+
+@sai：对了，刚才那题的具体要求不是返回长度，而是其中任意一个最长的palindrome
+
+
+
+@dietpepsi: 没关系的
+你只要加一个小改动就能拿到实际的palin
+就像lcs能拿到一样
+我继续证明？
+
+
+
+@ghoston：Lcs 不需要下标相同吧
+
+
+
+@dietpepsi: 假设它们不同
+那么考察t[0]在s和反s的坐标i和j
+
+
+
+@gh：可以在末尾加上
+使得长度更长是嘛
+我大概懂你意思了我打吧
+如果t[0]和t[n]不等，那么假设在s中t[0] index i, rev(s) 中t[0] index j
+有两种可能
+一种的话，t[n]对应的两个index, i' 和 j' 翻过来都在i 和 j 的前面
+也就是 翻过来之后 i'<i, j'<j
+所以可以在t之前append上t[n]
+得到一个更长的common sequence
+如果翻过来之后，i'和j'都在i,j之后
+那么可以在t之后append上t[0]，得到一个更长的sequence
+
+
+
+@dietpepsi: 正确！证明完最外面两个里面就以此类推就好
+其实这个证明还不够严格但思路就是这个意思，结论应该是正确的我觉得
+一个比较简单的验证方法是大量生成字符串然后求s和s反的LCS
+验证回文
+如果验证非常非常多都可以的话基本就可以
+
+
+hanabeast 2016-04-04 20:41:46
+删除最少字母变成palindrome 不就是求longest palindrome么。。
+
+hanabeast 2016-04-04 20:42:24
+这个题我好像以前作业写过。。
+
+hanabeast 2016-04-04 20:42:40
+如果只是长度可以DP的
+
+pengftang 2016-04-04 20:42:59
+对，这两个题目是等价的。GFG上给的是DP的思路
+
+hanabeast 2016-04-04 20:43:03
+恩
+
+hanabeast 2016-04-04 20:43:57
+M[i][j]代表从i到j的longest panlindromic subsequence， M[i][j] = M[i+1][j-1] + 2 if (S[i] == S[j], else M[i][j] = Math.max(M[i+1][j], M[i][j-1])
+
+yuanzheng625 2016-04-04 20:48:00
+@yuanzheng625 has joined the channel
+
+pengftang 2016-04-04 20:48:11
+嗯，这个optimized substructure看着像那么回事
+
+hanabeast 2016-04-04 20:48:56
+恩，这个我本来的做法就是先找自己的LCS，再找reverse string的LCS
+
+hanabeast 2016-04-04 20:49:12
+但是这样的话 就得不到这个具体的substring了
+
+hanabeast 2016-04-04 20:49:18
+虽然只做长度是对的
+
+pengftang 2016-04-04 20:49:57
+怎么找自己的LCS？
+
+pengftang 2016-04-04 20:50:14
+你把string转化成了怎样的一个tree？
+
+hanabeast 2016-04-04 20:50:21
+讲错了。。
+
+hanabeast 2016-04-04 20:50:30
+找string和reverse string的LCS。。
+
+pengftang 2016-04-04 20:50:48
+具体说说？
+
+hanabeast 2016-04-04 20:51:42
+就是比如abcdba里面找longest palindrome长度，把它reverse一下，变成abdcba
+
+hanabeast 2016-04-04 20:51:54
+然后找他俩的LCS
+
+pengftang 2016-04-04 20:52:57
+晕，lcs，指的是Longest common sequence？
+
+pengftang 2016-04-04 20:53:03
+我一直当成了LCA。。。
+
+pengftang 2016-04-04 20:53:07
+我说怎么理解不了
+
+
+txchen 2016-04-04 20:54:11
+Longest common substring (LCSubstr). Suffix array O(m+n), DP O(mn).
+
+pengftang 2016-04-04 20:54:34
+还有O(m+n)的方法？？？
+
+pengftang 2016-04-04 20:54:37
+汗颜。。。
+
+hanabeast 2016-04-04 20:54:48
+suffix array是什么。。
+
+txchen 2016-04-04 20:55:18
+简化的suffix tree
+
+pengftang 2016-04-04 20:55:21
+类似KMP里面的？
+
+simon.simon 2016-04-04 20:55:34
+@simon.simon has joined the channel
+
+pengftang 2016-04-04 20:55:39
+KMP的第一步不就是求suffix array吗
+
+txchen 2016-04-04 20:56:01
+https://en.wikipedia.org/wiki/Suffix_array
+
+txchen 2016-04-04 20:57:45
+http://www.nocow.cn/index.php/%E5%90%8E%E7%BC%80%E6%95%B0%E7%BB%84
+
+hanabeast 2016-04-04 20:57:54
+这种方法太深了吧。
+
+txchen 2016-04-04 20:58:20
+后缀数组 http://www.cnblogs.com/zinthos/p/3899725.html
+
+txchen 2016-04-04 20:58:35
+面试应该DP就可以了
+
+dietpepsi 2016-04-04 21:01:51
+suffix array就算了
+
+dietpepsi 2016-04-04 21:01:58
+面试官会死
+
+dietpepsi 2016-04-04 21:02:20
+suffix array在45分钟也很难写出来
+
+undefined 2016-04-04 21:06:05
+假如改成求长度的话我们能不能这么写
+
+undefined 2016-04-04 21:06:30
+就是用楼主当时的从两边对比然后dfs
+
+dietpepsi 2016-04-04 21:06:38
+我这里说的LCS是subsequence
+
+pengftang 2016-04-04 21:06:47
+@pengftang uploaded a file:
+
+dietpepsi 2016-04-04 21:06:56
+不能用suffix array
+
+dietpepsi 2016-04-04 21:07:03
+不是substring
+
+txchen 2016-04-04 21:09:08
+对的哈，不是substring。Longest common subsequence (LCS) 那就是 O(mn) DP
+实现这里有：https://en.wikipedia.org/wiki/Longest_common_subsequence_problem

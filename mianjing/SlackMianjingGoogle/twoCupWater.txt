@@ -1,0 +1,174 @@
+两个杯子能否装出目标容量的水
+
+GGG 校招-4月加面
+面经：面试官也是plaform engineering的，题目是：给两个大小分别为m和n的杯子，以及一个目标容量k，判断是否能够装出目标容量的水，就用BFS就可以了（也有数学的解法，但是面试官说不用数学的解法做），followup是求怎么装（这也就是为什么面试官不要用数学方法做的原因）。之后又讨论了下DFS和BFS的优劣。
+
+讨论:BFS和GCD
+
+Diet Pepsi
+等价于求 mx + ny = k的整数解？
+
+Daniel Wu
+没想通这道题和BFS有啥关系
+
+Diet Pepsi
+gcd(m,n)|k
+
+Diet Pepsi
+BFS的意思就是模拟倒水的所有可能性
+
+GGG 校招-4月加面
+嗯，是求那个等式的整数解
+
+Diet Pepsi
+其实就是x,y平面上从0,0点出发然后逐个验证是否符合那个等式
+每次可以走上下左右
+
+Lowkey
+杯子必须装满水？
+
+GGG 校招-4月加面
+每次x或y增1？
+
+Diet Pepsi
+对
+增减1
+
+GGG 校招-4月加面
+对对，减1也有可能
+
+Ux Cognito
+gcd(m,n)|k   这裡这个 | k 啥意思 @dietpepsi
+
+GGG 校招-4月加面
+为啥叫BFS呢？
+
+Diet Pepsi
+|整除
+因为你走的时候你是按照广度优先啊
+距离原点近的先走啊
+
+GGG 校招-4月加面
+好吧，这也算广度优先？
+
+Diet Pepsi
+当然了
+要不然算什么
+
+GGG 校招-4月加面
+我觉得是backtracking。。。
+
+Diet Pepsi
+不是backtracking…..
+这里没有backtrack过
+
+Daniel Wu
+http://stackoverflow.com/questions/4917003/whats-algorithm-used-to-solve-linear-diophantine-equation-ax-by-c
+
+Diet Pepsi
+一直都是向前走
+是的，gcd就可以直接判断是否有解，而且通解的公式也是有的
+
+GGG 校招-4月加面
+嗯，的确是只用往前走。这样不用考虑-1吧
+
+Diet Pepsi
+往前走的意思是距离增加
+但是-1是方向
+方向上下左右都可以
+
+GGG 校招-4月加面
+其实最后就是画格子
+
+Diet Pepsi
+但是因为这个东西实际上每一层你都知道是哪些点
+
+GGG 校招-4月加面
+画长方形的格子
+
+Ux Cognito
+mx + ny = k    双loop m从1开始＋＋ n从1开始++ 超过k停止 开始下一個循环，直到找到解。
+
+Diet Pepsi
+所以可以直接画格子
+菱形的格子应该是
+
+GGG 校招-4月加面
+暴力解复杂度太高吧
+
+Diet Pepsi
+其实bfs和暴力也米有本质区别
+我觉得正解还是gcd
+
+GGG 校招-4月加面
+开始是(0, 0)，然后下一步是(0, m)或者(n, 0)，从(0, m)的下一步是(0, 2m) 或者(n, m)。。。
+
+Diet Pepsi
+面试官非要用bfs那也只要如他所愿
+
+GGG 校招-4月加面
+感觉长方形格子似乎可行
+
+Diet Pepsi
+不是，你不用带上m 和 n
+你只看 x y就可以了
+
+GGG 校招-4月加面
+嗯，你这样也行
+
+Diet Pepsi
+如果你看x y的话
+定义个距离|x|+|y| = r
+
+GGG 校招-4月加面
+你每次变化是1
+
+Diet Pepsi
+这样子是菱形吧
+L_1 norm
+
+Ux Cognito
+正解：https://zh.wikipedia.org/wiki/%E6%89%A9%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E7%AE%97%E6%B3%95
+
+Alex Li
+x, y 不能取 negative？
+以前有个简单题：3 和5 的勺，怎么取 7 的水
+
+Alex Li
+gcd(x, y) % 7 != 0
+
+Diet Pepsi
+x y可以取 negative
+
+Alex Li
+好慢啊。
+
+Diet Pepsi
+应该是7 % gcd(x,y)=0
+
+Diet Pepsi
+a|b 表示a整除b. 1|7
+
+Daniel Wu
+嗯嗯
+
+Alex Li
+ok
+
+Diet Pepsi
+这题估计面试官问的是如果有解的话，解最少需要几步，如何操作，他心中的想法就是BFS
+其实gcd应该也都能做到
+只不过他就是想要看BFS而已
+
+Alex Li
+m = 3, n = 5, k = 7 其中一个解是 x = -1, y = 2
+怎么解释呢？
+
+Diet Pepsi
+不是，是gcd(m,n) | k
+
+Alex Li
+ok，我在看看
+
+Diet Pepsi
+tiantian发的是正解

@@ -1,0 +1,221 @@
+电话号码分配
+Yilun Fu [12:35 AM]
+要求实现一个北美电话号码的分配系统，即10位的电话号码的注册、注销和查询。有如下的API:
+void registerNumber(String number); // 注册一个电话号码
+void unregisterNumber(String number); // 注销一个电话号码
+boolean isNumberRegistered(String number); // 查询一个电话号码的注册状态
+String getAvailableNumber(); // 返回任意一个可用号码"
+
+讨论一，关于Trie
+
+Yilun Fu [12:37 AM] 主要就是最后一个method
+Diet Pepsi [12:38 AM] 我觉得你用trie当然是可以的
+Yilun Fu [12:38 AM] 但是用trie的话返回任意一个号码太麻烦了
+Diet Pepsi [12:38 AM] 为啥返回一个号码麻烦？
+Yilun Fu [12:39 AM] 假设Trie都存所有Available的号码，你用返回任意一个Trie没存过的号码
+要不停backtracking的感觉
+Diet Pepsi [12:40 AM] 没当一个节点下面没有可用号码了你就做个标记
+你维护了这个标记你就不麻烦了
+你总是向着有可用号码的地方去走
+Yilun Fu [12:40 AM] @dietpepsi: 我也是这么想的
+就是维护这个删除起来感觉麻烦点
+Diet Pepsi [12:41 AM] 不麻烦啊，你就一路向上，把所有父节点都设为有可用就可以了
+遇到父点已经可用就可以停止了
+Rbcooldown [12:43 AM] 标记出来节点你也不确定那个字节点可用啊
+Diet Pepsi [12:43 AM]
+@rbcooldown: 怎么不确定？
+@rbcooldown: 一个节点，有一个boolean，表示他下面有没有可用的号码
+Rbcooldown [12:45 AM] 问题是你如何确定哪个分支已经用完了？
+Diet Pepsi [12:45 AM] 你用的时候维护这个标记啊
+比如电话号码是两位的
+你现在加入10~19这些号码
+当你加入19的时候
+1的下面就没有号码了，这个你是可以知道的
+那你就把1更新一下
+Rbcooldown [12:46 AM] 有道理
+Diet Pepsi [12:47 AM] 所以trie是可以的
+
+讨论二，关于bitset
+
+Tom Chen [12:36 AM] 前三个可以用bitset, 最后一个可能附加一个数据结构
+@txchen: bitset你指的是什么东西？
+Tom Chen [12:43 AM] 就是programming pearls里面解决电话号码问题的bitset
+Diet Pepsi [12:43 AM] 没看过pearls
+说说
+Diet Pepsi [12:48 AM] @txchen:   bitset是怎么个意思
+Tom Chen [12:49 AM] bitset就是 10 可以标记号码1到 10. 7位电话号码10million digit就可以，大约1MB，很节省空间
+10位电话号码大约1GB空间，比trie节省空间多了
+Trie是肯定可以解决这个问题的，只是可能空间有点浪费
+Rbcooldown [12:51 AM] 10位号码用多大的bitset？
+怎么个存法？
+Diet Pepsi [12:52 AM] 那不就是说把电话看成int的意思？
+不要用string用int是这个意思么
+Bruce Liu [12:52 AM] 有道理
+Diet Pepsi [12:52 AM] 然后呢，你怎么实现crud？
+Tom Chen [12:53 AM] 比如说电话号码从1到8, 用一个byte就可以实现，二进制表示是0000 0000
+Diet Pepsi [12:53 AM] Hash还是Binary Trie
+是啊没错
+Tom Chen [12:53 AM] 现在如果号码3来了，放进去就是0000 0100
+号码8来了，就是1000 0100
+Diet Pepsi [12:54 AM] 哦，我明白
+相当于用每一个位来做一个boolean array
+Diet Pepsi [12:55 AM] 假设不考虑你用位的话，实际就是一个boolean array来做set
+用了位能压缩32倍
+Rbcooldown [12:55 AM] 是每一位用一个bitset来存？
+Tom Chen [12:55 AM] 是很节省空间。
+Programming Pearls 下载：https://tfetimes.com/wp-content/uploads/2015/04/ProgrammingPearls2nd.pdf
+Diet Pepsi [12:56 AM] 问题是怎么实现最后那个取新号码的操作呢
+Tom Chen [12:57 AM] 也许用hash table, 从hash table随机返回一个数容易吗？
+Diet Pepsi [12:57 AM] 你怎么能保证在一定的性能下找到这个号码呢
+Diet Pepsi [12:57 AM] 假设你号码已经快满了
+Rbcooldown [12:57 AM] @txchen: 你是指电话号码的每一位用一个bitset来存么？
+Diet Pepsi [12:57 AM] 比如只有1%了
+[12:58]
+@rbcooldown: 他的意思是每一个电话号码用一个位
+Rbcooldown [12:58 AM] 一个电话号码用一位？？
+[12:59]
+一个8位电话号码用一位？
+Tom Chen [12:59 AM] programming pearls里面解决电话号码问题的部分在这个下载的196页。Cracking the Oyster (Column 1 of Programming Pearls) － a friendly conversation。书的话就是开篇第三页面。这个下载好像前边附了不少问题答案
+Diet Pepsi [12:59 AM] 就是一个boolean[n]
+@txchen: 其实还有一个重要的问题
+Tom Chen [12:59 AM] @rbcooldown: 是的
+Rbcooldown [12:59 AM] 我理解的是电话号码的每一位用一个bitset存
+可这样有个问题
+Tom Chen [1:00 AM] 每一位用一个bit存
+Diet Pepsi [1:00 AM] 我觉得你这样做的话，在电话号码比较少的情况下比较飞空间
+Diet Pepsi [1:00 AM] 比如10位，我现在只有一个电话号码
+Rbcooldown [1:00 AM] 比如电话号码是8位，需要8个9bits的set
+Diet Pepsi [1:00 AM] 你还是需要开一个非常大的biset
+bitset
+Tom Chen [1:00 AM] 是啊，看你是给一个学校开发，还是给一个省开发软件
+Diet Pepsi [1:00 AM] 嗯
+Tom Chen [1:01 AM] 但是如果你给一个学校开发，你只要开一个小bitset就可以了
+Diet Pepsi [1:01 AM] 另外就是取号码还是没法解决
+Diet Pepsi [1:02 AM] 先不考虑存储的问题
+bitset我是觉得不行
+两个问题：(1)找新号,（2）号码少，且分散不连续，无规律
+Diet Pepsi [1:03 AM] 如果觉得trie存储是问题
+可以用binary trie
+把电话号码表达为int
+然后binary trie
+Tom Chen [1:04 AM] 哦，这个意思，我以为返回一个可以打的号码，原来是返回一个不存在的号码
+Diet Pepsi [1:04 AM] 是的
+返回空号
+Rbcooldown [1:05 AM] 还不如纯用bit存呢。一个10位号码用40bits
+Diet Pepsi [1:06 AM] @rbcooldown: 存不是问题，问题是你如何查找，删除，新号
+Rbcooldown [1:06 AM] 所以我觉得之前跑题了
+题目没要求考虑存储的问题
+Diet Pepsi [1:06 AM] 所以还是Trie比较合适
+Rbcooldown [1:06 AM] 是啊
+Tom Chen [1:07 AM] Trie是可以的，为了节省空间也可以用compressed trie - patricia tree
+
+Tom Chen [5:19 AM] 北美电话号码的分配系统可以用bitset, 前三个都是O(1), 返回任意一个可用号码是O(1000 ＋ 10^7), 相当于O(1)。大家看看设计有问题没有：class PhoneBook {
+int count;
+bitset<10000000> book;
+};class PhoneSystem {
+vector<PhoneBook> Phonebooks(1000);
+}新加phone number, areaCode从1－999, 先在PhoneBooks数组找到对应的PhoneBook[areaCode], 再把相应的号码设置为1，增加此PhoneBook的计数器count ++。
+删除和查询类似。这三个都是O(1)。返回任意一个可用号码, 先随机找一个count < 10000000即未满的PhoneBook, 再在里边顺序查找空的号码，这是O(1000 +10000000)，相当于常数。实现代码见： http://homecox.com/bbs/view.php?t=40&f=25(edited)
+
+Diet Pepsi [12:23 PM]
+O(100000)咱说是常数但是这个常数太大了现在要是需要取n个新号你这常数乘到n上...........
+GGG 校招-4月加面 
+10^7当作o1确实有些牵强，总共也就是10^10
+Tom Chen [4:52 PM] @dietpepsi: @GGG 校招-4月加面  北美电话号码的分配系统用bitset, 分两段这个应该可以吧，如果3/7开慢，5/5开应该够快吧。测试了一下，笔记本电脑上循环一遍，10^7 要0.4秒，10^6 要0.058秒,  10^5 要0.021秒。就是分桶的思想。如果5/5开还嫌慢， 3/3/4开够快了吧。内存把所有10位电话号码存下只要1.25GB。如果是BST，放所有10位电话号码要10^10  4byte ＝ 40GB，考虑到int放不下，可能要long，以及BST左右pointer，就要10^10  (8 + 4x2)byte ＝ 160GB。
+Diet Pepsi [4:56 PM]
+你的意思是334开能解决效率问题？
+Tom Chen [4:56 PM] 可以啊
+Diet Pepsi [4:56 PM] 怎么弄
+分桶我懂
+但是你打算怎么实现？
+Tom Chen [4:56 PM] 就是分级，第一次找前3位，第二次找下面4位，最后找最后四位。
+Diet Pepsi [4:56 PM] 这个我明白
+类似于trie了
+Tom Chen [4:57 PM] 就是我的代码改一下就可以了
+Diet Pepsi [4:57 PM] 我还是不懂
+Tom Chen [4:57 PM] 其实5／5应该够快了
+Diet Pepsi [4:57 PM] 咱就说5/5的话
+你的意思是10000个桶
+每个桶一个10000的bitset
+对么
+
+Tom Chen [4:58 PM] 是的
+Diet Pepsi [4:58 PM] 好
+那么返回一个号码
+你首先得找到一个有号码的桶
+然后桶里找一个号码对吧
+我是说找一个空号的话
+
+Tom Chen [4:59 PM] 每个桶放一个counter, 搜索没有满的桶
+Diet Pepsi [4:59 PM] 是，那你找到这个桶是不是O(n)
+Tom Chen [4:59 PM] 只要找10000 + 10000次， 两万次
+Diet Pepsi [5:00 PM] 对
+没错
+20000次
+我算你20ms
+
+Tom Chen [5:00 PM] 如果3/3/4, 就更短
+Diet Pepsi [5:01 PM] 334的话你就是1000个桶，每个桶1000个子桶，然后再10000个bitset
+这样子
+对么
+
+Tom Chen [5:01 PM] 差不多吧
+
+Diet Pepsi [5:01 PM] 其实你这个跟trie的思路是一样的
+trie其实就是10层呗
+每层10个子桶
+只不过你最后用bitset降低了空间
+
+Tom Chen [5:02 PM] 比trie节省空间
+trie是很好的数据结构，就是耗空间
+
+Diet Pepsi [5:02 PM] 问题就是当你没有多少号码的时候，你比BST要费空间
+比如我只有1000个号码，10位的时候，BST只要3000的空间
+
+Tom Chen [5:03 PM] 1.25GB 内存并不多，几十美元就可以
+个人电脑4G是几乎很低的配置了。
+北美电话号码的分配系统，不可能因为1.25GB的内存有什么顾虑
+
+Diet Pepsi [5:05 PM] 那倒是
+
+Tom Chen [5:05 PM] 哈哈哈
+应该可以吧？
+Diet Pepsi [5:06 PM] 我觉得行~，你还可以结合BST来做
+334的前两层用BST
+最后一层用BitSet
+这样子
+Tom Chen [5:06 PM] 也可以，其实这样的话用B-tree也可以
+Diet Pepsi [5:06 PM] 可以的
+Tom Chen [5:07 PM] 是啊
+好像这个问题解决了？
+Diet Pepsi [5:09 PM] 这个问题解决了，我觉得面试里答出trie或者bst都可以，答出bitset的估计没几个人
+Tom Chen [5:10 PM] 嗯，答案应该不止一个
+
+讨论三，关于BST
+
+Diet Pepsi [1:07 AM] 其实BST也可以AVL或者红黑每一个号码看成一个int查找删除插入都是log(n)也就是O(32)这个样子平衡二叉树是常用数据结构啊比trie常用
+空间复杂度是O(n)
+Tom Chen [1:09 AM] 应该可以吧。或者用B-tree也可以吧，那干脆直接用数据库得了
+Diet Pepsi [1:10 AM] @hanabeast: 用BST比Trie合适
+Alex Li [1:12 AM] int最大4294967295，没法表示所有号码
+@alex Li： 那用long long吧
+就是太花空间了
+Alex Li [1:14 AM] java怎么办？
+Tom Chen [1:14 AM] 直接用string 吧
+Diet Pepsi [1:16 AM] java有long
+Alex Li [1:16 AM] java 也有long
+对，有
+Diet Pepsi [1:16 AM] 如果实在对空间敏感可以搞俩bst
+或者三个
+你转换的时候用long判断一下大小
+然后用max_int余一下
+这样int就够用了
+哎，这都是细节不要在意
+Diet Pepsi [12:23 PM]
+我觉得还是搞个bst得了
+不考虑int范围不够的问题
+那么空间复杂度是O(n)
+所有操作的时间复杂度都是log(n)
+由于n最多是10位
+所以时间复杂度O(32)左右
+比O(10^7)省多了

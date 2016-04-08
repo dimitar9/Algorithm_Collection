@@ -1,0 +1,154 @@
+ swap二叉树变target二叉树 
+tianchun_yang 2016-04-05 19:09:52
+第一题： 问一棵二叉树能不能通过 swap 左右子树变成另一颗树，很简单，直接递归解，然后跑了跑case,问了复杂度。
+第二题，问一二叉棵树通过swap操作能不能变为二分查找树，这个代码比较长，也是递归解。 swap操作是交换左右子树的，然后子树也可以进行swap。这跟leetcode有道题，verify BST有点像，可是每步verify的时候，你还要考虑swap的可能性。
+
+讨论:递归
+
+tianchun_yang 2016-04-05 20:00:32
+感觉只能想到backtracing的解法
+
+dietpepsi 2016-04-05 20:01:25
+第一题啥意思？
+
+dietpepsi 2016-04-05 20:01:42
+swap任意node的左右子?
+
+tianchun_yang 2016-04-05 20:01:49
+对
+
+tianchun_yang 2016-04-05 20:01:58
+可以swap多个node的左右子
+
+dietpepsi 2016-04-05 20:02:22
+就是有source树有target树么？
+
+tianchun_yang 2016-04-05 20:02:26
+对
+
+tianchun_yang 2016-04-05 20:02:37
+第一题就是isSameTree的变形
+
+lxx113 2016-04-05 20:02:42
+感觉有点leetcode scramble string的意思
+
+dietpepsi 2016-04-05 20:02:43
+有没有所有节点unique的条件呢？
+
+tianchun_yang 2016-04-05 20:02:53
+并不知道- -
+
+dietpepsi 2016-04-05 20:03:07
+不unique的话不好弄了吧就
+
+tianchun_yang 2016-04-05 20:03:33
+我觉得target树应该是所有节点值unique的
+
+dietpepsi 2016-04-05 20:03:43
+嗯
+
+dietpepsi 2016-04-05 20:03:47
+我觉得也是
+
+tianchun_yang 2016-04-05 20:03:49
+第二问相当于第一问反过来
+
+dietpepsi 2016-04-05 20:04:09
+为啥相当于第一问反过来
+
+tianchun_yang 2016-04-05 20:04:29
+swap完以后再swap回去BST
+
+dietpepsi 2016-04-05 20:05:26
+第一问没有说bst
+
+tianchun_yang 2016-04-05 20:05:40
+而且输出要求是第二问swap完以后
+
+tianchun_yang 2016-04-05 20:05:46
+保留那个BST
+
+dietpepsi 2016-04-05 20:06:05
+没看懂啥叫swap完再回去
+
+dietpepsi 2016-04-05 20:06:17
+第一问并没有说原来是bst吧
+
+tianchun_yang 2016-04-05 20:06:43
+我再找一下
+
+tianchun_yang 2016-04-05 20:06:45
+我记得是bst
+
+ericchen3539 2016-04-05 20:06:49
+这题目起码应该自底向上递归
+
+tianchun_yang 2016-04-05 20:06:55
+不然不能那么容易做
+
+ericchen3539 2016-04-05 20:07:07
+自顶向上明显浪费
+
+dietpepsi 2016-04-05 20:07:11
+你把题目链接给一下好点
+
+tianchun_yang 2016-04-05 20:07:26
+http://www.1point3acres.com/bbs/thread-178321-1-1.html
+
+
+ericchen3539 2016-04-05 20:07:44
+每个节点有个boolean属性是不是BST
+
+ericchen3539 2016-04-05 20:08:49
+跟LeetCode 333有点类似吧
+
+dietpepsi 2016-04-05 20:10:28
+跟verify BST一样的
+
+dietpepsi 2016-04-05 20:10:43
+只不过需要考虑有swap的可能性
+
+dietpepsi 2016-04-05 20:10:50
+原帖说的对
+
+dietpepsi 2016-04-05 20:12:46
+第一题跟isSameTree也是一样，也只是需要考虑swap
+
+dietpepsi 2016-04-05 20:13:07
+嗯，这题可以
+
+dietpepsi 2016-04-05 20:13:09
+PASS
+
+tianchun_yang 2016-04-05 20:14:30
+就是一层一层的比然后往下swap？
+
+tianchun_yang 2016-04-05 20:14:44
+swap到不成立就返回false？
+
+ericchen3539 2016-04-05 20:14:45
+求讲解下leetcode 85 Maximal Rectangle 和 221Maximal Square DP解法的思路上的联系和区别。矩形和正方形到底怎么影响的？:grinning:
+
+dietpepsi 2016-04-05 20:15:38
+就是先写一个isSameTree，然后加上swap
+
+dietpepsi 2016-04-05 20:16:01
+如果不swap不行，那就swap一下看看，如果swap也不行，返回false
+
+lxx113 2016-04-05 20:16:32
+那第二问怎么做呢？
+
+dietpepsi 2016-04-05 20:16:36
+一样
+
+dietpepsi 2016-04-05 20:17:08
+先写个isBST，然后加上swap
+
+tianchun_yang 2016-04-05 20:17:23
+想复杂了- -
+
+tianchun_yang 2016-04-05 20:17:44
+我第一反应也是scramble那道
+
+dietpepsi 2016-04-05 20:17:55
+感觉不是scramble

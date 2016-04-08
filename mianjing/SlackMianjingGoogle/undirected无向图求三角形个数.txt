@@ -1,0 +1,98 @@
+无向图求三角形个数
+Yuan Gao:
+自定义一个无向的图，然后求这个图里有多少个三角形。三角形的定义是，（a,b),(b,c)(c,a)都相连
+
+讨论：图论
+
+Eric Chen
+UF?
+
+保留2条边的union，如果加进来某一条边刚好成环，而且union的size等于3，则count++。
+
+Diet Pepsi
+引理1
+以A为顶点的三角形个数是A的所有neighbors集合N里面的边的数量。
+Example：
+A 有五个neighbor，BCDEF
+如果其中有且仅有BC, EF, DE, CF四条边
+则图中有4个三角形，以A为顶点
+Yuan Gao
+谢谢各位讨论这题，我在面经上看到的想法是，对于每个点a，找他的neighbor b,看a,b有没有共同的neighbor c，如果有,count++，为了去重，把 a从b何c的neighbor里删除
+
+Diet Pepsi
+引理2
+A有五个neighbors,BCDEF
+F有五个neighbors,ABXYZ
+则以AF为顶点的三角形个数是N_A 和N_F的交集的大小
+Diet Pepsi
+是的，现在就是如何求交集或者如何求边数的问题
+求两个集合的交集大小，O(n)应该可以做到了
+n是小集合的大小
+
+Eric Chen
+python直接一个语句搞定，这个不难，哈哈
+
+Diet Pepsi
+但是如果用引理2，意味着需要求O(E)次交集
+
+总的算法差不多是O(EN)
+
+N大概是E/V
+
+Ux Cognito
+这2个引理从哪找的 有link么 @dietpepsi
+
+Diet Pepsi
+我瞎写的
+
+哪有link
+
+这不挺intuitive的么哈哈
+
+@gao.yuan: 不一定非要去重
+
+可以把每个三角形多算几遍
+
+最后除一下重复倍数就可以了
+
+比如三角形ABC
+
+你会重复算3次
+
+那么最后总数算下来有300个三角形
+
+返回300 / 3 = 100
+
+不用排重多麻烦
+
+这题结束？PASS?
+
+new messages
+Yuan Gao
+好 ，我再想想，pass，谢各位！
+
+
+Ux Cognito [6:37 PM]
+懂了 引理1非常好。解法应该很直白了
+
+Yuan Gao [6:37 PM]
+确实。。
+
+
+Yuan Gao [6:37 PM]
+确实。。
+
+GGG 校招-4月加面 [6:38 PM]
+三角形这个用bfs的brute force有什么问题吗？
+
+Diet Pepsi [6:38 PM]
+没啥问题，就是一些细节
+
+[6:39]
+肯定是要遍历素有的点和边
+
+[6:39]
+只是如何计算三角形个数的不同计算方法
+
+GGG 校招-4月加面 [6:39 PM]
+对啊 我也是觉得这块没法优化

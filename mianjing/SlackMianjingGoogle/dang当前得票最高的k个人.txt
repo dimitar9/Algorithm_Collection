@@ -1,0 +1,468 @@
+ 当前得票最高的k个人 
+@tianchun_yang:
+
+有道题看到很多次但也是描述不太清：
+给一堆votes(candidate, timestamp)，问当前时刻T得票最高的人是谁。Follow up问得票最高的前K个人
+来源：http://www.1point3acres.com/bbs/thread-183366-1-1.html
+
+讨论：TreeMap，有序数组
+
+dietpepsi 2016-04-04 21:29:16
+这题题意不是很明白
+
+dietpepsi 2016-04-04 21:29:41
+一堆votes是按照时间排好序的么还是怎么意思？
+
+dietpepsi 2016-04-04 21:29:56
+是一个stream么？
+
+dietpepsi 2016-04-04 21:30:35
+感觉跟股票提示牌那个题，当前k个价格最高的股票有点儿像
+
+dietpepsi 2016-04-04 21:31:07
+size k的min heap
+
+dietpepsi 2016-04-04 21:31:48
+这里问题是需要increase key
+
+tianchun_yang 2016-04-04 21:33:57
+我也没看懂题.....所以大家如果刷到类似的题请告诉我一下
+
+tianchun_yang 2016-04-04 21:34:15
+很多地里的面经我都是猜着做的- -
+
+dietpepsi 2016-04-04 21:35:15
+咱就假设现在有一个stream吧
+
+dietpepsi 2016-04-04 21:35:24
+每一个element都是一个人名
+
+dietpepsi 2016-04-04 21:35:36
+比如希拉里，川普，。。。。
+
+dietpepsi 2016-04-04 21:35:51
+然后让你返回当前得票最多的人
+
+dietpepsi 2016-04-04 21:36:21
+follow up是返回k个最高的人
+
+dietpepsi 2016-04-04 21:36:34
+用什么数据结构来做
+
+dietpepsi 2016-04-04 21:37:51
+计数肯定是用HashMap了
+
+dietpepsi 2016-04-04 21:38:02
+如果是得票最多的一个人的话
+
+pengftang 2016-04-04 21:38:07
+应该是stream
+或者不当做stream但当前时刻可以随意选定应该是一样的
+
+dietpepsi 2016-04-04 21:38:31
+只要保留一个maxVotes和对应的name就可以了
+
+dietpepsi 2016-04-04 21:38:38
+一旦超过就更新
+
+dietpepsi 2016-04-04 21:38:51
+现在说k个最高怎么弄
+
+dietpepsi 2016-04-04 21:39:17
+肯定是一个size k的黑盒子
+
+dietpepsi 2016-04-04 21:39:46
+一旦盒子外面有人超过盒子里的最小值，就更新盒子
+
+dietpepsi 2016-04-04 21:40:00
+把最小的人拿出来，放入超过的那个新人
+
+dietpepsi 2016-04-04 21:40:17
+所以呢看起来好像用min heap
+
+dietpepsi 2016-04-04 21:40:19
+然而
+
+dietpepsi 2016-04-04 21:40:31
+盒子里的计数仍然有可能变动
+
+dietpepsi 2016-04-04 21:40:34
+increase
+
+dietpepsi 2016-04-04 21:40:47
+所以呢
+
+dietpepsi 2016-04-04 21:40:56
+min heap好像不太行
+
+dietpepsi 2016-04-04 21:41:02
+或者效率不够
+
+dietpepsi 2016-04-04 21:41:08
+用BST肯定是可以的
+
+tianchun_yang 2016-04-04 21:41:14
+用个List<List<String>>结构呢
+
+pengftang 2016-04-04 21:41:32
+list怎么维护排序？
+
+dietpepsi 2016-04-04 21:41:37
+你说有序线性表？
+
+dietpepsi 2016-04-04 21:41:46
+不能高效维护
+
+pengftang 2016-04-04 21:41:53
+最主要的是时间在变 这个很无语
+
+tianchun_yang 2016-04-04 21:41:57
+再用个hashmap存<人名，votes>
+
+dietpepsi 2016-04-04 21:42:07
+HashMap肯定是有的
+
+dietpepsi 2016-04-04 21:42:17
+问题就是你更新的时候怎么维护排序呢
+
+tianchun_yang 2016-04-04 21:42:18
+每次有新的投票的时候，取出这个人当前有多少个vote
+
+dietpepsi 2016-04-04 21:42:26
+然后呢
+
+tianchun_yang 2016-04-04 21:42:32
+从对应list，比方说list i当中移除
+
+dietpepsi 2016-04-04 21:42:37
+嗯，然后
+
+tianchun_yang 2016-04-04 21:42:39
+加入到list i+1当中
+
+tianchun_yang 2016-04-04 21:42:50
+hashmap相对应更新
+
+pengftang 2016-04-04 21:42:50
+每次stream是某一个人的票数加一@还是可能突然加很多？
+
+dietpepsi 2016-04-04 21:43:06
+你能写一个代码看看不
+
+dietpepsi 2016-04-04 21:43:15
+或者举个例子
+
+pengftang 2016-04-04 21:43:49
+如果加一比较好处理 如果一次加很多 需要快速找到他新的排名这个感觉至少需要lg n时间吧？
+
+dietpepsi 2016-04-04 21:44:05
+加1也不行的
+
+pengftang 2016-04-04 21:44:19
+加1可以 我做过加一的题目
+
+pengftang 2016-04-04 21:44:38
+前提是我假设所有得票相同的人排名相同
+
+dietpepsi 2016-04-04 21:44:38
+怎么叫做可以？
+
+pengftang 2016-04-04 21:45:06
+比如当前是 10 9 8 8 8 6 票
+
+dietpepsi 2016-04-04 21:45:11
+哦，我明白，你意思说你要维护一个inverted index
+
+pengftang 2016-04-04 21:45:18
+然后某一个8加了一票
+
+dietpepsi 2016-04-04 21:45:22
+Map<vote, list<name>>
+
+pengftang 2016-04-04 21:45:35
+只需要把他和第一个8 swap
+
+pengftang 2016-04-04 21:45:52
+这样每次加1是 o1时间
+
+tianchun_yang 2016-04-04 21:45:53
+楼上Map<vote,list<name>>+hashmap<name,vote>
+
+tianchun_yang 2016-04-04 21:45:56
+可行
+
+tianchun_yang 2016-04-04 21:46:05
+用treemap
+
+tianchun_yang 2016-04-04 21:46:19
+可以返回k个
+
+dietpepsi 2016-04-04 21:46:28
+你们最好还是把代码写出了，分析一下复杂度
+
+dietpepsi 2016-04-04 21:46:34
+我刚才说的那个方法
+
+dietpepsi 2016-04-04 21:46:44
+是O(logk)反正
+
+pengftang 2016-04-04 21:47:10
+@tianchun_yang: 你是假设一次一个人加得票数无所谓
+
+dietpepsi 2016-04-04 21:47:11
+如果需要动盒子就是O(log k)不需要就是O(1)
+
+pengftang 2016-04-04 21:47:13
+对吗
+
+tianchun_yang 2016-04-04 21:47:26
+对的
+
+dietpepsi 2016-04-04 21:47:26
+先这样假设没关系
+
+tianchun_yang 2016-04-04 21:47:37
+每次更新维护就是logn
+
+pengftang 2016-04-04 21:47:54
+加的多那就需要binary search
+
+dietpepsi 2016-04-04 21:48:02
+log n可能有点多了，log k比较合算
+
+pengftang 2016-04-04 21:48:07
+还是维护一个sorted array
+
+tianchun_yang 2016-04-04 21:48:17
+我先试着写写代码
+
+dietpepsi 2016-04-04 21:48:23
+嗯
+
+pengftang 2016-04-04 21:48:25
+嗯 lg k我那个方法做不到
+
+tianchun_yang 2016-04-04 21:48:29
+@dietpepsi: 你说的那个方法也来个代码
+
+dietpepsi 2016-04-04 21:48:48
+我？我就算了吧哈哈哈我懒得要死
+
+tianchun_yang 2016-04-04 21:49:04
+ps我觉得有点儿跑题了
+
+tianchun_yang 2016-04-04 21:49:16
+这个应该是跟时间有关
+
+tianchun_yang 2016-04-04 21:49:22
+一个vote就是一票
+
+tianchun_yang 2016-04-04 21:49:34
+vote里面有个时间戳
+
+dietpepsi 2016-04-04 21:49:36
+是1票
+
+tianchun_yang 2016-04-04 21:49:38
+不知道是干嘛的- -
+
+dietpepsi 2016-04-04 21:49:52
+你stream里的先后顺序就是时间戳
+
+dietpepsi 2016-04-04 21:50:00
+所以没跑题
+
+pengftang 2016-04-04 21:50:35
+如果一个时间一票
+
+pengftang 2016-04-04 21:50:41
+那就可以用array
+
+pengftang 2016-04-04 21:50:48
+sorted array
+
+pengftang 2016-04-04 21:50:59
+每次swap就行了
+
+pengftang 2016-04-04 21:51:21
+和我之前一个oa的题目基本上一样的
+
+dietpepsi 2016-04-04 21:51:54
+那你还是要知道第一个的位置咯？还是你做binary search?
+
+pengftang 2016-04-04 21:52:00
+不用
+
+pengftang 2016-04-04 21:52:09
+我用了三个map
+
+pengftang 2016-04-04 21:52:16
+map name到vote
+
+dietpepsi 2016-04-04 21:52:19
+是
+
+dietpepsi 2016-04-04 21:52:23
+用map可以
+
+pengftang 2016-04-04 21:52:24
+map vote到rank
+
+pengftang 2016-04-04 21:52:34
+map name到array index
+
+dietpepsi 2016-04-04 21:52:34
+你记录了每一个vote的开始
+
+dietpepsi 2016-04-04 21:53:11
+嗯，是可以的
+
+dietpepsi 2016-04-04 21:53:28
+每次一票
+
+pengftang 2016-04-04 21:53:36
+某一个名次的第一个人的位置是知道的
+
+dietpepsi 2016-04-04 21:53:38
+之前股票那个题就不能这样子了
+
+dietpepsi 2016-04-04 21:53:52
+嗯
+
+pengftang 2016-04-04 21:53:56
+比如第一个第i名必然在index=i+1处
+
+dietpepsi 2016-04-04 21:53:57
+我明白你说的意思了
+
+dietpepsi 2016-04-04 21:54:11
+你的rank就是index
+
+tianchun_yang 2016-04-04 21:55:02
+诶？
+
+tianchun_yang 2016-04-04 21:55:09
+敲完的代码不见了
+
+dietpepsi 2016-04-04 21:55:17
+@dietpepsi uploaded a file: code
+
+dietpepsi 2016-04-04 21:55:31
+帮你pretty 一下
+
+tianchun_yang 2016-04-04 21:55:35
+哈哈多谢
+
+terry 2016-04-04 21:55:36
+@terry has joined the channel
+
+tianchun_yang 2016-04-04 21:55:53
+这个方法就涉及到底层hashmap了.....
+
+tianchun_yang 2016-04-04 21:56:27
+要是perfect hashing的话也能o(1),否则也有可能o(n)
+
+dietpepsi 2016-04-04 21:56:45
+hashing假定是O(1)没问题
+
+dietpepsi 2016-04-04 21:56:49
+不用担心这个
+
+tianchun_yang 2016-04-04 21:57:14
+那这个理论上就是o(1)
+
+tianchun_yang 2016-04-04 21:57:29
+任意时间调用k个的话是o(k)
+
+tianchun_yang 2016-04-04 21:57:44
+维护快一些，调用不快
+
+dietpepsi 2016-04-04 21:58:19
+调用输出怎样都是O(k)任何方法也不例外
+
+dietpepsi 2016-04-04 21:59:15
+但我还是没明白你的思路
+
+tianchun_yang 2016-04-04 21:59:39
+怎么讲？
+
+dietpepsi 2016-04-04 22:00:37
+我说一下你看你是不是这个意思
+
+dietpepsi 2016-04-04 22:00:41
+你来一个vote
+
+dietpepsi 2016-04-04 22:00:48
+你就去找name
+
+dietpepsi 2016-04-04 22:00:59
+然后增加name的计数
+
+tianchun_yang 2016-04-04 22:01:04
+对
+
+dietpepsi 2016-04-04 22:01:13
+然后把它挪到vote+1这个list里
+
+dietpepsi 2016-04-04 22:01:19
+对吧？
+
+tianchun_yang 2016-04-04 22:01:21
+对
+
+dietpepsi 2016-04-04 22:01:32
+如果没有就放到1里
+
+dietpepsi 2016-04-04 22:01:56
+好，那你如何找到最大的k个vote呢？
+
+tianchun_yang 2016-04-04 22:02:07
+然后取k的时候，从高票数到底票数
+
+tianchun_yang 2016-04-04 22:02:14
+所以map2用treemap
+
+dietpepsi 2016-04-04 22:02:15
+HashMap可是无序的哦
+
+dietpepsi 2016-04-04 22:02:17
+哦
+
+dietpepsi 2016-04-04 22:02:21
+这样子
+
+dietpepsi 2016-04-04 22:02:49
+嗯，这个可以
+
+tianchun_yang 2016-04-04 22:02:54
+其实如果是一个一个增的话
+
+tianchun_yang 2016-04-04 22:03:01
+不用map，改成list也可以
+
+dietpepsi 2016-04-04 22:03:21
+不行范围可能很大的
+
+tianchun_yang 2016-04-04 22:03:26
+也对....
+
+dietpepsi 2016-04-04 22:03:43
+这个的复杂度query的话不是O(k)
+
+dietpepsi 2016-04-04 22:03:53
+是O(log n + k)
+
+dietpepsi 2016-04-04 22:04:29
+O(k+logn)
+
+dietpepsi 2016-04-04 22:04:38
+维护的话也是log
+
+dietpepsi 2016-04-04 22:04:46
+因为你用treemap嘛
+
+tianchun_yang 2016-04-04 22:04:53
+也对啦- -
+
+dietpepsi 2016-04-04 22:05:27
+讨论pass

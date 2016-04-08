@@ -1,0 +1,35 @@
+最大假期问题
+求讨论这道google的假期题目，出现过很多次，但是具体描述我不太清楚。
+
+假设某个company在不同国家都有office，每个国家的office，如果是当地的假期，就可以放假了。假设可以查询任意航班的信息，每个星期只能呆在一个地方，只有周末的时候才能飞去别的国家。找一个放假天数最多的schedule。
+
+讨论：动态规划 DP
+
+Tianchun Yang April 4th at 5:46 PM
+这道题可以在网上看到有人用dp做，dp的式子大概写下：dp[i][j] = Math.max(dp[i-1][fromCity]+map[i][j], dp[i][j]) 期中dp[i][j]代表第i个星期到第j个城市有多少个假期
+
+bzhou003 2016-04-04 17:51:36
+这题我觉得应该是个图的遍历吧
+
+tianchun_yang 2016-04-04 17:52:19
+好像没有说一定要全遍历
+
+pengftang 2016-04-04 17:55:29
+@tianchun_yang: 能找到那个帖子的链接不？
+
+tianchun_yang 2016-04-04 17:57:35
+[3/8] Google Onsite
+http://www.1point3acres.com/bbs/thread-177167-1-1.html
+(出处: 一亩三分地论坛)
+
+lxx113 2016-04-04 18:11:42
+明白了，然后最优解答就是dp[52][j]中找最大的，是么？@tianchun_yang?
+
+tianchun_yang 2016-04-04 18:19:15
+我觉得应该是~
+
+dietpepsi 2016-04-04 19:29:53
+假期最大化DP是正解
+
+dietpepsi 2016-04-04 19:30:12
+这题跟很多2D的DP题本质都是一样的

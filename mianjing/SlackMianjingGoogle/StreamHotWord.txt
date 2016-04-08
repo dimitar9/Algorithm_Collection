@@ -1,0 +1,550 @@
+Stream中是否包含热词(onsite第一轮)
+
+
+Diet Pepsi [3:40 PM] added a Plain Text snippet: 热词(Google OnSite 第一轮)
+
+给一个stream of characters(ascii)和一个hot word("a-z")，
+求哪一个character可以和前面的连续字符组成这个hot word，
+给出一个char, 返回true or false。
+要求O(1)空间
+
+follow up
+是如果有多个hot word, 如果能组成任意一个就返回true
+不要求O(1)空间
+
+Example:
+word = "try"
+stream = "abcokdeftrying..........."
+output = "00000000001000..........."
+0代表 false
+1代表 true
+GGG 校招-4月加面 [3:42 PM] stream 所以不能用substring这些是吧
+
+Rbcooldown [3:42 PM] 输入是一个stream和一个string，输出是boolean还是一个char？
+
+Diet Pepsi [3:43 PM] 我加了个Example
+[3:43]
+输出是一个boolean stream
+[3:43]
+我例子里用的01代表
+
+Rbcooldown [3:43 PM] 哦
+[3:44]
+string有限制么？是26字母还是256ascii？还是任意？
+
+Diet Pepsi [3:45 PM] 就26个字母吧
+[3:48]
+或者说hot word是26个字母，但是stream任意或者ascii(edited)
+
+Lowkey [3:51 PM] 就先对stream过滤呗，然后建trie？
+
+Rbcooldown [3:51 PM] o1空间
+
+Lowkey [3:51 PM] 嗷
+
+Tom Chen [3:52 PM] @dietpepsi: @GGG 校招-4月加面  北美电话号码的分配系统用bitset, 分两段这个应该可以吧，如果3/7开慢，5/5开应该够快吧。测试了一下，笔记本电脑上循环一遍，10^7 要0.4秒，10^6 要0.058秒,  10^5 要0.021秒。就是分桶的思想。如果5/5开还嫌慢， 3/3/4开够快了吧。内存把所有10位电话号码存下只要1.25GB。如果是BST，放所有10位电话号码要10^10  4byte ＝ 40GB，考虑到int放不下，可能要long，以及BST左右pointer，就要10^10  (8 + 4x2)byte ＝ 160GB。
+
+Lowkey [3:53 PM] KMP？
+
+Rbcooldown [3:53 PM] stream没法回溯
+
+Tom Chen [3:54 PM] 热词：rolling hash?
+
+Lowkey [3:54 PM] O 1 这心不知道了，感觉咋样都需要一个cache才行
+
+Rbcooldown [3:55 PM] rollinghash需要hot word长度的空间吧
+
+Lowkey [3:55 PM] 设定一个cache boolean
+[3:55]
+碰到一个相同的char就改成1，如果len = target就返回
+[3:56]
+比如abcdtratry, target = try
+[3:56]
+就是0000110111
+[3:56]
+这样还需要多加一个count
+[3:56]
+应该算O1吧
+
+Rbcooldown [3:58 PM] target=abac, stream =ababacd
+[3:58]
+咋做
+
+GGG 校招-4月加面 [3:59 PM] hash的思路感觉可行啊
+
+Rbcooldown [3:59 PM] stream你不存的话没法回溯到第二个ab那里
+
+Lowkey [3:59 PM] 是有点麻烦。。。怎么样都要存一下
+[4:00]
+那先赋值成0再从头开始比呢？
+[4:00]
+ababacd 就是110, 碰到第一个0以后重新开始从头比一次？
+[4:01]
+不对。。。这么不幸
+[4:01]
+不行
+
+GGG 校招-4月加面 [4:03 PM] 因为hot word都是字母，先将word的hash值算一下，hash += 字母的值^i
+[4:03]
+字母的值 = 字母-a
+[4:04]
+hash的目的是让一个word的hash值独一无二
+
+Lowkey [4:04 PM] 然后呢？
+
+GGG 校招-4月加面 [4:04 PM] 上面公式不对
+[4:05]
+大致就是word的每个位置的每个字母有不同的权重
+[4:05]
+然后对stream算rolling hash
+[4:05]
+如果遇到非字母 hash设为0
+[4:06]
+遇到字母 就和word一样算加权的hash
+[4:06]
+如果hash值相同 就代表遇到了word
+[4:07]
+公式应该是 hash = sum(字母的值 * 26^i)
+
+Rbcooldown [4:07 PM] 比如target长度是4，那你stream读到4的时候比较一下，不行就读第五位，这个时候你需要去掉第一位的hash，再加上第五位的hash
+
+Diet Pepsi [4:07 PM] 这个.....不用rolling hash这么复杂
+
+Rbcooldown [4:07 PM] 你需要记第一位的char吧？
+
+Diet Pepsi [4:08 PM] 时间复杂度可以宽松点儿
+
+GGG 校招-4月加面 [4:08 PM] two pointer就能算rolling hash啊
+
+Lowkey [4:08 PM] 关键是O 1 space很烦啊
+[4:08]
+你记hash的就是O k了
+
+GGG 校招-4月加面 [4:09 PM] 明白你的意思了
+
+Lowkey [4:09 PM] 大神快来公布正解吧
+
+Diet Pepsi [4:09 PM] 正解，我也不知道
+[4:09]
+我是这么搞的
+[4:10]
+因为一个hot word你比较的话你肯定知道当前比较到哪个地方
+[4:10]
+所以你就纪录一个int s
+[4:11]
+word的前s个字符与当前stream的最新s个匹配
+[4:11]
+当下一个不匹配的时候，你就向后挪，更新s
+[4:11]
+匹配就s++
+[4:11]
+s = n就true
+[4:12]
+就这样
+[4:12]
+类似于kmp的意思
+[4:12]
+就是没有预处理来保存kmp的那个state machine
+
+Lowkey [4:14 PM] 还是拿刚才那例子， ababacd 和abac 那就是s = 1,2,3 然后更新成多少？
+
+Diet Pepsi [4:15 PM] s = 3的时候，你来了个b跟我c不同
+[4:15]
+那么你就是abab和abac去比
+[4:15]
+s=2(edited)
+
+Yuan Gao [4:15 PM] joined #_default
+
+Lowkey [4:15 PM] 然后呢？
+
+Diet Pepsi [4:16 PM] 然后a
+[4:16]
+s = 3(edited)
+
+Lowkey [4:16 PM] 这题O 1真的有解么T_T
+[4:17]
+感觉咋样都要回朔前一个啊
+
+Diet Pepsi [4:17 PM] O(1)可以
+[4:17]
+刚才abab和abac是s=2
+
+Lowkey [4:17 PM] 然后呢
+
+Diet Pepsi [4:18 PM] 然后a，s =3
+[4:18]
+然后c, s = 4，true
+[4:18]
+然后d, s = 0
+
+Lowkey [4:18 PM] 没懂。。。
+
+Diet Pepsi [4:19 PM] 就是说，假设我们现在不是O(1)，我们就用O(n)的做法
+[4:19]
+我可以保持一个sliding window对吧
+
+Lowkey [4:19 PM] 是的
+
+Diet Pepsi [4:19 PM] 然后每次就跟word比
+[4:19]
+这是最naive的方法了
+[4:20]
+然后你发现你这个sliding window不必要一直保持n个字符
+
+Lowkey [4:20 PM] ababacd, 开始是a, s= 0, b, s=1, a  s= 2, b, s = 2 不变？
+
+Diet Pepsi [4:20 PM] 你只要保持最长的后缀，是word的前缀就可以
+
+Lowkey [4:20 PM] 对，只要头尾
+
+Diet Pepsi [4:20 PM] 然后，既然你的window一直都是word的前缀
+[4:21]
+那么你显然不需要真的留一份儿字符串
+[4:21]
+你只需要知道你是word的前缀的长度就可以
+[4:21]
+这个就是s
+
+Lowkey [4:21 PM] 懂了，真大神
+
+Diet Pepsi [4:22 PM] follow up我觉得是建一个trie
+[4:22]
+别的没啥了
+
+Lowkey [4:22 PM] followup 为啥感觉还简单一些。。。
+
+Diet Pepsi [4:26 PM] 其实O(1)那个也是一个follow up
+
+Rbcooldown [4:26 PM] 我没明白你第二个b那里是怎么更新的
+
+Lowkey [4:26 PM] 我咋觉得还是没太对，比如 abcdbcdabcd 和 abcd ，s是怎么赋值的来着
+[4:27]
+错了，abcebcdabcd
+
+Rbcooldown [4:28 PM] 第二个b那里你不去回溯stream前面的字符如何知道那里是2？
+
+Lowkey [4:28 PM] 我大概懂了
+[4:29]
+牺牲复杂度，每次都是从word里的第s个字符开始比
+
+Rbcooldown [4:31 PM] 那你解释下第二个b的时候s是3，这个b跟c比，不match，这时候如何更新s值
+
+Diet Pepsi [4:31 PM] added a Plain Text snippet: Example
+
+stream = abcebcdabcd
+word = abcd
+-----
+char  s  prefix
+a     1  a
+b     2  ab
+c     3  abc
+e     0
+b     0
+c     0
+d     0
+a     1  a
+b     2  ab
+c     3  abc
+d     4  abcd
+Add Comment
+Collapse
+
+
+
+Lowkey [4:32 PM] 这个是这样，还是前一个例子，ababacd 和abac
+
+Diet Pepsi [4:32 PM] 好稍等
+
+Rbcooldown [4:32 PM] @dietpepsi: 你把我的那个例子写一下
+[4:33]
+我没太懂
+
+Diet Pepsi [4:33 PM] ababacd 和abac是吧？
+
+Rbcooldown [4:33 PM] 对的
+
+Lowkey [4:33 PM] en
+[4:34]
+同样的算法第二个b那里就变成s = 0了
+
+Rbcooldown [4:34 PM] 那中间的abac就match不上了啊
+
+Diet Pepsi [4:34 PM] added a Plain Text snippet: Example 2
+
+stream = ababacd
+word = abac
+-----
+char  s  prefix
+a     1  a
+b     2  ab
+a     3  aba
+b     2  ab
+a     3  aba
+c     4  abac
+d     0
+Add Comment
+Collapse
+
+
+
+Diet Pepsi [4:35 PM] 第二个b那里是2
+[4:35]
+不是0
+
+Lowkey [4:35 PM] 这里为啥第二个b那儿s = 2
+[4:35]
+根据什么判断的
+
+Rbcooldown [4:35 PM] @dietpepsi: 你解释下为何是2，怎么得来的
+[4:35]
+前提是你不能回溯stream
+[4:36]
+这个时候你不知道stream之前是什么字符
+
+Diet Pepsi [4:37 PM] 不用回溯啊
+[4:37]
+到第二个b的时候，你可以根据s和word推出你需要的字符的啊
+[4:37]
+就是那个prefix啊
+[4:37]
+aba
+[4:38]
+然后再加上当前的b
+[4:38]
+就是abab这样
+
+Rbcooldown [4:38 PM] 额，如果这时候前缀里面有多个b呢，你匹配哪个
+
+Diet Pepsi [4:38 PM] 你举例子我给你写
+
+Rbcooldown [4:41 PM] 我暂时没想到好点的例子
+[4:42]
+不过我还是没明白第二个b那里你是如何算出2的
+
+你想想看，如果允许回溯你需要回溯几个字符？
+
+Diet Pepsi [4:45 PM] added a C++ snippet: Rolling hash 的解法
+
+//By Tom Chem
+
+#include <iostream>
+#include <vector>
+#include <math.h>
+using namespace std;
+
+
+int getRHash(string s) {
+int sum = 0;
+for (int i = 0; i < s.length(); ++ i) {
+sum = sum * 26 + s[i] - 'a';
+}
+return sum;
+}
+
+void check(string s, string word) {
+int target = getRHash(word);
+int len = word.length();
+cout << "target = " << target << ", len = " << len << endl;
+
+long long sum = 0;
+for (int i = 0; i < s.length(); ++ i) {
+sum = sum * 26 + s[i] - 'a';
+if (i >= len) sum -= (s[i - len] - 'a') * pow(26, len);
+if (sum == target) {
+cout << "rolling hash = " << sum << ", found match at position: " << i << endl;
+}
+}
+}
+
+int main() {
+string s = "abcebcdabcd";
+string word = "abcd";
+check(s, word);
+return 0;
+}
+
+// 运行结果：
+// target = 731, len = 4
+// rolling hash = 731, found match at position: 10
+2 Comments
+Collapse
+
+
+
+Rbcooldown [4:45 PM] rollinghash你需要记n-1个字符，n是hot word的长度
+[4:46]
+你看代码，有一行是sum-=
+[4:47]
+这就不是o1了
+
+Lowkey [4:48 PM] 继续刚才的。。。ababace 这个，回朔步骤的话是根据kmp那个公式算的吧
+
+Rbcooldown [4:50 PM] commented on Diet Pepsi's snippet Rolling hash 的解法
+sum-=那一行，如果输入是stream，你是track不到这个字符的，只能是单独存起来。这样的话空间复杂度就是o（n-1）而不是o1
+
+
+
+Rbcooldown [4:50 PM] 我加了comment。
+[4:50]
+rollinghash个人认为做不到o1
+
+Diet Pepsi [4:50 PM] 还是继续刚才我说的
+
+Lowkey [4:50 PM] 嗯，大神你继续
+
+Rbcooldown [4:51 PM] 最好写个代码。
+[4:51]
+把你的逻辑写出来，就好理解了
+
+Diet Pepsi [4:51 PM] added a Plain Text snippet: Example 2
+
+stream = ababacd
+word = abac
+-----
+char  s  prefix
+a     1  a
+b     2  ab
+a     3  aba
+b     2  ab
+a     3  aba
+c     4  abac
+d     0
+Add Comment
+Collapse
+
+
+
+Rbcooldown [4:51 PM] 我现在是不明白为何第二个b那里会是2
+
+Diet Pepsi [4:51 PM] 嗯，我把这个放过来
+[4:52]
+到第二个b的时候
+[4:52]
+我们有的信息是s = 3, char = b, word = abac
+[4:52]
+对吧
+[4:52]
+我们需要的output是s = 2对吧
+
+Rbcooldown [4:52 PM] 对的
+
+Diet Pepsi [4:53 PM] s = 3你可以推出现在prefix = word[0:3) = aba
+[4:53]
+对吧
+
+Rbcooldown [4:53 PM] 对
+
+Diet Pepsi [4:53 PM] 然后char = b说明现在stream的suffix变成了aba+b = abab
+[4:53]
+对吧
+[4:54]
+那s=4肯定是不对的，因为b != c
+[4:54]
+这个好理解吧？
+
+Rbcooldown [4:54 PM] 对
+
+Diet Pepsi [4:54 PM] 那么s肯定会变少就是s 会比3要小
+[4:54]
+比如等于3
+[4:54]
+意味着要求bab和aba相比
+
+Ux Cognito [4:55 PM] commented on Diet Pepsi's snippet Rolling hash 的解法
+这题目的要求是啥，谁能写一下？
+
+
+
+Rbcooldown [4:55 PM] 有可能等于3
+
+Diet Pepsi [4:55 PM] 对对
+[4:55]
+<=3
+
+Rbcooldown [4:55 PM] 是的
+
+Diet Pepsi [4:55 PM] 那我们就是先试s=3
+[4:55]
+不行s=3
+[4:55]
+s=2可以
+[4:55]
+所以s=2
+[4:55]
+就这样
+
+Eric Chen [4:56 PM] 这相当于KMP的思想
+
+Diet Pepsi [4:56 PM] 类似于kmp里面
+[4:56]
+对的
+[4:56]
+没错
+
+Rbcooldown [4:56 PM] 怎么试s=3？
+
+Eric Chen [4:56 PM] 只是没有next数组，所以贪心的遍历来求最大能保留的子串长度
+
+Diet Pepsi [4:56 PM] 就是kmp那个预处理的思路，只不过不保存预处理的结果(edited)
+[4:56]
+没错
+
+Eric Chen [4:57 PM] 那么问题来了，怎么知道3不可以2可以的？
+
+Rbcooldown [4:57 PM] 相当于你从word里面拿出前两位和这个字符拼一起比较一下？
+
+Diet Pepsi [4:57 PM] 比较
+
+Eric Chen [4:58 PM] 拿word.charAt（2)来比。不是当前字符，所以S不能等于3
+[4:58]
+如果等于，那么就是了，这样哦
+
+Diet Pepsi [4:58 PM] 是的
+[4:58]
+他要求O(1)嘛
+[4:58]
+只好这样
+
+Rbcooldown [4:58 PM] 那有个问题
+
+Diet Pepsi [4:59 PM] 我觉得还是kmp预处理保存那个array，最合理
+----
+
+new messages
+
+Rbcooldown [4:59 PM] prefix很长的话，有可能你取多个值都能match
+[4:59]
+那这里你记录哪个？
+
+Diet Pepsi [4:59 PM] 你要match最长的
+
+Eric Chen [4:59 PM] 保留最大的
+
+Diet Pepsi [4:59 PM] 你研究过kmp你就理解了
+
+Eric Chen [4:59 PM] 这就是KMP的思想
+[5:00]
+再失败了再说
+[5:00]
+保留最大的不会漏掉解
+
+Rbcooldown [5:00 PM] 嗯，明白了
+[5:01]
+好了说说rollinghash吧
+[5:01]
+我个人认为这个不是o1
+
+Eric Chen [5:01 PM] 显然不是么
+
+Rbcooldown [5:02 PM] 那好吧，既然不是就不讨论了。
+
+Eric Chen [5:02 PM] 如果同样的空间耗费，那直接KMP就好了，保留下next数组
+
+Tom Chen [5:03 PM] 时间是，空间不是。如果stream取样点用两个，分开word.length的距离就可以，不过这个不大清楚怎么做。
+
+Diet Pepsi [5:03 PM] 这题面试官想看的应该是我说的那个解法
+[5:04]
+kmp的思想
+
+Tom Chen [5:04 PM] kmp不错

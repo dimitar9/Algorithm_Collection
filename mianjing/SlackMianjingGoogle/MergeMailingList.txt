@@ -1,0 +1,189 @@
+ 合并邮件列表(Facebook Onsite)
+
+    Tom Chen [12:22 AM] 
+
+    Tom Chen [12:22 AM] 
+
+    facebook onsite面经题：
+
+    facebook onsite面经题：
+
+    Given 1 million email list:
+
+    Given 1 million email list:
+
+    list 1: a@a.com, b@b.com
+
+    list 1: a@a.com, b@b.com
+
+    list 2: b@b.com, c@c.com
+
+    list 2: b@b.com, c@c.com
+
+    list 3: e@e.com
+
+    list 3: e@e.com
+
+    list 4: a@a.com
+
+    list 4: a@a.com
+
+    ...
+
+    ...
+
+    Combine lists with identical emails, and output tuples:
+
+    Combine lists with identical emails, and output tuples:
+
+    (list 1, list 2, list 4) (a@a.com, b@b.com, c@c.com)
+
+    (list 1, list 2, list 4) (a@a.com, b@b.com, c@c.com)
+
+    (list 3) (e@e.com)
+
+    (list 3) (e@e.com)
+
+讨论关于: union find，反向索引，mapreduce，BFS
+讨论关于: union find，反向索引，mapreduce，BFS
+
+Diet Pepsi [12:22 AM] union find?
+
+Diet Pepsi [12:22 AM] union find?
+
+Rbcooldown [12:23 AM] mapreduce
+
+Rbcooldown [12:23 AM] mapreduce
+
+Tom Chen [12:23 AM] 大家时间不够多的话可能就不用花时间了。这应该是很少见的题。就是那种实际工作中解决的问题，拿来考倒人的
+
+Tom Chen [12:23 AM] 大家时间不够多的话可能就不用花时间了。这应该是很少见的题。就是那种实际工作中解决的问题，拿来考倒人的
+
+Yilun Fu [12:23 AM] 我也觉得是Union find
+
+Yilun Fu [12:23 AM] 我也觉得是Union find
+
+Tom Chen [12:23 AM] Union Find错
+
+Tom Chen [12:23 AM] Union Find错
+
+Rbcooldown [12:24 AM] mapreduce呢
+
+Rbcooldown [12:24 AM] mapreduce呢
+
+Yilun Fu [12:24 AM] mapreduce 你的map和reduce的key value具体是什么
+
+Yilun Fu [12:24 AM] mapreduce 你的map和reduce的key value具体是什么
+
+Bruce Liu [12:25 AM] inverted index?
+
+Bruce Liu [12:25 AM] inverted index?
+
+Diet Pepsi [12:25 AM] 对先建立一个反向索引
+
+Diet Pepsi [12:25 AM] 对先建立一个反向索引
+
+Rbcooldown [12:26 AM] 1million，内存放得下么
+
+Rbcooldown [12:26 AM] 1million，内存放得下么
+
+1million个list，每个list还有无数的email
+
+1million个list，每个list还有无数的email
+
+Tom Chen [12:27 AM] 好吧，1 million是故意加大难度的，可以撇开不考虑1 million
+
+Tom Chen [12:27 AM] 好吧，1 million是故意加大难度的，可以撇开不考虑1 million
+
+Yilun Fu [12:27 AM] 我没想通为什么Union Find不行呢
+
+Yilun Fu [12:27 AM] 我没想通为什么Union Find不行呢
+
+Daniel Wu [12:28 AM] http://www.fgdsb.com/2015/01/25/group-contacts/
+
+Daniel Wu [12:28 AM] http://www.fgdsb.com/2015/01/25/group-contacts/
+
+Tom Chen [12:28 AM] 这个提示是需要建立两个索引，name -> email， 和email -> name。
+
+Tom Chen [12:28 AM] 这个提示是需要建立两个索引，name -> email， 和email -> name。
+
+Yilun Fu [12:28 AM] 他不是就用Union Find做的么。。
+
+Yilun Fu [12:28 AM] 他不是就用Union Find做的么。。
+
+Diet Pepsi [12:29 AM] 对啊，就是要建立反向索引
+
+Diet Pepsi [12:29 AM] 对啊，就是要建立反向索引
+
+正向已经有了
+
+正向已经有了
+
+Tom Chen [12:29 AM] 你可以试试Union Find。也许可能。
+
+Tom Chen [12:29 AM] 你可以试试Union Find。也许可能。
+
+Rbcooldown [12:29 AM] mapreduce可行吧
+
+Rbcooldown [12:29 AM] mapreduce可行吧
+
+Tom Chen [12:30 AM] map reduce不可行
+
+Tom Chen [12:30 AM] map reduce不可行
+
+Yilun Fu [12:30 AM] 可是建了反向之后怎么merge呢
+
+Yilun Fu [12:30 AM] 可是建了反向之后怎么merge呢
+
+Tom Chen [12:30 AM] 是啊，怎么merge？是难点所在
+
+Tom Chen [12:30 AM] 是啊，怎么merge？是难点所在
+
+Tom Chen [12:30 AM] 好有罪恶感，浪费大家时间
+
+Tom Chen [12:30 AM] 好有罪恶感，浪费大家时间
+
+Diet Pepsi [12:31 AM] 建完索引，那就像爬虫一样爬呗
+
+Diet Pepsi [12:31 AM] 建完索引，那就像爬虫一样爬呗
+
+Yilun Fu [12:32 AM] 为什么我觉得反向和正向是对称的。。
+
+Yilun Fu [12:32 AM] 为什么我觉得反向和正向是对称的。。
+
+Tom Chen [12:32 AM] 思路差不多，也是对称的，需要爬过来，又爬过去，又爬过来，循环往复
+
+Tom Chen [12:32 AM] 思路差不多，也是对称的，需要爬过来，又爬过去，又爬过来，循环往复
+
+Diet Pepsi [12:32 AM] 来个list，找到所有名字，找到所有list，再找名字->>>>>
+
+Diet Pepsi [12:32 AM] 来个list，找到所有名字，找到所有list，再找名字->>>>>
+
+对对
+
+对对
+
+就是这意思
+
+就是这意思
+
+BFS
+
+BFS
+
+Diet Pepsi [12:34 AM] 这个实际上是network connectivity的问题
+
+Diet Pepsi [12:34 AM] 这个实际上是network connectivity的问题
+
+建立索引实际上是建立图的边
+
+建立索引实际上是建立图的边
+
+原来是单向，我们需要双向
+
+原来是单向，我们需要双向
+
+Tom Chen [12:35 AM] 这个问题应该是工程中遇到的问题，解决了面试的时候来考倒人的。网上也没见到过这题。应该几乎不会再出现。
+
+Tom Chen [12:35 AM] 这个问题应该是工程中遇到的问题，解决了面试的时候来考倒人的。网上也没见到过这题。应该几乎不会再出现。
+

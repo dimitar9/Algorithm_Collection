@@ -1,0 +1,15 @@
+
+不喜欢带4的楼层
+
+(By @gao.yuan ) 第五轮, 1. 一些地区不喜欢带4的楼层, 给定最高楼层N, 求实际楼层数. 就是说楼层没有4, 14, 24, 34, 40-49, 54, ... 我朋友一开始想用交集并集做, 把4, 14, 24, 34作为一列, 把40-49作为一列这样的思路, 后来发现好麻烦, 经过提醒, 直接recursive处理, 比如221层楼, 那么就是2个100层楼的情况+2个10层楼的情况+1楼, 然后问时间复杂度是多少
+
+讨论：等价于LC原题
+
+pengftang 2016-04-04 04:22:41
+Lc上好像有类似题：https://leetcode.com/problems/number-of-digit-one/
+
+Number of Digit One | LeetCode OJ
+Given an integer n, count the total number of digit 1 appearing in all non-negative integers less than or equal to n. For example: Given n = 13, Return 6, because digit 1 occurred in the following numbers: 1, 10, 11, 12, 13. Beware of overflow.
+
+gao.yuan 2016-04-04 04:39:45
+啊，看到了，确实类似

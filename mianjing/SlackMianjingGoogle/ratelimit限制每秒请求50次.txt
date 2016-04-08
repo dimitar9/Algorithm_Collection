@@ -1,0 +1,42 @@
+限制每秒请求50次（Rate Limiter）
+pengftang 2016-04-04 11:34:32
+
+（MITBBS面经）这个问题我被问过3次，3个不同的公司，其中第一次遇到是在google。
+
+设计一个数据结构使得一个request在1秒之内只能执行50次。
+
+我的做法是用一个queue来存timestamp，每次来一个request的时候 if 50 > queueSize 直接加到queue里 else (50 == queueSize) 把queue前面所有大于1秒的timestamp删除，如果此时queue size小于50了再加进去. 面试官很不满意，说复杂度太高。面试结束的时候问他到底怎么样才最优，他说是secret。
+
+链接：http://www.mitbbs.com/article_t/JobHunting/33166641.html
+
+讨论：queue, Token Bucket
+
+singku 2016-04-04 15:38:35
+一年秒执行50次？
+
+pengftang 2016-04-04 15:39:35
+嗯，题目描述是这样
+
+singku 2016-04-04 15:40:51
+记录一个起始时间和次数行吗？每次来一个请求，如果当前时间减去起始时间大于一秒，则重置起始时间为当前，次数归零，否则次数自增？
+
+singku 2016-04-04 15:41:24
+自增次数大于50次拒绝调用
+
+pengftang 2016-04-04 15:50:07
+这题其实我不完全明白要干啥
+
+dietpepsi 2016-04-04 19:23:22
+然后说那个一个request在1秒之内只能执行50次。
+
+dietpepsi 2016-04-04 19:23:30
+这个是Rate Limiter
+
+dietpepsi 2016-04-04 19:23:45
+用的数据结构是Token Bucket
+
+dietpepsi 2016-04-04 19:24:24
+tianchun_yang po的stackoverflow那个图是正解
+
+dietpepsi 2016-04-04 19:24:54
+http://stackoverflow.com/questions/667508/whats-a-good-rate-limiting-algorithm

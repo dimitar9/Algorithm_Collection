@@ -1,0 +1,305 @@
+ 用户积分排名榜 
+justslack 2016-04-06 01:05:30
+题目是给你一个board，里面存储user的信息，user有id和socre。
+board有adduser(id, score)(返回add进去的user当前的rank), findByRank(k) (这个返回id)。
+Add如果本身已经有id在board中，需要对这个id的score进行update。
+这题有讨论过吗？
+一道电面题
+adduser 操作 和 findByRank 操作都要lgn
+
+讨论:BST, BIT, SegTree
+
+用binary search tree即可，每个node append点的个数 就行
+O(lgn) on average
+
+@justslack: 你做order statistics tree你是自己写BST么？
+
+dietpepsi 2016-04-06 02:33:48
+如果面试你打算自己写平衡二叉树？
+
+dietpepsi 2016-04-06 02:34:20
+我觉得你还是用库里的比如TreeMap比较好吧
+
+txchen 2016-04-06 02:41:05
+multiset 是order statistics tree 吗? leetcode 上面Count of Range Sum和Count of Smaller Numbers After Self 可以用multiset或order statistics tree来解，order statistics tree 完全替换multiset，其余部分代码一样。
+
+dietpepsi 2016-04-06 02:42:21
+是的，这两题都可以用BST来解
+
+txchen 2016-04-06 02:43:02
+不知道multiset内部实现是不是order statistics tree，感觉应该可以
+
+dietpepsi 2016-04-06 02:44:43
+multiset内部恐怕不是order statistics tree
+
+dietpepsi 2016-04-06 02:45:00
+所以直接用库里的api不一定效率很高
+
+dietpepsi 2016-04-06 02:45:11
+但是题肯定可以用OST来做
+
+dietpepsi 2016-04-06 02:45:27
+就是自己加个argument
+
+txchen 2016-04-06 02:47:15
+在网上查了一下：https://www.quora.com/How-is-std-multiset-implemented
+It's most often implemented as a threaded red-black tree, but almost any other form of balanced tree (e.g., AVL tree, B-tree) could be used instead (and implementations using both of these have been written).
+
+dietpepsi 2016-04-06 02:48:46
+multiset肯定是RBT
+
+dietpepsi 2016-04-06 02:49:05
+只是没有argument，所以我说你得自己加argument
+
+dietpepsi 2016-04-06 02:49:15
+就是subtree size之类的
+
+foggy 2016-04-06 11:02:27
+这题最后怎么搞的
+
+dietpepsi 2016-04-06 11:10:29
+order statistics tree
+
+foggy 2016-04-06 11:17:37
+要自己写delete，add操作
+
+ericchen3539 2016-04-06 11:34:45
+线段树可解吧
+
+foggy 2016-04-06 11:36:30
+how
+
+ericchen3539 2016-04-06 11:39:02
+Score有个范围吧，可以用来建树，然后就更新score的count就可以，rank就是比他小的分数的count之和
+
+foggy 2016-04-06 11:44:06
+没有范围呢
+
+gao.yuan 2016-04-06 11:46:43
+这题也是G的面经吗
+
+ericchen3539 2016-04-06 11:50:27
+分数应该是有范围的，没有范围也可以离散化
+
+foggy 2016-04-06 12:01:09
+恩，有范围比较好解不然写平衡树的add delete
+
+dietpepsi 2016-04-06 12:15:03
+用BST的话score不需要有范围
+
+dietpepsi 2016-04-06 12:15:40
+如果是Java的话用TreeMap<score, Node>
+
+dietpepsi 2016-04-06 12:17:28
+Node { List<String> names; int rank;}
+
+ericchen3539 2016-04-06 12:17:46
+恩，这题上次好像讨论过
+
+dietpepsi 2016-04-06 12:17:53
+再加一个HashMap<String, int> 来存score就可以
+
+dietpepsi 2016-04-06 12:17:59
+这种题很多
+
+ericchen3539 2016-04-06 12:18:00
+你这是第二次给出最优解了，哈哈
+
+dietpepsi 2016-04-06 12:18:08
+是吗？
+
+dietpepsi 2016-04-06 12:18:11
+不记得了
+
+gao.yuan 2016-04-06 12:18:38
+哈哈，受教了，这题就不用线段树了对吗
+
+foggy 2016-04-06 12:18:51
+HashMap<String, int> 这个value是什么
+
+ericchen3539 2016-04-06 12:18:54
+线段树也要一样另外Hash,Node啥的，其实可以认为BST和线段树都是一个排序的工具而已
+
+dietpepsi 2016-04-06 12:19:28
+HashMap<String, int> 是name -> score的映射
+
+foggy 2016-04-06 12:19:47
+findByRank(k)怎么搞
+
+dietpepsi 2016-04-06 12:19:48
+方便你快速拿到score
+
+foggy 2016-04-06 12:20:08
+找第K个
+
+ericchen3539 2016-04-06 12:20:16
+BST和线段树都可以用，就跟LeetCode 315一样，不过BST自己写不平衡的话有可能O（N）,，当然用库里的TreeMap是平衡的红黑树
+
+dietpepsi 2016-04-06 12:20:20
+你的BST里既然score是key，那么rank肯定也是有序的
+
+foggy 2016-04-06 12:20:40
+ok。怎么找第k个？
+
+foggy 2016-04-06 12:20:59
+这么屌
+
+dietpepsi 2016-04-06 12:21:06
+这个扯远了
+
+dietpepsi 2016-04-06 12:21:10
+哈哈
+
+foggy 2016-04-06 12:21:34
+第K个怎么找lgn
+
+dietpepsi 2016-04-06 12:22:34
+嗯，这个问题问得好
+
+ericchen3539 2016-04-06 12:22:41
+线段树好找啊
+
+dietpepsi 2016-04-06 12:23:00
+如果我们是自己写的BST，肯定是可以找到第k个的
+
+dietpepsi 2016-04-06 12:23:05
+逐个走下去就可以
+
+foggy 2016-04-06 12:23:15
+用treemap呢？
+
+dietpepsi 2016-04-06 12:23:20
+我在想
+
+ericchen3539 2016-04-06 12:23:38
+自己写很难保证平衡啊
+
+dietpepsi 2016-04-06 12:23:47
+写个AVL呗
+
+ericchen3539 2016-04-06 12:23:51
+。。。。。。。。。。
+
+ericchen3539 2016-04-06 12:23:59
+不会
+
+dietpepsi 2016-04-06 12:24:01
+先不说AVL
+
+ericchen3539 2016-04-06 12:24:03
+超纲了
+
+dietpepsi 2016-04-06 12:24:09
+就说用TreeMap怎么搞
+
+foggy 2016-04-06 12:25:09
+好的
+
+happycoder 2016-04-06 12:27:29
+有人被问过要求写一个iterator返回hash table的所有key的问题吗？哪里有参考答案。我当时写那个人家好像不是很满意，多谢
+
+foggy 2016-04-06 12:28:37
+什么意思？你是说hashmap的key？
+
+dietpepsi 2016-04-06 12:29:56
+嗯，这么看来确实得用bit或者线段树了......
+
+dietpepsi 2016-04-06 12:30:09
+自己实现AVL面试不靠谱
+
+foggy 2016-04-06 12:30:33
+好吧，不过可以提一下
+
+tianchun_yang 2016-04-06 15:31:33
+@dietpepsi: TreeMap返回第k个key对应val可不可以用tm.values().toArray()[k]
+
+tianchun_yang 2016-04-06 15:31:45
+这个的复杂度算是1还是n？
+
+dietpepsi 2016-04-06 15:31:47
+n
+
+tianchun_yang 2016-04-06 15:32:53
+这种题45分钟写不完啊- -
+
+tianchun_yang 2016-04-06 15:32:57
+闹心....
+
+dietpepsi 2016-04-06 15:33:41
+没事儿，不会遇到这种题
+
+tianchun_yang 2016-04-06 15:33:41
+需要自己会写红黑树吗？
+
+tianchun_yang 2016-04-06 15:33:50
+自己写bst无法平衡.....
+
+dietpepsi 2016-04-06 15:33:51
+肯定不可能自己写红黑的
+
+tianchun_yang 2016-04-06 15:34:07
+最后复杂度其实还是n
+
+dietpepsi 2016-04-06 15:34:07
+45分钟全用上也未必能写
+
+dietpepsi 2016-04-06 15:34:22
+何况还要argument，还要实现order statistics
+
+dietpepsi 2016-04-06 15:34:29
+这就是欺负人了
+
+dietpepsi 2016-04-06 15:34:42
+不行就用BIT或者SegmentTree吧
+
+dietpepsi 2016-04-06 15:34:51
+假定score有个合理的范围
+
+tianchun_yang 2016-04-06 15:35:05
+segment好理解
+
+tianchun_yang 2016-04-06 15:35:10
+bit的话怎么实现啊
+
+dietpepsi 2016-04-06 15:35:25
+没仔细想，我是觉得应该能
+
+dietpepsi 2016-04-06 15:40:53
+bit支持查找0~score的人数
+
+dietpepsi 2016-04-06 15:41:55
+然后不知道，bs?
+
+dietpepsi 2016-04-06 15:45:15
+第二轮电面跪经，面试官迟到7-8分钟。 说是手机找不到了。 大概聊了一下以前做的project，开始做题。题目是给你一个board，里面存储user的信息，user有id和socre。
+board有adduser(id, score)(返回add进去的user当前的rank), findByRank(k) (这个返回id)。
+Add如果本身已经有id在board中，需要对这个id的score进行update。
+开始想的是用map加binary search中，中途脑子短路，写到一半发现似乎做不出来了。。。。(面完之后想想，这个方法应该是做的出来的。)
+面试官说应该要用binary search tree做，听到这里 基本就知道gg了。
+然后就是悲剧的开始，只会做binary search tree的添加点的操作，update和delete 操作基本忘干净了，不记得具体的步骤了。
+写代码的时候 struggle在了 delete 操作上，还有10分钟左右面试官说不用写了，就这样了。最后就是问一些问题了。
+还是基本功不够扎实，发个面经，攒点rp。。。顺便求内推！！！！！
+
+dietpepsi 2016-04-06 15:45:35
+看来面试官确实是想看手写红黑树，或者AVL
+
+dietpepsi 2016-04-06 15:45:41
+…...
+
+dietpepsi 2016-04-06 15:45:48
+过于扯了这个面试官
+
+dietpepsi 2016-04-06 15:46:30
+有重复的score的，我写的时候寸的id，注意你还要存左边电的个数和右边电的个数，不然findrank(int k)，就要O(n)了，他要2个func都是O(logn)的
+
+dietpepsi 2016-04-06 15:47:03
+要求lgn只能是平衡树....艾玛~~
+
+dietpepsi 2016-04-06 15:47:19
+平衡树还不算，还要multi key
+
+dietpepsi 2016-04-06 15:47:34
+还不完，还要argument tree
+
+dietpepsi 2016-04-06 15:47:44
+这电面也有点儿过分了

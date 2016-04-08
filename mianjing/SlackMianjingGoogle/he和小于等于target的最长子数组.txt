@@ -1,0 +1,258 @@
+和小于等于target的最长子数组
+foggy 2016-04-05 16:22:19
+Given an array, find the longest subarray which the sum of the subarray less than or equal to the given MaxSum.
+
+讨论: merge sort, BIT
+
+hanabeast 2016-04-05 16:24:06
+有负数么
+
+foggy 2016-04-05 16:24:14
+可以有
+
+pengftang 2016-04-05 16:24:15
+我猜会有
+
+pengftang 2016-04-05 16:24:47
+bf的做法是N^2，所以我猜需要用O(N)的方法做
+
+pengftang 2016-04-05 16:25:32
+感觉是DP的思路，但还没想到啥
+
+hanabeast 2016-04-05 16:26:10
+我觉得是先做presum array
+
+pengftang 2016-04-05 16:27:17
+我有一个n lg n的思路
+
+hanabeast 2016-04-05 16:27:43
+怎么搞
+
+pengftang 2016-04-05 16:28:10
+先把0到i的sum算一遍，存起来
+
+pengftang 2016-04-05 16:28:22
+然后在这个sum array里面从左往右扫
+
+pengftang 2016-04-05 16:28:49
+假如扫到i这个位置，发现和小于max，那长度就是i，并且是当前最大，肯定 没有问题
+
+pengftang 2016-04-05 16:28:52
+如果和大于max
+
+pengftang 2016-04-05 16:29:05
+就用和减max
+
+pengftang 2016-04-05 16:29:07
+找到差值
+
+pengftang 2016-04-05 16:29:22
+然后用binary search找到差值所在的sum array的位置
+
+hanabeast 2016-04-05 16:29:34
+不能bs吧
+
+hanabeast 2016-04-05 16:29:43
+sum array是不是sorted的
+
+pengftang 2016-04-05 16:29:43
+汗。。。对对对。。。
+
+pengftang 2016-04-05 16:30:06
+再想想
+
+ericchen3539 2016-04-05 16:36:42
+DP呗，不让换序必定DP，哈哈
+
+hanabeast 2016-04-05 16:36:59
+怎么dp
+
+ericchen3539 2016-04-05 16:37:33
+DP[i]为以i结尾的符合要求的最长？
+
+ericchen3539 2016-04-05 16:37:51
+最后再求整个DP数组的最大值
+
+hanabeast 2016-04-05 16:37:56
+可以这样做出来也是On平方的
+
+pengftang 2016-04-05 16:38:14
+嗯，这么直接DP是n^2
+
+pengftang 2016-04-05 16:38:21
+所以和暴力是一样的
+
+lxx113 2016-04-05 16:38:56
+我感觉O(n)不可能阿，然后又不让sort, O(nlogn)也不可行
+
+lxx113 2016-04-05 16:39:40
+所以是不是最好也就O(n^2), 这时候DP也没什么优势了吧
+
+pengftang 2016-04-05 16:40:04
+算法题就是这样，往往我们觉得不可能的只是我们没有想到而已
+
+pengftang 2016-04-05 16:41:25
+@foggy: 题目出处有吗？
+
+hanabeast 2016-04-05 16:42:36
+我在想能不能有merge,sort的思路
+
+hanabeast 2016-04-05 16:42:53
+devide and conquer
+
+pengftang 2016-04-05 16:43:06
+有可能
+
+tianchun_yang 2016-04-05 16:43:48
+这道题lc上好像有....
+
+tianchun_yang 2016-04-05 16:43:54
+类似题
+
+hanabeast 2016-04-05 16:44:09
+主要是从中间一点像两边延伸有没有可能On时间找到一个小于K的最长array
+
+hanabeast 2016-04-05 16:44:29
+那个只有正数 和这个不一样的
+
+tianchun_yang 2016-04-05 16:44:44
+Count of Range Sum变形
+
+
+tianchun_yang 2016-04-05 16:44:58
+把数目变成最长而已
+
+hanabeast 2016-04-05 16:45:16
+恩
+
+dietpepsi 2016-04-05 16:48:43
+327~
+
+dietpepsi 2016-04-05 16:48:50
+我的最爱
+
+tianchun_yang 2016-04-05 16:50:12
+哈哈哈哈我才发现是你po的题
+
+dietpepsi 2016-04-05 16:50:55
+不过这题跟327怎么一样的我没明白
+
+tianchun_yang 2016-04-05 16:51:35
+我觉得存俩global var
+
+tianchun_yang 2016-04-05 16:51:45
+一个start，一个len
+
+dietpepsi 2016-04-05 16:53:05
+嗯好像有点儿明白了
+
+tianchun_yang 2016-04-05 16:53:06
+每次分割成两段，还是照常算prefix[]
+
+tianchun_yang 2016-04-05 16:53:45
+三种情况，一种start和end都落在前半段，一种start在前半段end在后半段，一种都在后半段
+
+dietpepsi 2016-04-05 16:53:56
+嗯，确实是327
+
+tianchun_yang 2016-04-05 16:54:16
+还可以prune
+
+tianchun_yang 2016-04-05 16:54:23
+如果len超过一半
+
+tianchun_yang 2016-04-05 16:54:32
+就不接着分割了
+
+dietpepsi 2016-04-05 16:55:06
+你的意思我没太明白
+
+dietpepsi 2016-04-05 16:55:28
+你是先算sum之后merge sort么
+
+foggy 2016-04-05 16:55:38
+nlgn可以解？
+
+tianchun_yang 2016-04-05 16:55:39
+就是如果长度为mid的subarray满足条件的话
+
+dietpepsi 2016-04-05 16:55:46
+nlogn可以
+
+tianchun_yang 2016-04-05 16:56:09
+就没必要再算前半段满足的subarray长度和后半段满足条件的subarray长度了
+
+tianchun_yang 2016-04-05 16:56:33
+因为整个前半段和后半段的长度不超过mid嘛
+
+dietpepsi 2016-04-05 16:56:53
+但是你merge实际上是自地上上
+
+tianchun_yang 2016-04-05 16:57:06
+哦也对.....
+
+tianchun_yang 2016-04-05 16:57:18
+你说的是对的
+
+dietpepsi 2016-04-05 16:57:19
+你知道有mid的时候已经排过序了
+
+dietpepsi 2016-04-05 16:57:26
+嗯！
+
+dietpepsi 2016-04-05 16:57:53
+这种在两个维度有限制的题多数可以用这个路子解
+
+dietpepsi 2016-04-05 16:58:18
+边排序边解决
+
+dietpepsi 2016-04-05 16:58:38
+PASS～
+
+lxx113 2016-04-05 16:59:47
+还没做过327, 不过搜了一下327解答，用的是BIT tree, 这里是用BIT么？
+
+foggy 2016-04-05 17:00:08
+我想到了
+
+pengftang 2016-04-05 17:00:09
+又是BIT tree:cry:
+
+foggy 2016-04-05 17:00:11
+nlgn
+
+dietpepsi 2016-04-05 17:00:13
+327我推荐merge sort
+
+foggy 2016-04-05 17:00:19
+用binary search
+
+lxx113 2016-04-05 17:00:19
+还是不是很明白这个题应该怎么做，能举个例子说一下么？
+
+tianchun_yang 2016-04-05 17:00:43
+我用的divide and conquer
+
+foggy 2016-04-05 17:00:46
+很吊很屌
+
+dietpepsi 2016-04-05 17:01:00
+你看一下327就明白了
+
+tianchun_yang 2016-04-05 17:01:00
+就是merge那种思路
+
+dietpepsi 2016-04-05 17:02:13
+https://leetcode.com/discuss/79083/share-my-solution
+
+Share my solution - Leetcode Discuss
+First of all, let's look at the naive solution. Preprocess to calculate the prefix sums S[i] = S(0, i), ... i + 1; j = lower && sums[j] - sums[i]
+
+dietpepsi 2016-04-05 17:03:17
+https://leetcode.com/problems/count-of-range-sum/
+
+Count of Range Sum | LeetCode OJ
+Given an integer array nums, return the number of range sums that lie in [lower, upper] inclusive. Range sum S(i, j) is defined as the sum of the elements in nums between indices i and j (i ≤ j), inclusive. Note: A naive algorithm of O(n2) is trivial. You MUST do better than that. Example: Given nums = [-2, 5, -1], lower = -2, upper = 2, Return 3. The three ranges are : [0, 0], [2, 2], [0, 2] and their respective sums are: -2, -1, 2. Credits:Special thanks to @dietpepsi for adding this problem and creating all test cases.
+
+lxx113 2016-04-05 17:03:45
+谢谢，我研究研究去

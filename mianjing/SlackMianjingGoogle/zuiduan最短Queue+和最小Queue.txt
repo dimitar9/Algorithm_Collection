@@ -1,0 +1,122 @@
+ 最短Queue+和最小Queue 
+给一个Queue[],找到1. 最短的queue 2.sum最小的queue， time complexity， can u do better
+
+讨论：暴力解？
+
+foggy 2016-04-06 15:48:28
+这题怎么搞
+
+dietpepsi 2016-04-06 15:48:49
+给个链接先
+
+tianchun_yang 2016-04-06 15:49:10
+我看到这道了！
+
+tianchun_yang 2016-04-06 15:49:17
+我当时也是没看懂题- -
+
+tianchun_yang 2016-04-06 15:49:21
+queue那道
+
+dietpepsi 2016-04-06 15:49:37
+G家 Pittsburgh onsite面经
+http://www.1point3acres.com/bbs/thread-179907-1-1.html
+
+G Pittsburgh onsite濠㈩厠鑽掑惃鍫よ櫕缁忓 - Powered by Discuz!
+G瀹 Pittsburgh onsite闈㈢粡
+
+foggy 2016-04-06 15:49:54
+对
+
+foggy 2016-04-06 15:50:13
+没看懂什么意思
+
+dietpepsi 2016-04-06 15:50:41
+@dietpepsi uploaded a file: https://googleoffer.slack.com/files/dietpepsi/F0YHQUP0R/_________.txt|第三轮
+
+foggy 2016-04-06 15:51:53
+这是找一个q还是两个？
+
+foggy 2016-04-06 15:52:00
+感觉扫一遍就好了啊
+
+dietpepsi 2016-04-06 15:52:08
+找两个吧
+
+foggy 2016-04-06 15:52:20
+OK
+
+foggy 2016-04-06 15:52:30
+第一个就挨个扫
+
+foggy 2016-04-06 15:52:48
+谁先结束就是谁
+
+dietpepsi 2016-04-06 15:53:08
+嗯
+
+foggy 2016-04-06 15:53:18
+第二个都要扫完吧
+
+foggy 2016-04-06 15:53:24
+不需要
+
+dietpepsi 2016-04-06 15:53:29
+那为啥不直接去Queue.size呢
+
+dietpepsi 2016-04-06 15:53:31
+第一题
+
+tianchun_yang 2016-04-06 15:53:34
+对啊
+
+dietpepsi 2016-04-06 15:53:34
+取
+
+tianchun_yang 2016-04-06 15:53:44
+第一次取size，保存这个size
+
+tianchun_yang 2016-04-06 15:53:56
+第二次计算所有sum=size的queue sum
+
+foggy 2016-04-06 15:54:02
+直接取可以也太简单了吧…
+
+dietpepsi 2016-04-06 15:54:13
+sum = size?
+
+tianchun_yang 2016-04-06 15:54:16
+所以我没懂题.....:joy:
+
+tianchun_yang 2016-04-06 15:54:24
+第二题我感觉她的意思是
+
+foggy 2016-04-06 15:54:24
+他说第一问
+
+tianchun_yang 2016-04-06 15:54:37
+要计算所有size最小的queue的最小sum
+
+tianchun_yang 2016-04-06 15:54:52
+还是全sum？
+
+foggy 2016-04-06 15:55:03
+全sum吧
+
+dietpepsi 2016-04-06 15:55:13
+不是，应该就是全部的里面哪个sum最小
+
+tianchun_yang 2016-04-06 15:55:18
+(可能onsite也会有easy题把
+
+dietpepsi 2016-04-06 15:55:34
+这题既然can you do better了，看来还是有点儿catch的
+
+dietpepsi 2016-04-06 15:55:40
+不知道面试官想问啥
+
+tianchun_yang 2016-04-06 15:56:26
+底下评论也没说啥
+
+foggy 2016-04-06 15:56:40
+不清楚

@@ -1,0 +1,37 @@
+重排字符串使得相同字母间隔k距离
+Given a string and a positive integer k. Some characters may be repeated in the given string. Rearrange characters of the given string such that the same characters become k distance away from each other. Note that there can be many possible rearrangements, the output should be one of the possible rearrangements. If no such arrangement is possible, that should also be reported.
+
+
+讨论一：Naive Greedy
+这题有两种 简单贪心的方法，均有反例
+
+一个是 geeksforgeeks的方法
+反例是aaaaabbbbcccddee k = 2
+正确是abacacacadbdbebe
+
+另外一个是杨天纯提供的，每次环状，填写
+反例是aaabbbcccd k = 3
+正确是abcabcabcd
+
+讨论二：Heap+Queue贪心
+
+Yilun Fu提供的解法, 见code snippet，(搜索关键词ReArrangeChar)
+
+讨论三：递归+贪心
+
+Eric Chen [2:33 PM]
+这题目贪心可以吧
+递归贪心应该就可以
+每一步贪心完都重新贪心
+而不是一直放Ａ
+
+Diet Pepsi [2:33 PM]
+对这个可以
+没错
+简单直接贪是不行的
+
+GGG 校招-4月加面 [2:34 PM]
+记起来了 之前有人发面经好像说的是@eric 这种思路
+
+Diet Pepsi [2:35 PM]
+实际上yilun的思路也是这样的

@@ -1,0 +1,696 @@
+URL长度流的中位值
+
+
+Tianchun Yang
+类似Lint code data stream median, 写个API，有两个方法，addURL(String url) 和 getURL()，getURL()返回的是目前为止所有URL长度的中位数。lz使用两个heap做的。
+follow-up: what if we know the range of the input，比如我们知道URL的大小不会超过2k，那有没有别的implement的方法。
+求问follow up
+有方法是这样说的：面试官都说了最长2k，那就开个2k长度的array存BIT，那每add一个URL就是加那个长度的URL的frequency，取得时候就取accumulated frequency等于现在存的URL数/2的就好
+也就是说开BIT之后每次用BS搜索url数/2？那么time是O(logn*logn)?
+
+讨论：关于counting, BIT, TreeMap, Two heap
+
+pengftang 2016-04-04 00:12:54
+如果url的长度不超过2K，是不是能用counting sort？
+
+pengftang 2016-04-04 00:13:12
+创建一个count[] = new int[2000]的array
+
+hanabeast 2016-04-04 00:13:37
+恩我也这么觉得
+
+pengftang 2016-04-04 00:13:40
+不断更新count，只需要找到count array的中位数，这个是O(1)的复杂度吧
+
+pengftang 2016-04-04 00:16:29
+如果每次addURL只添加一个url的话，使用count array应该能够做到真正的O1，只需要记录当前的median，每次add的时候更新median就行
+
+tianchun_yang 2016-04-04 00:17:46
+counting sort感觉很有道理
+
+dietpepsi 2016-04-04 00:23:02
+counting是正解
+
+dietpepsi 2016-04-04 00:23:25
+或者用个BIT
+
+dietpepsi 2016-04-04 00:25:09
+bit可以支持任意getKTH
+
+dietpepsi 2016-04-04 00:25:26
+如果只是median的话counting就可以了
+
+dietpepsi 2016-04-04 00:25:43
+add的时候维护median
+
+dietpepsi 2016-04-04 00:42:50
+再说一下刚才那个counting array找median的问题
+
+dietpepsi 2016-04-04 00:43:12
+@pengftang: 你仔细说一下你的implement
+
+pengftang 2016-04-04 00:43:17
+其实这题我觉得真正写代码也不容易
+
+pengftang 2016-04-04 00:43:37
+我说下思路
+
+dietpepsi 2016-04-04 00:43:39
+嗯
+
+pengftang 2016-04-04 00:43:53
+用一个长为2000的count array记录各种长度出现的次数
+
+dietpepsi 2016-04-04 00:43:59
+是
+
+pengftang 2016-04-04 00:44:48
+当addUrl调用的时候，要想快速知道新的median，肯定还需要count在median附近的信息
+
+dietpepsi 2016-04-04 00:45:06
+具体点儿，什么信息
+
+pengftang 2016-04-04 00:45:23
+比如当前
+1, 1999
+这两个长度各为1
+
+pengftang 2016-04-04 00:45:27
+median为1000
+
+dietpepsi 2016-04-04 00:45:27
+嗯
+
+dietpepsi 2016-04-04 00:45:32
+然后
+
+pengftang 2016-04-04 00:45:48
+我感觉是需要记录离median最近且比它小和比它大的两个位置
+
+dietpepsi 2016-04-04 00:45:59
+不止，
+
+dietpepsi 2016-04-04 00:46:08
+你可能需要所有的位置连起来
+
+dietpepsi 2016-04-04 00:46:15
+类似于LinkedHashMap
+
+dietpepsi 2016-04-04 00:46:21
+才行
+
+pengftang 2016-04-04 00:46:23
+需要连起来吗？
+
+dietpepsi 2016-04-04 00:46:36
+否则效率就可能有坑
+
+pengftang 2016-04-04 00:46:44
+比如刚才那个，如果新加进来一个1300
+
+dietpepsi 2016-04-04 00:46:49
+比如1,1000,1999
+
+dietpepsi 2016-04-04 00:47:01
+1,999,1000,1001,1999
+
+pengftang 2016-04-04 00:47:04
+需要记录1和1999这两个位置
+
+dietpepsi 2016-04-04 00:47:18
+你median是1000，左边是999，右边1001
+
+pengftang 2016-04-04 00:47:22
+对
+
+dietpepsi 2016-04-04 00:47:31
+现在来了个1002
+
+dietpepsi 2016-04-04 00:47:39
+1003
+
+dietpepsi 2016-04-04 00:48:03
+不，来了两个1001
+
+dietpepsi 2016-04-04 00:48:09
+现在median是1001了
+
+pengftang 2016-04-04 00:48:13
+嗯
+
+dietpepsi 2016-04-04 00:48:23
+但是你右边怎么找
+
+dietpepsi 2016-04-04 00:48:25
+1999
+
+dietpepsi 2016-04-04 00:48:31
+除非你已经linked
+
+dietpepsi 2016-04-04 00:48:38
+才能O(1)找到
+
+pengftang 2016-04-04 00:48:40
+确实
+
+pengftang 2016-04-04 00:48:46
+我之前想的是直接扫一遍。。。
+
+dietpepsi 2016-04-04 00:48:57
+那不就效率低了么
+
+dietpepsi 2016-04-04 00:49:02
+那还不如用个bst了
+
+pengftang 2016-04-04 00:49:02
+那这样的话，可以自己创建一个array的结构
+
+dietpepsi 2016-04-04 00:49:05
+TreeMap
+
+pengftang 2016-04-04 00:49:11
+里面除了 存value，还要存next pointer
+
+pengftang 2016-04-04 00:49:44
+或者说是next和prev两个pointer
+
+pengftang 2016-04-04 00:50:05
+但自己定义的array的对象怎么弄。。。还没弄过
+
+dietpepsi 2016-04-04 00:50:18
+就用LRU的实现就可以
+
+dietpepsi 2016-04-04 00:50:30
+一个doubly linked list和一个HashMap
+
+dietpepsi 2016-04-04 00:50:33
+就行了
+
+pengftang 2016-04-04 00:50:36
+还要Hash？
+
+dietpepsi 2016-04-04 00:50:52
+无所谓嘛，用Hash简单点儿
+
+dietpepsi 2016-04-04 00:51:18
+ArrayList<Node>也可以
+
+dietpepsi 2016-04-04 00:51:35
+doubly linked list加ArrayList
+
+dietpepsi 2016-04-04 00:51:43
+这样应该是可以O(1)了
+
+pengftang 2016-04-04 00:51:45
+@pengftang uploaded a file: Untitled
+
+pengftang 2016-04-04 00:51:49
+这样可行否？
+
+pengftang 2016-04-04 00:52:05
+prev和next可以定义为int
+
+pengftang 2016-04-04 00:52:11
+即存index，这样应该更简单点
+
+dietpepsi 2016-04-04 00:52:13
+Node[]可以
+
+cosjimmy 2016-04-04 00:52:20
+@cosjimmy has joined the channel
+
+dietpepsi 2016-04-04 00:52:42
+问题是你一开始1,1999
+
+dietpepsi 2016-04-04 00:52:51
+现在来了个1000你咋维护
+
+dietpepsi 2016-04-04 00:53:10
+还是不行
+
+dietpepsi 2016-04-04 00:53:26
+我觉得还是得用TreeMap
+
+pengftang 2016-04-04 00:53:30
+不开始1.next = 1999，现在1.next = 1000，1000.next = 1999
+
+pengftang 2016-04-04 00:53:34
+这样有问题？
+
+dietpepsi 2016-04-04 00:53:39
+有问题啊
+
+dietpepsi 2016-04-04 00:53:48
+你咋知道1.next应该是谁的
+
+dietpepsi 2016-04-04 00:54:01
+你不得扫描一遍？
+
+pengftang 2016-04-04 00:54:02
+呃
+
+pengftang 2016-04-04 00:54:18
+我想想
+
+dietpepsi 2016-04-04 00:54:23
+你想，你这个要能做到，还要BST干嘛
+
+dietpepsi 2016-04-04 00:54:42
+那岂不就有了一个O(1)时间的有序线性表了
+
+dietpepsi 2016-04-04 00:54:49
+这肯定做不到的
+
+pengftang 2016-04-04 00:55:05
+我想的是，它不是一个数组吗
+
+dietpepsi 2016-04-04 00:55:22
+是数组
+
+pengftang 2016-04-04 00:55:25
+好像都没用上数组的特性啊
+
+dietpepsi 2016-04-04 00:55:31
+a[1000]的两个指针都是空
+
+dietpepsi 2016-04-04 00:55:37
+你咋找前后
+
+dietpepsi 2016-04-04 00:55:52
+你不还是得过一遍.....
+
+pengftang 2016-04-04 00:56:07
+那我初始化的时候不初始化为空
+
+pengftang 2016-04-04 00:56:14
+比如开始是1和19999
+
+pengftang 2016-04-04 00:56:18
+1，1999
+
+pengftang 2016-04-04 00:56:28
+2的左初始化为-1，右初始化为-1999
+
+pengftang 2016-04-04 00:56:35
+不对不对。。。
+
+pengftang 2016-04-04 00:56:43
+这样新加一个后，很多都要改
+
+dietpepsi 2016-04-04 00:56:50
+怎么初始化都是不行的
+
+dietpepsi 2016-04-04 00:56:54
+这个是可以证明的
+
+dietpepsi 2016-04-04 00:57:15
+有序线性表做不到O(1) iud
+
+pengftang 2016-04-04 00:57:28
+那为什么D LinkedList + HashMap可以？
+
+pengftang 2016-04-04 00:57:41
+这个存哪些东西？
+
+dietpepsi 2016-04-04 00:57:42
+所以HashMap也一样不可以
+
+dietpepsi 2016-04-04 00:58:02
+所以说刚才咱们naive了
+
+pengftang 2016-04-04 00:58:10
+呃
+
+dietpepsi 2016-04-04 00:58:16
+counting是counting但是得用treemap
+
+dietpepsi 2016-04-04 00:58:24
+用array是不行滴
+
+dietpepsi 2016-04-04 00:58:33
+log(2000)，可以接受
+
+dietpepsi 2016-04-04 00:58:35
+不是很大
+
+pengftang 2016-04-04 00:58:54
+所以你的意思是：给一个array，知道当前的median，然后每次将array里面的某一个index的值加1，这样没有O(1)的方法track它的median？
+
+dietpepsi 2016-04-04 00:59:08
+没有
+
+dietpepsi 2016-04-04 00:59:36
+不过log(2000)看成O(1)不过分
+
+pengftang 2016-04-04 00:59:36
+好吧，有点counter intuitive啊
+
+pengftang 2016-04-04 00:59:50
+嗯。不过我说的是general的情况，array长度是n
+
+dietpepsi 2016-04-04 00:59:58
+是我懂
+
+dietpepsi 2016-04-04 01:00:04
+所以我说没有
+
+dietpepsi 2016-04-04 01:00:19
+你得告诉人家一声儿
+
+pengftang 2016-04-04 01:00:23
+好吧，那就当没有吧。。。
+
+pengftang 2016-04-04 01:00:28
+treemap怎么弄呢？
+
+dietpepsi 2016-04-04 01:00:31
+别面试时候答错了
+
+pengftang 2016-04-04 01:00:58
+哈哈，我猜他会自己implement。。。
+
+dietpepsi 2016-04-04 01:01:17
+TreeMap<Integer, int[]>这样子
+
+dietpepsi 2016-04-04 01:01:36
+int[0]存当前key的count
+
+dietpepsi 2016-04-04 01:02:14
+int[1]存当前子树的总count
+
+pengftang 2016-04-04 01:02:42
+Integer是啥
+
+dietpepsi 2016-04-04 01:02:52
+就是1和1999呗
+
+pengftang 2016-04-04 01:02:59
+TreeMap里面的key是1 - 1999？
+
+dietpepsi 2016-04-04 01:03:05
+是
+
+pengftang 2016-04-04 01:03:15
+int[]是怎样的
+
+pengftang 2016-04-04 01:03:22
+2？
+
+dietpepsi 2016-04-04 01:03:39
+我觉得可能存TreeMap<Integer,Integer>可能就可以
+
+dietpepsi 2016-04-04 01:03:50
+就存当前子树的大小可能就可以
+
+pengftang 2016-04-04 01:03:53
+int[1]存当前子树的总count
+
+pengftang 2016-04-04 01:03:57
+这个不明白
+
+dietpepsi 2016-04-04 01:04:17
+你看，比如你有1,1000,1999
+
+pengftang 2016-04-04 01:04:35
+嗯，继续
+
+dietpepsi 2016-04-04 01:04:45
+你1->1，1000->3，1999->1
+
+dietpepsi 2016-04-04 01:04:53
+然后你找median的时候
+
+dietpepsi 2016-04-04 01:05:15
+你知道一共是n = 3，所以你找n = 2的位置
+
+pengftang 2016-04-04 01:05:31
+1000->3指的是将1000作为root，它的left是1，right是1999？
+
+dietpepsi 2016-04-04 01:05:38
+是
+
+pengftang 2016-04-04 01:05:53
+n = 2是哪个地方？
+
+pengftang 2016-04-04 01:06:02
+这里的n是什么
+
+dietpepsi 2016-04-04 01:06:09
+你走到1000，你取了左边，和右边的值
+
+dietpepsi 2016-04-04 01:06:24
+其实取左边就可以
+
+dietpepsi 2016-04-04 01:06:34
+左边是1说明median不在左边
+
+pengftang 2016-04-04 01:06:41
+OK
+
+dietpepsi 2016-04-04 01:06:51
+右边是1说明不在右边
+
+pengftang 2016-04-04 01:06:54
+如果加进来一个1001，这个treemap怎么变？
+
+pengftang 2016-04-04 01:07:03
+嗯，n = 2这块理解了
+
+dietpepsi 2016-04-04 01:07:33
+嗯，貌似你需要自己维护这个树....啊呀，太麻烦了
+
+dietpepsi 2016-04-04 01:07:49
+不如用 BIT了
+
+pengftang 2016-04-04 01:07:53
+TreeMap一般什么时候需要用到啊？
+
+dietpepsi 2016-04-04 01:07:54
+看来正解是BIT
+
+pengftang 2016-04-04 01:08:31
+看n有多大吧，如果有很多url，用counting sort应该更好？
+
+pengftang 2016-04-04 01:08:36
+BIT
+
+pengftang 2016-04-04 01:08:49
+BIT的复杂度是n lg n？
+
+dietpepsi 2016-04-04 01:09:06
+BIT复杂度O(log(2000))
+
+pengftang 2016-04-04 01:09:08
+counting sort是n*2000？
+
+dietpepsi 2016-04-04 01:09:28
+不是啊，BIT我也只算count而已啊
+
+pengftang 2016-04-04 01:09:35
+OK，你说的是每一次的操作复杂度，对吧
+
+dietpepsi 2016-04-04 01:09:43
+是
+
+pengftang 2016-04-04 01:09:49
+BIT的话咋弄啊
+
+dietpepsi 2016-04-04 01:09:51
+nlog(2000)
+
+dietpepsi 2016-04-04 01:09:54
+总
+
+dietpepsi 2016-04-04 01:10:06
+BIT你得自己写一次才知道
+
+pengftang 2016-04-04 01:10:21
+嗯，是得写写。。。不然考到就玩完了
+
+dietpepsi 2016-04-04 01:10:37
+https://www.topcoder.com/community/data-science/data-science-tutorials/binary-indexed-trees/
+
+pengftang 2016-04-04 01:10:55
+@pengftang pinned a message to this channel.
+
+https://www.topcoder.com/community/data-science/data-science-tutorials/binary-indexed-trees/
+
+dietpepsi 2016-04-04 01:11:42
+BIT实现不是很难
+
+dietpepsi 2016-04-04 01:11:53
+https://en.wikipedia.org/wiki/Fenwick_tree
+
+bzhou003 2016-04-04 01:12:01
+理解起来抽象一些
+
+bzhou003 2016-04-04 01:12:12
+没线段树那么好理解
+
+bzhou003 2016-04-04 01:12:17
+但是实现简单
+
+dietpepsi 2016-04-04 01:13:18
+http://www.algorithmist.com/index.php/Fenwick_tree
+
+dietpepsi 2016-04-04 01:13:21
+是的
+
+pengftang 2016-04-04 01:13:26
+@pengftang uploaded a file:
+
+pengftang 2016-04-04 01:13:36
+有这么夸张。。。就10行代码啊。。。
+
+dietpepsi 2016-04-04 01:13:40
+是
+
+dietpepsi 2016-04-04 01:13:53
+核心代码就这俩循环而已
+
+dietpepsi 2016-04-04 01:14:02
+利用了一点儿bit trick
+
+bzhou003 2016-04-04 01:14:10
+就那个 i -= i & -i 超级难理解。。。
+
+dietpepsi 2016-04-04 01:14:10
+所以不是很好理解
+
+dietpepsi 2016-04-04 01:14:14
+对
+
+dietpepsi 2016-04-04 01:14:19
+要自己画画
+
+dietpepsi 2016-04-04 01:14:39
+topcoder那个讲解比较详细了
+
+bzhou003 2016-04-04 01:14:48
+说白了就是任意一个数可以表示为2的指数相加
+
+dietpepsi 2016-04-04 01:15:01
+是的
+
+dietpepsi 2016-04-04 01:15:08
+就是这样分解
+
+dietpepsi 2016-04-04 01:15:16
+然后利用函数的线性
+
+bzhou003 2016-04-04 01:15:26
+topcode那个我觉得不太好懂。。。看的中文的才理解了
+
+pengftang 2016-04-04 01:15:52
+@bzhou003: 给个链接
+
+abc 2016-04-04 01:16:37
+@abc has joined the channel
+
+bear 2016-04-04 01:17:06
+@bear has joined the channel
+
+bzhou003 2016-04-04 01:17:09
+我google的。。。
+
+fredchyan 2016-04-04 01:17:50
+@fredchyan has joined the channel
+
+bzhou003 2016-04-04 01:18:00
+树状数组
+
+dietpepsi 2016-04-04 01:18:10
+刚才那个题也可以仍然用双heap来做
+
+bzhou003 2016-04-04 01:18:16
+http://www.hawstein.com/posts/binary-indexed-trees.html
+
+bzhou003 2016-04-04 01:18:20
+http://www.cnblogs.com/zichi/p/4806998.html
+
+dietpepsi 2016-04-04 01:18:43
+heap里头存1~1999作为key，count作为value
+
+dietpepsi 2016-04-04 01:19:00
+维护两个heap的总count就可以了
+
+dietpepsi 2016-04-04 01:20:02
+还要有个HashMap来索引所有的Node，以便增加计数
+
+pengftang 2016-04-04 01:20:41
+@dietpepsi: 复杂到我不想想了。。。
+
+dietpepsi 2016-04-04 01:20:42
+如果要实现起来简单的话用两个TreeMap似乎是最简单的
+
+dietpepsi 2016-04-04 01:21:06
+回头整理一下这题的具体方法吧，或者我po到LC上
+
+pengftang 2016-04-04 01:21:17
+po到LC上吧
+
+pengftang 2016-04-04 01:21:32
+我刚才整理了在你来之前写的东西
+
+tianchun_yang 2016-04-04 13:08:12
+为什么用BIT的话会是nlog(2000)？
+
+tianchun_yang 2016-04-04 13:08:44
+加一遍全部长度的accumulate吗？
+
+tianchun_yang 2016-04-04 13:09:19
+我觉得也可以用binary search啊，这样复杂度是log2000*log2000
+
+dietpepsi 2016-04-04 19:19:40
+先说昨天那个Url求median的题目
+
+dietpepsi 2016-04-04 19:20:42
+@tianchun_yang: 讲讲你用binary search的意思？
+
+dietpepsi 2016-04-04 19:21:30
+假设我们现在已经有了counter int[2000]，然后如何binary search?
+
+dietpepsi 2016-04-04 19:21:50
+你需要找的是cumulative sum = n / 2的位置
+
+dietpepsi 2016-04-04 19:22:01
+但是你现在只有frequency
+
+dietpepsi 2016-04-04 19:22:35
+不用BIT的话你怎么做到log时间呢？
+
+tianchun_yang 2016-04-04 19:51:18
+@dietpepsi: URL那道题我的意思是在BIT的基础上用binary search, BIT存出现次数，不存freq，当我们有sum想要求sum/2的位置的时候，用binary search在BIT当中查找, BIT每算一次range sum(0-mid)的复杂度是log2000，然后bs的复杂度是log2000
+
+tianchun_yang 2016-04-04 19:52:22
+或者既然都给了2000这个数了- -扫一遍2000应该也算O(1)吧- -
+
+tianchun_yang 2016-04-04 19:53:28
+我是觉得面试的时候宁愿牺牲一点儿time complexity.....就怕写代码时间不够，或者写的太复杂写一半儿卡住
+
+dietpepsi 2016-04-04 20:01:00
+明白了，但是你存的也是freq。只是不maintain一个median的位置，每次重新搜
+
+dietpepsi 2016-04-04 20:01:23
+我觉得这题还是可以用two heap来做
+
+dietpepsi 2016-04-04 20:01:57
+只不过heap里node有额外权重，
+
+tianchun_yang 2016-04-04 20:04:55
+two heap有权重的话还要maintain一个hashtable？
+
+dietpepsi 2016-04-04 20:09:11
+int[2000]
+
+dietpepsi 2016-04-04 20:09:21
+不用hash
+
+dietpepsi 2016-04-04 20:09:42
+因为你heap里放了长度的
+
+shawnzhou 2016-04-04 20:13:40
+@shawnzhou has joined the channel
+
+tianchun_yang 2016-04-04 20:15:32
+哦哦对的

@@ -1,0 +1,75 @@
+用户浏览量统计
+
+给一个CSV文件记录每个用户上网的浏览记录，
+每一行都是date, user_id, page_id，
+输出是date, user_id, # of page，
+就是每个date中各个用户的浏览总量，
+follow up
+如果有1 million这样的CSV，怎么处理
+
+讨论：TreeMap, LinkedHashMap, MapReduce
+
+GGG 校招-4月加面  主要是follow up是吧
+
+Lowkey  followup 用mapreduce吧
+
+经典运用
+
+GGG 校招-4月加面  原题的话就用map<user_id, Map<date, page_id>>应该就行了？
+
+Diet Pepsi  mapreduce经典
+
+应该是的
+
+Map Map可以的
+
+GGG 校招-4月加面  map reduce怎么实现，你们说得详细点
+
+Diet Pepsi  我大概回问一下输出的顺序
+
+如果要求排序，用TreeMap
+
+GGG 校招-4月加面  嗯，LinkedHashMap应该也行？
+
+Diet Pepsi  如果要求按照CSV原序LinkedHashMap
+
+嗯
+
+是的
+
+GGG 校招-4月加面  不过LinkedHashMap怎么按date排序？
+
+Lowkey  分成可以handle的K个csv，然后依次统计，然后merge啊
+
+GGG 校招-4月加面  OK
+
+一般map reduce不会需要用代码实现吧？
+
+Diet Pepsi  那你就TreeMap<date, LinkedHashMap<user_id, page_id>>
+
+Lowkey  TreeMap是个好东西
+
+GGG 校招-4月加面  TreeMap没用过
+
+Diet Pepsi  就是问问你mapreduce
+
+Lowkey  这题如果弄成OO会不会好一些？
+
+好像没啥必要。。。
+
+Diet Pepsi  看他要求了，时间够封装一下也好
+
+Diet Pepsi  这题PASS了
+给个mapreduce的材料看吧
+谁有推荐的
+
+Lowkey  官方文档？
+
+Diet Pepsi  行啊
+
+Diet Pepsi  或者有没有讲的比较深入浅出的
+
+Lowkey  我记得我在csdn上见过讲原理的
+Lowkey  mapreduce，hadoop这些
+
+Diet Pepsi  http://static.googleusercontent.com/media/research.google.com/en//archive/mapreduce-osdi04.pdf

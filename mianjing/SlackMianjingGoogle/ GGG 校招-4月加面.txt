@@ -1,0 +1,94 @@
+
+
+// 1. 给两个interface，其中GraphicsObject有两个implementation分别叫Annotation和Graph。你需要写一个setup的方法，使得当一个graph对象被点击时，如果它是Annotation对象，它的backgroundColor会变成Color.RED。（意思不确定是否准确。。。）
+
+// 假设每个graphics object只有一层的children
+
+// 提供的代码：
+
+public interface ClickListener {
+
+  public void onClick(GraphicsObject target);
+
+}
+
+​
+
+public interface GraphicsObject {
+
+  public Color getBackgroundColor();
+
+  public void setBackgroundColor(Color color);
+
+  public GraphicsObject[] getChildren();
+
+  public void addClickListener(ClickListener listener);
+
+}
+
+​
+
+public class Annotation implements GraphicsObject {
+
+  // Already implemented.
+
+}
+
+​
+
+public class Graph implements GraphicsObject {
+
+  // Already implemented.
+
+}
+
+​
+
+public void setup(Graph graph) {
+
+  // TODO: fill in code here
+
+}
+
+​
+
+// 2. Moving Average:
+
+// 示例：
+
+// 假设size = 3
+
+// next(1.0) 返回 1.0
+
+// next(2.0) 返回 1.5
+
+// next(3.0) 返回 2.0
+
+// next(4.0) 返回 3.0
+
+// next(11.0)返回 6.0
+
+	
+
+class MovingAverage {
+
+  // TODO: fill in code here
+
+  
+
+  public MovingAverage(final int size) {
+
+    // TODO: fill in code here
+
+  }
+
+  
+
+  public double next(final double val) {
+
+    // TODO: fill in code here
+
+  }
+
+}
+

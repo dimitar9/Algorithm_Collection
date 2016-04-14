@@ -1,0 +1,83 @@
+跟所有区间都相交最少要几个点
+
+Last edited 2 days ago
+
+    give a list of intervals, find min number of points which will intersect all intervals
+
+讨论：排序
+
+dietpepsi 2016-04-09 10:02:09
+
+4题意思应该是说用几个点组成的集合可以跟所有的interval相交不为空
+
+dietpepsi 2016-04-09 10:03:01
+
+比如两个intervals， [1,3]，[2,4]
+
+dietpepsi 2016-04-09 10:03:13
+
+显然一个点就可以
+
+dietpepsi 2016-04-09 10:03:26
+
+这个点可以是[2,3]之内的任何一个点
+
+dietpepsi 2016-04-09 10:04:20
+
+再比如[1,5], [2,10], [6,100]
+
+dietpepsi 2016-04-09 10:04:28
+
+这就至少需要2个点
+
+dietpepsi 2016-04-09 10:04:48
+
+因为[1,5]和[6,100]互斥
+
+dietpepsi 2016-04-09 10:05:33
+
+假设有k个两两互斥的interval，那至少就需要k个点
+
+ghoston 2016-04-09 10:15:16
+
+Start end一起排序 拿到第一个end的时候记录 把目前开口的都扔掉。
+
+dietpepsi 2016-04-09 10:15:59
+
+对，是这个意思
+
+dietpepsi 2016-04-09 10:16:13
+
+跟meeting room II那题很像
+
+dietpepsi 2016-04-09 10:18:36
+
+哈哈看起来是个primal和dual的关系
+
+dietpepsi 2016-04-09 10:20:00
+
+“同一个room里最多可以安排多少场会议"
+
+dietpepsi 2016-04-09 10:29:35
+
+不过我觉得应该是按照end排序
+
+dietpepsi 2016-04-09 10:31:00
+
+扫描所有interval的时候，判断如果当前interval开始在当前end之前，就弃掉，开始在当前end之后，就更新当前end并且计数++
+
+dietpepsi 2016-04-09 10:32:22
+
+排序nlogn，扫描n
+
+ghoston 2016-04-09 10:34:47
+
+嗯 这样好
+
+dietpepsi 2016-04-09 10:35:39
+
+嗯，这样简单一些
+
+dietpepsi 2016-04-09 10:36:11
+
+我在想能否不排序，直接搞

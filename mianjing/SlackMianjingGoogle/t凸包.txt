@@ -1,0 +1,71 @@
+题目: 给一堆点，问怎么画凸包，说思路就好。
+
+    凸包的概念：convex hull or convex envelope of a set X of points in the Euclidean plane or Euclidean space is the smallest convex set that contains X. (想象一圈包裹所有点的皮筋)
+    方法一： http://www.geeksforgeeks.org/convex-hull-set-1-jarviss-algorithm-or-wrapping/
+
+i.    判断orientation
+
+http://www.geeksforgeeks.org/check-if-two-given-line-segments-intersect/
+
+int orientation(Point p, Point q, Point r)
+
+{
+
+// See http://www.geeksforgeeks.org/orientation-3-ordered-points/
+// for details of below formula.
+int val = (q.y - p.y) * (r.x - q.x) -
+			(q.x - p.x) * (r.y - q.y);
+
+if (val == 0) return 0;  // colinear
+
+return (val > 0)? 1: 2; // clock or counterclock wise
+
+}
+
+ii.    General Case:
+
+– (p1, q1, p2) and (p1, q1, q2) have different orientations and
+
+– (p2, q2, p1) and (p2, q2, q1) have different orientations.
+
+iii.    Special Case
+
+– (p1, q1, p2), (p1, q1, q2), (p2, q2, p1), and (p2, q2, q1) are all collinear and
+
+– the x-projections of (p1, q1) and (p2, q2) intersect
+
+– the y-projections of (p1, q1) and (p2, q2) intersect
+
+iv. colinear judgement
+
+bool onSegment(Point p, Point q, Point r)
+
+{
+
+if (q.x <= max(p.x, r.x) && q.x >= min(p.x, r.x) &&
+	q.y <= max(p.y, r.y) && q.y >= min(p.y, r.y))
+	return true;
+
+return false;
+
+}
+
+c. The idea of Jarvis’s Algorithm is simple, we start from the leftmost point (or point with minimum x coordinate value) and we keep wrapping points in counterclockwise direction.
+
+1) Initialize p as leftmost point.
+
+2) Do following while we don’t come back to the first (or leftmost) point.
+
+…..a) The next point q is the point such that the triplet (p, q, r) is counterclockwise for any other point r.
+
+…..b) next[p] = q (Store q as next of p in the output convex hull).
+
+…..c) p = q (Set p as q for next iteration).
+
+d. Time Complexity: For every point on the hull we examine all the other points to determine the next point. Time complexity is ?(m * n) where n is number of input points and m is number of output or hull points (m <= n). In worst case, time complexity is O(n 2). The worst case occurs when all the points are on the hull (m = n)
+
+3. 方法二： http://www.geeksforgeeks.org/convex-hull-set-2-graham-scan/
+
+Complexity: O(nlogn)
+
+缺点：不能引申到二维以上

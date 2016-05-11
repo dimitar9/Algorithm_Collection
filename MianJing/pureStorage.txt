@@ -1,0 +1,68 @@
+OA.
+
+12 questions version
+刚做完Pure Storage的OA，时间一共60分钟，12道题，题目如下：
+1. 编程题  Remove all elements from a linked list of integers that have the value of N
+2. 编程改错题  在一个排好序的int array中找到 b-a = diff的pair个数. 
+（3-12为选择题，可多选）
+3. WHich of the following decimal num has exact representation in base 2?
+4. 1-1000猜数， 只能用yes/no回答，用optimal strategy，问在worst case情况下需要猜几次？
+5. 一个单向链表，给出头结点和尾节点， the time of which the following operations depends on the length of the list?
+6. 给出一个用array[1...N]维护的stack， index是 i，并且给出push 和pop的伪代码， 问which of the following correctly iinitialize i for the implementation of the stack?
+7. 给出word， pairlet， pairdig，letter， digit的产生规则（自动机）， 问which of the lexical entities can be derived form <word>?
+8. 给出一段关于p,k的代码，问p和k的关系
+9. 给出一段Func（int）的代码，问Func（2）的值，带入即可
+10. 给出一个网格，每个网格是一个pixel，值可以为0-7，相邻两个pixel的差值不能大于2，问有多少种情况.
+11.多线程，Task0：x= 1; a = y , Task1: y = 1; b =x, 问a和b的值
+12. 给出一段C# code， 问which best describes the growth of Foo.f(x) as a function of x?
+
+
+刚做了12道题的OA，
+既然题已经在地里有了，发个答案造福人民吧
+题可以参照这里http://www.1point3acres.com/bbs/thread-118986-1-1.html
+1、编程题，就是新建一个head然后删node就可以了，最后返回head.next. 
+2、改错，while里改成i，for的初始化加j = i+1，最后加i＋＋
+3、0.5
+4、10
+5、delete the last node
+6、这个题感觉题意不清，题里写的是S［1.。。N］不知道是不是说第一个index是1，我写的答案是i＝1
+7、words，c22
+8、2^k
+9、8
+10、34
+11、我写的none of the above， 这个题看地理很多人都说了各种答案，但是问题是must be，所以只要出现多种可能就应该是none 吧.
+12、exponetial. 
+
+答案仅作参考
+
+
+补充内容 (2016-2-25 11:22):
+关于那个stack的题，lzsb了，应该是0，关键是那个pop和push的执行顺序……
+
+
+
+
+
+
+
+
+
+
+0 1 2 3 4 5 6 7 －－－－ 8 of them.
+posibilities : 8 * 8 = 64
+0-0 1-1 ... 7-7   :  8
+01
+02
+1-2
+1-3
+23
+24
+34
+35
+45
+46
+56
+57
+67
+
+13 * 2 + 8  = 34

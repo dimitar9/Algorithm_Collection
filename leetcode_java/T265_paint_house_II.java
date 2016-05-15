@@ -3,6 +3,9 @@ public class Solution {
      * @param costs n x k cost matrix
      * @return an integer, the minimum cost to paint all houses
      */
+     
+     
+     // this is O(nk) solution, use min2 and min2. Better than normal O(nkk) solution
     public int minCostII(int[][] costs) {
         if (costs == null || costs.length == 0) {
             return 0;

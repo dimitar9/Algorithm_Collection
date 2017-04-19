@@ -1,0 +1,7 @@
+P220 Filll in Partial Sorted Matrix
+一个 5x5 矩阵,填入 1~25,每行升序,每列升序,求一共有多少种方法
+
+https://oeis.org/A060854
+Multidimensional Catalan numbers; a'
+T(m, n) = 0!*1!*..*(n-1)! *(m*n)! / ( m!*(m+1)!*..*(m+n-1)! ).
+5*5:701149020

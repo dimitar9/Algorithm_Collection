@@ -1,3 +1,102 @@
+
+Method 1 easy to understand, no use bitmap:
+public class Solution {
+    int len;
+    public String minAbbreviation(String target, String[] dictionary) {
+        len = target.length();
+        StringBuilder sb = new StringBuilder();
+         // k is the number of letters in result
+        for (int k = 0; k < len; ++k) {        
+            if (helper(target.toCharArray(), 0, len-1, sb, dictionary, k, new int[1])) {
+                // no need to keep on going anymore, the rest abbreviation will be longer
+                return sb.toString(); 
+            }
+            sb.setLength(0);
+        }
+        return target;    
+    }
+
+    private boolean helper(char[] tChars, int st, int ed, StringBuilder sb, String[] dictionary, int cCnt, int[] aCnt) {
+        if (st > ed) {
+            String ts = sb.toString();
+            for (String s : dictionary) {
+                if (s.length() != len) {
+                    continue;
+                }
+                if (validWordAbbreviation(s,ts)) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        if (cCnt == 0) {   // put no more letter, start checking
+            sb.append(ed-st+1);
+            aCnt[0]++;
+            return helper(tChars, ed+1, ed, sb, dictionary, 0, aCnt);
+        }
+        String tMinStr = null;
+        int tMinLen = Integer.MAX_VALUE;
+        int tLen = sb.length();
+        int tCnt = aCnt[0];
+        for (int i = st; i <= ed; ++i) {
+            if (i == st + 1) {  // skip when 1 is suppose to be inserted
+                continue;
+            }
+            if (ed-i < cCnt-1) {
+                break;
+            }
+            if (i - st > 0) {
+                aCnt[0]++;
+                sb.append(i-st);
+            }
+            aCnt[0]++;
+            sb.append(tChars[i]);
+            if (helper(tChars, i+1, ed, sb, dictionary, cCnt-1, aCnt)) {
+                if (aCnt[0] < tMinLen) {   // remember the minimal count result
+                    tMinLen = aCnt[0];
+                    tMinStr = sb.toString();
+                }
+            }
+            aCnt[0] = tCnt;
+            sb.setLength(tLen);
+        }
+        if (tMinStr != null) {
+            sb.setLength(0);
+            sb.append(tMinStr);
+            aCnt[0] = tMinLen;
+            return true;
+        }
+        return false;
+    }
+    public boolean validWordAbbreviation(String word, String abbr) {
+        char[] wChars = word.toCharArray();
+        char[] aChars = abbr.toCharArray();
+        int wIndex = 0, aIndex = 0;
+        while (wIndex < wChars.length && aIndex < aChars.length) {
+            if (aChars[aIndex] >= 'a' && aChars[aIndex] <= 'z') {
+                if (aChars[aIndex] != wChars[wIndex]) {
+                    return false;
+                }
+                aIndex++;
+                wIndex++;
+            } else if (aChars[aIndex] >= '1' && aChars[aIndex] <= '9') {
+                int adv = aChars[aIndex]-'0';
+                aIndex++;
+                while (aIndex < aChars.length && aChars[aIndex] >= '0' && aChars[aIndex] <= '9') {
+                    adv *= 10;
+                    adv += (aChars[aIndex++]-'0');
+                }
+                wIndex += adv;
+            } else {
+                return false;
+            }
+        }
+        return wIndex == wChars.length && aIndex == aChars.length;
+    }    
+}
+
+Method 2 hard to understand, use bitmap
+
 private int minLen;
 private int result;
 
